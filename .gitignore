@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Node
+node_modules/
+
+# Claude Code personal settings
+.claude/settings.local.json
+
+# Runtime
+.status/
+.log/
