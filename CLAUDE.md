@@ -2,18 +2,22 @@
 
 Operations system for teams. Orchestrates specialized AI agents through the D.E.S.I.G.N. process.
 
+## Dependencies
+
+- **Node.js** — Required for Playwright automation
+- **Playwright** — Browser automation for webpage capture (`npm install playwright`)
+- **Figma MCP** — Provides capture infrastructure and Figma file creation (configured in Claude Desktop)
+
 ## Agent System
 
-Agents live in `.claude/agents/`. Each is a specialist with a focused role.
+Agents live in `agents/`. Each is a specialist with a focused role.
 
 **Available agents:**
 - `coordinator` — Orchestrates workflows, delegates to specialists. Entry point for complex tasks.
 - `researcher` — Competitive analysis, user research, pattern research, current state audits.
 - `documenter` — Specs, requirements, handoff documentation, research summaries.
+- `designer` — Captures webpages to Figma using Playwright + Figma MCP. Extracts design tokens and creates handoff docs.
 
-**Invoke:** `claude --agent coordinator`
-
-**Workflow diagrams:** `.claude/COORDINATOR_FLOWS.md`
 
 ## The D.E.S.I.G.N. Process
 
@@ -39,11 +43,9 @@ Not every task needs all six phases. The coordinator decides which apply.
 ## File Storage
 
 - `work/` — Projects, research, specs, deliverables
-- `.claude/agents/` — Agent definitions (only fully implemented agents)
-- `.claude/skills/` — Reusable automation commands (when built)
-- `.claude/COORDINATOR_FLOWS.md` — Workflow diagrams
-
-Do not create directories that don't exist yet. Add them when there's real content to put in them.
+- `agents/` — Agent definitions and workflow diagrams
+- `skills/scripts/` — Automation scripts (capture.js for webpage-to-Figma)
+- `package.json` — Node.js dependencies (Playwright)
 
 ## Git Commits
 
