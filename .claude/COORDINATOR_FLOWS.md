@@ -187,10 +187,12 @@ The six phases map to workflows, not a state machine. Currently only Discovery a
 | Phase | What Happens | Primary Agents | Status |
 |-------|-------------|----------------|--------|
 | **D** — Discovery | Understand users, competitors, requirements, current state | researcher, documenter | Available |
-| **E** — Exploration | Define design direction, validate against system standards | designer | Not yet |
-| **S** — See What Works | Research, experiment, test divergent concepts | researcher, designer | Partial |
-| **I** — Iterate | Refine based on findings, validate accessibility | designer, accessibility-checker | Not yet |
-| **G** — Go to Market | Polish, finalize, prep for handoff | reviewer, documenter | Partial |
+| **E** — Exploration | Define design direction, validate against system standards | designer | Available* |
+| **S** — See What Works | Research, experiment, test divergent concepts | researcher, designer | Available* |
+| **I** — Iterate | Refine based on findings, validate accessibility | designer | Available* |
+| **G** — Go to Market | Polish, finalize, prep for handoff | designer, documenter | Available* |
 | **N** — Next Steps | Position, communicate, measure, capture learnings | documenter | Available |
+
+*Designer agent requires Figma Dev Mode running locally for full design creation capabilities
 
 Not every task needs all six phases. Quick tasks skip directly to execution. The coordinator decides.
