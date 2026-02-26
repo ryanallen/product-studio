@@ -54,21 +54,27 @@ Input: {project-path}/analysis/problems.md + {project-path}/analysis/current-sta
 
 ### Research, Define, Strategize
 ```
+Fetch Ticket
 1. researcher -> skills/deep-research.md (atlassian-rovo MCP, fetch ticket + follow links)
          |
+Document
 2. documentor -> skills/document-findings.md (structure findings into {project-path}/)
          |
+Analyze Problems
 3. strategist -> skills/root-cause-analysis.md (Five Whys on {project-path}/research/findings.md)
          |
 4. documentor -> skills/document-findings.md (add problems to top of {project-path}/README.md)
          |
+Audit Solutions
 5. researcher -> skills/deep-research.md (find existing solutions for each root cause, user can point to sources)
          |
 6. documentor -> skills/document-findings.md (write {project-path}/analysis/current-state.md)
          |
+Propose Solutions
 7. strategist -> skills/root-cause-analysis.md (propose new solutions from root causes + current state)
          |
 8. documentor -> skills/document-findings.md (final pass, ensure consistency)
          |
+Update Ticket
 9. documentor -> skills/update-ticket.md (comment on ticket with link to project)
 ```
