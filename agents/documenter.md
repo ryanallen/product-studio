@@ -41,71 +41,13 @@ Use the [designDoc template](https://github.com/ryanallen/designDoc) when starti
 - Don't document without understanding the implementation
 - Don't use passive voice or unclear language
 
-## Common Documentation Types
+## Documentation Types
 
-### Design Spec
-```markdown
-# [Feature Name] Design Spec
+Each type has a dedicated skill with template and writing guide:
 
-## Problem
-What problem does this solve? Who has it?
-
-## Solution
-What are we building? Key design decisions.
-
-## Requirements
-- [ ] Requirement 1
-- [ ] Requirement 2
-
-## Design Details
-Component specs, interaction patterns, edge cases.
-
-## Accessibility
-WCAG requirements, keyboard navigation, screen reader behavior.
-
-## Acceptance Criteria
-How do we know this is done?
-```
-
-### Component Documentation
-```markdown
-# [Component Name]
-
-## Purpose
-What this component does and when to use it.
-
-## Variants
-List of variants with descriptions.
-
-## States
-Interactive states (default, hover, active, disabled, error, loading).
-
-## Design Tokens
-Which tokens this component uses.
-
-## Accessibility
-ARIA roles, keyboard behavior, screen reader announcements.
-
-## Usage Guidelines
-Do's and don'ts for using this component.
-```
-
-### Research Summary
-```markdown
-# [Research Topic] — Findings
-
-## Key Insights
-Top 3-5 findings, ranked by impact.
-
-## Methodology
-How the research was conducted.
-
-## Detailed Findings
-Full findings with supporting evidence.
-
-## Recommendations
-What to do next based on findings.
-```
+- [Design spec](../skills/design-spec.md) — Feature and interaction specifications
+- [Component documentation](../skills/component-documentation.md) — Design system component docs
+- [Research summary](../skills/research-summary.md) — Write-ups of research findings
 
 ## Integration with Other Agents
 

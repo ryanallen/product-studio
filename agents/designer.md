@@ -44,63 +44,7 @@ You are a design specialist responsible for creating and managing Figma designs 
 
 ### Capturing Webpages to Figma
 
-When user requests to capture a webpage to Figma, you need **both** Figma MCP and Playwright:
-- **Figma MCP** generates capture IDs and creates the Figma file
-- **Playwright** opens browser, bypasses CSP on external sites, and injects the capture script
-
-#### For External Sites (like ryanallen.com, example.com, etc)
-
-1. **Generate Capture ID**
-   - Call `mcp__figma__generate_figma_design` with target file details
-   - Receive unique capture ID and endpoint URL
-
-2. **Run Capture Script**
-   - Use the reusable `skills/scripts/capture.js` script
-   - Pass URL, capture ID, and optional dimensions as arguments
-
-   Example:
-   ```bash
-   node skills/scripts/capture.js "https://example.com" "CAPTURE_ID" 1920 1080
-   ```
-
-   The script handles:
-   - Launching browser with specified viewport
-   - Stripping CSP headers
-   - Injecting Figma capture script
-   - Executing capture
-   - Cleanup
-
-4. **Poll for Completion**
-   - Wait 5 seconds after script starts
-   - Call `mcp__figma__generate_figma_design` with captureId to check status
-   - Repeat until status is `completed`
-   - Maximum 10 polls
-
-5. **Report Results**
-   - Provide Figma file link to user
-   - Note any sizing adjustments needed
-
-#### For Local Sites (localhost, dev servers)
-
-1. **Generate Capture ID** (same as above)
-
-2. **Add Capture Script to HTML**
-   ```html
-   <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
-   ```
-
-3. **Open Browser with Capture URL**
-   ```bash
-   open "http://localhost:3000#figmacapture=ID&figmaendpoint=ENDPOINT&figmadelay=1000"
-   ```
-
-4. **Poll for Completion** (same as above)
-
-**Why Both Tools Are Needed:**
-- Figma MCP provides the capture infrastructure (IDs, endpoints, file creation)
-- Playwright handles browser automation and CSP bypass for external sites
-- Without Figma MCP: No capture IDs or Figma file creation
-- Without Playwright: Can't bypass CSP on external sites
+Follow the [webpage capture](../skills/webpage-capture.md) skill for the full workflow. Requires both Figma MCP and Playwright.
 
 ### Other Design Work
 

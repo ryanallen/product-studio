@@ -44,6 +44,7 @@ Not every task needs all six phases. The coordinator decides which apply.
 
 - `work/` — Projects, research, specs, deliverables
 - `agents/` — Agent definitions and workflow diagrams
+- `skills/` — Reusable procedures and templates (research methods, doc templates, capture workflow)
 - `skills/scripts/` — Automation scripts (capture.js for webpage-to-Figma)
 - `package.json` — Node.js dependencies (Playwright)
 
