@@ -1,9 +1,9 @@
 ---
-name: deep-research
+name: web-crawl
 description: Navigates URLs and recursively follows links to gather comprehensive information up to 5 levels deep. Use when user says "research this", "deep dive on", "explore this URL", or asks to gather information from websites.
 ---
 
-# Deep Research
+# Web Crawl
 
 Navigates URLs and recursively follows links to gather comprehensive information up to 5 levels deep.
 

@@ -14,7 +14,7 @@ designer, researcher, documentor, strategist
 ### Audit Solutions
 Input: {project-path}/analysis/problems.md
 ```
-1. researcher -> ../skills/deep-research/SKILL.md (find existing solutions for each root cause)
+1. researcher -> ../skills/web-crawl/SKILL.md (find existing solutions for each root cause)
          |
 2. documentor -> ../skills/document-findings/SKILL.md
 ```
@@ -30,7 +30,7 @@ Input: {project-path}/analysis/problems.md + {project-path}/analysis/current-sta
 ### Research, Define, Strategize
 ```
 Fetch Ticket
-1. researcher -> ../skills/deep-research/SKILL.md (atlassian-rovo MCP, fetch ticket + follow links)
+1. researcher -> ../skills/web-crawl/SKILL.md (atlassian-rovo MCP, fetch ticket + follow links)
          |
 Document
 2. documentor -> ../skills/document-findings/SKILL.md (structure findings into {project-path}/)
@@ -41,7 +41,7 @@ Analyze Problems
 4. documentor -> ../skills/document-findings/SKILL.md (add problems to top of {project-path}/README.md)
          |
 Audit Solutions
-5. researcher -> ../skills/deep-research/SKILL.md (find existing solutions for each root cause, user can point to sources)
+5. researcher -> ../skills/web-crawl/SKILL.md (find existing solutions for each root cause, user can point to sources)
          |
 6. documentor -> ../skills/document-findings/SKILL.md (write {project-path}/analysis/current-state.md)
          |
