@@ -10,28 +10,14 @@ Takes research output and produces structured, enhanced markdown documentation.
 ## Inputs
 
 1. **Project path** - `work/{team}/{space}/{project}/`
-2. **Source material** - Path to research findings (typically `work/{team}/{space}/{project}/research/`)
+2. **Source material** - Research output to structure
 3. **Document type** - One of: `research`, `analysis`, `solutions`, `project-overview`
 
 If the project path or source material is missing, ask the user before proceeding.
 
-## Project Folder Structure
+## Output
 
-All project documentation lives in `work/{team}/{space}/{project}/`:
-
-```
-work/{team}/{space}/{project}/
-├── README.md              # Project overview (problems listed at top)
-├── research/
-│   ├── sources.md         # All URLs and sources indexed
-│   ├── findings.md        # Extracted content by topic
-│   └── link-tree.md       # Visual traversal map
-├── analysis/
-│   ├── problems.md        # Identified problems + root causes
-│   └── current-state.md   # Existing solutions audit
-└── solutions/
-    └── proposals.md       # New solution proposals
-```
+All project documentation lives in a single file: `work/{team}/{space}/{project}/README.md`
 
 ## Markdown Standards
 
@@ -87,21 +73,29 @@ Always cite sources inline with markdown links. Group full source lists in table
 ### 1. Read Source Material
 Read all files from the source path. Understand the scope and topics covered.
 
-### 2. Organize by Structure
-Map content into the folder structure above based on document type.
+### 2. Organize by Sections
+Map content into the README sections based on document type.
 
-### 3. Write Documents
-- Start each document with a clear title and one-line summary
+### 3. Write README
+- Start with a clear title and one-line summary
 - Use mermaid diagrams where relationships or flows exist
 - Use tables where comparisons or indexes exist
 - Keep paragraphs short (3-4 sentences max)
 - Cite sources inline
 
-### 4. Project README
-The project `README.md` is the single entry point. Structure:
+### 4. README Structure
 
 ```markdown
 # {Project Name}
+
+## Table of Contents
+- [Problems](#problems)
+- [Overview](#overview)
+- [Findings](#findings)
+- [Sources](#sources)
+- [Link Tree](#link-tree)
+- [Current State](#current-state)
+- [Proposals](#proposals)
 
 ## Problems
 {Listed at the top, added by strategist workflow}
@@ -109,12 +103,20 @@ The project `README.md` is the single entry point. Structure:
 ## Overview
 {What this project is about}
 
-## Documents
-- [Research Findings](research/findings.md)
-- [Source Index](research/sources.md)
-- [Problem Analysis](analysis/problems.md)
-- [Current State](analysis/current-state.md)
-- [Solution Proposals](solutions/proposals.md)
+## Findings
+{Extracted content organized by topic, sources cited}
+
+## Sources
+{URL index with depth, title, parent}
+
+## Link Tree
+{Visual traversal map of links followed}
+
+## Current State
+{Existing solutions audit}
+
+## Proposals
+{New solution proposals}
 ```
 
 ## Rules
@@ -123,4 +125,4 @@ The project `README.md` is the single entry point. Structure:
 - Never invent information not present in source material
 - Always attribute content to its source
 - Use mermaid diagrams for any process with 3+ steps or any hierarchy with 2+ levels
-- Keep documents navigable (table of contents for documents exceeding 100 lines)
+- Always include a table of contents after the H1 title linking to all H2 sections
