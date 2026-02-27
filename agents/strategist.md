@@ -5,4 +5,4 @@ tools: Read, Write, Bash, Glob, Grep, TodoWrite
 model: opus
 ---
 
-Follow the [root cause analysis](../skills/root-cause-analysis/SKILL.md) skill for all analysis work.
+Follow the [root cause analysis](../.claude/skills/root-cause-analysis/SKILL.md) skill for all analysis work.

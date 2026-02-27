@@ -13,68 +13,68 @@ designer, researcher, documentor, strategist
 
 ### Webpage to Figma
 ```
-designer -> skills/webpage-capture/SKILL.md
+designer -> .claude/skills/webpage-capture/SKILL.md
 ```
 
 ### Fetch Ticket
 ```
-researcher -> skills/deep-research/SKILL.md (atlassian-rovo MCP)
+researcher -> .claude/skills/deep-research/SKILL.md (atlassian-rovo MCP)
 ```
 
 ### Deep Research
 ```
-researcher -> skills/deep-research/SKILL.md
+researcher -> .claude/skills/deep-research/SKILL.md
 ```
 
 ### Document
 ```
-documentor -> skills/document-findings/SKILL.md
+documentor -> .claude/skills/document-findings/SKILL.md
 ```
 
 ### Analyze Problems
 ```
-strategist -> skills/root-cause-analysis/SKILL.md
+strategist -> .claude/skills/root-cause-analysis/SKILL.md
 ```
 
 ### Audit Solutions
 Input: {project-path}/analysis/problems.md
 ```
-1. researcher -> skills/deep-research/SKILL.md (find existing solutions for each root cause)
+1. researcher -> .claude/skills/deep-research/SKILL.md (find existing solutions for each root cause)
          |
-2. documentor -> skills/document-findings/SKILL.md
+2. documentor -> .claude/skills/document-findings/SKILL.md
 ```
 
 ### Propose Solutions
 Input: {project-path}/analysis/problems.md + {project-path}/analysis/current-state.md
 ```
-1. strategist -> skills/root-cause-analysis/SKILL.md
+1. strategist -> .claude/skills/root-cause-analysis/SKILL.md
          |
-2. documentor -> skills/document-findings/SKILL.md
+2. documentor -> .claude/skills/document-findings/SKILL.md
 ```
 
 ### Research, Define, Strategize
 ```
 Fetch Ticket
-1. researcher -> skills/deep-research/SKILL.md (atlassian-rovo MCP, fetch ticket + follow links)
+1. researcher -> .claude/skills/deep-research/SKILL.md (atlassian-rovo MCP, fetch ticket + follow links)
          |
 Document
-2. documentor -> skills/document-findings/SKILL.md (structure findings into {project-path}/)
+2. documentor -> .claude/skills/document-findings/SKILL.md (structure findings into {project-path}/)
          |
 Analyze Problems
-3. strategist -> skills/root-cause-analysis/SKILL.md (Five Whys on {project-path}/research/findings.md)
+3. strategist -> .claude/skills/root-cause-analysis/SKILL.md (Five Whys on {project-path}/research/findings.md)
          |
-4. documentor -> skills/document-findings/SKILL.md (add problems to top of {project-path}/README.md)
+4. documentor -> .claude/skills/document-findings/SKILL.md (add problems to top of {project-path}/README.md)
          |
 Audit Solutions
-5. researcher -> skills/deep-research/SKILL.md (find existing solutions for each root cause, user can point to sources)
+5. researcher -> .claude/skills/deep-research/SKILL.md (find existing solutions for each root cause, user can point to sources)
          |
-6. documentor -> skills/document-findings/SKILL.md (write {project-path}/analysis/current-state.md)
+6. documentor -> .claude/skills/document-findings/SKILL.md (write {project-path}/analysis/current-state.md)
          |
 Propose Solutions
-7. strategist -> skills/root-cause-analysis/SKILL.md (propose new solutions from root causes + current state)
+7. strategist -> .claude/skills/root-cause-analysis/SKILL.md (propose new solutions from root causes + current state)
          |
-8. documentor -> skills/document-findings/SKILL.md (final pass, ensure consistency)
+8. documentor -> .claude/skills/document-findings/SKILL.md (final pass, ensure consistency)
          |
 Update Ticket
-9. documentor -> skills/update-ticket/SKILL.md (comment on ticket with link to project)
+9. documentor -> .claude/skills/update-ticket/SKILL.md (comment on ticket with link to project)
 ```
