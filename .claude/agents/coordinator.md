@@ -13,6 +13,19 @@ Valid team and space values are defined in `work/config.md`.
 
 ## Workflows
 
+### Crawl Ticket, Document
+Input: Jira ticket ID (e.g. PROJ-123), project path `work/{team}/{space}/{project}/`
+```
+1. researcher -> ../skills/web-crawl/SKILL.md
+   - Fetch ticket via atlassian-rovo MCP; use ticket body and all linked URLs as starting URLs
+   - Crawl every link (Playwright in Chrome for auth-gated: Slack, GitHub, Confluence, etc.)
+   - Output path: {project-path}/README.md
+         |
+2. documentor -> ../skills/document-findings/SKILL.md
+   - Structure all findings into {project-path}/README.md
+   - Track problems and possible solutions in the single work doc; no other files
+```
+
 ### Audit Solutions
 Input: {project-path}/README.md (problems section)
 ```
