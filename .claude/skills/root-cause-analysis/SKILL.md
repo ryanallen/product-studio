@@ -14,6 +14,8 @@ Analyzes documented findings to identify problems and trace them to root causes 
 
 If the project path is missing, ask the user before proceeding.
 
+Valid team and space values are defined in `work/config.md`.
+
 ## Process
 
 ### 1. Read All Documentation

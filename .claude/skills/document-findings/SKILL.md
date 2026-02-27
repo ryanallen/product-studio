@@ -15,6 +15,8 @@ Takes research output and produces structured, enhanced markdown documentation.
 
 If the project path or source material is missing, ask the user before proceeding.
 
+Valid team and space values are defined in `work/config.md`.
+
 ## Output
 
 All project documentation lives in a single file: `work/{team}/{space}/{project}/README.md`

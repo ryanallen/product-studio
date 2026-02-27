@@ -15,6 +15,8 @@ Navigates URLs and recursively follows links to gather comprehensive information
 
 If the starting URL or output path is missing, ask the user before proceeding.
 
+Valid team and space values are defined in `work/config.md`.
+
 ## Process
 
 ### 1. Fetch Starting URLs

@@ -9,6 +9,8 @@ model: opus
 
 designer, researcher, documentor, strategist
 
+Valid team and space values are defined in `work/config.md`.
+
 ## Workflows
 
 ### Audit Solutions
