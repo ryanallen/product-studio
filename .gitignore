@@ -8,6 +8,3 @@ desktop.ini
 # npm
 node_modules/
 package-lock.json
-
-# User config (copy config.example.md to config.md)
-work/config.md
