@@ -8,3 +8,6 @@ desktop.ini
 # npm
 node_modules/
 package-lock.json
+
+# Custom setup (user- or machine-specific; does not sync)
+.claude/setup/custom.md
