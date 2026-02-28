@@ -99,7 +99,9 @@ Use a single README with three phases. Link between them at the top. Notes, curr
 ## Discovery
 
 ### Project tracking
-Team (Name | Responsibility), Roadmap (Project + ticket | Due date), Measurements (Name | Current state | Desired state).
+- **Team:** One row per person. Name = individual contributor (person's full name, not team or space). Responsibility = exactly one of: **Driver**, **Approver**, **Contributor**, **Informed** (DACI only; no other values). Example: ticket assignee (e.g. Ryan Allen on the UX ticket) is **Contributor**; the person who assigned the ticket is at least **Informed** (and may also be Driver, Approver, or Contributor).
+- **Roadmap:** Project + ticket | Due date.
+- **Measurements:** Name | Current state | Desired state.
 
 ### Audits
 Notes, current-state review, competitor review. Track artifacts in Exploration > Artifacts. When source material includes a **Link tree** or **Sources** section (e.g. from learn output), preserve it here: include a "Link tree" subsection with the full traversal map and optionally a Sources table so every crawled link remains in the README.
@@ -137,6 +139,7 @@ Learnings. Recommendations. Links to new docs.
 - Never use absolute filesystem paths in links. All links must be relative to the document they appear in
 - Every source or URL reference must be a markdown link `[title](url)` so it is clickable; never plain text title with URL elsewhere or bare URL
 - Never invent information not present in source material. No placeholder or made-up content anywhere: no fake table rows, no TBD, no example names/dates/artifacts in Deliverables, Project tracking, Roadmap, or any other section. Only real data from source material; leave sections or tables empty when there is nothing to put.
+- In Project tracking > Team: Name must be an individual person (full name). Responsibility must be exactly one of Driver, Approver, Contributor, Informed (DACI). No other roles or labels.
 - When structuring from research that includes a Link tree or Sources section, preserve them in the README (e.g. under Discovery > Audits) so the full link tree is always present
 - Always attribute content to its source
 - Use mermaid diagrams for any process with 3+ steps or any hierarchy with 2+ levels
