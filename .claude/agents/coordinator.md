@@ -7,31 +7,22 @@ model: opus
 
 ## Team
 
-designer, researcher, documentor, strategist
+researcher, documentor, strategist
 
 Valid team and space values are defined in `work/config.md`.
 
 ## Workflows
 
-### Crawl Ticket, Document
-Input: Jira ticket ID (e.g. PROJ-123), project path `work/{team}/{space}/{project}/`
+### Learn
+Input: User-provided (ticket ID, URL(s), pasted text, file path(s), or image(s)), project path `work/{team}/{space}/{project}/`
 ```
-1. researcher -> ../skills/web-crawl/SKILL.md
-   - Fetch ticket via atlassian-rovo MCP; use ticket body and all linked URLs as starting URLs
-   - Crawl every link (Playwright in Chrome for auth-gated: Slack, GitHub, Confluence, etc.)
-   - Output path: {project-path}/README.md
+1. researcher -> ../skills/learn/SKILL.md
+   - Normalize input to starting URLs + level-0 content; crawl from URLs up to 5 levels deep
+   - Write findings to {project-path}/README.md (documentor reads from this path)
          |
 2. documentor -> ../skills/document-findings/SKILL.md
-   - Structure all findings into {project-path}/README.md
+   - Read {project-path}/README.md and structure into same file
    - Track problems and possible solutions in the single work doc; no other files
-```
-
-### Audit Solutions
-Input: {project-path}/README.md (problems section)
-```
-1. researcher -> ../skills/web-crawl/SKILL.md (find existing solutions for each root cause)
-         |
-2. documentor -> ../skills/document-findings/SKILL.md
 ```
 
 ### Propose Solutions
@@ -44,11 +35,11 @@ Input: {project-path}/README.md (problems + current state sections)
 
 ### Research, Define, Strategize
 ```
-Fetch Ticket
-1. researcher -> ../skills/web-crawl/SKILL.md (atlassian-rovo MCP, fetch ticket + follow links)
+Learn (from ticket, URL(s), text, file(s), or image(s))
+1. researcher -> ../skills/learn/SKILL.md (normalize input, crawl up to 5 deep, write to {project-path}/README.md)
          |
 Document
-2. documentor -> ../skills/document-findings/SKILL.md (structure findings into {project-path}/README.md)
+2. documentor -> ../skills/document-findings/SKILL.md (read that README, structure into same file)
          |
 Analyze Problems
 3. strategist -> ../skills/root-cause-analysis/SKILL.md (Five Whys on {project-path}/README.md)
@@ -56,7 +47,7 @@ Analyze Problems
 4. documentor -> ../skills/document-findings/SKILL.md (add problems to top of {project-path}/README.md)
          |
 Audit Solutions
-5. researcher -> ../skills/web-crawl/SKILL.md (find existing solutions for each root cause, user can point to sources)
+5. researcher -> ../skills/learn/SKILL.md (find existing solutions for each root cause, user can point to sources)
          |
 6. documentor -> ../skills/document-findings/SKILL.md (write current state into {project-path}/README.md)
          |
@@ -68,3 +59,4 @@ Propose Solutions
 Update Ticket
 9. documentor -> ../skills/update-ticket/SKILL.md (comment on ticket with link to project)
 ```
+

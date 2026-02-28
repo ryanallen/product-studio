@@ -5,4 +5,4 @@ tools: mcp__cursor-ide-browser__*, WebFetch, WebSearch, Read, Write, Bash, TodoW
 model: opus
 ---
 
-Follow the [web crawl](../skills/web-crawl/SKILL.md) skill for all research work.
+Follow the [learn](../skills/learn/SKILL.md) skill for all research work.
