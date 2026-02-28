@@ -72,6 +72,15 @@ Always cite sources inline with markdown links. Group full source lists in table
 
 **Clickable links:** Every reference to a source or URL must use markdown link syntax `[title](url)` so it renders as a clickable link in the README. Never write the link title and URL as separate plain text or as a bare URL.
 
+**Link everything that can be linked.** Do not leave linkable items as plain text. In scope:
+- **Sections:** Include a full table of contents (see README Structure) linking to every section.
+- **URLs:** Use `[title](url)` for every source, doc, or external reference.
+- **People:** In Project tracking > Team, give each person a document anchor (e.g. `<a id="jane-doe"></a>` before the name, or a heading). Anywhere that person appears (notes, Audits, Deliverables, Artifacts, etc.), link their name to that anchor (e.g. `[Jane Doe](#jane-doe)`).
+- **Tickets:** When a ticket ID or URL exists, link it (e.g. `[PROJ-123](url)` or link the ID).
+- **Artifacts / docs:** If an artifact or doc has a URL, link it.
+
+When in doubt, add the link.
+
 ## Process
 
 ### 1. Read Source Material
@@ -89,11 +98,24 @@ Map content into the README sections based on document type.
 
 ### 4. README Structure
 
-Use a single README with three phases. Link between them at the top. Notes, current-state review, competitor audit, and similar material go in **Audits** (under Discovery). Section headers below describe what goes in each place when source material provides it; do not populate tables or sections with placeholder, example, or made-up data. If there is no real data for a table or subsection, leave it empty or omit it.
+Use a single README with three phases. **Full navigation at the top:** after the H1 title, add a table of contents that links to every H2 and H3 in the document so readers can jump to any section (Discovery, Exploration, Go to market, and every subsection under them). Notes, current-state review, competitor audit, and similar material go in **Audits** (under Discovery). Section headers below describe what goes in each place when source material provides it; do not populate tables or sections with placeholder, example, or made-up data. If there is no real data for a table or subsection, leave it empty or omit it.
 
 ```markdown
 # {Project Name}
-[Discovery](#discovery) | [Exploration](#exploration) | [Go to market](#go-to-market)
+Full nav (link every H2 and H3 that exists in the doc, e.g.):
+- [Discovery](#discovery)
+  - [Project tracking](#project-tracking)
+  - [Audits](#audits)
+  - [Users + Needs](#users--needs)
+- [Exploration](#exploration)
+  - [Ideation](#ideation)
+  - [Artifacts](#artifacts)
+  - [Validation](#validation)
+- [Go to market](#go-to-market)
+  - [Deliverables](#deliverables)
+  - [Performance](#performance)
+  - [Next version](#next-version)
+(Include only sections that exist; use same anchor format for headings.)
 
 ---
 ## Discovery
@@ -115,8 +137,8 @@ Users raw & encoded needs (User | Time/date | Verbatim | Encoded needs). Sorted 
 ### Ideation
 Hypotheses (If | then | due to).
 
-### Collaboration
-Artifacts table (Date | Creator | Artifact).
+### Artifacts
+Artifacts table (Date | Creator | Artifact). Drawings, surveys, flow charts, prototypes, UI, code repos. **Design files:** physical design files (e.g. Figma, Sketch); link or list with Creator and Artifact.
 
 ### Validation
 Test plan (general, users, goals). User testing results (Version | KPI 1 | KPI 2).
@@ -143,4 +165,4 @@ Learnings. Recommendations. Links to new docs.
 - When structuring from research that includes a Link tree or Sources section, preserve them in the README (e.g. under Discovery > Audits) so the full link tree is always present
 - Always attribute content to its source
 - Use mermaid diagrams for any process with 3+ steps or any hierarchy with 2+ levels
-- Always include a table of contents after the H1 title linking to all H2 sections
+- Always include a full table of contents after the H1 title: link to every H2 and H3 section so readers can navigate to all parts of the document
