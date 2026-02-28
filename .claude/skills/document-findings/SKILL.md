@@ -87,38 +87,47 @@ Map content into the README sections based on document type.
 
 ### 4. README Structure
 
+Use a single README with three phases. Link between them at the top. Notes, current-state review, competitor audit, and similar material go in **Audits** (under Discovery).
+
 ```markdown
 # {Project Name}
+[Discovery](#discovery) | [Exploration](#exploration) | [Go to market](#go-to-market)
 
-## Table of Contents
-- [Problems](#problems)
-- [Overview](#overview)
-- [Findings](#findings)
-- [Sources](#sources)
-- [Link Tree](#link-tree)
-- [Current State](#current-state)
-- [Proposals](#proposals)
+---
+## Discovery
 
-## Problems
-{Listed at the top, added by Strategist workflow}
+### Project tracking
+Team (Name | Responsibility), Roadmap (Project + ticket | Due date), Measurements (Name | Current state | Desired state).
 
-## Overview
-{What this project is about}
+### Audits
+Notes, current-state review, competitor review. Track artifacts in Exploration > Artifacts.
 
-## Findings
-{Extracted content organized by topic, sources cited}
+### Users + Needs
+Users raw & encoded needs (User | Time/date | Verbatim | Encoded needs). Sorted needs. Refined problem statement (In which way might we enable ${user} to solve ${mainNeed1} & ${mainNeed2}, to ${userGoal} & ${businessGoal}?).
 
-## Sources
-{URL index with depth, title, parent}
+---
+## Exploration
 
-## Link Tree
-{Visual traversal map of links followed}
+### Ideation
+Hypotheses (If | then | due to).
 
-## Current State
-{Existing solutions audit}
+### Collaboration
+Artifacts table (Date | Creator | Artifact).
 
-## Proposals
-{New solution proposals}
+### Validation
+Test plan (general, users, goals). User testing results (Version | KPI 1 | KPI 2).
+
+---
+## Go to market
+
+### Deliverables
+Designs for engineers (Date | Creator | Artifact). Production roadmap (Project name | Due date | Status | Person assigned).
+
+### Performance
+Quality assurance. Production testing (Version | KPI 1 | KPI 2).
+
+### Next version
+Learnings. Recommendations. Links to new docs.
 ```
 
 ## Rules
