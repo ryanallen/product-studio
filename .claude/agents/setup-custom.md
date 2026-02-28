@@ -2,7 +2,7 @@
 name: setup-custom
 description: "Runs user- or machine-specific setup from an optional file. Use after the setup agent when custom steps are desired. Content lives in .claude/setup/custom.md; omit from commits to keep it local."
 tools: Read, Bash
-model: opus
+model: opus, sonnet
 ---
 
 Run additional setup from `.claude/setup/custom.md` when that file exists. Omit it from commits to keep custom steps local (e.g. machine- or user-specific: extra MCP servers, env vars).

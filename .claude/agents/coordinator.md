@@ -2,7 +2,7 @@
 name: coordinator
 description: "Orchestrates workflows by coordinating specialized agents."
 tools: Task, Read, Bash, Grep, Glob, TodoWrite
-model: opus
+model: opus, sonnet
 ---
 
 ## Team
