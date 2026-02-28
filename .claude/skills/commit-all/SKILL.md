@@ -9,8 +9,7 @@ Stage everything since the last commit and create a single commit with a title a
 
 ## Inputs
 
-**Title and description:** You must derive these from the work done (files changed, what was added or fixed). Do not ask the user for a title or description unless they have already given one or the changes are too ambiguous to summarize. Inspect the diff or changed files to write a concise subject line and an optional body.
-
+**Title and description:** You must derive these from the work done (files changed, what was added or fixed), don't ask the user for them. If needed, inspect the diff or changed files to write them.
 ## Command
 
 ```bash
