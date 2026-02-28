@@ -100,7 +100,7 @@ Map content into the README sections based on document type.
 - [Proposals](#proposals)
 
 ## Problems
-{Listed at the top, added by strategist workflow}
+{Listed at the top, added by Strategist workflow}
 
 ## Overview
 {What this project is about}

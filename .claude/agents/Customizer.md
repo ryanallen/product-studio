@@ -1,6 +1,6 @@
 ---
-name: setup-custom
-description: "Runs user- or machine-specific setup from an optional file. Use after the setup agent when custom steps are desired. Content lives in .claude/setup/custom.md; omit from commits to keep it local."
+name: Customizer
+description: "Runs user- or machine-specific setup from an optional file. Use after the Installer when custom steps are desired. Content lives in .claude/setup/custom.md; omit from commits to keep it local."
 tools: Read, Bash
 model: opus, sonnet
 ---
@@ -11,4 +11,4 @@ Run additional setup from `.claude/setup/custom.md` when that file exists. Omit 
 2. If it exists, read it and execute the steps it describes in order.
 3. Do not commit or modify the file unless the user asks.
 
-Run after the [setup](setup.md) agent (which runs the setup skill).
+Run after the [Installer](Installer.md) agent (which runs the setup skill).

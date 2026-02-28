@@ -5,7 +5,7 @@ description: Gather from any source (ticket, URL(s), text, file(s), image(s)) an
 
 # Learn
 
-Accepts flexible input, derives starting URLs and optional level-0 content, then navigates recursively up to 5 levels deep. Writes findings to the project README so the documentor can read and structure them.
+Accepts flexible input, derives starting URLs and optional level-0 content, then navigates recursively up to 5 levels deep. Writes findings to the project README so the Documentor can read and structure them.
 
 ## Inputs
 
@@ -28,7 +28,7 @@ Valid team and space values are defined in `work/config.md`.
 
 From the given input, produce:
 - **Starting URL(s)** – Zero or more URLs to crawl. If none (e.g. only pasted text with no links), write level-0 content only to output and skip crawl.
-- **Level-0 content** (optional) – Raw or summarized content from the input (ticket body, pasted text, file content, image description). Include this in the output so the documentor can structure it.
+- **Level-0 content** (optional) – Raw or summarized content from the input (ticket body, pasted text, file content, image description). Include this in the output so the Documentor can structure it.
 
 ### 2. Fetch Starting URLs
 
@@ -70,7 +70,7 @@ For each page visited, capture:
 
 ### 5. Output
 
-Write to the project README.md. This file is the handoff to the documentor (documentor reads from this path and restructures it).
+Write to the project README.md. This file is the handoff to the Documentor (Documentor reads from this path and restructures it).
 
 If level-0 content exists, include it first:
 

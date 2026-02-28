@@ -11,7 +11,7 @@
 7. **No Sycophancy** - Never flatter, over-agree, or pad responses to seem helpful.
 8. **No Invented Paths** - Never invent team or space names. Use values from `work/config.md` or ask.
 
-Start with `.claude/agents/coordinator.md`. Store deliverables in `work/`.
+Start with `.claude/agents/Coordinator.md`. Store deliverables in `work/`.
 
 ## Work Folder Structure
 
