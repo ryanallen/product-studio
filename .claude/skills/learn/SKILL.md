@@ -32,9 +32,7 @@ From the given input, produce:
 
 ### 2. Fetch Starting URLs
 
-**Auth-gated or permission-restricted links (e.g. Slack, GitHub, internal tools):** Open them in Playwright using Chrome. A browser launched by Playwright uses the user's existing Chrome session (cookies, login state), so it can bypass permission walls and access the same content the user would see when logged in.
-
-Visit each starting URL. Extract:
+**Auth-gated or permission-restricted links (e.g. Slack, GitHub, internal tools):** Open them in Playwright using Chrome. A browser launched by Playwright uses the user's existing Chrome session (cookies, login state), so it can bypass permission walls and access the same content the user would see when logged in. **If a page cannot be accessed (login wall, permission denied, etc.):** Ask the user to log in. Tell them to open the URL in their browser (or use the session Playwright will use), complete login, then tell you when they are done. Wait for the user to confirm before retrying. Do not give up and skip without asking. Extract:
 - Page title and main content
 - All links (navigation, inline references, related pages, asset URLs)
 - Images, screenshots, icons
@@ -117,7 +115,7 @@ If level-0 content exists, include it first:
 - Prefer depth-first within the focus area, breadth-first otherwise
 - Extract all visual and design assets (images, colors, fonts, tokens)
 - For pages that require authentication or permissions (Slack, GitHub, etc.), use Playwright in Chrome to open the link; it will use the user's session and bypass permission checks
-- If a page still cannot be accessed, note it and skip
+- If a page still cannot be accessed (login required, permission denied): ask the user to log in. Tell them which URL to open, to complete login in their browser, and to tell you when done. Wait for the user to confirm before retrying. Do not note it and skip without asking
 - Summarize content when appropriate and if data is important copy it verbatim
 - **Clickable links:** Every URL in the output (Sources table, Link Tree, Findings source lines) must be written as a markdown link `[title](url)`. Never output a bare URL or title-only line; always use `[title](url)` so links are clickable in the README.
 - **One folder, one README:** Never create a new project path, new folder, or new README. All findings and new problems go into the same project README. Append or update sections in that file only.
