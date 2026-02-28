@@ -19,7 +19,7 @@ Valid team and space values are defined in `work/config.md`.
 
 ## Output
 
-All project documentation lives in a single file: `work/{team}/{space}/{project}/README.md`. Do not create other files (notes, drafts, separate docs) for the project; write everything into this README.
+All project documentation lives in a single file: `work/{team}/{space}/{project}/README.md`. Do not create other files (notes, drafts, separate docs) for the project; write everything into this README. **One folder, one README:** Never create a new project path, new folder, or a new README. When you discover or document a new problem or topic, add it to this same README (e.g. Problems section, Audits, a new subsection). Multiple problems and topics are tracked in this one file; do not split them into new folders or files.
 
 ## Markdown Standards
 
@@ -163,6 +163,7 @@ Learnings. Recommendations. Links to new docs.
 - Never invent information not present in source material. No placeholder or made-up content anywhere: no fake table rows, no TBD, no example names/dates/artifacts in Deliverables, Project tracking, Roadmap, or any other section. Only real data from source material; leave sections or tables empty when there is nothing to put.
 - In Project tracking > Team: Name must be an individual person (full name). Responsibility must be exactly one of Driver, Approver, Contributor, Informed (DACI). No other roles or labels.
 - When structuring from research that includes a Link tree or Sources section, preserve them in the README (e.g. under Discovery > Audits) so the full link tree is always present
+- **One folder, one README:** Never create a new project path, folder, or README for new problems or findings. Add all problems, topics, and updates to the existing project README only.
 - Always attribute content to its source
 - Use mermaid diagrams for any process with 3+ steps or any hierarchy with 2+ levels
 - Always include a full table of contents after the H1 title: link to every H2 and H3 section so readers can navigate to all parts of the document

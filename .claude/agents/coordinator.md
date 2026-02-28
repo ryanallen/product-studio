@@ -15,6 +15,7 @@ Valid team and space values are defined in `work/config.md`.
 
 ### Learn
 Input: User-provided (ticket ID, URL(s), pasted text, file path(s), or image(s)), project path `work/{team}/{space}/{project}/`
+**One folder, one README.** Never create a new folder or new README for new findings or problems; add everything to `{project-path}/README.md`.
 ```
 1. Researcher -> ../skills/learn/SKILL.md
    - Normalize input to starting URLs + level-0 content; crawl from URLs up to 5 levels deep

@@ -15,7 +15,7 @@ Accepts flexible input, derives starting URLs and optional level-0 content, then
    - **Pasted text** – Extract URLs and use as starting URLs; full text is level-0 content.
    - **File path(s)** – Read file(s), extract URLs and use as starting URLs; file content is level-0 content.
    - **Image path(s)** – Describe or extract text/URLs from image; use any URLs as starting URLs; description or extracted text is level-0 content.
-2. **Output path** – `work/{team}/{space}/{project}/README.md` (single file for all findings; do not create other note or output files). Documentor reads from this same path.
+2. **Output path** – `work/{team}/{space}/{project}/README.md` (single file for all findings; do not create other note or output files). Documentor reads from this same path. **One folder, one README:** never create a new folder or new README. If you discover a new problem or topic, add it into this same README (e.g. another subsection, problem entry, or finding). Multiple problems and findings all live in this one file.
 3. **Focus area** (optional) – Keywords or topics to prioritize when deciding which links to follow.
 
 If input or output path is missing, ask the user before proceeding.
@@ -120,3 +120,4 @@ If level-0 content exists, include it first:
 - If a page still cannot be accessed, note it and skip
 - Summarize content when appropriate and if data is important copy it verbatim
 - **Clickable links:** Every URL in the output (Sources table, Link Tree, Findings source lines) must be written as a markdown link `[title](url)`. Never output a bare URL or title-only line; always use `[title](url)` so links are clickable in the README.
+- **One folder, one README:** Never create a new project path, new folder, or new README. All findings and new problems go into the same project README. Append or update sections in that file only.
