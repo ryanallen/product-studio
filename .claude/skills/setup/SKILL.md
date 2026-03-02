@@ -15,11 +15,9 @@ Run the standard Studio setup. Stop when the user must quit the terminal and rel
 defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder
 ```
 
-### 2. MCP servers
+### 2. MCP servers (local by default)
 
-By default, treat this repo as **local-scoped** and avoid touching global Claude config. The Customizer can flip behavior using `.claude/skills/setup/custom/SKILL.md` (`install_scope: global`).
-
-#### 2.1 Local (project-scoped) config
+Configure MCP servers **project-scoped** by editing `~/.claude.json` under this repo’s project path. Global install behavior (using `claude mcp add`) is controlled from `.claude/skills/setup/custom/SKILL.md`.
 
 Edit `~/.claude.json` under this repo’s project path, for example:
 
@@ -49,23 +47,6 @@ Edit `~/.claude.json` under this repo’s project path, for example:
   }
 }
 ```
-
-#### 2.2 Global (optional)
-
-Only run these if the user explicitly agrees to a global install (affects all projects):
-
-```bash
-# Figma Console (design creation / updates)
-claude mcp add figma-console -- npx -y figma-console-mcp@latest
-
-# Playwright (browser automation)
-claude mcp add playwright -- npx -y @executeautomation/playwright-mcp-server
-
-# Atlassian Jira/Confluence (ticket management)
-claude mcp add --transport sse atlassian-rovo https://mcp.atlassian.com/v1/sse
-```
-
-After adding any new MCP server globally, the user must relaunch the terminal before proceeding.
 
 ### 3. Figma Console token & bridge (Prompt to Figma)
 

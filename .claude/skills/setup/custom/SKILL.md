@@ -6,26 +6,30 @@ description: Optional local overrides for Studio setup. Lives in .claude/skills/
 # Setup Customization
 
 This file lets you:
-- Choose **local vs global** MCP install behavior.
-- Add any extra machine- or user-specific steps.
+- Choose **local vs global** MCP install behavior for MCP installs in setup.
+- Customize setup behavior specific to this machine or user.
 
-## Install scope feature flag
+## Install scope
 
-Set one of:
+```text
+install_scope: local
+```
 
-- `install_scope: local` (default)  
-- `install_scope: global`
+- `local` = Installer/Customizer keep MCP config changes scoped to this repo’s project entry in `~/.claude.json` and avoid global `claude mcp add`.
+- `global` = Installer/Customizer are allowed to touch global MCP config (e.g. via `claude mcp add`) using the commands below.
 
-Behavior:
+When `install_scope: global` is set and the flow confirms global install, use:
 
-- If `install_scope` is missing or set to `local`, the Installer + Customizer should:
-  - Prefer **project-scoped** MCP config (editing `~/.claude.json` under this repo’s project path).
-  - Avoid running `claude mcp add` unless the user explicitly asks.
-- If `install_scope: global`, the Customizer should:
-  - Ask: "Use global Claude MCP install (touches all projects) instead of local-only for this repo?"  
-  - Only run the global `claude mcp add ...` commands if the user answers yes.
+```bash
+# Figma Console (design creation / updates)
+claude mcp add figma-console -- npx -y figma-console-mcp@latest
 
-## Extra steps
+# Playwright (browser automation)
+claude mcp add playwright -- npx -y @executeautomation/playwright-mcp-server
 
-You can also list shell commands or notes here for additional local setup (extra MCP servers, env vars, tools). The Customizer reads this file and executes the steps you describe after the main setup skill finishes.
+# Atlassian Jira/Confluence (ticket management)
+claude mcp add --transport sse atlassian-rovo https://mcp.atlassian.com/v1/sse
+```
+
+After adding any new MCP server globally, relaunch the terminal before proceeding.
 
