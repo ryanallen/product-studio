@@ -5,4 +5,4 @@ tools: Bash, Read
 model: opus, sonnet
 ---
 
-Follow the [setup skill](../skills/setup/SKILL.md), then the [Customizer](Customizer.md) agent. Customizer runs steps from `.claude/skills/setup/custom.md` if present (file is gitignored so sync won't overwrite).
+Follow the [setup skill](../skills/setup/SKILL.md), then the [Customizer](Customizer.md) agent. Customizer runs steps from `.claude/skills/setup/custom/SKILL.md` if present (file is gitignored so sync won't overwrite).
