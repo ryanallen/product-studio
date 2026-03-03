@@ -19,11 +19,14 @@ Ask which from the list below they want installed; skip any they don't want.
 
 ## Steps
 
-### 1. Show hidden files (macOS)
+### 1. Show hidden files
 
+**macOS:** Run:
 ```bash
 defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder
 ```
+
+**Windows:** File Explorer → View → Show → Hidden items. (Or Folder Options → View → Show hidden files and folders.)
 
 ### 2. Get Figma token (before quitting terminal, if using Figma)
 
@@ -50,9 +53,11 @@ if **global**, run the matching `claude mcp add` from the custom file.
 
 Use **the user's project path** (from Inputs) and **the user's Figma token** (from step 2).
 
-On Windows escape backslashes in the path (e.g. `c:\\Users\\TheirName\\path\\to\\Studio`).
+Use **the user's project path** (from Inputs) and **the user's Figma token** (from step 2).
 
-For local servers, add to `~/.claude.json`:
+On Windows: use the project path with escaped backslashes in JSON (e.g. `c:\\Users\\TheirName\\path\\to\\Studio`). Config file is at `%USERPROFILE%\\.claude.json`.
+
+For local servers, add to `~/.claude.json` (Windows: `%USERPROFILE%\\.claude.json`):
 
 ```json
 "projects": {
@@ -83,13 +88,10 @@ For local servers, add to `~/.claude.json`:
 
 ### 4. Figma Desktop bridge
 
-Run from the root of this repo:
+Run from the root of this repo (works on Windows and macOS):
 
 ```bash
-npm pack figma-console-mcp
-tar -xzf figma-console-mcp-*.tgz package/figma-desktop-bridge
-mv package/figma-desktop-bridge ./figma-desktop-bridge
-rm -rf package figma-console-mcp-*.tgz
+npm run setup:figma-bridge
 ```
 
 Then tell the user to do this in Figma Desktop:
