@@ -1,9 +1,9 @@
 ---
-name: commit-all
-description: Stage all changes since last commit and create one or more commits with title and description. Use when user says "commit", "commit all", or /commit-all. Does not push. In Claude Code and Cursor, /skills lists all.
+name: save
+description: Stage all changes since last commit and create one or more commits with title and description. Use when user says "save", "commit", or /save. Does not push. In Claude Code and Cursor, /skills lists all.
 ---
 
-# Commit All
+# Save
 
 Stage everything since the last commit and create one or more commits, each with a title and description. Push later with sync.
 
@@ -14,7 +14,7 @@ Don't ask the user for them. If needed, inspect the diff or changed files to wri
 
 **Scope:** By default stage all changes (`git add -A`).
 If the user asks to commit only specific file(s) or path(s), stage only those then commit
-("commit just README" → `git add README.md` then commit).
+("save just README" → `git add README.md` then commit).
 
 ## Command
 
