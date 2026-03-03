@@ -7,6 +7,8 @@ description: Run the standard Studio setup steps. Use when user says "setup", "i
 
 Run the standard Studio setup. Stop when the user must quit the terminal and relaunch; they then run `/mcp` in the chat to authenticate. Do not proceed past that until they have completed OAuth for Figma and Atlassian.
 
+**Handoff marker** – `.claude/skills/setup/setup-handoff.marker` is created at step 5 (Handoff). If the user says they completed /mcp and OAuth (or "mcp done"), delete the marker if it exists. (When any agent sees the marker, AGENTS.md rule 9: remind user to check MCP and delete the marker.)
+
 ## Inputs (get from user when needed)
 
 Assume the user wants each; offer to skip any.
@@ -102,8 +104,4 @@ Ensure `work/config.md` exists. Add the user's teams and spaces to that file.
 
 ### 5. Handoff
 
-Tell the user to quit the terminal and relaunch, then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian.
-
-### 6. Custom
-
-If `.claude/skills/setup/custom/SKILL.md` exists, the Customizer agent runs it after this skill.
+Tell the user to quit the terminal and relaunch, then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian. Create `.claude/skills/setup/setup-handoff.marker` so that when they run setup again we know they are at this step.

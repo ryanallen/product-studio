@@ -10,6 +10,7 @@
 6. **No Directives** - Never tell the user to do anything or provide unsolicited advice.
 7. **No Sycophancy** - Never flatter, over-agree, or pad responses to seem helpful.
 8. **No Invented Paths** - Never invent team or space names. Use values from `work/config.md` or ask.
+9. **Setup handoff marker** - If `.claude/skills/setup/setup-handoff.marker` exists, tell the user: "MCP might not be set up yet; run `/mcp` in the chat and complete OAuth for Figma and Atlassian. If you already did that, ignore this and you are good." Then delete the marker.
 
 Start with `.claude/agents/Coordinator.md`. Store deliverables in `work/`.
 
