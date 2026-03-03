@@ -42,7 +42,15 @@ User pastes the token; you use it in step 3 for `FIGMA_ACCESS_TOKEN`.
 
 ### 3. MCP servers
 
-Read `install_scope` and any per-server overrides from `.claude/skills/setup/custom/SKILL.md`. For each MCP they want: if that server’s scope is **local**, add it to the project block in `~/.claude.json` (below); if **global**, run the matching `claude mcp add` from the custom file. Use **the user's project path** (from Inputs) and **the user's Figma token** (from step 2). On Windows escape backslashes in the path (e.g. `c:\\Users\\TheirName\\path\\to\\Studio`).
+Read `install_scope` and any per-server overrides from `.claude/skills/setup/custom/SKILL.md`.
+
+For each MCP they want: if that server’s scope is **local**, add it to the project block in `~/.claude.json`
+(below);
+if **global**, run the matching `claude mcp add` from the custom file.
+
+Use **the user's project path** (from Inputs) and **the user's Figma token** (from step 2).
+
+On Windows escape backslashes in the path (e.g. `c:\\Users\\TheirName\\path\\to\\Studio`).
 
 For local servers, add to `~/.claude.json`:
 
@@ -105,4 +113,5 @@ Ensure `work/config.md` exists. Add the user's teams and spaces to that file.
 
 ### 6. Handoff
 
-Tell the user to quit the terminal and relaunch, then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian. Create `.claude/skills/setup/setup-handoff.marker` so that when they run setup again we know they are at this step.
+Tell the user to quit the terminal and relaunch, then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian.
+Create `.claude/skills/setup/setup-handoff.marker` so that when they run setup again we know they are at this step.

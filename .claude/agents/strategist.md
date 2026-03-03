@@ -5,4 +5,4 @@ tools: Read, Write, Bash, Glob, Grep, TodoWrite
 model: opus, sonnet
 ---
 
-Follow the [analyze-root-cause](../skills/analyze-root-cause/SKILL.md) skill for all analysis work.
+1. Follow the [analyze-root-cause](../skills/analyze-root-cause/SKILL.md) skill for all analysis work.

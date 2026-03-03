@@ -5,6 +5,5 @@ tools: mcp__cursor-ide-browser__*, mcp__figma-console__*, WebFetch, WebSearch, R
 model: opus, sonnet
 ---
 
-Follow the [learn](../skills/learn/SKILL.md) skill for all research work.
-
-Follow the [analyze-figma](../skills/analyze-figma/SKILL.md) skill for Figma link analysis (Figma URL to structured report).
+1. Follow the [learn](../skills/learn/SKILL.md) skill for all research work.
+2. Follow the [analyze-figma](../skills/analyze-figma/SKILL.md) skill for Figma link analysis (Figma URL to structured report).

@@ -7,58 +7,25 @@ model: opus, sonnet
 
 ## Team
 
-Researcher, Documentor, Strategist
-
-Researcher runs [learn](../skills/learn/SKILL.md) and [analyze-figma](../skills/analyze-figma/SKILL.md) (Figma link to structured report) when the user requests them.
-
-Valid team and space values are defined in `work/config.md`.
+Researcher, Documentor, Strategist. Use `work/config.md` for team and space values.
 
 ## Workflows
 
-### Learn
-Input: User-provided (ticket ID, URL(s), pasted text, file path(s), or image(s)), project path `work/{team}/{space}/{project}/`
-**One folder, one README.** Never create a new folder or new README for new findings or problems; add everything to `{project-path}/README.md`.
-```
-1. Researcher -> ../skills/learn/SKILL.md
-   - Normalize input to starting URLs + level-0 content; crawl from URLs up to 5 levels deep
-   - Write findings to {project-path}/README.md (Documentor reads from this path)
-         |
-2. Documentor -> ../skills/document-findings/SKILL.md
-   - Read {project-path}/README.md and structure into same file
-   - Track problems and possible solutions in the single work doc; no other files
-```
+**Learn then document**
+- Researcher → [learn](../skills/learn/SKILL.md)
+- Documentor → [document-findings](../skills/document-findings/SKILL.md)
 
-### Propose Solutions
-Input: {project-path}/README.md (problems + current state sections)
-```
-1. Strategist -> ../skills/analyze-root-cause/SKILL.md
-         |
-2. Documentor -> ../skills/document-findings/SKILL.md
-```
+**Propose solutions**
+- Strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md)
+- Documentor → [document-findings](../skills/document-findings/SKILL.md)
 
-### Research, Define, Strategize
-```
-Learn (from ticket, URL(s), text, file(s), or image(s))
-1. Researcher -> ../skills/learn/SKILL.md (normalize input, crawl up to 5 deep, write to {project-path}/README.md)
-         |
-Document
-2. Documentor -> ../skills/document-findings/SKILL.md (read that README, structure into same file)
-         |
-Analyze Problems
-3. Strategist -> ../skills/analyze-root-cause/SKILL.md (Five Whys on {project-path}/README.md)
-         |
-4. Documentor -> ../skills/document-findings/SKILL.md (add problems to top of {project-path}/README.md)
-         |
-Audit Solutions
-5. Researcher -> ../skills/learn/SKILL.md (find existing solutions for each root cause, user can point to sources)
-         |
-6. Documentor -> ../skills/document-findings/SKILL.md (write current state into {project-path}/README.md)
-         |
-Propose Solutions
-7. Strategist -> ../skills/analyze-root-cause/SKILL.md (propose new solutions from root causes + current state)
-         |
-8. Documentor -> ../skills/document-findings/SKILL.md (final pass, ensure consistency)
-         |
-Update Ticket
-9. Documentor -> ../skills/update-ticket/SKILL.md (comment on ticket with link to project)
-```
+**Full pipeline**
+1. Researcher → [learn](../skills/learn/SKILL.md) (gather from ticket/URLs/text/files, crawl up to 5 levels)
+2. Documentor → [document-findings](../skills/document-findings/SKILL.md) (structure findings)
+3. Strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md) (Five Whys, root causes)
+4. Documentor → [document-findings](../skills/document-findings/SKILL.md) (add problems to README)
+5. Researcher → [learn](../skills/learn/SKILL.md) (audit: find existing solutions)
+6. Documentor → [document-findings](../skills/document-findings/SKILL.md) (write current state)
+7. Strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md) (propose solutions)
+8. Documentor → [document-findings](../skills/document-findings/SKILL.md) (final pass)
+9. Documentor → [update-ticket](../skills/update-ticket/SKILL.md) (comment on ticket with link)
