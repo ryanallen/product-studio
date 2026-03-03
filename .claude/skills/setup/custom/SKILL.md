@@ -13,12 +13,17 @@ This file lets you:
 
 ```text
 install_scope: local
+
+# Optional: per server (overrides install_scope for that server)
+# figma-console: local
+# playwright: global
+# atlassian-rovo: local
 ```
 
-- `local` = Installer/Customizer keep MCP config changes scoped to this repo’s project entry in `~/.claude.json` and avoid global `claude mcp add`.
-- `global` = Installer/Customizer can touch global MCP config (via `claude mcp add`) using the commands below.
+- `local` = Add to this repo’s project entry in `~/.claude.json`.
+- `global` = Use `claude mcp add` (commands below). Relaunch terminal after adding.
 
-When `install_scope: global` is set and the flow confirms global install, use:
+For each MCP the user wants, use its per-server line if present, else `install_scope`. When a server’s scope is global, use:
 
 ```bash
 # Figma Console (design creation / updates)
@@ -31,7 +36,6 @@ claude mcp add playwright -- npx -y @executeautomation/playwright-mcp-server
 claude mcp add --transport sse atlassian-rovo https://mcp.atlassian.com/v1/sse
 ```
 
-After adding any new MCP server globally, relaunch the terminal before proceeding.
 
 ---
 

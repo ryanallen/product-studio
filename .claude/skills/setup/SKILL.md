@@ -9,7 +9,7 @@ Run the standard Studio setup.
 
 ## Inputs (get from user when needed)
 
-Assume the user wants each; offer to skip any.
+Ask which from the list below they want installed; skip any they don't want.
 
 - **FIGMA_ACCESS_TOKEN** – Prompt to Figma. Have the user get their token (step 2) before writing config; they paste it and you put it in `figma-console` env in `~/.claude.json`. Skip if no Figma.
 - **playwright** – Browser automation (e.g. capture-webpage). Skip if not needed.
@@ -42,9 +42,9 @@ User pastes the token; you use it in step 3 for `FIGMA_ACCESS_TOKEN`.
 
 ### 3. MCP servers
 
-Install scope (local vs global) is set in `.claude/skills/setup/custom/SKILL.md`. Edit `~/.claude.json` using **the user's project path** (from Inputs) and **the user's Figma token** (from step 2). On Windows escape backslashes in the path (e.g. `c:\\Users\\TheirName\\path\\to\\Studio`).
+Read `install_scope` and any per-server overrides from `.claude/skills/setup/custom/SKILL.md`. For each MCP they want: if that server’s scope is **local**, add it to the project block in `~/.claude.json` (below); if **global**, run the matching `claude mcp add` from the custom file. Use **the user's project path** (from Inputs) and **the user's Figma token** (from step 2). On Windows escape backslashes in the path (e.g. `c:\\Users\\TheirName\\path\\to\\Studio`).
 
-Add:
+For local servers, add to `~/.claude.json`:
 
 ```json
 "projects": {
