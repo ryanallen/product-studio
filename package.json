@@ -3,6 +3,7 @@
     "playwright": "^1.58.2"
   },
   "scripts": {
-    "sync:codex": "node ./bin/sync-codex-from-claude.mjs"
+    "sync:codex": "node ./bin/sync-codex-from-claude.mjs",
+    "setup:figma-bridge": "node ./bin/setup-figma-bridge.mjs"
   }
 }
