@@ -11,3 +11,6 @@ package-lock.json
 
 # Setup handoff (agent-created, do not commit)
 .claude/skills/setup/setup-handoff.marker
+
+# MCP config (contains FIGMA_ACCESS_TOKEN)
+.mcp.json
