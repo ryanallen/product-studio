@@ -48,9 +48,9 @@ MCPs install to the user's **global** Claude config so Claude recognizes them. E
 
 For each MCP they chose (from Inputs), add it using the official CLI below. Do not use the Write or Edit tool (designed for source code, not hot files; fails with "file modified since read"). Use only these commands. Omit any server they did not choose.
 
-**figma-console** (replace `figd_xxx` with the token from step 2):
+**figma-console** (replace `figd_xxx` with the token from step 2; use quoted `-e` so the token is valid):
 ```bash
-claude mcp add -e FIGMA_ACCESS_TOKEN=figd_xxx -e ENABLE_MCP_APPS=true figma-console -- npx -y figma-console-mcp@latest
+claude mcp add -e "FIGMA_ACCESS_TOKEN=figd_xxx" -e "ENABLE_MCP_APPS=true" figma-console -- npx -y figma-console-mcp@latest
 ```
 
 **playwright:**
@@ -63,7 +63,7 @@ claude mcp add playwright -- npx -y @executeautomation/playwright-mcp-server
 claude mcp add --transport sse atlassian-rovo https://mcp.atlassian.com/v1/sse
 ```
 
-After step 6: user must fully restart Claude Code (not just terminal), then in the new session run `/mcp` for OAuth if needed.
+The CLI writes to the user's global config (`~/.claude.json`). After step 6: user must fully restart Claude Code, then in the new session run `/mcp` for OAuth if needed.
 
 ### 4. Figma Desktop bridge (if they chose figma-console)
 
@@ -90,5 +90,5 @@ Ensure `work/config.md` exists. If it is missing or empty, ask for their teams a
 
 ### 6. Handoff
 
-As the last step, tell the user to fully restart Claude Code (not just terminal) so MCP config is picked up; then navigate back into the project folder and start Claude, then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian. Never tell them to restart terminal first; that instruction must always be the last step you give the user.
+As the last step, tell the user to fully restart Claude Code so MCP config is picked up; then navigate back into the project folder and start Claude, then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian. Never tell them to restart terminal first; that instruction must always be the last step you give the user.
 Create `.claude/skills/install/install-handoff.marker` so that when they run install again we know they are at this step.
