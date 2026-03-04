@@ -4,6 +4,6 @@
   },
   "scripts": {
     "sync:codex": "node ./.claude/skills/save/scripts/sync-codex-from-claude.mjs",
-    "setup:figma-bridge": "node ./bin/setup-figma-bridge.mjs"
+    "setup:figma-bridge": "node ./.claude/skills/generate-figma/scripts/setup-figma-bridge.mjs"
   }
 }
