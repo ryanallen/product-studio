@@ -5,14 +5,15 @@ description: Remove Studio MCP entries from the user's global Claude config. Use
 
 # Uninstall
 
-Remove the MCP servers that the Installer adds to the user's global config. Does not remove other MCPs or delete the config file.
+Remove the MCP servers that the Installer adds to the user's global Claude config. Does not remove other MCPs or delete the config file. Edit **only** the global Claude config file. Do **not** edit Cursor settings.json, VSCode settings.json, or any project/workspace config.
 
-## Config file location
+## Config file location (only file to edit)
 
-- **macOS / Linux:** `~/.claude.json` (expand `$HOME` or `~`)
+- **macOS:** `$HOME/.claude.json` (e.g. `/Users/username/.claude.json`)
+- **Linux:** `$HOME/.claude.json`
 - **Windows:** `%USERPROFILE%\.claude.json`
 
-Resolve the path for the current platform before reading or writing.
+Resolve the path for the current platform (e.g. expand `$HOME` or `~`) before reading or writing.
 
 ## Steps
 
