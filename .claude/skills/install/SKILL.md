@@ -104,5 +104,5 @@ Ensure `work/config.md` exists. If it is missing or empty, ask for their teams a
 
 ### 6. Handoff
 
-As the last step, tell the user to restart terminal (or Claude Code / Claude Desktop) so MCP config is picked up; then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian.
+As the last step, tell the user to restart terminal (or Claude Code / Claude Desktop) so MCP config is picked up; then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian. Never tell them to restart terminal first; that instruction must always be the last step you give the user.
 Create `.claude/skills/install/install-handoff.marker` so that when they run install again we know they are at this step.
