@@ -11,3 +11,6 @@ package-lock.json
 
 # Install handoff (agent-created, do not commit)
 .claude/skills/install/install-handoff.marker
+
+# Figma bridge (created by npm run setup:figma-bridge)
+.claude/skills/generate-figma/scripts/figma-desktop-bridge/
