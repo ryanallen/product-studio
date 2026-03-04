@@ -28,7 +28,7 @@ defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder
 
 **Windows:** File Explorer → View → Show → Hidden items. (Or Folder Options → View → Show hidden files and folders.)
 
-### 2. Get Figma token (before quitting terminal, if using Figma)
+### 2. Get Figma token (if using Figma)
 
 Have the user get their token so you can fill it into step 3. Tell them:
 
@@ -50,8 +50,6 @@ Read `install_scope` and any per-server overrides from `.claude/skills/setup/cus
 For each MCP they want: if that server’s scope is **local**, add it to the project block in `~/.claude.json`
 (below);
 if **global**, run the matching `claude mcp add` from the custom file.
-
-Use **the user's project path** (from Inputs) and **the user's Figma token** (from step 2).
 
 Use **the user's project path** (from Inputs) and **the user's Figma token** (from step 2).
 
@@ -101,11 +99,7 @@ Then tell the user to do this in Figma Desktop:
 3. Run the plugin: Plugins → Development → Figma Desktop Bridge.
 4. Keep the bridge plugin running while using Prompt to Figma.
 
-#### 4.1 Restart after config changes
-
-After editing `~/.claude.json`, tell the user to restart Claude Code / Claude Desktop so it picks up the MCP config.
-
-#### 4.2 FIGMA_ACCESS_TOKEN renewal
+#### 4.1 FIGMA_ACCESS_TOKEN renewal
 
 Every 90 days: new Figma PAT, update `FIGMA_ACCESS_TOKEN` in `figma-console` env in `~/.claude.json`, restart Claude.
 
@@ -115,5 +109,5 @@ Ensure `work/config.md` exists. Add the user's teams and spaces to that file.
 
 ### 6. Handoff
 
-Tell the user to quit the terminal and relaunch, then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian.
+As the last step, tell the user to restart terminal (or Claude Code / Claude Desktop) so MCP config is picked up; then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian.
 Create `.claude/skills/setup/setup-handoff.marker` so that when they run setup again we know they are at this step.
