@@ -95,7 +95,7 @@ npm run setup:figma-bridge
 Then tell the user to do this in Figma Desktop:
 
 1. Inside a Figma project, click Plugins → (dropdown) Development → Import plugin from manifest. (Or Plugins → search "Import plugin from manifest" and click it.)
-2. Select `figma-desktop-bridge/manifest.json`.
+2. Select `.claude/skills/generate-figma/scripts/figma-desktop-bridge/manifest.json` (from this repo).
 3. Run the plugin: Plugins → Development → Figma Desktop Bridge.
 4. Keep the bridge plugin running while using Prompt to Figma.
 

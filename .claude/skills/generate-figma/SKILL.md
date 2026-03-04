@@ -22,3 +22,4 @@ If missing, ask the user before proceeding.
 ## Requirements
 
 - Figma Console MCP (`figma-console-mcp`) configured and authenticated for this project.
+- Figma Desktop Bridge plugin (for Prompt to Figma): run `npm run setup:figma-bridge` to extract it to `.claude/skills/generate-figma/scripts/figma-desktop-bridge`. In Figma Desktop, Plugins → Development → Import plugin from manifest → select `.claude/skills/generate-figma/scripts/figma-desktop-bridge/manifest.json`. Keep the bridge running while using Prompt to Figma.

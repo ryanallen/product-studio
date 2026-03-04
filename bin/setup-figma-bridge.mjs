@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 import { execSync } from "child_process";
-import { readdirSync, rmSync, renameSync, unlinkSync, existsSync } from "fs";
+import { readdirSync, rmSync, renameSync, unlinkSync, existsSync, mkdirSync } from "fs";
 import path from "path";
 
 const cwd = process.cwd();
 const packDir = "package";
 const bridgeInPack = path.join(packDir, "figma-desktop-bridge");
 const bridgeInTarball = "package/figma-desktop-bridge";
-const bridgeDest = "figma-desktop-bridge";
+const bridgeDest = ".claude/skills/generate-figma/scripts/figma-desktop-bridge";
 
 // 1. Pack the package
 execSync("npm pack figma-console-mcp", { cwd, stdio: "inherit" });
@@ -24,8 +24,10 @@ const tgzPath = path.join(cwd, tgz);
 const tgzArg = tgzPath.replace(/\\/g, "/");
 execSync(`tar -xzf "${tgzArg}" ${bridgeInTarball}`, { cwd, stdio: "inherit" });
 
-// 4. Move to repo root (remove dest if it exists)
+// 4. Move to generate-figma skill scripts folder (ensure parent exists)
 const destPath = path.join(cwd, bridgeDest);
+const parent = path.dirname(destPath);
+if (!existsSync(parent)) mkdirSync(parent, { recursive: true });
 if (existsSync(destPath)) rmSync(destPath, { recursive: true });
 renameSync(path.join(cwd, bridgeInPack), destPath);
 
@@ -33,4 +35,4 @@ renameSync(path.join(cwd, bridgeInPack), destPath);
 rmSync(path.join(cwd, packDir), { recursive: true });
 unlinkSync(tgzPath);
 
-console.log("Figma Desktop Bridge extracted to ./figma-desktop-bridge");
+console.log("Figma Desktop Bridge extracted to .claude/skills/generate-figma/scripts/figma-desktop-bridge");
