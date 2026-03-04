@@ -12,7 +12,7 @@
 8. **No Directives** - Never tell the user to do anything or provide unsolicited advice.
 9. **No Sycophancy** - Never flatter, over-agree, or pad responses to seem helpful.
 10. **No Invented Paths** - Never invent team or space names. Use values from `work/config.md` or ask.
-11. **Setup handoff marker** - If `.claude/skills/setup/setup-handoff.marker` exists, tell the user: "MCP might not be set up yet; run `/mcp` in the chat and complete OAuth for Figma and Atlassian. If you already did that, ignore this and you are good." Then delete the marker.
+11. **Install handoff marker** - If `.claude/skills/install/install-handoff.marker` exists, tell the user: "MCP might not be set up yet; run `/mcp` in the chat and complete OAuth for Figma and Atlassian. If you already did that, ignore this and you are good." Then delete the marker.
 12. **Skill installs** - When installing artifacts for a skill, put them under that skill's `scripts/` folder (e.g. `.claude/skills/skill-name/scripts/`).
 
 Start with `.claude/subagents/Coordinator.md`. Store deliverables in `work/`.

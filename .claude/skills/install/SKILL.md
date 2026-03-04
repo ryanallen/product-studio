@@ -1,11 +1,11 @@
 ---
-name: setup
-description: Run the standard Studio setup steps. Use when user says "setup", "install", or /setup. In Claude Code and Cursor, /skills lists all.
+name: install
+description: Run the standard Studio install steps. Use when user says "setup", "install", or /install. In Claude Code and Cursor, /skills lists all.
 ---
 
-# Setup
+# Install
 
-Run the standard Studio setup.
+Run the standard Studio install.
 
 ## Inputs (get from user when needed)
 
@@ -106,4 +106,4 @@ Ensure `work/config.md` exists. Add the user's teams and spaces to that file.
 ### 6. Handoff
 
 As the last step, tell the user to restart terminal (or Claude Code / Claude Desktop) so MCP config is picked up; then run `/mcp` in the chat and follow the OAuth flow for Figma and Atlassian.
-Create `.claude/skills/setup/setup-handoff.marker` so that when they run setup again we know they are at this step.
+Create `.claude/skills/install/install-handoff.marker` so that when they run install again we know they are at this step.
