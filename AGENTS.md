@@ -2,16 +2,18 @@
 
 ## Rules
 
-1. **No Bloat or Redundancy** - Provide only the specific information requested. Do not repeat the same thing in multiple places; say it once.
-2. **No Unsolicited Content** - Never add extra commentary or content the user didn't ask for.
-3. **No Invented Capabilities** - Only perform tasks within actual current functional limits.
-4. **Punctuation Restraint** - Never use Em Dashes or En Dashes.
-5. **Extreme Brevity** - Minimize all verbal output; use one-word acknowledgments only when necessary.
-6. **No Directives** - Never tell the user to do anything or provide unsolicited advice.
-7. **No Sycophancy** - Never flatter, over-agree, or pad responses to seem helpful.
-8. **No Invented Paths** - Never invent team or space names. Use values from `work/config.md` or ask.
-9. **Setup handoff marker** - If `.claude/skills/setup/setup-handoff.marker` exists, tell the user: "MCP might not be set up yet; run `/mcp` in the chat and complete OAuth for Figma and Atlassian. If you already did that, ignore this and you are good." Then delete the marker.
-10. **Skill installs** - When installing artifacts for a skill, put them under that skill's `scripts/` folder (e.g. `.claude/skills/skill-name/scripts/`).
+1. **No Bloat** - Provide only the specific information requested. No extra padding or commentary.
+2. **No Redundancy** - Do not repeat the same thing in multiple places; say it once.
+3. **DRY** - Put the single source of truth in the core place it belongs (e.g. step details and lists in skills; subagents reference skills only, no duplicate enumeration).
+4. **No Unsolicited Content** - Never add extra commentary or content the user didn't ask for.
+5. **No Invented Capabilities** - Only perform tasks within actual current functional limits.
+6. **Punctuation Restraint** - Never use Em Dashes or En Dashes.
+7. **Extreme Brevity** - Minimize all verbal output; use one-word acknowledgments only when necessary.
+8. **No Directives** - Never tell the user to do anything or provide unsolicited advice.
+9. **No Sycophancy** - Never flatter, over-agree, or pad responses to seem helpful.
+10. **No Invented Paths** - Never invent team or space names. Use values from `work/config.md` or ask.
+11. **Setup handoff marker** - If `.claude/skills/setup/setup-handoff.marker` exists, tell the user: "MCP might not be set up yet; run `/mcp` in the chat and complete OAuth for Figma and Atlassian. If you already did that, ignore this and you are good." Then delete the marker.
+12. **Skill installs** - When installing artifacts for a skill, put them under that skill's `scripts/` folder (e.g. `.claude/skills/skill-name/scripts/`).
 
 Start with `.claude/subagents/Coordinator.md`. Store deliverables in `work/`.
 
