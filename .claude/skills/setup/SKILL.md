@@ -11,7 +11,7 @@ Run the standard Studio setup.
 
 Ask which from the list below they want installed; skip any they don't want.
 
-- **FIGMA_ACCESS_TOKEN** – Prompt to Figma. Have the user get their token (step 2) before writing config; they paste it and you put it in `figma-console` env in `.mcp.json`. Skip if no Figma.
+- **FIGMA_ACCESS_TOKEN** – Prompt to Figma. Have the user get their token (step 2) before writing config; they paste it and you put it in `figma-console` env in the user's global `~/.claude.json`. Skip if no Figma.
 - **playwright** – Browser automation (e.g. capture-webpage). Skip if not needed.
 - **atlassian-rovo** – Jira/Confluence (tickets, update-ticket). Skip if not needed.
 - **Teams and spaces** – For `work/config.md`. Ask if missing or empty.
@@ -44,15 +44,19 @@ User pastes the token; you use it in step 3 for `FIGMA_ACCESS_TOKEN`.
 
 ### 3. MCP servers
 
-Read `install_scope` and any per-server overrides from `.claude/skills/setup/custom/SKILL.md`.
+MCPs install to the user's **global** config so Claude recognizes them. Config file: `~/.claude.json` (macOS/Linux) or `%USERPROFILE%\\.claude.json` (Windows).
 
-**Local (in repo):** Create or update `.mcp.json` at this repo root with the `mcpServers` below. Claude Code uses this for project-level MCPs.
+For each MCP they want, add it to the `mcpServers` object in that file (create the file or merge with existing). Use the user's Figma token (from step 2) for `FIGMA_ACCESS_TOKEN` in figma-console. Omit servers they did not want.
 
-**Global:** Run the matching `claude mcp add` from the custom file (writes to `~/.claude.json`).
+**Option A – run these commands** (then for figma-console, edit the file to add `env` with `FIGMA_ACCESS_TOKEN` and `ENABLE_MCP_APPS` to the figma-console entry):
 
-For each MCP they want: if scope is **local**, add it to `.mcp.json` in this repo; if **global**, run `claude mcp add`. Use the user's Figma token (from step 2) for `FIGMA_ACCESS_TOKEN` in figma-console env.
+```bash
+claude mcp add figma-console -- npx -y figma-console-mcp@latest
+claude mcp add playwright -- npx -y @executeautomation/playwright-mcp-server
+claude mcp add --transport sse atlassian-rovo https://mcp.atlassian.com/v1/sse
+```
 
-Create or merge into `.mcp.json` at repo root:
+**Option B – write or merge this JSON** into the user's global config (under top-level `mcpServers`):
 
 ```json
 {
@@ -76,8 +80,6 @@ Create or merge into `.mcp.json` at repo root:
 }
 ```
 
-(Claude Code project-level uses `.mcp.json`; omit servers the user did not want. Do not write to `~/.claude.json` for local.)
-
 ### 4. Figma Desktop bridge
 
 Run from the root of this repo (works on Windows and macOS):
@@ -95,7 +97,7 @@ Then tell the user to do this in Figma Desktop:
 
 #### 4.1 FIGMA_ACCESS_TOKEN renewal
 
-Every 90 days: new Figma PAT, update `FIGMA_ACCESS_TOKEN` in `figma-console` env in `.mcp.json` (repo root), restart Claude.
+Every 90 days: new Figma PAT, update `FIGMA_ACCESS_TOKEN` in `figma-console` env in the user's global `~/.claude.json`, restart Claude.
 
 ### 5. Config
 

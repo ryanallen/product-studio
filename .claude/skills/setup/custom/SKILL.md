@@ -5,36 +5,6 @@ description: Local overrides for Studio setup. Lives in .claude/skills/setup/cus
 
 # Setup Customization
 
-This file lets you choose **local vs global** MCP install behavior and customize other setup behavior.
-
-## Install scope
-
-```text
-install_scope: local
-
-# Optional: per server (overrides install_scope for that server)
-# figma-console: local
-# playwright: global
-# atlassian-rovo: local
-```
-
-- `local` = Create or update `.mcp.json` at this repo root (project-level; Claude Code uses this).
-- `global` = Use `claude mcp add` (writes to `~/.claude.json`). Relaunch terminal after adding.
-
-For each MCP the user wants, use its per-server line if present, else `install_scope`. When a server’s scope is global, use:
-
-```bash
-# Figma Console (design creation / updates)
-claude mcp add figma-console -- npx -y figma-console-mcp@latest
-
-# Playwright (browser automation)
-claude mcp add playwright -- npx -y @executeautomation/playwright-mcp-server
-
-# Atlassian Jira/Confluence (ticket management)
-claude mcp add --transport sse atlassian-rovo https://mcp.atlassian.com/v1/sse
-```
-
-
----
+Add any local overrides or notes below. The Installer runs this file after the main setup steps.
 
 ### Your local setup
