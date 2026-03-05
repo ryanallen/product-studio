@@ -16,6 +16,7 @@ Produce or update a skill so it follows [Claude Code skills best practices](http
 ## Skill structure
 
 - One directory per skill; required file: `SKILL.md`.
+- **Where**: Project = `.claude/skills/<name>/`; personal = `~/.claude/skills/<name>/`. Nested `.claude/skills/` (e.g. in a package) are discovered automatically.
 - Optional: `template.md`, `examples/`, `scripts/`. Reference them from `SKILL.md` so Claude knows when to load them.
 - Keep `SKILL.md` under 500 lines; move long reference material to supporting files (e.g. `reference.md`, `examples.md`).
 
@@ -26,13 +27,13 @@ Produce or update a skill so it follows [Claude Code skills best practices](http
 | Field | Use |
 |-------|-----|
 | `name` | Optional. Lowercase, letters, numbers, hyphens only (max 64 chars). Defaults to directory name. Becomes `/slash-command`. |
-| `description` | **Recommended.** What the skill does and when to use it; include phrases users would say so Claude can auto-invoke. |
+| `description` | **Recommended.** What the skill does and when to use it; include phrases users would say so Claude can auto-invoke. If omitted, uses the first paragraph of markdown content. |
 | `argument-hint` | Optional. Shown in autocomplete (e.g. `[issue-number]`, `[filename] [format]`). |
 | `disable-model-invocation` | Set `true` for workflows with side effects or that must run only when the user invokes (e.g. deploy, commit). |
 | `user-invocable` | Set `false` to hide from `/` menu; skill is context-only for Claude. |
-| `allowed-tools` | Optional. Tools Claude may use without asking when this skill is active. |
+| `allowed-tools` | Optional. Tools Claude may use without asking when this skill is active. Can use patterns (e.g. `Bash(gh *)`, `Bash(python *)`). |
 | `model` | Optional. Model when skill is active. |
-| `context` | Set `fork` to run in a forked subagent. |
+| `context` | Set `fork` to run in a forked subagent. Only makes sense for skills with explicit instructions (a task), not reference-only content. |
 | `agent` | When `context: fork`, which subagent type (e.g. Explore, Plan, general-purpose). |
 | `hooks` | Optional. See hooks docs. |
 
@@ -47,6 +48,8 @@ Produce or update a skill so it follows [Claude Code skills best practices](http
 - `$ARGUMENTS[N]` or `$N` – Argument by 0-based index.
 - `${CLAUDE_SESSION_ID}` – Session ID.
 - `${CLAUDE_SKILL_DIR}` – Skill directory (e.g. for scripts).
+
+For pre-run shell output injection (e.g. live PR data into the prompt), see [Inject dynamic context](https://code.claude.com/docs/en/skills.md#inject-dynamic-context) in the official docs.
 
 ## Checklist when writing or updating a skill
 
