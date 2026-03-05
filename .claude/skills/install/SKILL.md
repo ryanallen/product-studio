@@ -7,5 +7,3 @@ disable-model-invocation: true
 # Install
 
 Run the **Install** workflow in [Coordinator](../agents/coordinator.md) (installer runs the full flow).
-
-**Convention:** Skill artifacts (scripts, binaries) go in that skill's `scripts/` folder (e.g. `.claude/skills/skill-name/scripts/`).
