@@ -1,6 +1,6 @@
 ---
 name: save
-description: Stage all changes since last commit and create one or more commits with title and description. Use when user says "save", "commit", or /save. Does not push. In Claude Code and Cursor, /skills lists all.
+description: Stage all changes since last commit and create one or more commits with title and description. Use when user says "save", "stage", "commit", or /save. Does not push. In Claude Code and Cursor, /skills lists all.
 ---
 
 # Save
