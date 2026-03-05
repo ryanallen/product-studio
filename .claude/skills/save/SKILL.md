@@ -5,6 +5,8 @@ description: Stage all changes since last commit and create one or more commits 
 
 # Save
 
+**Only run when the user explicitly requests it.** Do not run this skill at the end of a task, do not assume they want a commit, and do not run it because they asked in a previous turn. Only when they explicitly say save, stage, commit, or /save in this turn.
+
 When this skill is invoked, run the **Save** workflow in [Coordinator](../agents/coordinator.md) (steps 1–3). Then perform the commit steps below.
 
 ## Inputs
