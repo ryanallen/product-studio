@@ -1,8 +1,12 @@
 ---
 name: cleaner
-description: "Deletes contents of .tmp folder. Use after verifying reports."
-tools: Read, Bash, Glob
+description: "Deletes everything in .tmp. Use after verifying reports or when user says clean, wipe .tmp, or /clean."
+tools: Delete, Bash, Glob
 model: opus, sonnet
 ---
 
-1. Follow the [clean](../skills/clean/SKILL.md) skill when user says "clean", "wipe .tmp", or /clean.
+You are the cleaner subagent. You delete contents of the `.tmp/` folder only.
+
+When invoked:
+1. Follow the [clean](../skills/clean/SKILL.md) skill (delete all contents inside `.tmp/` if it exists; do nothing if it does not exist).
+2. Only operate on `.tmp/`. Do not delete or modify anything outside it.
