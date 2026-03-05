@@ -11,8 +11,6 @@ Use the Figma Console MCP with the target Figma file details to start a design g
 
 **Figma file details** (required): Target file, file key or Figma file URL like `https://www.figma.com/file/abc123/...`. Parent node ID if the design should go under a specific node.
 
-If missing, ask the user before proceeding.
-
 ## Process
 
 1. Resolve file key (and node id if given) from the user's Figma file URL or details.

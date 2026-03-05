@@ -10,11 +10,7 @@ Post a comment on the Jira ticket with a link to the project deliverables.
 ## Inputs
 
 1. **Ticket ID** - Jira ticket key (e.g. PROJ-123)
-2. **Project path** - `work/{Team}/{Space}/{Project}/`
-
-If either is missing, ask the user before proceeding.
-
-Valid team and space values are defined in `work/paths.md`.
+2. **Project path** - See work/paths.md.
 
 ## Process
 
@@ -22,10 +18,7 @@ Valid team and space values are defined in `work/paths.md`.
 
 Base URL: `https://github.com/rallen1-godaddy/Studio/tree/main/`
 
-Append the project path to get the full URL:
-```
-https://github.com/rallen1-godaddy/Studio/tree/main/work/{Team}/{Space}/{Project}
-```
+Append the project path to get the full URL.
 
 ### 2. Post Comment
 
