@@ -12,14 +12,15 @@
 8. **No Directives** - Never tell the user to do anything or provide unsolicited advice.
 9. **No Sycophancy** - Never flatter, over-agree, or pad responses to seem helpful.
 10. **No Invented Paths** - Never invent team or space names. Use values from work/paths.md or ask.
-11. **Install handoff marker** - If `.claude/skills/install/install-handoff.marker` exists, tell the user: "MCP might not be set up yet; run `/mcp` in the chat and complete OAuth for Figma and Atlassian. If you already did that, ignore this and you are good." Then delete the marker.
-12. **Skill installs** - When installing artifacts for a skill, put them under that skill's `scripts/` folder (e.g. `.claude/skills/skill-name/scripts/`).
+11. **Missing inputs** - If a skill's required input is missing, ask the user before proceeding (unless the skill says otherwise).
+12. **Install handoff marker** - If `.claude/skills/install/install-handoff.marker` exists, tell the user: "MCP might not be set up yet; run `/mcp` in the chat and complete OAuth for Figma and Atlassian. If you already did that, ignore this and you are good." Then delete the marker.
+13. **Skill installs** - When installing artifacts for a skill, put them under that skill's `scripts/` folder (e.g. `.claude/skills/skill-name/scripts/`). - When installing artifacts for a skill, put them under that skill's `scripts/` folder (e.g. `.claude/skills/skill-name/scripts/`).
 
 Start with `.claude/agents/coordinator.md`. Store deliverables in `work/`.
 
 ## Work Folder Structure
 
-All deliverables live in `work/{Team}/{Space}/{Project}/README.md`. Single file per project containing all sections: problems, research findings, sources, link tree, current state, and solution proposals. Do not create notes, drafts, or content in any other files; everything for a project goes in that one README. Never create a new folder or new README for newly discovered problems or topics; add them to the existing project README (e.g. Problems, Audits, new subsections).
+See work/paths.md.
 
 ---
 `CLAUDE.md` is a symlink to this file so Claude Code resolves the same config.

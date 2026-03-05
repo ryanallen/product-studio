@@ -14,8 +14,6 @@ Analyze a Figma design link and produce a structured report. Branch behavior on 
 - `https://www.figma.com/design/ABC123/MyFile`
 - `https://www.figma.com/design/ABC123/MyFile?node-id=1%3A2`
 
-If missing, ask the user before proceeding.
-
 ## URL Parsing
 
 1. Extract **fileKey** from the path (segment after `/design/`).

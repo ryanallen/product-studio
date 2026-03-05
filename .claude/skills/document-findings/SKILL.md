@@ -9,17 +9,13 @@ Take research output and produce structured, enhanced markdown documentation.
 
 ## Inputs
 
-1. **Project path** - `work/{team}/{space}/{project}/`
+1. **Project path** - See [work/paths.md](../../work/paths.md).
 2. **Source material** - Research output to structure
 3. **Document type** - One of: `research`, `analysis`, `solutions`, `project-overview`
 
-If the project path or source material is missing, ask the user before proceeding.
-
-Valid team and space values are in [work/paths.md](../../work/paths.md).
-
 ## Output
 
-All project documentation lives in a single file: `work/{team}/{space}/{project}/README.md`. Do not create other files (notes, drafts, separate docs) for the project; write everything into this README. When you discover or document a new problem or topic, add it to this same README (Problems section, Audits, a new subsection). Multiple problems and topics are tracked in this one file.
+Path and deliverable: [work/paths.md](../../work/paths.md).
 
 ## Markdown Standards
 

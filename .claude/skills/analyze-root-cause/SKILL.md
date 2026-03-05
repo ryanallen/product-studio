@@ -9,12 +9,8 @@ Analyze documented findings to identify problems and trace them to root causes u
 
 ## Inputs
 
-1. **Project path** - `work/{Team}/{Space}/{Project}/`
-2. **Documents to analyze** - Typically `work/{Team}/{Space}/{Project}/README.md`
-
-If the project path is missing, ask the user before proceeding.
-
-Valid team and space values are defined in `work/paths.md`.
+1. **Project path** - See work/paths.md.
+2. **Documents to analyze** - README.md in that path.
 
 ## Process
 

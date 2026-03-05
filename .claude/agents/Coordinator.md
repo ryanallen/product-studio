@@ -20,17 +20,17 @@ researcher, documenter, strategist. Use work/paths.md for team and space values.
 - documenter → [document-findings](../skills/document-findings/SKILL.md)
 
 **Save**
-1. updater → [verify-paths](../skills/verify-paths/SKILL.md) (compare work/paths.md to actual work/ paths)
-2. If mismatch: documenter → [work-paths](../skills/work-paths/SKILL.md) (update paths.md; then hand off to updater)
+1. updater → [verify-paths](../skills/verify-paths/SKILL.md)
+2. If mismatch: documenter → [work-paths](../skills/work-paths/SKILL.md)
 3. updater → [save](../skills/save/SKILL.md)
 
 **Full pipeline**
-1. researcher → [learn](../skills/learn/SKILL.md) (gather from ticket/URLs/text/files, crawl up to 5 levels)
-2. documenter → [document-findings](../skills/document-findings/SKILL.md) (structure findings)
-3. strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md) (Five Whys, root causes)
-4. documenter → [document-findings](../skills/document-findings/SKILL.md) (add problems to README)
-5. researcher → [learn](../skills/learn/SKILL.md) (audit: find existing solutions)
-6. documenter → [document-findings](../skills/document-findings/SKILL.md) (write current state)
-7. strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md) (propose solutions)
-8. documenter → [document-findings](../skills/document-findings/SKILL.md) (final pass)
-9. documenter → [update-ticket](../skills/update-ticket/SKILL.md) (comment on ticket with link)
+1. researcher → [learn](../skills/learn/SKILL.md)
+2. documenter → [document-findings](../skills/document-findings/SKILL.md)
+3. strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md)
+4. documenter → [document-findings](../skills/document-findings/SKILL.md)
+5. researcher → [learn](../skills/learn/SKILL.md)
+6. documenter → [document-findings](../skills/document-findings/SKILL.md)
+7. strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md)
+8. documenter → [document-findings](../skills/document-findings/SKILL.md)
+9. documenter → [update-ticket](../skills/update-ticket/SKILL.md)
