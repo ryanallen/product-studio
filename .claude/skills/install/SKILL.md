@@ -85,10 +85,10 @@ In Figma Desktop:
 2. Select `.claude/skills/generate-figma/scripts/figma-desktop-bridge/manifest.json`.
 3. Plugins → Development → Figma Desktop Bridge. Keep it running for Prompt to Figma.
 
-#### 7.1 Token renewal
-
-Every 90 days: [update-figma](.claude/skills/update-figma/SKILL.md) to set new token, then user restarts the app.
+When it's time to renew (about every 90 days), you can run [update-figma](.claude/skills/update-figma/SKILL.md) to set a new token, then restart the app.
 
 ### 8. Handoff
 
-Tell the user: fully restart the app (Cursor, Claude Code, etc.), open project, run `/mcp` and complete OAuth for Figma and Atlassian. After giving that instruction, create `.claude/skills/install/install-handoff.marker`.
+**State this last.** If you say it earlier, they may read it and skip the steps above.
+
+Tell the user: fully restart the app (Cursor, Claude Code, etc.) (not terminal), open project, run `/mcp` and complete OAuth for Figma and Atlassian. Create `.claude/skills/install/install-handoff.marker`.
