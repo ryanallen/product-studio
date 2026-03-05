@@ -9,17 +9,17 @@ Take research output and produce structured, enhanced markdown documentation.
 
 ## Inputs
 
-1. **Project path** - `work/{Team}/{Space}/{Project}/`
+1. **Project path** - `work/{team}/{space}/{project}/`
 2. **Source material** - Research output to structure
 3. **Document type** - One of: `research`, `analysis`, `solutions`, `project-overview`
 
 If the project path or source material is missing, ask the user before proceeding.
 
-Valid team and space values are defined in `work/config.md`.
+Valid team and space values are defined in the [work-config](.claude/skills/work-config/SKILL.md) skill.
 
 ## Output
 
-All project documentation lives in a single file: `work/{Team}/{Space}/{Project}/README.md`. Do not create other files (notes, drafts, separate docs) for the project; write everything into this README. When you discover or document a new problem or topic, add it to this same README (Problems section, Audits, a new subsection). Multiple problems and topics are tracked in this one file.
+All project documentation lives in a single file: `work/{team}/{space}/{project}/README.md`. Do not create other files (notes, drafts, separate docs) for the project; write everything into this README. When you discover or document a new problem or topic, add it to this same README (Problems section, Audits, a new subsection). Multiple problems and topics are tracked in this one file.
 
 ## Markdown Standards
 

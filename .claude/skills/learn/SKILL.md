@@ -5,7 +5,7 @@ description: Gather from any source (ticket, URL(s), text, file(s), image(s)) an
 
 # Learn
 
-Accepts flexible input, derives starting URLs and level-0 content when provided, then navigates recursively up to 5 levels deep. Writes findings to the project README so the Documentor can read and structure them.
+Accepts flexible input, derives starting URLs and level-0 content when provided, then navigates recursively up to 5 levels deep. Writes findings to the project README so the documenter can read and structure them.
 
 ## Inputs
 
@@ -15,7 +15,7 @@ Accepts flexible input, derives starting URLs and level-0 content when provided,
    - **Pasted text** – Extract URLs and use as starting URLs; full text is level-0 content.
    - **File path(s)** – Read file(s), extract URLs and use as starting URLs; file content is level-0 content.
    - **Image path(s)** – Describe or extract text/URLs from image; use any URLs as starting URLs; description or extracted text is level-0 content.
-2. **Output path** – `work/{Team}/{Space}/{Project}/README.md` (single file for all findings; do not create other note or output files). Documentor reads from this same path. **One folder, one README:** never create a new folder or new README. If you discover a new problem or topic, add it into this same README (another subsection, problem entry, or finding). Multiple problems and findings all live in this one file.
+2. **Output path** – `work/{Team}/{Space}/{Project}/README.md` (single file for all findings; do not create other note or output files). documenter reads from this same path. **One folder, one README:** never create a new folder or new README. If you discover a new problem or topic, add it into this same README (another subsection, problem entry, or finding). Multiple problems and findings all live in this one file.
 3. **Focus area** – Keywords or topics to prioritize when deciding which links to follow.
 
 If input or output path is missing, ask the user before proceeding.
@@ -28,7 +28,7 @@ Valid team and space values are defined in `work/config.md`.
 
 From the given input, produce:
 - **Starting URL(s)** – Zero or more URLs to crawl. If none (only pasted text with no links), write level-0 content only to output and skip crawl.
-- **Level-0 content** – Raw or summarized content from the input (ticket body, pasted text, file content, image description). Include this in the output so the Documentor can structure it.
+- **Level-0 content** – Raw or summarized content from the input (ticket body, pasted text, file content, image description). Include this in the output so the documenter can structure it.
 
 ### 2. Fetch Starting URLs
 
@@ -68,7 +68,7 @@ For each page visited, capture:
 
 ### 5. Output
 
-Write to the project README.md. This file is the handoff to the Documentor (Documentor reads from this path and restructures it).
+Write to the project README.md. This file is the handoff to the documenter (documenter reads from this path and restructures it).
 
 If level-0 content exists, include it first:
 

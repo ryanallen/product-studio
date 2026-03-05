@@ -2,7 +2,10 @@
 
 ## Paths
 
-- [Studio](work/Studio/)
-  - [Default](work/Studio/Default/)
+Only: `work/{team}/{space}/{project-name}/`
 
-If the team or space is not listed, ask before creating the path.
+- work
+ - team
+  - project-name
+
+If a level is not listed, ask before creating the path.

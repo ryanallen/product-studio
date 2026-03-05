@@ -1,5 +1,5 @@
 ---
-name: Updater
+name: updater
 description: "Updates Figma token (update-figma skill), commits (save), and syncs upstream (sync-upstream). Use when user says 'update Figma token', 'renew Figma token', /update-figma, 'save', 'stage', 'commit', /save, 'sync', 'pull', /sync-upstream."
 tools: Bash, Read, Glob, Grep
 model: opus, sonnet

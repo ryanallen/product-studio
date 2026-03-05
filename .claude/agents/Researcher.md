@@ -1,5 +1,5 @@
 ---
-name: Researcher
+name: researcher
 description: "Navigates URLs and gathers information up to 5 levels deep. Analyzes Figma links."
 tools: mcp__cursor-ide-browser__*, mcp__figma-console__*, WebFetch, WebSearch, Read, Write, Bash, TodoWrite
 model: opus, sonnet

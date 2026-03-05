@@ -1,5 +1,5 @@
 ---
-name: Designer
+name: designer
 description: "Creates Figma designs from webpages and generates Figma designs via the Figma Console MCP."
 tools: mcp__playwright__*, mcp__figma-console__*, Bash, Read, TodoWrite
 model: opus, sonnet

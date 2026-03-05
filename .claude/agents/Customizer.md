@@ -1,6 +1,6 @@
 ---
-name: Customizer
-description: "Runs install from .claude/skills/install/custom/SKILL.md after the Installer."
+name: customizer
+description: "Runs install from .claude/skills/install/custom/SKILL.md after the installer."
 tools: Read, Bash
 model: opus, sonnet
 ---
