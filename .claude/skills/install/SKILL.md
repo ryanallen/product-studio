@@ -1,6 +1,6 @@
 ---
 name: install
-description: Run the standard Product Studio install steps. Use when user says "setup", "install", or /install. In Claude Code and Cursor, /skills lists all.
+description: Run the standard Product Studio install steps. Use when user says "setup", "install", or /install. In Cursor, Claude Code, and other clients, /skills lists all.
 ---
 
 # Install
@@ -45,7 +45,7 @@ Give instructions below, then ask them to paste the token. Do not ask whether th
 
 ### 6. MCP servers
 
-Edit only the user's global Claude config. Do not edit Cursor/VSCode settings or project config.
+Edit only the user's global config. Do not edit Cursor/VSCode project config.
 
 **Config file:**
 - **macOS:** `$HOME/.claude.json`
@@ -69,7 +69,7 @@ claude mcp add playwright -- npx -y @executeautomation/playwright-mcp-server
 claude mcp add --transport sse atlassian-rovo https://mcp.atlassian.com/v1/sse
 ```
 
-After step 8: user must fully restart Claude Code, then run `/mcp` for OAuth.
+After step 8: user must fully restart the app (Cursor, Claude Code, etc.), then run `/mcp` for OAuth.
 
 ### 7. Figma Desktop bridge (if they chose figma-console)
 
@@ -87,8 +87,8 @@ In Figma Desktop:
 
 #### 7.1 Token renewal
 
-Every 90 days: [update-figma](.claude/skills/update-figma/SKILL.md) to set new token, then user restarts Claude.
+Every 90 days: [update-figma](.claude/skills/update-figma/SKILL.md) to set new token, then user restarts the app.
 
 ### 8. Handoff
 
-Tell the user: fully restart Claude Code (not terminal), open project, run `/mcp` and complete OAuth for Figma and Atlassian. Create `.claude/skills/install/install-handoff.marker`.
+Tell the user: fully restart the app (Cursor, Claude Code, etc.), open project, run `/mcp` and complete OAuth for Figma and Atlassian. After giving that instruction, create `.claude/skills/install/install-handoff.marker`.
