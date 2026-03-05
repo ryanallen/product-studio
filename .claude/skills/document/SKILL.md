@@ -1,9 +1,9 @@
 ---
-name: document-findings
-description: Take research output and produce structured, enhanced markdown documentation with mermaid diagrams. Use when user says "write up", "document", or /document-findings. In Claude Code and Cursor, /skills lists all.
+name: document
+description: Take research output and produce structured, enhanced markdown documentation with mermaid diagrams. Use when user says "write up", "document", or /document. In Claude Code and Cursor, /skills lists all.
 ---
 
-# Document Findings
+# Document
 
 Take research output and produce structured, enhanced markdown documentation.
 
@@ -122,7 +122,7 @@ Full nav (link every H2 and H3 that exists in the doc):
 - **Measurements:** Name | Current state | Desired state.
 
 ### 📑 Audits
-Notes, current-state review, competitor review. Track artifacts in Exploration > Artifacts. When source material includes a **Link tree** or **Sources** section (from learn output), preserve it here: include a "Link tree" subsection with the full traversal map and a Sources table when useful so every crawled link remains in the README.
+Notes, current-state review, competitor review. Track artifacts in Exploration > Artifacts. When source material includes a **Link tree** or **Sources** section (from research output), preserve it here: include a "Link tree" subsection with the full traversal map and a Sources table when useful so every crawled link remains in the README.
 
 ### 👥 Users + Needs
 Users raw & encoded needs (User | Time/date | Verbatim | Encoded needs). Sorted needs. Refined problem statement (In which way might we enable ${user} to solve ${mainNeed1} & ${mainNeed2}, to ${userGoal} & ${businessGoal}?).

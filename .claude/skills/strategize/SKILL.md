@@ -1,9 +1,9 @@
 ---
-name: analyze-root-cause
-description: Analyze documented findings to identify problems and trace them to root causes using the Five Whys technique. Use when user says "why broken", "find cause", or /analyze-root-cause. In Claude Code and Cursor, /skills lists all.
+name: strategize
+description: Analyze documented findings to identify problems and trace them to root causes using the Five Whys technique. Use when user says "why broken", "find cause", or /strategize. In Claude Code and Cursor, /skills lists all.
 ---
 
-# Analyze Root Cause
+# Strategize
 
 Analyze documented findings to identify problems and trace them to root causes using the Five Whys technique.
 

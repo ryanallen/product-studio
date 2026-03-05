@@ -7,30 +7,30 @@ model: opus, sonnet
 
 ## Team
 
-researcher, documenter, strategist. Use work/paths.md for team and space values.
+researcher, documenter, strategist, verifier, updater. Use work/paths.md for team and space values.
 
 ## Workflows
 
 **Learn**
-- researcher → [learn](../skills/learn/SKILL.md)
-- documenter → [document-findings](../skills/document-findings/SKILL.md)
+- researcher → [research](../skills/research/SKILL.md)
+- documenter → [document](../skills/document/SKILL.md)
 
 **Propose solutions**
-- strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md)
-- documenter → [document-findings](../skills/document-findings/SKILL.md)
+- strategist → [strategize](../skills/strategize/SKILL.md)
+- documenter → [document](../skills/document/SKILL.md)
 
 **Save**
-1. updater → [verify-paths](../skills/verify-paths/SKILL.md)
-2. If mismatch: documenter → [work-paths](../skills/work-paths/SKILL.md)
+1. verifier → [verify-paths](../skills/verify-paths/SKILL.md)
+2. If mismatch: documenter → [document-paths](../skills/document-paths/SKILL.md)
 3. updater → [save](../skills/save/SKILL.md)
 
 **Discover**
-1. researcher → [learn](../skills/learn/SKILL.md)
-2. documenter → [document-findings](../skills/document-findings/SKILL.md)
-3. strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md)
-4. documenter → [document-findings](../skills/document-findings/SKILL.md)
-5. researcher → [learn](../skills/learn/SKILL.md)
-6. documenter → [document-findings](../skills/document-findings/SKILL.md)
-7. strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md)
-8. documenter → [document-findings](../skills/document-findings/SKILL.md)
-9. documenter → [update-ticket](../skills/update-ticket/SKILL.md)
+1. researcher → [research](../skills/research/SKILL.md)
+2. documenter → [document](../skills/document/SKILL.md)
+3. strategist → [strategize](../skills/strategize/SKILL.md)
+4. documenter → [document](../skills/document/SKILL.md)
+5. researcher → [research](../skills/research/SKILL.md)
+6. documenter → [document](../skills/document/SKILL.md)
+7. strategist → [strategize](../skills/strategize/SKILL.md)
+8. documenter → [document](../skills/document/SKILL.md)
+9. documenter → [document-ticket](../skills/document-ticket/SKILL.md)

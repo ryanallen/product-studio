@@ -1,9 +1,9 @@
 ---
-name: learn
-description: Gather from any source (ticket, URL(s), text, file(s), image(s)) and follow links up to 5 levels deep. Use when user says "learn about this", "look at this", or /learn. In Claude Code and Cursor, /skills lists all.
+name: research
+description: Gather from any source (ticket, URL(s), text, file(s), image(s)) and follow links up to 5 levels deep. Use when user says "research", "learn about this", "look at this", or /research. In Claude Code and Cursor, /skills lists all.
 ---
 
-# Learn
+# Research
 
 Accepts flexible input, derives starting URLs and level-0 content when provided, then navigates recursively up to 5 levels deep. Writes findings to the project README so the documenter can read and structure them.
 

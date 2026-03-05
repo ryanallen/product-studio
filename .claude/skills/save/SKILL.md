@@ -5,7 +5,7 @@ description: Stage all changes since last commit and create one or more commits 
 
 # Save
 
-When this skill is invoked, run the coordinator flow **Save** (see [Coordinator](../agents/Coordinator.md)). That flow runs updater (verify-paths), then documenter (work-paths) if paths mismatch, then updater (save). Then perform the commit steps below.
+When this skill is invoked, run the coordinator flow **Save** (see [Coordinator](../agents/Coordinator.md)). That flow runs verifier (verify-paths), then documenter (document-paths) if paths mismatch, then updater (save). Then perform the commit steps below.
 
 ## Inputs
 
