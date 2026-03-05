@@ -32,7 +32,7 @@ If a level is not listed, ask before creating the path.
 
 ## Editable section
 
-Only the content below can be changed. In the Tree use one indent per depth.
+Only the content below can be changed. In the Tree use the box-drawing style (├ │ └) as in the repo README.
 
 ---
 
@@ -42,7 +42,13 @@ Deliverables base URL: (set during install)
 
 ### Tree
 
-- work
- - team
-  - space
-   - project-name
+```
+work/
+└── team/
+    └── space/
+        └── project-name/
+            ├── README.md
+            └── assets/
+                ├── images/
+                └── docs/
+```
