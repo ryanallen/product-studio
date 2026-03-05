@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Install Figma Desktop bridge
 
-Pause here. Show the user the following. When they have finished reading, they press Enter to proceed.
+Pause here. Show the user the following. When they have finished, they say they are ready to proceed.
 
 From repo root:
 
@@ -24,4 +24,4 @@ Whenever you want to use Figma with this system in the future, you need this plu
 
 When it's time to renew (about every 90 days), you can run update-figma to set a new token, then restart the app.
 
-**Press Enter when done reading to proceed.**
+**Tell me when you're ready to proceed.**
