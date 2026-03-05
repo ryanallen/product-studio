@@ -15,4 +15,4 @@ When invoked:
 3. Follow the [install-mcp](../skills/install-mcp/SKILL.md) skill (add MCPs to global config).
 4. If they chose figma-console, follow the [install-figma-bridge](../skills/install-figma-bridge/SKILL.md) skill.
 5. Follow the [install-handoff](../skills/install-handoff/SKILL.md) skill (state restart/OAuth last, create marker).
-6. If [.claude/skills/install/custom/SKILL.md](../skills/install/custom/SKILL.md) exists, run the customizer flow (read and execute that skill's steps). Otherwise do nothing for step 6.
+6. If [.claude/skills/install-custom/SKILL.md](../skills/install-custom/SKILL.md) exists, run the customizer flow (read and execute that skill's steps). Otherwise do nothing for step 6.
