@@ -15,7 +15,7 @@ Accepts flexible input, derives starting URLs and level-0 content when provided,
    - **Pasted text** – Extract URLs and use as starting URLs; full text is level-0 content.
    - **File path(s)** – Read file(s), extract URLs and use as starting URLs; file content is level-0 content.
    - **Image path(s)** – Describe or extract text/URLs from image; use any URLs as starting URLs; description or extracted text is level-0 content.
-2. **Output path** – `work/{team}/{space}/{project}/README.md` (single file for all findings; do not create other note or output files). Documentor reads from this same path. **One folder, one README:** never create a new folder or new README. If you discover a new problem or topic, add it into this same README (another subsection, problem entry, or finding). Multiple problems and findings all live in this one file.
+2. **Output path** – `work/{Team}/{Space}/{Project}/README.md` (single file for all findings; do not create other note or output files). Documentor reads from this same path. **One folder, one README:** never create a new folder or new README. If you discover a new problem or topic, add it into this same README (another subsection, problem entry, or finding). Multiple problems and findings all live in this one file.
 3. **Focus area** – Keywords or topics to prioritize when deciding which links to follow.
 
 If input or output path is missing, ask the user before proceeding.

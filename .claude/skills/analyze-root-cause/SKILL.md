@@ -9,8 +9,8 @@ Analyze documented findings to identify problems and trace them to root causes u
 
 ## Inputs
 
-1. **Project path** - `work/{team}/{space}/{project}/`
-2. **Documents to analyze** - Typically `work/{team}/{space}/{project}/README.md`
+1. **Project path** - `work/{Team}/{Space}/{Project}/`
+2. **Documents to analyze** - Typically `work/{Team}/{Space}/{Project}/README.md`
 
 If the project path is missing, ask the user before proceeding.
 
@@ -69,7 +69,7 @@ Categorize each root cause:
 
 ### 5. Write Problem Analysis
 
-Output to the `## Problems` section of `{project-path}/README.md`:
+Output to the `## 🐛 Problems` section of `{project-path}/README.md`:
 
 ```markdown
 # Problem Analysis
@@ -113,7 +113,7 @@ mindmap
 
 ### 6. Place in README
 
-The problems summary goes at the **top** of the project's `README.md` under a `## Problems` heading, above all other content (except the H1 title).
+The problems summary goes at the **top** of the project's `README.md` under a `## 🐛 Problems` heading, above all other content (except the H1 title).
 
 ## Rules
 
