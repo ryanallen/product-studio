@@ -5,5 +5,5 @@ tools: Bash, Read
 model: opus, sonnet
 ---
 
-1. Follow the [install skill](../skills/install/SKILL.md).
+1. Run the **Install** workflow in [Coordinator](../agents/coordinator.md) (install-config → install-choices → install-mcp → install-figma-bridge → install-handoff).
 2. Then run the [customizer](customizer.md).

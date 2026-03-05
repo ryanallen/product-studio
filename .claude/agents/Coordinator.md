@@ -7,9 +7,16 @@ model: opus, sonnet
 
 ## Team
 
-researcher, documenter, strategist, verifier, updater. Use work/paths.md for team and space values.
+researcher, documenter, strategist, verifier, updater, install-config, install-choices, install-mcp, install-figma-bridge, install-handoff. Use work/paths.md for team and space values.
 
 ## Workflows
+
+**Install**
+1. install-config → [install-config](../skills/install-config/SKILL.md) (paths.md, deliverables URL)
+2. install-choices → [install-choices](../skills/install-choices/SKILL.md) (hidden files, what to install, Figma token)
+3. install-mcp → [install-mcp](../skills/install-mcp/SKILL.md) (add MCPs to global config)
+4. install-figma-bridge → [install-figma-bridge](../skills/install-figma-bridge/SKILL.md) (if figma-console chosen)
+5. install-handoff → [install-handoff](../skills/install-handoff/SKILL.md) (state restart/OAuth last, create marker)
 
 **Learn**
 - researcher → [research](../skills/research/SKILL.md) (gather from ticket/URLs/text/files, crawl up to 5 levels)
