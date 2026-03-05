@@ -82,7 +82,7 @@ Then tell the user to do this in Figma Desktop:
 
 #### 4.1 FIGMA_ACCESS_TOKEN renewal
 
-Every 90 days: new Figma PAT, update `FIGMA_ACCESS_TOKEN` in `figma-console` env in the user's global config file (`$HOME/.claude.json` on macOS), restart Claude.
+Every 90 days: run the [update skill](.claude/skills/update/SKILL.md) ("update Figma token", "renew Figma token", /update). It asks for the new token, updates figma-console via CLI, then user restarts Claude.
 
 ### 5. Config
 
