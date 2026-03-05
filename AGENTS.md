@@ -14,9 +14,8 @@
 10. **No Invented Paths** - Never invent team or space names. Use values from work/paths.md or ask.
 11. **Missing inputs** - If a skill's required input is missing, ask the user before proceeding (unless the skill says otherwise).
 12. **Install handoff marker** - If `.claude/skills/install/install-handoff.marker` exists, tell the user: "MCP might not be set up yet; run `/mcp` in the chat and complete OAuth for Figma and Atlassian. If you already did that, ignore this and you are good." Then delete the marker.
-13. **Skill installs** - When installing artifacts for a skill, put them under that skill's `scripts/` folder (e.g. `.claude/skills/skill-name/scripts/`). - When installing artifacts for a skill, put them under that skill's `scripts/` folder (e.g. `.claude/skills/skill-name/scripts/`).
 
-Start with `.claude/agents/coordinator.md`. Store deliverables in `work/`.
+Start with `.claude/agents/coordinator.md`. Store deliverables in `work/`. Store deliverables in `work/`.
 
 ## Work Folder Structure
 

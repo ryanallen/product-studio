@@ -13,8 +13,14 @@ Accepts flexible input, derives starting URLs and level-0 content when provided,
    - **Ticket ID** (e.g. ICT-123) – Fetch via atlassian-rovo MCP; use ticket body and all linked URLs as starting URLs; ticket body is level-0 content. Requires atlassian-rovo MCP.
    - **URL(s)** – Use as starting URLs.
    - **Pasted text** – Extract URLs and use as starting URLs; full text is level-0 content.
-   - **File path(s)** – Read file(s), extract URLs and use as starting URLs; file content is level-0 content.
-   - **Image path(s)** – Describe or extract text/URLs from image; use any URLs as starting URLs; description or extracted text is level-0 content.
+   - **Image path(s)**
+     - Copy to project's `assets/images/` (create if needed; unique name e.g. `evidence-1.png`).
+     - Describe or extract text/URLs; URLs as starting URLs; description or extracted text is level-0 content.
+     - Note path in output so documenter can embed with `![](assets/images/filename.ext)`.
+   - **File path(s)** (non-image)
+     - Copy to project's `assets/docs/` (create if needed).
+     - Read file(s), extract URLs as starting URLs; file content is level-0 content.
+     - Note path in output so documenter can link from README.
 2. **Output path** - See [work/paths.md](../../work/paths.md).
 3. **Focus area** – Keywords or topics to prioritize when deciding which links to follow.
 

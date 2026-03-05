@@ -94,7 +94,12 @@ Map content into the README sections based on document type.
 
 ### 4. README Structure
 
-**One README file only.** Use the project README at the path from work/paths.md. Do not create a bunch of new documents (no separate think docs, analysis docs, or scratch files). Put everything in this one README. Exhaustive output: do not summarize or cut content. Make the README as large as it needs to be. This is an exhaustive job, not a summary job.
+**One README file only.** Use the project README at the path from work/paths.md.
+
+- Put everything in this README. No separate docs.
+- Exhaustive: do not summarize or cut content; make README as large as needed.
+
+**Evidence assets:** See work/paths.md. In short: images in `assets/images/`, embed with `![](assets/images/filename.ext)`; other files in `assets/docs/`, link from README. No other doc files.
 
 Use a single README with three phases. **Full navigation at the top:** after the H1 title, add a table of contents that links to every H2 and H3 in the document so readers can jump to any section (Discovery, Exploration, Go to market, and every subsection under them). Notes, current-state review, competitor audit, and similar material go in **Audits** (under Discovery). Section headers below describe what goes in each place when source material provides it; do not populate tables or sections with placeholder, example, or made-up data. If there is no real data for a table or subsection, leave it empty or omit it.
 
