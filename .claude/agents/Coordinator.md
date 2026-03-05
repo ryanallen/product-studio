@@ -11,7 +11,7 @@ researcher, documenter, strategist. Use work/paths.md for team and space values.
 
 ## Workflows
 
-**Learn then document**
+**Learn**
 - researcher → [learn](../skills/learn/SKILL.md)
 - documenter → [document-findings](../skills/document-findings/SKILL.md)
 
@@ -24,7 +24,7 @@ researcher, documenter, strategist. Use work/paths.md for team and space values.
 2. If mismatch: documenter → [work-paths](../skills/work-paths/SKILL.md)
 3. updater → [save](../skills/save/SKILL.md)
 
-**Full pipeline**
+**Discover**
 1. researcher → [learn](../skills/learn/SKILL.md)
 2. documenter → [document-findings](../skills/document-findings/SKILL.md)
 3. strategist → [analyze-root-cause](../skills/analyze-root-cause/SKILL.md)
