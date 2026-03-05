@@ -9,6 +9,9 @@ desktop.ini
 node_modules/
 package-lock.json
 
+# Local paths config (copy from work/paths.md.example)
+work/paths.md
+
 # Install handoff (agent-created, do not commit)
 .claude/skills/install/install-handoff.marker
 
