@@ -7,7 +7,7 @@ model: opus, sonnet
 
 ## Team
 
-researcher, documenter, strategist, verifier, verification-documentor, cleaner, updater, install-config, install-choices, install-mcp, install-figma-bridge, install-handoff. Use work/paths.md for team and space values.
+researcher, documenter, strategist, verifier, verification-documentor, cleaner, updater, install-config, install-choices, install-mcp, install-figma-bridge, install-handoff. Use work/paths.md for team, space, and ticket-id values.
 
 ## Workflows
 
