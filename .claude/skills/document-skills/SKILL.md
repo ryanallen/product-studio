@@ -14,6 +14,10 @@ Produce or update a skill so it follows Claude Code best practices. Apply the fo
 1. **Target skill** – Path to the skill directory (e.g. `.claude/skills/example/`) or the skill name. If omitted, use the current or specified context.
 2. **Source** – Optional. Draft, user instructions, or research to turn into or merge into the skill.
 
+## Output
+
+SKILL.md and optional supporting files updated per structure and checklist below.
+
 ## Skill structure
 
 - One directory per skill; required file: `SKILL.md`.

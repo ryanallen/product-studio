@@ -16,12 +16,12 @@ From install-choices: which MCPs they chose (figma-console, atlassian-rovo). If 
 
 Each chosen MCP added to global config. User must fully restart the app after the full Install workflow, then run `/mcp` for OAuth.
 
-## Config file
+## Process
+
+### Config file
 
 - **macOS/Linux** – `$HOME/.claude.json`
 - **Windows** – `%USERPROFILE%\.claude.json`
-
-## Process
 
 For each MCP they chose, add with the CLI below. Do not use Write or Edit tool; use only these commands.
 

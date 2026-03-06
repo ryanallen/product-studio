@@ -14,19 +14,28 @@ Analyze a Figma design link and produce a structured report. Branch behavior on 
 - `https://www.figma.com/design/ABC123/MyFile`
 - `https://www.figma.com/design/ABC123/MyFile?node-id=1%3A2`
 
-## URL Parsing
+## Output
+
+Write one structured report (markdown):
+
+- **General link**: Sections for Pages, Sections, Frames, Groups, Components, Images, Fonts, Colors, Tokens, Content. Include screenshots for key frames when useful.
+- **Specific link**: Same depth (Frames, Groups, Components, Images, Fonts, Colors, Tokens, Content) scoped to the linked node. No file-wide page or section list.
+
+## Process
+
+### URL Parsing
 
 1. Extract **fileKey** from the path (segment after `/design/`).
 2. If the URL has a **node-id** query parameter, decode it (`1%3A2` or `1-2` → `1:2` for the API). Presence of node-id = **specific** link. Absence = **general** link.
 
-## Behavior
+### Behavior
 
 | Link type | Scope | What to do |
 |-----------|--------|------------|
 | **General** (no node-id) | Whole file | Call `get_metadata` for the file (whole file or all pages as the API allows). Enumerate **pages → sections → frames → groups → components**. Then aggregate **images, fonts, colors, tokens, content** using `get_variable_defs` and `get_design_context` where useful for key nodes or full page; use `get_screenshot` only where useful. Output one structured report (markdown) with full file overview and global design data. |
 | **Specific** (node-id present) | From that node down | Call `get_metadata` for that node (subtree only). Do **not** list all pages or sections. From that root, go deep: **frames → groups → components → images, fonts, colors, tokens, content** via `get_design_context`, `get_variable_defs`, and `get_screenshot` where useful for the node and important children. Output one structured report focused on that subtree. |
 
-## Figma MCP Tools
+### Figma MCP Tools
 
 - **get_metadata**: Sparse XML of selection (layer IDs, names, types, position, sizes). Use for structure. Pass fileKey; for specific link also pass nodeId.
 - **get_design_context**: Detailed design info (spacing, padding, components, colors, tokens, typography, layout) for a layer/selection.
@@ -35,13 +44,10 @@ Analyze a Figma design link and produce a structured report. Branch behavior on 
 
 Remote Figma MCP requires the link (file key + node id if present) to provide context.
 
-## Output
-
-Write one structured report (markdown):
-
-- **General link**: Sections for Pages, Sections, Frames, Groups, Components, Images, Fonts, Colors, Tokens, Content. Include screenshots for key frames when useful.
-- **Specific link**: Same depth (Frames, Groups, Components, Images, Fonts, Colors, Tokens, Content) scoped to the linked node. No file-wide page or section list.
-
-## Caveat
+### Caveat
 
 Figma MCP docs say `get_metadata` can run on "whole page if you don't select anything"; they do not clearly say "whole file (all pages)". If the API is page-scoped, iterate over pages if the MCP exposes that, or state in the report that "all pages" is best-effort per current API.
+
+## Reference
+
+Figma Console MCP (figma-console). Use when user has chosen figma-console in install and token is set.

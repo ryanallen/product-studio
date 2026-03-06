@@ -23,7 +23,7 @@ Design generation or update in Figma, or capture ID/endpoint to report or hand o
 2. **Call MCP** – Figma Console MCP with those parameters.
 3. **Report** – Use the response (capture ID, endpoint) to report to the user or hand off to another flow.
 
-## Requirements
+### Requirements
 
 - Figma Console MCP configured and authenticated.
 - Figma Desktop Bridge (for Prompt to Figma): run `npm run setup:figma-bridge` to extract to `.claude/skills/generate-figma/scripts/figma-desktop-bridge`. In Figma Desktop, Plugins → Development → Import plugin from manifest → select `.claude/skills/generate-figma/scripts/figma-desktop-bridge/manifest.json`. Keep the bridge running while using Prompt to Figma.

@@ -123,3 +123,7 @@ Learnings. Recommendations. Links to new docs.
 - Project tracking > Team: Name = individual person (full name). Responsibility = Driver | Approver | Contributor | Informed only.
 - When research includes Link tree or Sources, preserve under Discovery > Audits.
 - Always attribute content to its source.
+
+## Reference
+
+[work/paths.md](../../work/paths.md). [Coordinator](../../agents/coordinator.md). [document-skills](../document-skills/SKILL.md).

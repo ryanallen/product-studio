@@ -12,13 +12,19 @@ When to use subagents for documentation, and how to write or update agent files.
 - **Target** – Agent file path (e.g. `.claude/agents/example.md`) or documentation task. If omitted, use current or specified context.
 - **Source** – Optional. Draft, instructions, or research to merge into the agent or doc.
 
-## Agent files
+## Output
+
+Agent file written or updated; or documentation produced using a subagent when delegated.
+
+## Process
+
+### Agent files
 
 Files in `.claude/agents/` (project) or `~/.claude/agents/` (user): YAML frontmatter plus markdown body. Body = subagent system prompt; frontmatter = name, description (required), tools, model, and optionally skills, disallowedTools, permissionMode, hooks, memory. Spec: [Create custom subagents](https://code.claude.com/docs/en/sub-agents.md).
 
 **When writing or updating an agent:** Full system prompt in the body: role, scope, and "When invoked:" steps that reference skills. Match existing agents (e.g. documenter, verifier). Frontmatter: at least `name` and `description`; set `tools` and `model` as needed.
 
-## Using subagents when documenting
+### Using subagents when documenting
 
 | Subagent | Use when |
 |----------|----------|
