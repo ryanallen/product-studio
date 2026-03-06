@@ -1,148 +1,282 @@
 ---
 name: document-enhance
-description: Transform plain or basic markdown into publication-quality GitHub README.md in one file. Use when user says write a README, make a GitHub README, help me document my repo, create a README.md, make my project page look good, enhance this markdown, improve this README, document this project.
-disable-model-invocation: true
-argument-hint: "[path-to-existing-readme]"
+description: Transform plain or basic markdown into publication-quality GitHub READMEs. Use when user says enhance, refine.
+argument-hint: "[path or paste]"
+disable-model-invocation: false
+user-invocable: true
 ---
 
 # Document Enhance
 
-Teach Claude how to produce a single, publication-quality `README.md` (like top-starred open source projects) from plain or basic markdown. Output is always one file. No splitting into multiple docs.
+Produce a single, publication-quality `README.md` suitable for highly starred open source repos. One file only; no split reference docs.
 
-## When to load reference
+## Inputs
 
-Load `reference.md` in this skill directory when you need GitHub markdown syntax, badge patterns, or condensed guidance from makeareadme, awesome-readme, art-of-readme, shields.io, or contrib.rocks.
+Before generating, gather:
+
+1. **Project** – What it is, what it does, who it is for.
+2. **Assets** – Logo URL, banner URL, screenshots, GIFs (paths or URLs).
+3. **Optional sections** – Contributors grid, roadmap, FAQ, "why this over X", sponsors, license.
+
+Use `[BRACKETS]` for any value the user must fill in. Output one complete, downloadable `README.md`.
+
+## Process
+
+1. **Ask** – What is the project? What does it do? Who is it for? What assets exist (logo, banner, screenshots, GIFs)?
+2. **Ask** – Which optional sections apply? (contributors, roadmap, FAQ, why-this-over-X, sponsors, etc.)
+3. **Produce** – Full README using the patterns below, with `[BRACKETS]` for user-supplied content.
+4. **Deliver** – Single `README.md` (write to file or output for download).
+
+## Patterns (use these in the README)
+
+### Hero and centered title
+
+Centered main title (raw HTML, GitHub-rendered):
+
+```html
+<p align="center">
+  <strong>[Project Name]</strong><br/>
+  [One-line tagline]
+</p>
+```
+
+Or minimal:
+
+```html
+<p align="center">
+  [Project Name] – [tagline]
+</p>
+```
+
+### Badges
+
+**Shields.io** – Flat (default) for body, `for-the-badge` for hero when desired.
+
+- Base: `https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>.svg`
+- With style: `?style=flat` or `?style=for-the-badge`
+- With logo: `&logo=github` (or other [simple-icons](https://simpleicons.org/) name)
+- URL-encode spaces as `%20`, hyphen as `-`
+
+Examples (markdown):
+
+```markdown
+[![PyPI](https://img.shields.io/pypi/v/[PACKAGE].svg?style=flat)](https://pypi.org/project/[PACKAGE]/)
+[![License](https://img.shields.io/badge/license-[LICENSE]-green.svg?style=flat)](LICENSE)
+[![Build](https://img.shields.io/github/actions/workflow/status/[OWNER]/[REPO]/[WORKFLOW].yml?branch=[BRANCH]&style=flat)](https://github.com/[OWNER]/[REPO]/actions)
+```
+
+Hero-style (larger, pill-shaped):
+
+```markdown
+[![Label](https://img.shields.io/badge/Message-COLOR.svg?style=for-the-badge&logo=logo)](LINK)
+```
+
+### Doc/source strip (below hero)
+
+Horizontal rule then blockquote-style links:
+
+```markdown
+---
+
+**Documentation**: [https://[docs-url]](https://[docs-url])
+
+**Source Code**: [https://github.com/[OWNER]/[REPO]](https://github.com/[OWNER]/[REPO])
+
+---
+```
+
+### Tagline blockquote
+
+Styled one-liner:
+
+```markdown
+> [Catchphrase or positioning statement.]
+```
+
+### Feature list (bold key + description)
+
+```markdown
+The key features are:
+
+* **Fast**: [Description.]
+* **Easy**: [Description.]
+* **Short**: [Description.]
+```
+
+### Screenshot / GIF (immediate visual impact)
+
+Place early, after intro. Prefer one strong asset (screenshot or GIF).
+
+```markdown
+![[Alt text]]([URL or path])
+```
+
+Example: `![Features](https://github.com/[OWNER]/[REPO]/raw/[BRANCH]/[path]/screenshot.png)`
+
+### Code block (quickstart)
+
+Always specify language for syntax highlighting. Keep minimal.
+
+````markdown
+```[lang]
+[Minimal runnable snippet]
+```
+````
+
+Optional: show expected output in a second block or inline.
+
+### Collapsible sections (long content)
+
+Use HTML `<details>` / `<summary>` so the README stays scannable:
+
+```html
+<details>
+<summary>Click to expand: [Section title]</summary>
+
+[Markdown content and code blocks here.]
+
+</details>
+```
+
+### Contributor grid (contrib.rocks)
+
+```markdown
+## Contributors
+
+<a href="https://github.com/[OWNER]/[REPO]/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=[OWNER]/[REPO]" alt="Contributors"/>
+</a>
+```
+
+Optional query params: `?max=24&columns=6`.
+
+### Technology / stack badges
+
+Row of small flat badges (languages, frameworks, tools):
+
+```markdown
+[![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat&logo=python)](https://python.org)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat)](LICENSE)
+```
+
+### Horizontal rule section dividers
+
+Use `---` between major sections to improve scanability.
+
+### Centered footer strip
+
+```html
+<p align="center">
+  <sub>Built with [optional emoji]. Licensed under [LICENSE].</sub><br/>
+  <sub>If this helped you, consider <a href="https://github.com/[OWNER]/[REPO]">giving it a star</a>.</sub>
+</p>
+```
+
+### Mermaid diagrams
+
+For architecture or flow. GitHub renders Mermaid in `.md`:
+
+````markdown
+```mermaid
+flowchart LR
+  A[Input] --> B[Process]
+  B --> C[Output]
+```
+````
+
+### Heading hierarchy and emoji
+
+Use consistent levels: `#` once (title), then `##` for major sections, `###` for subsections. Optional emoji in headings for scanability:
+
+```markdown
+## Features
+## Installation
+## Usage
+## Contributing
+## License
+```
+
+With emoji:
+
+```markdown
+## Features
+## Installation
+## Usage
+## FAQ
+## License
+```
+
+### Table of contents (long READMEs)
+
+```markdown
+## Table of contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+```
+
+Anchors: lowercase, spaces to hyphens, punctuation removed (GitHub auto-generates these from headings).
+
+### Comparison / "why this" table
+
+Emoji or check/cross for quick scan:
+
+```markdown
+| Feature        | This project | Alternative X |
+|----------------|--------------|---------------|
+| Speed          | Yes          | No            |
+| Easy setup     | Yes          | Partial       |
+```
+
+### Alerts (GitHub blockquotes)
+
+```markdown
+> [!NOTE]
+> Useful information.
+
+> [!TIP]
+> Helpful advice.
+
+> [!IMPORTANT]
+> Key information.
+```
+
+### Opinions / testimonials
+
+Blockquote per quote, optional attribution:
+
+```markdown
+> "[Quote text.]"
+>
+> — [Name], [Role] ([ref link])
+```
 
 ---
 
-## Trigger and behavior
+## README structure (cognitive funnel)
 
-**Trigger phrases:** write a README, make a GitHub README, help me document my repo, create a README.md, make my project page look good, enhance this markdown, improve this README, document this project.
+Order content so readers can quickly decide relevance (broad first, detail later):
 
-**Steps when triggered:**
+1. Hero + badges + optional logo/banner
+2. Doc/source links (if any)
+3. One-paragraph description + tagline
+4. Single standout visual (screenshot or GIF)
+5. Feature list (bullets with bold keys)
+6. Installation (minimal steps)
+7. Quickstart code + run instructions
+8. Optional: TOC, then deeper sections (Usage, API, Config, etc.)
+9. Optional: Contributors, Roadmap, FAQ, Why this over X
+10. License + centered footer (star prompt optional)
 
-1. **Ask about the project** – Language, purpose, audience, whether a logo or screenshot exists (path or "none").
-2. **Draft a complete README.md** using the merged structure below.
-3. **Mark fill-ins** with `[BRACKETS]` (e.g. `[PROJECT_NAME]`, `[OWNER]`, `[REPO]`).
-4. **Output** a final `README.md` the user can save or download (single file).
+Keep the README as short as it can be without being shorter; move long reference to docs.
 
----
+## Quality rules
 
-## Hard rules (never break)
-
-- **Single file** – Everything in one `README.md`. Never split into multiple files.
-- **No invented content** – No invented data, names, dates, or metrics.
-- **Tables** – Real data only. No placeholder rows.
-- **Placeholders** – Use `[BRACKET]` format only.
-- **Paths** – Relative links only. No absolute filesystem paths.
-- **Diagrams** – Prefer Mermaid over static images for any diagram Claude generates.
-
----
-
-## Format spec (headings and nav)
-
-- **Headings** – Every H1, H2, H3 starts with an emoji (e.g. `## ⚙️ Setup`).
-- **Top nav** – One line after H1 linking every H2 and H3, horizontal and compact.
-- **Anchor slugs** – Strip emoji, lowercase, spaces to hyphens. Space after emoji becomes leading hyphen: `## ⚙️ Setup` → `#-setup`. For links use that slug so anchors work on GitHub.
-
----
-
-## Content rules
-
-- **Mermaid** – Use for any process with 3+ steps or hierarchy with 2+ levels (flowcharts, sequence diagrams, mindmaps, Gantt). Do not invent diagram content; base on user/project info.
-- **Tables** – For structured comparisons only. Real data only; no placeholder rows.
-- **Callouts** – Blockquotes with bold label: `> **Note:** ...`
-- **Links** – Inline markdown links for every URL and reference; relative paths within repo.
-
----
-
-## Structure and styling (merged)
-
-### Hero and header
-
-- **Hero** – Full-width banner or gradient first. If image exists: `<p align="center"><img src="[path]" alt="banner" width="100%"/></p>`. If none, use centered HTML block with project name as fallback.
-- **Title block** – Center logo (if any), title, tagline with raw HTML.
-- **Badges** – [Shields.io](https://shields.io) only. 3–6 badges max, meaningful (build status, version, license, coverage). Centered, grouped by category with line breaks between clusters. Use `style=for-the-badge` in hero area, flat elsewhere.
-- **Tagline** – Optional blockquote or italic mission statement under header: `> *The tool that does X so you don't have to.*`
-
-### Demo
-
-- **Demo/screenshot** – GIF, screenshot, or video embed near the top, before long prose. Answers "what does this look like" quickly.
-
-### Scannable structure
-
-- **TOC** – Add table of contents when README has more than 4 major sections. Use consistent heading levels (never skip H2 to H4). Short sections; one job per section.
-- **Dividers** – Use `---` between major sections for breathing room.
-
-### Quickstart
-
-- **Code block** – Syntax-highlighted (set language). Minimal: fewest lines from zero to running. Goal is reader running in under 2 minutes.
-
-### Typography
-
-- `inline code` for anything typed or a filename.
-- **Bold** for genuinely critical info only.
-- *Italics* sparingly.
-- Lists only for list-like content.
-
-### Feature grid
-
-- Optionally use a 2–3 column table with emoji icons instead of a plain bullet list:
-
-| ⚡ Fast | 🔒 Secure | 🧩 Modular |
-|--------|----------|-----------|
-| [real description] | [real description] | [real description] |
-
-### Tech stack
-
-- Show stack with [Shields.io](https://shields.io) badges (e.g. `![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)`). Use `for-the-badge` in hero, flat elsewhere.
-
-### Contributors
-
-- Optional. Use [contrib.rocks](https://contrib.rocks):  
-  `<a href="https://github.com/[OWNER]/[REPO]/graphs/contributors"><img src="https://contrib.rocks/image?repo=[OWNER]/[REPO]" /></a>`  
-  Keep `[OWNER]` and `[REPO]` as placeholders if unknown.
-
-### Long content
-
-- Use HTML `<details>`/`<summary>` for FAQ, changelog, or long option lists so the page stays scannable.
-
-### Footer
-
-- End with a centered line: license, author, star prompt, e.g.  
-  `<p align="center">Made with ❤️ by [Author] · <a href="LICENSE">[License]</a> · ⭐ Star us on GitHub</p>`
-
----
-
-## Required sections
-
-- Installation  
-- Usage (with real examples)  
-- Contributing  
-- License  
-
-## Optional high-value sections
-
-- FAQ (collapsible if long)  
-- Roadmap  
-- Why this over X  
-- Acknowledgements  
-
----
-
-## Tone
-
-Direct, confident, human. Not over-explained. Let project personality show.
-
----
-
-## Reference
-
-External material is summarized in `reference.md` in this skill directory. Key links:
-
-- [GitHub basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-- [awesome-readme](https://github.com/matiassingers/awesome-readme)
-- [art-of-readme](https://github.com/hackergrrl/art-of-readme)
-- [Make a README](https://www.makeareadme.com)
-- [Shields.io](https://shields.io)
-- [contrib.rocks](https://contrib.rocks)
+- Use real badge URLs and image URLs; user fills `[OWNER]`, `[REPO]`, `[BRANCH]`, paths.
+- Do not invent repo names, links, or assets; use `[BRACKETS]` placeholders.
+- Prefer relative links for in-repo paths (e.g. `docs/guide.md`, `assets/logo.png`).
+- One code block per "minimal example"; add more in separate sections or details.
+- If user provides existing markdown, preserve factual content and upgrade structure/patterns to match this skill.
