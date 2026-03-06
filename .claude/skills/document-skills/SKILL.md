@@ -1,24 +1,25 @@
 ---
 name: document-skills
-description: Document or update a skill (SKILL.md and supporting files) using Claude Code best practices. Use when user says document a skill, write a skill, update skill docs, or /document-skills. Reference: https://code.claude.com/docs/en/skills.md
+description: Produce or update a skill (SKILL.md and supporting files) per Claude Code best practices. Use when user says document a skill, write a skill, update skill docs, refine skill, or /document-skills.
 disable-model-invocation: true
+argument-hint: "[skill-path] [source]"
 ---
 
 # Document Skills
 
-Produce or update a skill so it follows Claude Code skills best practices. Apply the following to the target skill directory.
+Produce or update a skill so it follows Claude Code best practices. Apply the following to the target skill directory.
 
 ## Inputs
 
 1. **Target skill** – Path to the skill directory (e.g. `.claude/skills/example/`) or the skill name. If omitted, use the current or specified context.
-2. **Source** – Existing draft, user instructions, or research output to turn into or merge into the skill.
+2. **Source** – Optional. Draft, user instructions, or research to turn into or merge into the skill.
 
 ## Skill structure
 
 - One directory per skill; required file: `SKILL.md`.
 - **Where**: Project = `.claude/skills/<name>/`; personal = `~/.claude/skills/<name>/`. Nested `.claude/skills/` (e.g. in a package) are discovered automatically.
 - Optional: `template.md`, `examples/`, `scripts/`. Reference them from `SKILL.md` so Claude knows when to load them.
-- Keep `SKILL.md` under 500 lines; move long reference material to supporting files (e.g. `reference.md`, `examples.md`).
+- **Length**: Keep `SKILL.md` under 500 lines; move long reference to supporting files (e.g. `reference.md`, `examples.md`).
 
 ## SKILL.md format
 
@@ -33,14 +34,14 @@ Produce or update a skill so it follows Claude Code skills best practices. Apply
 | `user-invocable` | Set `false` to hide from `/` menu; skill is context-only for Claude. |
 | `allowed-tools` | Optional. Tools Claude may use without asking when this skill is active. Can use patterns (e.g. `Bash(gh *)`, `Bash(python *)`). |
 | `model` | Optional. Model when skill is active. |
-| `context` | Set `fork` to run in a forked subagent. Only makes sense for skills with explicit instructions (a task), not reference-only content. |
+| `context` | Set `fork` to run in a forked subagent. Only for skills with explicit instructions (a task), not reference-only content. |
 | `agent` | When `context: fork`, which subagent type (e.g. Explore, Plan, general-purpose). |
 | `hooks` | Optional. See hooks docs. |
 
 ### Content type
 
-- **Reference content**: Conventions, patterns, style guides. Stays inline; Claude uses it in conversation.
-- **Task content**: Step-by-step; often add `disable-model-invocation: true` and invoke with `/name`.
+- **Reference** – Conventions, patterns, style guides. Stays inline; Claude uses it in conversation.
+- **Task** – Step-by-step; often add `disable-model-invocation: true` and invoke with `/name`.
 
 ### Substitutions (in body)
 
