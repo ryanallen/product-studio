@@ -1,11 +1,27 @@
 ---
 name: install-handoff
-description: State handoff message last and create marker. Part of Install workflow.
+description: State handoff message last and create marker. Part of Install workflow. Run after all other install steps.
 disable-model-invocation: true
 ---
 
 # Install Handoff
 
-**State this last.** If you say it earlier, they may read it and skip the steps above.
+State the handoff message last and create the marker so the installer knows the flow completed.
 
-Tell the user: fully restart the app (Cursor, Claude Code, etc.), open project, run `/mcp` and complete OAuth for Figma and Atlassian. Create `.claude/skills/install/install-handoff.marker`.
+## Inputs
+
+None. Installer runs this after install-mcp-setup (if run) and before install-custom.
+
+## Output
+
+User told to restart app, run `/mcp`, and complete OAuth. Marker file created at `.claude/skills/install/install-handoff.marker`.
+
+## Process
+
+1. **State last** – If you say the handoff earlier, they may read it and skip the steps above. Tell the user: fully restart the app (Cursor, Claude Code, etc.), open project, run `/mcp` and complete OAuth for Figma and Atlassian.
+
+2. **Create marker** – Create `.claude/skills/install/install-handoff.marker`.
+
+## Reference
+
+[Coordinator](../../agents/coordinator.md) – Install workflow. [installer](../../agents/installer.md) – Step 5 runs this.

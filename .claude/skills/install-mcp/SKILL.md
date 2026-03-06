@@ -1,27 +1,40 @@
 ---
 name: install-mcp
-description: Add chosen MCP servers to user global config via CLI. Part of Install workflow.
+description: Add chosen MCP servers to user global config via CLI. Part of Install workflow. Use only the MCPs they chose in install-choices.
 disable-model-invocation: true
 ---
 
 # Install MCP
 
-Edit only the user's global config. Do not edit Cursor/VSCode project config.
+Add each chosen MCP to the user's global config via CLI. Do not edit Cursor/VSCode project config.
 
-**Config file:**
-- **macOS/Linux:** `$HOME/.claude.json`
-- **Windows:** `%USERPROFILE%\.claude.json`
+## Inputs
 
-For each MCP they chose (from install-choices), add with the CLI below. Do not use Write or Edit tool; use only these commands.
+From install-choices: which MCPs they chose (figma-console, atlassian-rovo). If figma-console, the Figma token from that step.
+
+## Output
+
+Each chosen MCP added to global config. User must fully restart the app after the full Install workflow, then run `/mcp` for OAuth.
+
+## Config file
+
+- **macOS/Linux** – `$HOME/.claude.json`
+- **Windows** – `%USERPROFILE%\.claude.json`
+
+## Process
+
+For each MCP they chose, add with the CLI below. Do not use Write or Edit tool; use only these commands.
 
 **figma-console** (replace `figd_xxx` with the token from install-choices; use quoted `-e` so the token is valid):
 ```bash
 claude mcp add -e "FIGMA_ACCESS_TOKEN=figd_xxx" -e "ENABLE_MCP_APPS=true" figma-console -- npx -y figma-console-mcp@latest
 ```
 
-**atlassian-rovo:**
+**atlassian-rovo**
 ```bash
 claude mcp add --transport sse atlassian-rovo https://mcp.atlassian.com/v1/sse
 ```
 
-After the full Install workflow: user must fully restart the app (Cursor, Claude Code, etc.), then run `/mcp` for OAuth.
+## Reference
+
+[Coordinator](../../agents/coordinator.md) – Install workflow. [install-choices](../install-choices/SKILL.md) – Source of choices.

@@ -6,22 +6,29 @@ disable-model-invocation: true
 
 # Install MCP setup (Figma Desktop bridge)
 
-Pause here. Show the user the following. When they have finished, they say they are ready to proceed.
+Run when they chose figma-console. Pause, show the steps, then wait for the user to say they are ready.
 
-From repo root:
+## Inputs
 
-```bash
-npm run setup:figma-bridge
-```
+They chose figma-console in install-choices.
 
-In Figma Desktop:
+## Output
 
-1. In a project: Plugins → Development → Import plugin from manifest.
-2. Select `.claude/skills/generate-figma/scripts/figma-desktop-bridge/manifest.json`.
-3. Plugins → Development → Figma Desktop Bridge. Keep it running for Prompt to Figma.
+Bridge extracted; user has imported the plugin in Figma Desktop and can keep it running. Flow continues after they say ready.
 
-Whenever you want to use Figma with this system in the future, you need this plugin running in the file you are working in.
+## Process
 
-When it's time to renew (about every 90 days), run update-figma to set a new token, then restart the app.
+1. **Extract bridge** – From repo root run `npm run setup:figma-bridge`.
 
-**Tell me when you're ready to proceed.**
+2. **Figma Desktop** – Show the user:
+   - In a project: Plugins → Development → Import plugin from manifest.
+   - Select `.claude/skills/generate-figma/scripts/figma-desktop-bridge/manifest.json`.
+   - Plugins → Development → Figma Desktop Bridge. Keep it running for Prompt to Figma.
+   Whenever you use Figma with this system, this plugin must be running in the file you are working in.
+   When it's time to renew (about every 90 days), run update-figma to set a new token, then restart the app.
+
+3. **Wait** – Say **Tell me when you're ready to proceed.** Continue only after they confirm.
+
+## Reference
+
+[generate-figma](../generate-figma/SKILL.md) – Bridge path. [update-figma](../update-figma/SKILL.md) – Token renewal.
