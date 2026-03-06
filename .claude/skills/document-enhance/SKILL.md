@@ -8,7 +8,7 @@ user-invocable: true
 
 # Document Enhance
 
-Produce a single, publication-quality `README.md` suitable for highly starred open source repos. One file only; no split reference docs.
+Produce a publication-quality `README.md` suitable for highly starred open source repos.
 
 ## Inputs
 
@@ -126,8 +126,6 @@ Always specify language for syntax highlighting. Keep minimal.
 Optional: show expected output in a second block or inline.
 
 ### Collapsible sections (long content)
-
-Use HTML `<details>` / `<summary>` so the README stays scannable:
 
 ```html
 <details>
@@ -256,7 +254,7 @@ Blockquote per quote, optional attribution:
 
 ---
 
-## README structure (cognitive funnel)
+## README structure
 
 Order content so readers can quickly decide relevance (broad first, detail later):
 
@@ -270,8 +268,6 @@ Order content so readers can quickly decide relevance (broad first, detail later
 8. Optional: TOC, then deeper sections (Usage, API, Config, etc.)
 9. Optional: Contributors, Roadmap, FAQ, Why this over X
 10. License + centered footer (star prompt optional)
-
-Keep the README as short as it can be without being shorter; move long reference to docs.
 
 ## Quality rules
 
