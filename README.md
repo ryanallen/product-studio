@@ -4,8 +4,8 @@
 </p>
 
 <p align="center">
-  [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
-  [![Build](https://img.shields.io/github/actions/workflow/status/[OWNER]/[REPO]/[WORKFLOW].yml?branch=main&style=flat)](https://github.com/[OWNER]/[REPO]/actions)
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat" alt="License"/></a>
+  <a href="https://github.com/[OWNER]/[REPO]/actions"><img src="https://img.shields.io/github/actions/workflow/status/[OWNER]/[REPO]/[WORKFLOW].yml?branch=main&style=flat" alt="Build"/></a>
 </p>
 
 ---

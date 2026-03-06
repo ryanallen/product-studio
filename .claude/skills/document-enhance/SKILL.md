@@ -57,7 +57,16 @@ Or minimal:
 - With logo: `&logo=github` (or other [simple-icons](https://simpleicons.org/) name)
 - URL-encode spaces as `%20`, hyphen as `-`
 
-Examples (markdown):
+**Badges inside raw HTML:** GitHub does not parse Markdown inside HTML (e.g. `<p align="center">`). If badges sit in a hero block, use HTML so they render:
+
+```html
+<p align="center">
+  <a href="[LINK]"><img src="https://img.shields.io/badge/[LABEL]-[MESSAGE]-[COLOR].svg?style=flat" alt="[ALT]"/></a>
+  <a href="https://github.com/[OWNER]/[REPO]/actions"><img src="https://img.shields.io/github/actions/workflow/status/[OWNER]/[REPO]/[WORKFLOW].yml?branch=main&style=flat" alt="Build"/></a>
+</p>
+```
+
+Examples (markdown, use only when badges are **outside** HTML blocks):
 
 ```markdown
 [![PyPI](https://img.shields.io/pypi/v/[PACKAGE].svg?style=flat)](https://pypi.org/project/[PACKAGE]/)
@@ -65,7 +74,7 @@ Examples (markdown):
 [![Build](https://img.shields.io/github/actions/workflow/status/[OWNER]/[REPO]/[WORKFLOW].yml?branch=[BRANCH]&style=flat)](https://github.com/[OWNER]/[REPO]/actions)
 ```
 
-Hero-style (larger, pill-shaped):
+Hero-style markdown (larger, pill-shaped) – only when **not** inside `<p>` or other HTML:
 
 ```markdown
 [![Label](https://img.shields.io/badge/Message-COLOR.svg?style=for-the-badge&logo=logo)](LINK)
@@ -271,6 +280,7 @@ Order content so readers can quickly decide relevance (broad first, detail later
 
 ## Quality rules
 
+- **Badges in hero:** If the hero uses `<p align="center">` (or any raw HTML), put badges inside it as HTML `<a href="..."><img src="..." alt="..."/></a>`. Do not use Markdown `[![...](...)](...)` inside HTML; GitHub does not parse it and badges show as raw text.
 - Use real badge URLs and image URLs; user fills `[OWNER]`, `[REPO]`, `[BRANCH]`, paths.
 - Do not invent repo names, links, or assets; use `[BRACKETS]` placeholders.
 - Prefer relative links for in-repo paths (e.g. `docs/guide.md`, `assets/logo.png`).
