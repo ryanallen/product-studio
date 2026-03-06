@@ -1,13 +1,14 @@
 ---
 name: save
-description: Stage all changes since last commit and create one or more commits with title and description. Use when user says "save", "stage", "commit", or /save. Does not push. In Claude Code and Cursor, /skills lists all.
+description: Stage all changes since last commit and create one or more commits with title and description. Use when user says save, stage, commit, or /save. Does not push. In Claude Code and Cursor, /skills lists all.
+disable-model-invocation: true
 ---
 
 # Save
 
 **Only run when the user explicitly requests it.** Do not run this skill at the end of a task, do not assume they want a commit, and do not run it because they asked in a previous turn. Only when they explicitly say save, stage, commit, or /save in this turn.
 
-When this skill is invoked, run the **Save** workflow in [Coordinator](../agents/coordinator.md) (steps 1–3). Then perform the commit steps below.
+When this skill is invoked, run the **Save** workflow in [Coordinator](../../agents/coordinator.md) (steps 1–3). Then perform the commit steps below.
 
 ## Inputs
 
@@ -17,6 +18,10 @@ Don't ask the user for them. If needed, inspect the diff or changed files to wri
 **Scope:** By default stage all changes (`git add -A`).
 If the user asks to commit only specific file(s) or path(s), stage only those then commit
 ("save just README" → `git add README.md` then commit).
+
+## Output
+
+One or more commits; result reported. No push.
 
 ## Command
 
@@ -36,3 +41,7 @@ For multiple commits, repeat with different staging and messages
 
 - **Nothing to commit (working tree clean):** Tell the user there are no changes to commit.
 - **Cannot infer message:** Only then ask the user for a title and description.
+
+## Reference
+
+[Coordinator](../../agents/coordinator.md) – Save workflow steps 1–3 (verifier, documenter if mismatch, updater runs this skill).

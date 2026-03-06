@@ -1,6 +1,8 @@
 ---
 name: research
-description: Gather from any source (ticket, URL(s), text, file(s), image(s)) and follow links up to 5 levels deep. Use when user says "research", "learn about this", "look at this", or /research. In Claude Code and Cursor, /skills lists all.
+description: Gather from any source (ticket, URL(s), text, file(s), image(s)) and follow links up to 5 levels deep. Use when user says research, learn about this, look at this, or /research. In Claude Code and Cursor, /skills lists all.
+disable-model-invocation: true
+argument-hint: "[ticket-id-or-url]"
 ---
 
 # Research
@@ -23,6 +25,10 @@ Accepts flexible input, derives starting URLs and level-0 content when provided,
      - Note path in output so documenter can link from README.
 2. **Output path** - See [work/paths.md](../../work/paths.md).
 3. **Focus area** – Keywords or topics to prioritize when deciding which links to follow.
+
+## Output
+
+Project README at path from [work/paths.md](../../work/paths.md) with Level-0 (input), Sources, Findings, and Link Tree. Handoff to documenter.
 
 ## Process
 
@@ -120,3 +126,7 @@ If level-0 content exists, include it first:
 - If a page still cannot be accessed (login required, permission denied): ask the user to log in. Tell them which URL to open, to complete login in their browser, and to tell you when done. Wait for the user to confirm before retrying. Do not note it and skip without asking
 - Summarize content when appropriate and if data is important copy it verbatim
 - **Clickable links:** Every URL in the output (Sources table, Link Tree, Findings source lines) must be written as a markdown link `[title](url)`. Never output a bare URL or title-only line; always use `[title](url)` so links are clickable in the README.
+
+## Reference
+
+[work/paths.md](../../work/paths.md) – Output path. [document](../document/SKILL.md) – Documenter structures the output.

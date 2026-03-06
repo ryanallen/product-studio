@@ -1,6 +1,7 @@
 ---
 name: strategize
-description: Analyze documented findings to identify problems and trace them to root causes using the Five Whys technique. Use when user says "why broken", "find cause", or /strategize. In Claude Code and Cursor, /skills lists all.
+description: Analyze documented findings to identify problems and trace them to root causes using the Five Whys technique. Use when user says why broken, find cause, or /strategize. In Claude Code and Cursor, /skills lists all.
+disable-model-invocation: true
 ---
 
 # Strategize
@@ -11,6 +12,10 @@ Analyze documented findings to identify problems and trace them to root causes u
 
 1. **Project path** - See work/paths.md.
 2. **Documents to analyze** - README.md in that path.
+
+## Output
+
+Project README updated with `## 🐛 Problems` at the top (summary table, detailed analysis, Five Whys, mindmaps, problem definitions). All output in that README only.
 
 ## Process
 
@@ -118,3 +123,7 @@ The problems summary goes at the **top** of the project's `README.md` under a `#
 - Always produce a one-sentence problem definition for each root cause
 - Use mermaid mindmaps to visualize every Five Whys chain
 - Do not create other files; all output goes in the project README only.
+
+## Reference
+
+[work/paths.md](../../work/paths.md) – Project path. [document](../document/SKILL.md) – Documenter may add problems to README per Propose solutions workflow.
