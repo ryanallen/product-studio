@@ -16,6 +16,10 @@ None required. User invokes with setup, install, or /install.
 
 Install flow complete. User may need to restart the app and run `/mcp` for OAuth (see handoff).
 
+## Process
+
+1. Run the Install workflow in Coordinator; the installer runs the full flow (config, choices, MCP, Figma bridge if chosen, handoff, then customizer if present).
+
 ## Reference
 
 [Coordinator](../../agents/coordinator.md) – Install workflow. [installer](../../agents/installer.md) – Agent that runs the flow.
