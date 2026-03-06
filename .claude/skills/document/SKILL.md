@@ -79,6 +79,8 @@ When in doubt, add the link.
 
 ## Process
 
+**Required on every README:** (1) After the H1 title, add a top navigation that links to every H2 and H3 (horizontal, compact: `[Section](#section) | [Other](#other)`). (2) Every H1, H2, and H3 heading must start with an emoji.
+
 ### 1. Read Source Material
 Read all files from the source path. Understand the scope and topics covered.
 
@@ -101,24 +103,12 @@ Map content into the README sections based on document type.
 
 **Evidence assets:** See work/paths.md.
 
-Use a single README with three phases. **Full navigation at the top:** after the H1 title, add a table of contents that links to every H2 and H3 in the document so readers can jump to any section (Discovery, Exploration, Go to market, and every subsection under them). Notes, current-state review, competitor audit, and similar material go in **Audits** (under Discovery). Section headers below describe what goes in each place when source material provides it; do not populate tables or sections with placeholder, example, or made-up data. If there is no real data for a table or subsection, leave it empty or omit it.
+Use a single README with three phases. **Full navigation at the top:** after the H1 title, add a table of contents that links to every H2 and H3 in the document. Use **horizontal, compact** format so verification passes: one line with pipe separators, e.g. `[🔍 Discovery](#discovery) | [🔎 Exploration](#exploration) | [🚀 Go to market](#go-to-market)` and include every H2 and H3 that exists in the doc. Notes, current-state review, competitor audit, and similar material go in **Audits** (under Discovery). Section headers below describe what goes in each place when source material provides it; do not populate tables or sections with placeholder, example, or made-up data. If there is no real data for a table or subsection, leave it empty or omit it.
 
 ```markdown
 # 📄 {Project Name}
-Full nav (link every H2 and H3 that exists in the doc):
-- [🔍 Discovery](#discovery)
-  - [📋 Project tracking](#project-tracking)
-  - [📑 Audits](#audits)
-  - [👥 Users + Needs](#users--needs)
-- [🔎 Exploration](#exploration)
-  - [💡 Ideation](#ideation)
-  - [📎 Artifacts](#artifacts)
-  - [✅ Validation](#validation)
-- [🚀 Go to market](#go-to-market)
-  - [📦 Deliverables](#deliverables)
-  - [📈 Performance](#performance)
-  - [🔜 Next version](#next-version)
-(Include only sections that exist; use same anchor format for headings. Anchors are lowercase, no emoji.)
+[🔍 Discovery](#discovery) | [📋 Project tracking](#project-tracking) | [📑 Audits](#audits) | [👥 Users + Needs](#users--needs) | [🔎 Exploration](#exploration) | [💡 Ideation](#ideation) | [📎 Artifacts](#artifacts) | [✅ Validation](#validation) | [🚀 Go to market](#go-to-market) | [📦 Deliverables](#deliverables) | [📈 Performance](#performance) | [🔜 Next version](#next-version)
+(Include only sections that exist. Anchor targets: lowercase, hyphens for spaces, e.g. #discovery, #project-tracking.)
 
 ---
 ## 🔍 Discovery
@@ -168,4 +158,4 @@ Learnings. Recommendations. Links to new docs.
 - When structuring from research that includes a Link tree or Sources section, preserve them in the README (under Discovery > Audits) so the full link tree is always present
 - Always attribute content to its source
 - Use mermaid diagrams for any process with 3+ steps or any hierarchy with 2+ levels
-- Always include a full table of contents after the H1 title: link to every H2 and H3 section so readers can navigate to all parts of the document
+- Always include a full table of contents after the H1 title: horizontal, compact format linking to every H2 and H3 (e.g. `[Section](#section) | [Other](#other)`)
