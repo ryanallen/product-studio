@@ -1,11 +1,11 @@
 ---
 name: install-custom
-description: Local overrides for Product Studio install. Created from SKILL.md.template during install; SKILL.md is gitignored. Run after main install steps when installer or customizer invokes it.
+description: Local overrides for Product Studio install. Created from this template during install; SKILL.md is gitignored. Run after main install when customizer invokes it.
 user-invocable: false
 ---
 
 # Install Customization
 
-This file is created from `SKILL.md.template` during install; `SKILL.md` is gitignored. Add any local overrides or notes below. The installer runs this file after the main install steps.
+This file is created from `SKILL.md.template` during install; `SKILL.md` is gitignored. Add any local overrides or notes below. The customizer runs this after the main install steps.
 
 ### Your local setup
