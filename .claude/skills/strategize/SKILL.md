@@ -15,7 +15,47 @@ Analyze documented findings to identify problems and trace them to root causes u
 
 ## Output
 
-Project README updated with `## 🐛 Problems` at the top (summary table, detailed analysis, Five Whys, mindmaps, problem definitions). All output in that README only.
+Project README updated with `## 🐛 Problems` at the **top** (above all other content except the H1 title). All output in that README only. Structure:
+
+### Summary
+
+| # | Perceived Problem | Root Cause | Category |
+|---|-------------------|------------|----------|
+| 1 | ...               | ...        | ...      |
+
+### Detailed Analysis
+
+For each problem:
+
+```markdown
+### Problem 1: {Perceived Problem}
+
+**Symptom:** {What the user experiences}
+
+**Five Whys:**
+
+1. Why? ...because {reason}.
+2. Why? ...because {reason}.
+3. Why? ...because {reason}.
+4. Why? ...because {reason}.
+5. Why? ...because {root cause}.
+
+**Root Cause:** {root cause}
+**Category:** {category}
+
+```mermaid
+mindmap
+  root(({Perceived Problem}))
+    Why 1
+      Why 2
+        Why 3
+          Why 4
+            Root Cause
+```
+
+**Problem Definition:**
+{One sentence: "To enable {who} to {what} in order to {outcome}."}
+```
 
 ## Process
 
@@ -70,51 +110,11 @@ Categorize each root cause:
 
 ### 5. Write Problem Analysis
 
-Output to the `## 🐛 Problems` section of `{project-path}/README.md`:
-
-```markdown
-# Problem Analysis
-
-## Summary
-
-| # | Perceived Problem | Root Cause | Category |
-|---|-------------------|------------|----------|
-| 1 | ...               | ...        | ...      |
-
-## Detailed Analysis
-
-### Problem 1: {Perceived Problem}
-
-**Symptom:** {What the user experiences}
-
-**Five Whys:**
-
-1. Why? ...because {reason}.
-2. Why? ...because {reason}.
-3. Why? ...because {reason}.
-4. Why? ...because {reason}.
-5. Why? ...because {root cause}.
-
-**Root Cause:** {root cause}
-**Category:** {category}
-
-```mermaid
-mindmap
-  root(({Perceived Problem}))
-    Why 1
-      Why 2
-        Why 3
-          Why 4
-            Root Cause
-```
-
-**Problem Definition:**
-{One sentence: "To enable {who} to {what} in order to {outcome}."}
-```
+Write to the project README at the path from work/paths.md using the structure in Output (Summary table, Detailed Analysis per problem). Use Five Whys, mindmaps, and problem definitions per Output.
 
 ### 6. Place in README
 
-The problems summary goes at the **top** of the project's `README.md` under a `## 🐛 Problems` heading, above all other content (except the H1 title).
+Put the output under `## 🐛 Problems` at the top of the README, above all other content except the H1 title.
 
 ## Rules
 
