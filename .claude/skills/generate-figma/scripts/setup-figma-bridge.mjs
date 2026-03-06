@@ -20,9 +20,8 @@ if (!tgz) throw new Error("npm pack did not produce a figma-console-mcp-*.tgz");
 
 const tgzPath = path.join(cwd, tgz);
 
-// 3. Extract only package/figma-desktop-bridge (cross-platform tar: Windows 10+ and macOS have tar)
-const tgzArg = tgzPath.replace(/\\/g, "/");
-execSync(`tar -xzf "${tgzArg}" ${bridgeInTarball}`, { cwd, stdio: "inherit" });
+// 3. Extract only package/figma-desktop-bridge (use relative path for tar - Windows tar fails on absolute C:/ paths)
+execSync(`tar -xzf "${tgz}" ${bridgeInTarball}`, { cwd, stdio: "inherit" });
 
 // 4. Move to generate-figma skill scripts folder (ensure parent exists)
 const destPath = path.join(cwd, bridgeDest);

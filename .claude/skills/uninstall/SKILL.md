@@ -1,12 +1,12 @@
 ---
 name: uninstall
-description: Remove Product Studio MCP entries from the user's Claude config. Use when user says uninstall, remove MCP, or /uninstall.
+description: Remove Product Studio MCP entries from the user's Claude config and Cursor's project MCP config. Use when user says uninstall, remove MCP, or /uninstall.
 disable-model-invocation: true
 ---
 
 # Uninstall
 
-Remove the MCP servers that the Install skill adds (figma-console, atlassian-rovo). They may be in the user's global config or project-scoped in `~/.claude.json` under `projects["<projectPath>"].mcpServers`. Do not edit the file by hand or with Write/Edit tool.
+Remove the MCP servers that the Install skill adds (figma-console, atlassian-rovo). Config may be global or project-scoped.
 
 ## Inputs
 
@@ -18,14 +18,20 @@ figma-console and atlassian-rovo removed from config. User must fully restart th
 
 ## Process
 
-1. Run these commands from the project root (or the directory where Product Studio is open). The CLI removes them from the right place (global or project-scoped):
+### Cursor
+
+If the project has `.cursor/mcp.json`: remove `figma-console` and `atlassian-rovo` from `mcpServers`. If `mcpServers` is empty afterward, either delete `.cursor/mcp.json` or leave `{"mcpServers":{}}`. Tell user to fully restart Cursor.
+
+### Claude Code
+
+Do not edit the file by hand. Run from project root:
 
 ```bash
 claude mcp remove figma-console
 claude mcp remove atlassian-rovo
 ```
 
-2. Tell the user to fully restart Claude Code so the change is picked up.
+Tell user to fully restart Claude Code.
 
 ## Reference
 
