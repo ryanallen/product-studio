@@ -50,6 +50,21 @@ Or minimal:
 
 ### Badges
 
+**Project badges (link into repo)** – Prefer badges that link to folders or files in the project so readers can jump to agents, skills, docs, or license. Use relative paths (e.g. `.claude/agents`, `.claude/skills`, `LICENSE`). Detect or ask: agents path (e.g. `.claude/agents`), skills path (e.g. `.claude/skills`), license file (e.g. `LICENSE`). Include a License badge linking to the license file. If the repo is a GitHub template repo, include a "Use this template" badge linking to `https://github.com/[OWNER]/[REPO]/generate`. If it is not a template, include a "Clone this repo" (or similar) badge linking to `https://github.com/[OWNER]/[REPO]` so users can clone or open the repo. Do not add a generic "star this repo" badge; only link into the project or to template/clone actions.
+
+Example hero block (HTML; adjust paths and labels to match the project):
+
+```html
+<p align="center">
+  <a href="[AGENTS_OR_MAIN_PATH]"><img src="https://img.shields.io/badge/[LABEL]-[MESSAGE]-[COLOR]?style=flat" alt="[ALT]"/></a>
+  <a href="[SKILLS_OR_DOCS_PATH]"><img src="https://img.shields.io/badge/Skills-Custom-0ea5e9?style=flat" alt="Skills"/></a>
+  <a href="[LICENSE_PATH]"><img src="https://img.shields.io/badge/license-[LICENSE]-green?style=flat" alt="License"/></a>
+  <a href="https://github.com/[OWNER]/[REPO]/generate"><img src="https://img.shields.io/badge/Use-this%20template-10b981?style=flat" alt="Use this template"/></a>
+</p>
+```
+
+If the repo is **not** a template, replace the "Use this template" link with a "Clone this repo" badge linking to `https://github.com/[OWNER]/[REPO]`.
+
 **Shields.io** – Flat (default) for body, `for-the-badge` for hero when desired.
 
 - Base: `https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>.svg`

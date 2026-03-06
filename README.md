@@ -5,7 +5,6 @@
   <a href=".claude/agents"><img src="https://img.shields.io/badge/Product%20Studio-Agent%20workflows-6366f1?style=flat" alt="Product Studio"/></a>
   <a href=".claude/skills"><img src="https://img.shields.io/badge/Skills-Custom-0ea5e9?style=flat" alt="Custom skills"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat" alt="License"/></a>
-  <a href="https://github.com/ryanallen/product-studio"><img src="https://img.shields.io/github/stars/ryanallen/product-studio?style=flat" alt="Star on GitHub"/></a>
   <a href="https://github.com/ryanallen/product-studio/generate"><img src="https://img.shields.io/badge/Use-this%20template-10b981?style=flat" alt="Use this template"/></a>
 </p>
 
