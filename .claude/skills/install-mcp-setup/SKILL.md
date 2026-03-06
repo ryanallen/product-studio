@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Install MCP setup (Figma Desktop bridge)
 
-Run when they chose figma-console. Pause, show the steps, then wait for the user to say they are ready.
+Run when they chose figma-console. The agent must run the extract step; then show the user the Figma Desktop steps and wait for confirmation.
 
 ## Inputs
 
@@ -18,7 +18,7 @@ Bridge extracted; user has imported the plugin in Figma Desktop and can keep it 
 
 ## Process
 
-1. **Extract bridge** – From repo root run `npm run setup:figma-bridge`.
+1. **Extract bridge** – From repo root the agent runs: `npm run setup:figma-bridge`. Do not skip this step.
 
 2. **Figma Desktop** – Show the user:
    - In a project: Plugins → Development → Import plugin from manifest.
