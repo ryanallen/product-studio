@@ -1,6 +1,6 @@
 ---
 name: document-skills
-description: "Produce or update a skill (SKILL.md and supporting files) per Claude Code best practices. Use when user says document a skill, write a skill, update skill docs, refine skill, or /document-skills."
+description: Produce or update a skill (SKILL.md and supporting files) per Claude Code best practices. Use when user says document a skill, write a skill, update skill docs, refine skill, or /document-skills.
 disable-model-invocation: true
 argument-hint: "[skill-path] [source]"
 ---
@@ -37,6 +37,8 @@ Produce or update a skill so it follows Claude Code best practices. Apply the fo
 | `context` | Set `fork` to run in a forked subagent. Only for skills with explicit instructions (a task), not reference-only content. |
 | `agent` | When `context: fork`, which subagent type (e.g. Explore, Plan, general-purpose). |
 | `hooks` | Optional. See hooks docs. |
+
+**YAML:** Avoid colons inside frontmatter values. Use a different phrase (e.g. "Scope is" or "Scope includes" instead of "Scope:") so parsers (e.g. GitHub) do not treat them as new keys.
 
 ### Content type
 

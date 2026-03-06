@@ -1,6 +1,6 @@
 ---
 name: install-express
-description: "Express install: show hidden yes, install all, then Figma token. Part of Install workflow. Used when user chose express in install-choices."
+description: Express install shows hidden yes, install all, then Figma token. Part of Install workflow. Used when user chose express in install-choices.
 disable-model-invocation: true
 ---
 

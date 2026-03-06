@@ -1,6 +1,6 @@
 ---
 name: verify-docs
-description: "Check every document for heading hierarchy (h1 h2 h3), top navigation (horizontal, section links), and emojis at start of headlines. Scope: paths.md, system files, and project docs."
+description: Check every document for heading hierarchy (h1 h2 h3), top navigation (horizontal, section links), and emojis at start of headlines. Scope is paths.md, system files, and project docs.
 ---
 
 # Verify Docs
