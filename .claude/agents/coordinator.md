@@ -35,7 +35,7 @@ Each row: what triggers it, optional input from the user, which subagent, and wh
 
 | Trigger phrases | Optional input | Subagent | Output |
 |-----------------|----------------|----------|--------|
-| refine, write, write up, document, /document | target (e.g. README, a file) or context | documenter | Updated docs; for README uses document-github, document-voice, document-enhance |
+| refine, write, write up, document, /document | target (e.g. README, a file) or context | documenter | Updated docs; for README uses document-github, document-voice |
 | research, learn about this, /research | ticket, URL, text, files, images | researcher | Findings; documenter can structure next |
 | research Figma, analyze Figma, /research-figma | Figma URL | researcher | Figma audit report |
 | install, setup, /install | none | installer | Config, MCP, handoff; then /mcp to sign in |
