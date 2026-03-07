@@ -16,7 +16,7 @@
 
 </div>
 
-![Product Studio](assets/hero.gif)
+![Product Studio](https://raw.githubusercontent.com/ryanallen/product-studio/main/assets/hero.gif)
 
 <p align="center">Agent workflows for design capture, research, and strategic analysis.</p>
 
