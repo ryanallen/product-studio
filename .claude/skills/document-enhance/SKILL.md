@@ -234,7 +234,7 @@ Order content so readers can quickly decide relevance (broad first, detail later
 
 ## Quality rules
 
-- **GitHub README rules:** See [document-github](../document-github/SKILL.md) for image/GIF raw URLs, anchors, alerts.
+- **GitHub README rules:** See [document-github](../document-github/SKILL.md) for image/GIF raw URLs, shields.io badges, anchors, alerts.
 - Use real image URLs; user fills `[OWNER]`, `[REPO]`, `[BRANCH]`, paths.
 - Do not invent repo names, links, or assets; use `[BRACKETS]` placeholders.
 - Prefer relative links for in-repo paths (e.g. `docs/guide.md`); for images/GIFs in README use raw URL per document-github.
@@ -243,4 +243,4 @@ Order content so readers can quickly decide relevance (broad first, detail later
 
 ## Reference
 
-[document-github](../document-github/SKILL.md) – GitHub README rules (GIFs, raw URLs, anchors). [document](../document/SKILL.md) – Documenter skill. [Extend Claude with skills](https://code.claude.com/docs/en/skills.md).
+[document-github](../document-github/SKILL.md) – GitHub README rules (GIFs, raw URLs, shields.io badges, anchors). [document](../document/SKILL.md) – Documenter skill. [Extend Claude with skills](https://code.claude.com/docs/en/skills.md).
