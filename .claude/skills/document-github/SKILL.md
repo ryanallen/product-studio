@@ -22,7 +22,7 @@ Apply these rules whenever output is a GitHub-hosted README or the user asks abo
 - **Use Markdown image syntax** – `![Alt text](url)`. Do not wrap in `<div align="center">` or use `<img>` for the hero/primary image; plain Markdown ensures the GIF can animate.
 - **Use raw file URLs, not relative paths** – Relative paths (e.g. `assets/hero.gif`) often cause GIFs to render as static images on GitHub. Link to the raw file instead:
   - **Format:** `https://raw.githubusercontent.com/[OWNER]/[REPO]/[BRANCH]/[path]/[file].gif`
-  - Example: `![Product Studio](https://raw.githubusercontent.com/ryanallen/product-studio/main/assets/hero.gif)`
+  - Example: `![product-studio](https://raw.githubusercontent.com/ryanallen/product-studio/main/assets/hero.gif)`
 - **Same for other in-repo images** if they fail to load or animate: use `https://raw.githubusercontent.com/[OWNER]/[REPO]/[BRANCH]/path/to/file.png` (or `.gif`, `.svg`).
 - **Source:** [GitHub community discussion 81359](https://github.com/orgs/community/discussions/81359) – embedding animated GIF in README; raw URL recommended.
 
@@ -31,12 +31,12 @@ Apply these rules whenever output is a GitHub-hosted README or the user asks abo
 **Always use Markdown for badges; never HTML.** Use `![alt](url)` or `[![alt](url)](link)`. Do not use `<img>`, `<a>`, or wrap badges in `<p>`, `<div>`, or other HTML. Keep badges outside HTML blocks so they render on GitHub.
 
 - **Base:** `https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>?style=flat&labelColor=4b5563`
-  - `labelColor=4b5563` = grey left side. Second color = right side. URL-encode spaces as `%20`, hyphens in labels as `-` (e.g. `Agent%20workflow`, `install--custom`).
-- **Agent workflow badge** (agent name + "Agent workflow"): grey left, purple right.
-  - Example: `[![Coordinator](https://img.shields.io/badge/Coordinator-Agent%20workflow-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md)`
+  - `labelColor=4b5563` = grey left side. Second color = right side. URL-encode spaces as `%20`, hyphens in labels as `-` (e.g. `subagents`, `install--custom`).
+- **Subagent badge** (agent name + "subagents"): grey left, purple right.
+  - Example: `[![Coordinator](https://img.shields.io/badge/Coordinator-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md)`
   - Right-side color: `7D70DB`.
-- **Skill badge** (skill name + "SKILL"): grey left, blue right.
-  - Example: `[![install](https://img.shields.io/badge/install-SKILL-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/install/SKILL.md)`
+- **Skill badge** (skill name + "skills"): grey left, blue right.
+  - Example: `[![install](https://img.shields.io/badge/install-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/install/SKILL.md)`
   - Right-side color: `0ea5e9`. For kebab-case skill names use a hyphen in the label (e.g. `document--paths` for "document-paths").
 - **Linked badge:** wrap in `[![alt](url)](destination)`. Unlinked: `![alt](url)`.
 - **Where badges render on GitHub:** Markdown images render in normal flow and inside **table cells**. They do **not** render inside block HTML (e.g. `<div>`, `<p>`). So: hero badges inside a `<div align="center">` must use HTML `<img>` if you need centering; agent and skill badges in **tables** use Markdown so they render.
