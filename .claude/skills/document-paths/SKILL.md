@@ -1,6 +1,7 @@
 ---
 name: document-paths
-description: Sync work/paths.md path tree with actual paths under work/. Add new paths, remove missing ones, then run Save step 3. Use when verifier hands off after verify-paths mismatch, or when user says sync paths, update paths, document paths, or /document-paths.
+description: Sync work/paths.md path tree with actual paths under work/. Add new paths, remove missing ones, then run Save step 3. Use when verifier hands off after verify-paths mismatch.
+triggers: "sync paths, update paths, document paths, /document-paths"
 disable-model-invocation: true
 ---
 

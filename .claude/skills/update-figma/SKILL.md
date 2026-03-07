@@ -1,6 +1,7 @@
 ---
 name: update-figma
-description: Update the Figma token in figma-console MCP config. Use when user says update Figma token, renew Figma token, or /update-figma.
+description: Update the Figma token in figma-console MCP config.
+triggers: "update Figma token, renew Figma token, /update-figma"
 disable-model-invocation: true
 ---
 

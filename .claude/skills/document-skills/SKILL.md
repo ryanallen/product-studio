@@ -1,6 +1,7 @@
 ---
 name: document-skills
-description: Write or update a skill (SKILL.md and any extra files) so it follows Claude Code best practices. Use when user says document a skill, write a skill, update skill docs, refine skill, or /document-skills.
+description: Write or update a skill (SKILL.md and any extra files) so it follows Claude Code best practices.
+triggers: "document a skill, write a skill, update skill docs, refine skill, /document-skills"
 disable-model-invocation: true
 argument-hint: "[skill-path] [source]"
 ---
@@ -36,7 +37,8 @@ Frontmatter is the config at the top of the file. Use these fields:
 | Field | Use |
 |-------|-----|
 | `name` | Optional. Lowercase, letters, numbers, hyphens only (max 64 chars). Defaults to the folder name. This becomes the `/slash-command`. |
-| `description` | **Recommended.** What the skill does and when to use it. Include phrases people might say so Claude can run it automatically. If you leave it out, Claude uses the first paragraph of the file. |
+| `description` | **Recommended.** What the skill does and when to use it. Include trigger phrases so Claude can run it automatically. Use the standard pattern: end with "Use when user says X, Y, Z, or /name." (see Trigger phrases below). If you leave it out, Claude uses the first paragraph of the file. |
+| `triggers` | Optional. Comma-separated list or YAML list of trigger phrases (e.g. `refine, write, /document`). Used by coordinator and verify-docs for sync. If set, keep in sync with the phrases in `description`. If omitted, they parse from description. |
 | `argument-hint` | Optional. Shown in autocomplete (e.g. `[issue-number]`, `[filename] [format]`). |
 | `disable-model-invocation` | Set `true` for skills that change things or must run only when the user asks (e.g. deploy, commit). |
 | `user-invocable` | Set `false` to hide the skill from the `/` menu; then it’s context-only. |
@@ -52,6 +54,8 @@ Frontmatter is the config at the top of the file. Use these fields:
 
 - **Reference** – Conventions, patterns, style. Stays in the skill; Claude uses it in the conversation.
 - **Task** – Step-by-step. Usually set `disable-model-invocation: true` and trigger with `/name`.
+
+**Trigger phrases:** Claude uses `description` for discovery, so trigger phrases must appear there. Use this pattern so coordinator and verify-docs can parse reliably: end the description with **"Use when user says A, B, C, or /name."** (or "Use when user says A, B, or /name."). You can also set optional `triggers` in frontmatter with the same list (comma-separated or YAML list); when present, coordinator sync and verify-docs use it instead of parsing description.
 
 #### Body sections (same order for every skill)
 
@@ -88,8 +92,9 @@ For injecting shell output before the skill runs, see [Inject dynamic context](h
 1. Read the target skill path and any source you have.
 2. Apply the checklist and structure above. Don’t change existing behavior unless the user asked for it.
 3. Write or update SKILL.md (and supporting files if needed).
-4. Only document what the skill actually does. Don’t add capabilities that aren’t there.
+4. Only document what the skill actually does. Don't add capabilities that aren't there.
+5. **Coordinator sync:** If you changed the skill's frontmatter `description` or `triggers` (trigger phrases), update [.claude/agents/coordinator.md](../../agents/coordinator.md) so the **Single flows** table and any **Workflow** **Input** lines list the same trigger phrases. Use the skill's `triggers` list when set, else parse from description using the "Use when user says …" pattern. The skill's subagent row in Single flows (or the workflow that uses the skill) must match; add or remove phrases so coordinator and skill agree.
 
 ## Reference
 
-[Extend Claude with skills](https://code.claude.com/docs/en/skills.md)
+[Extend Claude with skills](https://code.claude.com/docs/en/skills.md). [Coordinator](../../agents/coordinator.md) – Single flows and Workflows must stay in sync with skill trigger phrases.

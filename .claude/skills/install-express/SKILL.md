@@ -1,6 +1,7 @@
 ---
 name: install-express
 description: Express install shows hidden yes, install all (figma-console, atlassian-rovo), then Figma token. Part of Install workflow. Used when user chose express in install-choices.
+triggers: []
 disable-model-invocation: true
 ---
 

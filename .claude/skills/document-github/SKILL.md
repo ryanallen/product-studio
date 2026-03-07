@@ -1,6 +1,7 @@
 ---
 name: document-github
-description: GitHub README rules so GIFs, images, badges, and tables render correctly. Use when writing or enhancing a GitHub README. In Claude Code and Cursor, /skills lists all.
+description: GitHub README rules so GIFs, images, badges, and tables render correctly.
+triggers: "writing or enhancing a GitHub README, /document-github"
 ---
 
 # Document GitHub

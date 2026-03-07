@@ -1,6 +1,7 @@
 ---
 name: document-enhance
-description: Turn plain or basic markdown into a strong GitHub README. Use when user says enhance, refine. Ensures linkable things are linked.
+description: Turn plain or basic markdown into a strong GitHub README. Ensures linkable things are linked.
+triggers: "enhance, refine"
 argument-hint: "[path or paste]"
 disable-model-invocation: false
 user-invocable: true
@@ -39,10 +40,10 @@ Ask what the project is, what it does, who it’s for, and what assets exist (lo
 
 **When enhancing a README, link every mention of:**
 
-- **Slash commands** – e.g. `/install`, `/analyze-figma`, `/research`, `/save`. Link each to its skill: `[\`/install\`](.claude/skills/install/SKILL.md)` (adjust path to match the repo).
+- **Slash commands** – e.g. `/install`, `/research-figma`, `/research`, `/save`. Link each to its skill: `[\`/install\`](.claude/skills/install/SKILL.md)` (adjust path to match the repo).
 - **Trigger phrases or skill names** – e.g. "install", "research", "document". Link to the skill: `[install](.claude/skills/install/SKILL.md)`.
 - **Directory paths** – e.g. `.claude/agents/`, `.claude/skills/`. Use relative links: `[.claude/agents/](.claude/agents/)`, `[.claude/skills/](.claude/skills/)`.
-- **Skill names in body text** – document, document-paths, analyze-figma, verify-docs, clean, save, etc. Link each to its SKILL.md: `[analyze-figma](.claude/skills/analyze-figma/SKILL.md)`.
+- **Skill names in body text** – document, document-paths, research-figma, verify-docs, clean, save, etc. Link each to its SKILL.md: `[research-figma](.claude/skills/research-figma/SKILL.md)`.
 - **Agent/subagent names** – When mentioned in prose, link to the agent file: `[installer](.claude/agents/installer.md)`.
 - **Repo file paths** – e.g. `work/paths.md`, `work/paths.md.template`, `.tmp/`. Link the path: `[work/paths.md](work/paths.md)` (or to a section if the file is gitignored and you prefer an anchor).
 - **Section names** – Link to in-page anchors where it helps (e.g. `[Subagents and their skills](#-subagents-and-their-skills)`).

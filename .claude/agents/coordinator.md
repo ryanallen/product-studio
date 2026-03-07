@@ -37,7 +37,7 @@ Each row: what triggers it, optional input from the user, which subagent, and wh
 |-----------------|----------------|----------|--------|
 | refine, write, write up, document, /document | target (e.g. README, a file) or context | documenter | Updated docs; for README uses document-github, document-voice, document-enhance |
 | research, learn about this, /research | ticket, URL, text, files, images | researcher | Findings; documenter can structure next |
-| analyze Figma, /analyze-figma | Figma URL | researcher | Figma audit report |
+| research Figma, analyze Figma, /research-figma | Figma URL | researcher | Figma audit report |
 | install, setup, /install | none | installer | Config, MCP, handoff; then /mcp to sign in |
 | save, stage, commit, /save | none (or specific paths if user says "save just X") | Run **Save** workflow | Commits; no push |
 | clean, wipe .tmp, /clean | none | cleaner | `.tmp/` emptied |

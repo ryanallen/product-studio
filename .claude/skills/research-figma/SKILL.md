@@ -1,9 +1,10 @@
 ---
-name: analyze-figma
-description: Analyze a Figma design link and produce a structured report (research/audit). Use when user says "analyze Figma", "Figma audit", "analyze this Figma link", or /analyze-figma. In Claude Code and Cursor, /skills lists all.
+name: research-figma
+description: Analyze a Figma design link and produce a structured report (research/audit).
+triggers: "research Figma, analyze Figma, Figma audit, analyze this Figma link, /research-figma"
 ---
 
-# Analyze Figma
+# Research Figma
 
 Analyze a Figma design link and produce a structured report. Branch behavior on link type: general (whole file) vs specific (one node and its subtree).
 

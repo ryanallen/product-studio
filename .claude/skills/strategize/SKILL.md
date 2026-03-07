@@ -1,6 +1,7 @@
 ---
 name: strategize
-description: Analyze documented findings to identify problems and trace them to root causes using the Five Whys technique. Use when user says why broken, find cause, or /strategize. In Claude Code and Cursor, /skills lists all.
+description: Analyze documented findings to identify problems and trace them to root causes using the Five Whys technique.
+triggers: "why broken, find cause, /strategize"
 disable-model-invocation: true
 ---
 

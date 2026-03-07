@@ -1,6 +1,7 @@
 ---
 name: document-ticket
-description: Post a comment on a Jira ticket with a link to the project deliverables. Use when user says update ticket, Jira, document ticket, or /document-ticket. In Claude Code and Cursor, /skills lists all.
+description: Post a comment on a Jira ticket with a link to the project deliverables.
+triggers: "update ticket, Jira, document ticket, /document-ticket"
 disable-model-invocation: true
 argument-hint: "[ticket-id]"
 ---

@@ -1,6 +1,7 @@
 ---
 name: install-config
 description: Ensure work/paths.md exists and set deliverables base URL. Part of Install workflow.
+triggers: []
 disable-model-invocation: true
 ---
 

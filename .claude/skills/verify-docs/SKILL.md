@@ -1,6 +1,7 @@
 ---
 name: verify-docs
-description: Check every document for heading hierarchy (h1 h2 h3), top navigation (horizontal, section links), and emojis at start of headlines. Scope is paths.md, system files, and project docs. Use when user says verify docs, clean up studio, or /verify-docs.
+description: Check every document for heading hierarchy (h1 h2 h3), top navigation (horizontal, section links), and emojis at start of headlines. Scope is paths.md, system files, and project docs.
+triggers: "verify docs, clean up studio, /verify-docs"
 disable-model-invocation: true
 ---
 
@@ -14,7 +15,7 @@ Check each document for hierarchy, top nav, and emoji in headings. Collect issue
 
 ## Output
 
-List of files processed and any issues (missing hierarchy, missing or non-horizontal nav, missing emoji). Then run [document-verification](../document-verification/SKILL.md) with this list and the full set of files (same subagent run; writes `.tmp/verification-report.md`).
+List of files processed and any issues (missing hierarchy, missing or non-horizontal nav, missing emoji, **trigger phrase mismatches with coordinator**). Then run [document-verification](../document-verification/SKILL.md) with this list and the full set of files (same subagent run; writes `.tmp/verification-report.md`).
 
 ## Process
 
@@ -26,7 +27,9 @@ List of files processed and any issues (missing hierarchy, missing or non-horizo
 
 4. **Emojis in headlines** – Every heading line (`#`, `##`, `###`) must start with an emoji (at the very beginning of the heading text). Record any heading that does not.
 
-5. **Report** – Output the list of files and issues. Then run [document-verification](../document-verification/SKILL.md) with this list and the full set of files processed (same subagent run; write `.tmp/verification-report.md`).
+5. **Trigger phrases vs coordinator** – For each skill under `.claude/skills/` that is referenced in [.claude/agents/coordinator.md](../../agents/coordinator.md) (Single flows table or Workflows), read the skill's frontmatter. If `triggers` is set, use that list; else extract trigger phrases from `description` using the standard pattern ("Use when user says …" or "Use when …"). Compare to the coordinator's **Trigger phrases** column (Single flows) or **Input** line (Workflows) for that flow. Record mismatches: trigger in skill but missing in coordinator, or in coordinator but not in skill. Include these in the report so they can be synced (e.g. via document-skills step 5 or a manual coordinator edit).
+
+6. **Report** – Output the list of files and issues. Then run [document-verification](../document-verification/SKILL.md) with this list and the full set of files processed (same subagent run; write `.tmp/verification-report.md`).
 
 ## Reference
 

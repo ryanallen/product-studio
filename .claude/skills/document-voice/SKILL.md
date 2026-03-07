@@ -1,6 +1,7 @@
 ---
 name: document-voice
-description: Write in clear, casual, everyday voice for a general audience. Use when user says plain language, simple words, casual tone, explain like I'm new, no jargon, document voice, or /document-voice.
+description: Write in clear, casual, everyday voice for a general audience.
+triggers: "plain language, simple words, casual tone, explain like I'm new, no jargon, document voice, /document-voice"
 ---
 
 # Document Voice

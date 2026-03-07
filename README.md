@@ -96,7 +96,7 @@ To run a skill, say its trigger phrase or type `/skill-name`. Each skill is a fo
 
 | researcher |
 |:--|
-| [![researcher](https://img.shields.io/badge/researcher-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/researcher.md) <br> [![research](https://img.shields.io/badge/research-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/research/SKILL.md) [![analyze-figma](https://img.shields.io/badge/analyze--figma-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/analyze-figma/SKILL.md) |
+| [![researcher](https://img.shields.io/badge/researcher-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/researcher.md) <br> [![research](https://img.shields.io/badge/research-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/research/SKILL.md) [![research-figma](https://img.shields.io/badge/research--figma-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/research-figma/SKILL.md) |
 | Gathers content from links, tickets, and files; can audit Figma designs. |
 
 | strategist |
@@ -162,7 +162,7 @@ Product Studio/
 │       ├── research/SKILL.md
 │       ├── document/SKILL.md
 │       ├── strategize/SKILL.md
-│       ├── analyze-figma/SKILL.md
+│       ├── research-figma/SKILL.md
 │       ├── install/
 │       │   └── SKILL.md
 │       ├── install-custom/

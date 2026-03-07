@@ -1,6 +1,7 @@
 ---
 name: research
-description: Gather from any source (ticket, URL(s), text, file(s), image(s)) and follow links up to 5 levels deep. Use when user says research, learn about this, look at this, or /research. In Claude Code and Cursor, /skills lists all.
+description: Gather from any source (ticket, URL(s), text, file(s), image(s)) and follow links up to 5 levels deep.
+triggers: "research, learn about this, look at this, /research"
 disable-model-invocation: true
 argument-hint: "[ticket-id-or-url]"
 ---

@@ -1,6 +1,7 @@
 ---
 name: generate-figma
-description: Generate or update a Figma design via the Figma Console MCP with target file details. Use when user says generate Figma, generate design, or /generate-figma. In Claude Code and Cursor, /skills lists all.
+description: Generate or update a Figma design via the Figma Console MCP with target file details.
+triggers: "generate Figma, generate design, /generate-figma"
 disable-model-invocation: true
 argument-hint: "[file-url-or-key] [node-id]"
 ---

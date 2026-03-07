@@ -1,6 +1,7 @@
 ---
 name: uninstall
-description: Remove Product Studio MCP entries from the user's Claude config and Cursor's project MCP config. Use when user says uninstall, remove MCP, or /uninstall.
+description: Remove Product Studio MCP entries from the user's Claude config and Cursor's project MCP config.
+triggers: "uninstall, remove MCP, /uninstall"
 disable-model-invocation: true
 ---
 

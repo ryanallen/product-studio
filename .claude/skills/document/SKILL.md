@@ -1,6 +1,7 @@
 ---
 name: document
-description: Take research output and produce structured, enhanced markdown documentation with mermaid diagrams. Use when user says "write up", "document", or /document. In Claude Code and Cursor, /skills lists all.
+description: Take research output and produce structured, enhanced markdown documentation with mermaid diagrams.
+triggers: "write up, document, /document"
 ---
 
 # Document

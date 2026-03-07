@@ -1,6 +1,7 @@
 ---
 name: document-verification
-description: Write a verification report to .tmp/ from verifier output (files checked, issues). Compare to README and paths.md structure. Use when verifier hands off after verify-docs, or when user says verification report, verify docs report, or /document-verification.
+description: Write a verification report to .tmp/ from verifier output (files checked, issues). Compare to README and paths.md structure. Use when verifier hands off after verify-docs.
+triggers: "verification report, verify docs report, /document-verification"
 disable-model-invocation: true
 ---
 

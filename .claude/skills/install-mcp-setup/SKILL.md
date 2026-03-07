@@ -1,6 +1,7 @@
 ---
 name: install-mcp-setup
 description: After MCP install, run Figma Desktop bridge setup. Part of Install workflow. Only if they chose figma-console.
+triggers: []
 disable-model-invocation: true
 ---
 

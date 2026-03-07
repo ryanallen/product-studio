@@ -1,6 +1,7 @@
 ---
 name: sync-upstream
-description: Sync from upstream remote main branch and push to origin main. Use when user says sync, pull, or /sync-upstream. In Claude Code and Cursor, /skills lists all.
+description: Sync from upstream remote main branch and push to origin main.
+triggers: "sync, pull, /sync-upstream"
 disable-model-invocation: true
 ---
 
