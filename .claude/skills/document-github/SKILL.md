@@ -1,55 +1,45 @@
 ---
 name: document-github
-description: GitHub README rules: animated GIFs (raw URLs), images, shields.io badges, anchors, alerts. Use when writing or enhancing GitHub READMEs so assets render correctly. In Claude Code and Cursor, /skills lists all.
+description: GitHub README rules so GIFs, images, badges, and tables render correctly. Use when writing or enhancing a GitHub README. In Claude Code and Cursor, /skills lists all.
 ---
 
 # Document GitHub
 
-Rules for content that renders correctly on GitHub (READMEs, docs). Single source of truth for GitHub-specific behavior.
+Rules for READMEs and docs that render correctly on GitHub. Single source of truth; other document skills reference this, do not duplicate.
 
 ## Inputs
 
-- **Context** – When producing or enhancing a GitHub README, or when the user asks how to make something work on GitHub (e.g. animated GIFs, images, badges, links).
+- **Context** – Producing or enhancing a GitHub README, or user asks how to make something render on GitHub.
 
 ## Output
 
-Apply these rules whenever output is a GitHub-hosted README or the user asks about GitHub rendering. Other document skills reference this skill; do not duplicate these rules elsewhere.
+README or doc that follows these rules; assets (GIFs, images, badges, cards) render as intended on GitHub.
 
 ## Process
 
-### Animated GIFs and images
+### 1. GIFs and images
 
-- **Use Markdown image syntax** – `![Alt text](url)`. Do not wrap in `<div align="center">` or use `<img>` for the hero/primary image; plain Markdown ensures the GIF can animate.
-- **Use raw file URLs, not relative paths** – Relative paths (e.g. `assets/hero.gif`) often cause GIFs to render as static images on GitHub. Link to the raw file instead:
-  - **Format:** `https://raw.githubusercontent.com/[OWNER]/[REPO]/[BRANCH]/[path]/[file].gif`
-  - Example: `![product-studio](https://raw.githubusercontent.com/ryanallen/product-studio/main/assets/hero.gif)`
-- **Same for other in-repo images** if they fail to load or animate: use `https://raw.githubusercontent.com/[OWNER]/[REPO]/[BRANCH]/path/to/file.png` (or `.gif`, `.svg`).
-- **Source:** [GitHub community discussion 81359](https://github.com/orgs/community/discussions/81359) – embedding animated GIF in README; raw URL recommended.
+- Use Markdown: `![Alt text](url)`. For the hero/primary image, do not wrap in `<div>` or use `<img>`; plain Markdown lets the GIF animate.
+- In-repo GIFs: use raw URLs or they may render static. Format: `https://raw.githubusercontent.com/[OWNER]/[REPO]/[BRANCH]/[path]/[file].gif`. Same idea for other in-repo images if they fail to load. Source: [GitHub discussion 81359](https://github.com/orgs/community/discussions/81359).
 
-### Shields.io badges
+### 2. Badges
 
-**Always use Markdown for badges; never HTML.** Use `![alt](url)` or `[![alt](url)](link)`. Do not use `<img>`, `<a>`, or wrap badges in `<p>`, `<div>`, or other HTML. Keep badges outside HTML blocks so they render on GitHub.
+- Use Markdown: `![alt](url)` or `[![alt](url)](link)`. Do not wrap badges in `<p>`, `<div>`, or other block HTML in normal flow; Markdown images do not render inside block HTML.
+- Base: `https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>?style=flat&labelColor=4b5563`. URL-encode spaces as `%20`; hyphens in labels as `-` (e.g. `install--custom`).
+- Subagent badge (lowercase name + "subagents"), purple right: `7D70DB`. Example: `[![coordinator](https://img.shields.io/badge/coordinator-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md)`.
+- Skill badge (name + "skills"), blue right: `0ea5e9`. Kebab-case names use hyphen in label (e.g. `document--paths`). Linked: `[![alt](url)](dest)`. Unlinked: `![alt](url)`.
+- If hero badges are inside a `<div align="center">`, use HTML `<img>` there because Markdown images do not render inside divs.
 
-- **Base:** `https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>?style=flat&labelColor=4b5563`
-  - `labelColor=4b5563` = grey left side. Second color = right side. URL-encode spaces as `%20`, hyphens in labels as `-` (e.g. `subagents`, `install--custom`).
-- **Subagent badge** (lowercase subagent name + "subagents"): grey left, purple right.
-  - Example: `[![coordinator](https://img.shields.io/badge/coordinator-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md)`
-  - Right-side color: `7D70DB`.
-- **Skill badge** (skill name + "skills"): grey left, blue right.
-  - Example: `[![install](https://img.shields.io/badge/install-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/install/SKILL.md)`
-  - Right-side color: `0ea5e9`. For kebab-case skill names use a hyphen in the label (e.g. `document--paths` for "document-paths").
-- **Linked badge:** wrap in `[![alt](url)](destination)`. Unlinked: `![alt](url)`.
-- **Where badges render on GitHub:** Markdown images render in normal flow and inside **table cells**. They do **not** render inside block HTML (e.g. `<div>`, `<p>`). So: hero badges inside a `<div align="center">` must use HTML `<img>` if you need centering; subagent and skill badges in **tables** use Markdown so they render.
+### 3. Subagent/skill cards (one table per card)
 
-### Subagent/skill cards (one table per card)
+One table, one column. Subagent badge centered in row 1; skill badges and body left-aligned.
 
-One table per card, single column. Goal: subagent badge centered in row 1; skill badges and body left-aligned.
-
-- Use one separator row: `|:--|` (left-aligns the column).
-- Center only the subagent badge by wrapping it in a `<div align="center">` **inside that cell**: row 1 cell content is `<div align="center">[![name](...)](link)</div>`. Do not wrap the whole table or multiple rows in a div.
-- Rows: (1) subagent badge in centered div, (2) skill badge(s), (3) body text. No extra columns, no split tables.
+- Separator: `|:--|` (left-align column).
+- Center only the subagent badge: wrap it in `<div align="center">` **inside that cell**. Row 1 content: `<div align="center">[![name](...)](link)</div>`. Do not wrap the whole table or other rows.
+- Rows: (1) subagent badge in centered div, (2) skill badge(s), (3) body. No extra columns, no split tables.
 
 Example:
+
 ```markdown
 | <div align="center">[![coordinator](https://img.shields.io/badge/coordinator-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md)</div> |
 |:--|
@@ -57,19 +47,16 @@ Example:
 | Orchestrates... |
 ```
 
-### Section anchors (TOC links)
+### 4. Anchors and alerts
 
-- GitHub auto-generates anchors from headings: lowercase, spaces to hyphens, punctuation removed. Use that format for table-of-contents links (e.g. `#features`, `#installation`).
+- TOC links: GitHub anchors are lowercase, spaces to hyphens (e.g. `#features`, `#installation`).
+- Alerts: `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`.
 
-### Alerts (blockquotes)
+### 5. Optional
 
-- GitHub supports `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]` for rendered alert blocks.
-
-### Optional GitHub-specific patterns
-
-- **Contributor grid:** `https://contrib.rocks/image?repo=[OWNER]/[REPO]` with link to `https://github.com/[OWNER]/[REPO]/graphs/contributors`.
-- **Doc/source strip:** Links to `https://github.com/[OWNER]/[REPO]` and optional docs URL.
+- Contributor grid: `https://contrib.rocks/image?repo=[OWNER]/[REPO]` with link to repo graphs/contributors.
+- Doc/source: link to `https://github.com/[OWNER]/[REPO]` and optional docs URL.
 
 ## Reference
 
-[GitHub: Embedding animated GIF in README (discussion 81359)](https://github.com/orgs/community/discussions/81359). [document-enhance](../document-enhance/SKILL.md) uses this skill for README patterns. [document](../document/SKILL.md) for project READMEs that may be GitHub-hosted.
+[GitHub: Embedding animated GIF (discussion 81359)](https://github.com/orgs/community/discussions/81359). [document-enhance](../document-enhance/SKILL.md), [document](../document/SKILL.md).
