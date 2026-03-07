@@ -69,52 +69,52 @@ Subagents are defined in `.claude/agents/`. That's where Claude Code looks for t
 
 To run a skill, say its trigger phrase or type `/skill-name`. Each skill is a folder under `.claude/skills/` with a `SKILL.md` file.
 
-| ### cleaner |
+| cleaner |
 |:--|
 | [![cleaner](https://img.shields.io/badge/cleaner-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/cleaner.md) [![clean](https://img.shields.io/badge/clean-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/clean/SKILL.md) |
 | Empties `.tmp/`. Use after you've checked the verification report. "clean", "wipe .tmp", /clean. |
 
-| ### coordinator |
+| coordinator |
 |:--|
 | [![coordinator](https://img.shields.io/badge/coordinator-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md) ![skills](https://img.shields.io/badge/skills-%E2%80%94-0ea5e9?style=flat&labelColor=4b5563) |
 | Runs the other subagents in order. Handles Discover (research, document, strategize, update ticket) and Clean up studio (verify docs, then optionally clean .tmp). No skill of its own. |
 
-| ### designer |
+| designer |
 |:--|
 | [![designer](https://img.shields.io/badge/designer-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/designer.md) [![generate-figma](https://img.shields.io/badge/generate--figma-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/generate-figma/SKILL.md) |
 | Create or update a Figma design using the Figma MCP. Say "generate Figma", "generate design", or /generate-figma. |
 
-| ### documenter |
+| documenter |
 |:--|
 | [![documenter](https://img.shields.io/badge/documenter-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/documenter.md) [![document](https://img.shields.io/badge/document-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document/SKILL.md) [![document-paths](https://img.shields.io/badge/document--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-paths/SKILL.md) [![document-ticket](https://img.shields.io/badge/document--ticket-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-ticket/SKILL.md) [![document-github](https://img.shields.io/badge/document--github-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-github/SKILL.md) [![document-agent](https://img.shields.io/badge/document--agent-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agent/SKILL.md) [![document-skills](https://img.shields.io/badge/document--skills-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-skills/SKILL.md) |
 | **document**: Turn research into structured markdown (and mermaid diagrams). "write up", "document", /document. **document-paths**: Keep work/paths.md in sync with real folders. **document-ticket**: Add a Jira comment with a link to deliverables. **document-github**: Rules for READMEs (GIFs, badges, links). **document-agent**: Use subagents to write or update subagent files. **document-skills**: Write or update a skill (SKILL.md). |
 
-| ### installer |
+| installer |
 |:--|
 | [![installer](https://img.shields.io/badge/installer-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/installer.md) [![install](https://img.shields.io/badge/install-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/install/SKILL.md) [![install-custom](https://img.shields.io/badge/install--custom-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/install-custom/) |
 | Runs the full install: config, choices, MCP setup, optional Figma bridge, handoff. If you added custom steps in `.claude/skills/install-custom/SKILL.md`, runs those after. Say "setup", "install", or /install. Then quit terminal, relaunch, and run /mcp to sign in to Figma and Atlassian. |
 
-| ### researcher |
+| researcher |
 |:--|
 | [![researcher](https://img.shields.io/badge/researcher-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/researcher.md) [![research](https://img.shields.io/badge/research-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/research/SKILL.md) [![analyze-figma](https://img.shields.io/badge/analyze--figma-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/analyze-figma/SKILL.md) |
 | **research**: Pull in tickets, URLs, text, files, or images and follow links (up to 5 levels). Documenter then shapes the output. "research", "learn about this", /research. **analyze-figma**: Audit a Figma design link and output a report. "analyze Figma", /analyze-figma. Give the Figma URL. |
 
-| ### strategist |
+| strategist |
 |:--|
 | [![strategist](https://img.shields.io/badge/strategist-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/strategist.md) [![strategize](https://img.shields.io/badge/strategize-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/strategize/SKILL.md) |
 | Dig into problems (Five Whys), find root causes, and suggest fixes. "why broken", "find cause", /strategize. |
 
-| ### uninstaller |
+| uninstaller |
 |:--|
 | [![uninstaller](https://img.shields.io/badge/uninstaller-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/uninstaller.md) [![uninstall](https://img.shields.io/badge/uninstall-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/uninstall/SKILL.md) |
 | Removes Product Studio MCPs from your config. "uninstall", "remove MCP", /uninstall. Restart the terminal after. |
 
-| ### updater |
+| updater |
 |:--|
 | [![updater](https://img.shields.io/badge/updater-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/updater.md) [![update-figma](https://img.shields.io/badge/update--figma-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/update-figma/SKILL.md) [![save](https://img.shields.io/badge/save-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/save/SKILL.md) [![sync-upstream](https://img.shields.io/badge/sync--upstream-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/sync-upstream/SKILL.md) |
 | **update-figma**: Refresh the Figma token in the MCP config. "update Figma token", /update-figma. **save**: Stage everything and commit (message is derived from changes). "save", "stage", /save. Does not push. **sync-upstream**: Pull from upstream main and push to your repo. "sync", "pull", /sync-upstream. |
 
-| ### verifier |
+| verifier |
 |:--|
 | [![verifier](https://img.shields.io/badge/verifier-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/verifier.md) [![verify-paths](https://img.shields.io/badge/verify--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-paths/SKILL.md) [![verify-docs](https://img.shields.io/badge/verify--docs-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-docs/SKILL.md) [![document-verification](https://img.shields.io/badge/document--verification-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-verification/SKILL.md) |
 | **verify-paths**: Compare work/paths.md to the real folder tree. If they differ, hand off to documenter. Part of Save. **verify-docs**: Check docs for heading order, top nav, and emojis on headings. **document-verification**: After verify-docs, list what was checked and write a report to `.tmp/`. Part of Clean up studio. |
