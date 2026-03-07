@@ -56,48 +56,20 @@ Or minimal:
 
 **Project badges (link into repo)** – Prefer badges that link to folders or files in the project so readers can jump to agents, skills, docs, or license. Use relative paths (e.g. `.claude/agents`, `.claude/skills`, `LICENSE`). Detect or ask: agents path (e.g. `.claude/agents`), skills path (e.g. `.claude/skills`), license file (e.g. `LICENSE`). Include a License badge linking to the license file. If the repo is a GitHub template repo, include a "Use this template" badge linking to `https://github.com/[OWNER]/[REPO]/generate`. If it is not a template, include a "Clone this repo" (or similar) badge linking to `https://github.com/[OWNER]/[REPO]` so users can clone or open the repo. Do not add a generic "star this repo" badge; only link into the project or to template/clone actions.
 
-Example hero block (HTML; adjust paths and labels to match the project):
+**Use Markdown, not HTML:** See [document-github](../document-github/SKILL.md). Put badges in plain Markdown outside any HTML block so they render on GitHub. Do not put badges inside `<p align="center">` or other HTML.
 
-```html
-<p align="center">
-  <a href="[AGENTS_OR_MAIN_PATH]"><img src="https://img.shields.io/badge/[LABEL]-[MESSAGE]-[COLOR]?style=flat" alt="[ALT]"/></a>
-  <a href="[SKILLS_OR_DOCS_PATH]"><img src="https://img.shields.io/badge/Skills-Custom-0ea5e9?style=flat" alt="Skills"/></a>
-  <a href="[LICENSE_PATH]"><img src="https://img.shields.io/badge/license-[LICENSE]-green?style=flat" alt="License"/></a>
-  <a href="https://github.com/[OWNER]/[REPO]/generate"><img src="https://img.shields.io/badge/Use-this%20template-10b981?style=flat" alt="Use this template"/></a>
-</p>
-```
-
-If the repo is **not** a template, replace the "Use this template" link with a "Clone this repo" badge linking to `https://github.com/[OWNER]/[REPO]`.
-
-**Shields.io** – Flat (default) for body, `for-the-badge` for hero when desired.
-
-- Base: `https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>.svg`
-- With style: `?style=flat` or `?style=for-the-badge`
-- With logo: `&logo=github` (or other [simple-icons](https://simpleicons.org/) name)
-- URL-encode spaces as `%20`, hyphen as `-`
-
-**Badges inside raw HTML:** See [document-github](../document-github/SKILL.md). Use HTML for badges in hero blocks (e.g. `<a href="..."><img src="..." alt="..."/></a>`).
-
-```html
-<p align="center">
-  <a href="[LINK]"><img src="https://img.shields.io/badge/[LABEL]-[MESSAGE]-[COLOR].svg?style=flat" alt="[ALT]"/></a>
-  <a href="https://github.com/[OWNER]/[REPO]/actions"><img src="https://img.shields.io/github/actions/workflow/status/[OWNER]/[REPO]/[WORKFLOW].yml?branch=main&style=flat" alt="Build"/></a>
-</p>
-```
-
-Examples (markdown, use only when badges are **outside** HTML blocks):
+Example (Markdown badges; adjust paths and labels to match the project):
 
 ```markdown
-[![PyPI](https://img.shields.io/pypi/v/[PACKAGE].svg?style=flat)](https://pypi.org/project/[PACKAGE]/)
-[![License](https://img.shields.io/badge/license-[LICENSE]-green.svg?style=flat)](LICENSE)
-[![Build](https://img.shields.io/github/actions/workflow/status/[OWNER]/[REPO]/[WORKFLOW].yml?branch=[BRANCH]&style=flat)](https://github.com/[OWNER]/[REPO]/actions)
+[![Product Studio](https://img.shields.io/badge/Product%20Studio-Agent%20workflows-6366f1?style=flat)](.claude/agents)
+[![Agents SKILLS](https://img.shields.io/badge/Agents-SKILLS-0ea5e9?style=flat&labelColor=4b5563)](.claude/agents)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat)](LICENSE)
+[![Use this template](https://img.shields.io/badge/▶-Use%20this%20template-10b981?style=flat&labelColor=4b5563)](https://github.com/[OWNER]/[REPO]/generate)
 ```
 
-Hero-style markdown (larger, pill-shaped) – only when **not** inside `<p>` or other HTML:
+If the repo is **not** a template, use a "Clone this repo" badge linking to `https://github.com/[OWNER]/[REPO]` instead of "Use this template".
 
-```markdown
-[![Label](https://img.shields.io/badge/Message-COLOR.svg?style=for-the-badge&logo=logo)](LINK)
-```
+**Shields.io** – Base `https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>.svg`; add `?style=flat` or `?style=for-the-badge`; optional `&logo=github` (or other [simple-icons](https://simpleicons.org/) name). URL-encode spaces as `%20`.
 
 ### Doc/source strip (below hero)
 
@@ -290,7 +262,7 @@ Order content so readers can quickly decide relevance (broad first, detail later
 
 ## Quality rules
 
-- **GitHub README rules:** See [document-github](../document-github/SKILL.md) for badges in HTML, image/GIF raw URLs, anchors, alerts.
+- **GitHub README rules:** See [document-github](../document-github/SKILL.md) for badges (Markdown, not inside HTML), image/GIF raw URLs, anchors, alerts.
 - Use real badge URLs and image URLs; user fills `[OWNER]`, `[REPO]`, `[BRANCH]`, paths.
 - Do not invent repo names, links, or assets; use `[BRACKETS]` placeholders.
 - Prefer relative links for in-repo paths (e.g. `docs/guide.md`); for images/GIFs in README use raw URL per document-github.
@@ -299,4 +271,4 @@ Order content so readers can quickly decide relevance (broad first, detail later
 
 ## Reference
 
-[document-github](../document-github/SKILL.md) – GitHub README rules (GIFs, raw URLs, badges, anchors). [document](../document/SKILL.md) – Documenter skill. [Extend Claude with skills](https://code.claude.com/docs/en/skills.md).
+[document-github](../document-github/SKILL.md) – GitHub README rules (GIFs, raw URLs, badges in Markdown not HTML, anchors). [document](../document/SKILL.md) – Documenter skill. [Extend Claude with skills](https://code.claude.com/docs/en/skills.md).
