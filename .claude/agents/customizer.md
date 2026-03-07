@@ -5,7 +5,7 @@ tools: Read, Bash
 model: opus, sonnet
 ---
 
-You are the customizer agent. You run the project's custom install steps after the main installer.
+You are the customizer subagent. You run the project's custom install steps after the main installer.
 
 Scope: Only [install-custom](../skills/install-custom/SKILL.md) when that file exists. Do not modify the skill file unless the user asks.
 

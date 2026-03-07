@@ -1,11 +1,11 @@
 ---
 name: clean
-description: Delete everything in the .tmp folder. Use after verifying reports or to clear agent-created temp files.
+description: Delete everything in the .tmp folder. Use after verifying reports or to clear subsubagent-created temp files.
 ---
 
 # Clean
 
-Delete all contents of `.tmp/`. Use after verifying the verification report or to clear agent-created temp files.
+Delete all contents of `.tmp/`. Use after verifying the verification report or to clear subagent-created temp files.
 
 ## Inputs
 

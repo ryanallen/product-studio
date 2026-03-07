@@ -14,7 +14,7 @@ Check each document for hierarchy, top nav, and emoji in headings. Collect issue
 
 ## Output
 
-List of files processed and any issues (missing hierarchy, missing or non-horizontal nav, missing emoji). Then run [document-verification](../document-verification/SKILL.md) with this list and the full set of files (same agent run; writes `.tmp/verification-report.md`).
+List of files processed and any issues (missing hierarchy, missing or non-horizontal nav, missing emoji). Then run [document-verification](../document-verification/SKILL.md) with this list and the full set of files (same subagent run; writes `.tmp/verification-report.md`).
 
 ## Process
 
@@ -26,7 +26,7 @@ List of files processed and any issues (missing hierarchy, missing or non-horizo
 
 4. **Emojis in headlines** – Every heading line (`#`, `##`, `###`) must start with an emoji (at the very beginning of the heading text). Record any heading that does not.
 
-5. **Report** – Output the list of files and issues. Then run [document-verification](../document-verification/SKILL.md) with this list and the full set of files processed (same agent run; write `.tmp/verification-report.md`).
+5. **Report** – Output the list of files and issues. Then run [document-verification](../document-verification/SKILL.md) with this list and the full set of files processed (same subagent run; write `.tmp/verification-report.md`).
 
 ## Reference
 

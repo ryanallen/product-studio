@@ -1,15 +1,15 @@
 ---
 name: coordinator
-description: "Workflow spec for Install, Save, Discover, Learn, Propose solutions, Clean up studio. Main conversation uses this playbook; do not delegate to coordinator. When user says install, save, discover, etc., main runs the steps below by delegating to the listed agents."
+description: "Workflow spec for Install, Save, Discover, Learn, Propose solutions, Clean up studio. Main conversation uses this playbook; do not delegate to coordinator. When user says install, save, discover, etc., main runs the steps below by delegating to the listed subagents."
 tools: Read, Bash, Grep, Glob, TodoWrite
 model: opus, sonnet
 ---
 
-This file is the **workflow playbook**, not an agent to invoke. The main conversation uses it as the single source of truth for which workflow runs and which agent runs each step. Main must do the delegating because subagents cannot spawn other subagents; using this playbook lets main call researcher, documenter, verifier, etc. for each step.
+This file is the **workflow playbook**, not a subagent to invoke. The main conversation uses it as the single source of truth for which workflow runs and which subagent runs each step. Main must do the delegating because subagents cannot spawn other subagents; using this playbook lets main call researcher, documenter, verifier, etc. for each step.
 
-**How it works:** When the user requests Install, Save, Discover, Learn, Propose solutions, or Clean up studio, you (the main conversation) determine which workflow applies, then run that workflow's steps in order by **delegating from main** to the agent listed for each step. Do not delegate to the coordinator; you are following this spec and delegating to researcher, documenter, verifier, installer, etc. yourself.
+**How it works:** When the user requests Install, Save, Discover, Learn, Propose solutions, or Clean up studio, you (the main conversation) determine which workflow applies, then run that workflow's steps in order by **delegating from main** to the subagent listed for each step. Do not delegate to the coordinator; you are following this spec and delegating to researcher, documenter, verifier, installer, etc. yourself.
 
-Use work/paths.md for team, space, and ticket-id values. Do not skip steps or invent workflows. Delegate only to agents listed in Team.
+Use work/paths.md for team, space, and ticket-id values. Do not skip steps or invent workflows. Delegate only to subagents listed in Team.
 
 ## Team
 

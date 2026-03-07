@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Install
 
-Run the **Install** workflow in [Coordinator](../../agents/coordinator.md). The installer agent runs the full flow (config, choices, MCP, Figma bridge if chosen, handoff, then customizer if present).
+Run the **Install** workflow in [Coordinator](../../agents/coordinator.md). The installer subagent runs the full flow (config, choices, MCP, Figma bridge if chosen, handoff, then customizer if present).
 
 ## Inputs
 
@@ -22,4 +22,4 @@ Install flow complete. User may need to restart the app and run `/mcp` for OAuth
 
 ## Reference
 
-[Coordinator](../../agents/coordinator.md) – Install workflow. [installer](../../agents/installer.md) – Agent that runs the flow.
+[Coordinator](../../agents/coordinator.md) – Install workflow. [installer](../../agents/installer.md) – Subagent that runs the flow.

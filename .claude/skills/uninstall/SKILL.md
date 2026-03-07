@@ -36,4 +36,4 @@ Tell user to fully restart Claude Code.
 
 ## Reference
 
-[install-mcp](../install-mcp/SKILL.md) – Adds these MCPs. [Coordinator](../../agents/coordinator.md) – Uninstaller agent.
+[install-mcp](../install-mcp/SKILL.md) – Adds these MCPs. [Coordinator](../../agents/coordinator.md) – Uninstaller subagent.

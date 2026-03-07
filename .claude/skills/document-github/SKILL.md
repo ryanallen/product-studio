@@ -32,14 +32,14 @@ Apply these rules whenever output is a GitHub-hosted README or the user asks abo
 
 - **Base:** `https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>?style=flat&labelColor=4b5563`
   - `labelColor=4b5563` = grey left side. Second color = right side. URL-encode spaces as `%20`, hyphens in labels as `-` (e.g. `subagents`, `install--custom`).
-- **Subagent badge** (agent name + "subagents"): grey left, purple right.
-  - Example: `[![Coordinator](https://img.shields.io/badge/Coordinator-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md)`
+- **Subagent badge** (lowercase subagent name + "subagents"): grey left, purple right.
+  - Example: `[![coordinator](https://img.shields.io/badge/coordinator-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md)`
   - Right-side color: `7D70DB`.
 - **Skill badge** (skill name + "skills"): grey left, blue right.
   - Example: `[![install](https://img.shields.io/badge/install-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/install/SKILL.md)`
   - Right-side color: `0ea5e9`. For kebab-case skill names use a hyphen in the label (e.g. `document--paths` for "document-paths").
 - **Linked badge:** wrap in `[![alt](url)](destination)`. Unlinked: `![alt](url)`.
-- **Where badges render on GitHub:** Markdown images render in normal flow and inside **table cells**. They do **not** render inside block HTML (e.g. `<div>`, `<p>`). So: hero badges inside a `<div align="center">` must use HTML `<img>` if you need centering; agent and skill badges in **tables** use Markdown so they render.
+- **Where badges render on GitHub:** Markdown images render in normal flow and inside **table cells**. They do **not** render inside block HTML (e.g. `<div>`, `<p>`). So: hero badges inside a `<div align="center">` must use HTML `<img>` if you need centering; subagent and skill badges in **tables** use Markdown so they render.
 
 ### Section anchors (TOC links)
 

@@ -33,4 +33,4 @@ Config updated with new token. User must fully restart the app.
 
 ## Reference
 
-[install-mcp](../install-mcp/SKILL.md) – Same add command. [Coordinator](../../agents/coordinator.md) – Updater agent.
+[install-mcp](../install-mcp/SKILL.md) – Same add command. [Coordinator](../../agents/coordinator.md) – Updater subagent.

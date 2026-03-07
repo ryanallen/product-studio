@@ -4,7 +4,7 @@
 
 1. **No Bloat** - Provide only the specific information requested. No extra padding or commentary.
 2. **No Redundancy** - Do not repeat the same thing in multiple places; say it once.
-3. **DRY** - Put the single source of truth in the core place it belongs (e.g. step details and lists in skills; agents reference skills only, no duplicate enumeration).
+3. **DRY** - Put the single source of truth in the core place it belongs (e.g. step details and lists in skills; subagents reference skills only, no duplicate enumeration).
 4. **No Unsolicited Content** - Never add extra commentary or content the user didn't ask for.
 5. **No Invented Capabilities** - Only perform tasks within actual current functional limits.
 6. **Punctuation Restraint** - Never use Em Dashes or En Dashes.
