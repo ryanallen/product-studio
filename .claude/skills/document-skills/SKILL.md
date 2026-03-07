@@ -1,90 +1,94 @@
 ---
 name: document-skills
-description: Produce or update a skill (SKILL.md and supporting files) per Claude Code best practices. Use when user says document a skill, write a skill, update skill docs, refine skill, or /document-skills.
+description: Write or update a skill (SKILL.md and any extra files) so it follows Claude Code best practices. Use when user says document a skill, write a skill, update skill docs, refine skill, or /document-skills.
 disable-model-invocation: true
 argument-hint: "[skill-path] [source]"
 ---
 
 # Document Skills
 
-Produce or update a skill so it follows Claude Code best practices. Apply the following to the target skill directory.
+Write or update a skill so it fits Claude Code’s expectations. Use the structure and checklist below for the target skill folder.
 
 ## Inputs
 
-1. **Target skill** – Path to the skill directory (e.g. `.claude/skills/example/`) or the skill name. If omitted, use the current or specified context.
-2. **Source** – Optional. Draft, user instructions, or research to turn into or merge into the skill.
+1. **Target skill** – Path to the skill folder (e.g. `.claude/skills/example/`) or the skill name. If you don’t give one, use the current or given context.
+2. **Source** – Optional. A draft, user instructions, or notes to turn into the skill or merge in.
 
 ## Output
 
-SKILL.md and optional supporting files updated per structure and checklist below.
+SKILL.md updated (and any supporting files if needed), using the structure and checklist below.
 
 ## Process
 
-### Skill structure
+### 1. Skill layout
 
-- One directory per skill; required file: `SKILL.md`.
-- **Where**: Project = `.claude/skills/<name>/`; personal = `~/.claude/skills/<name>/`. Nested `.claude/skills/` (e.g. in a package) are discovered automatically.
-- Optional: `template.md`, `examples/`, `scripts/`. Reference them from `SKILL.md` so Claude knows when to load them.
-- **Length**: Keep `SKILL.md` under 500 lines; move long reference to supporting files (e.g. `reference.md`, `examples.md`).
+- One folder per skill. The main file is always `SKILL.md`.
+- **Where skills live:** In a project, `.claude/skills/<name>/`. For your own machine, `~/.claude/skills/<name>/`. Claude finds `.claude/skills/` even when it’s nested (e.g. inside a package).
+- You can add `template.md`, `examples/`, or `scripts/`. Say so in SKILL.md so Claude knows when to use them.
+- **Length:** Keep SKILL.md under 500 lines. Put long reference material in other files (e.g. `reference.md`) and link from SKILL.md.
 
-### SKILL.md format
+### 2. SKILL.md format
 
-#### Frontmatter (YAML between `---`)
+#### Frontmatter (the YAML block between the first `---` lines)
+
+Frontmatter is the config at the top of the file. Use these fields:
 
 | Field | Use |
 |-------|-----|
-| `name` | Optional. Lowercase, letters, numbers, hyphens only (max 64 chars). Defaults to directory name. Becomes `/slash-command`. |
-| `description` | **Recommended.** What the skill does and when to use it; include phrases users would say so Claude can auto-invoke. If omitted, uses the first paragraph of markdown content. |
+| `name` | Optional. Lowercase, letters, numbers, hyphens only (max 64 chars). Defaults to the folder name. This becomes the `/slash-command`. |
+| `description` | **Recommended.** What the skill does and when to use it. Include phrases people might say so Claude can run it automatically. If you leave it out, Claude uses the first paragraph of the file. |
 | `argument-hint` | Optional. Shown in autocomplete (e.g. `[issue-number]`, `[filename] [format]`). |
-| `disable-model-invocation` | Set `true` for workflows with side effects or that must run only when the user invokes (e.g. deploy, commit). |
-| `user-invocable` | Set `false` to hide from `/` menu; skill is context-only for Claude. |
-| `allowed-tools` | Optional. Tools Claude may use without asking when this skill is active. Can use patterns (e.g. `Bash(gh *)`, `Bash(python *)`). |
-| `model` | Optional. Model when skill is active. |
-| `context` | Set `fork` to run in a forked subagent. Only for skills with explicit instructions (a task), not reference-only content. |
-| `agent` | When `context: fork`, which subagent type (e.g. Explore, Plan, general-purpose). |
+| `disable-model-invocation` | Set `true` for skills that change things or must run only when the user asks (e.g. deploy, commit). |
+| `user-invocable` | Set `false` to hide the skill from the `/` menu; then it’s context-only. |
+| `allowed-tools` | Optional. Tools Claude can use without asking while this skill is active. Supports patterns (e.g. `Bash(gh *)`). |
+| `model` | Optional. Which model to use when this skill runs. |
+| `context` | Set `fork` to run the skill in a subagent. Only for skills with clear steps (a task), not reference-only. |
+| `agent` | When `context: fork`, which subagent (e.g. Explore, Plan, general-purpose). |
 | `hooks` | Optional. See hooks docs. |
 
-**YAML:** Avoid colons inside frontmatter values. Use a different phrase (e.g. "Scope is" or "Scope includes" instead of "Scope:") so parsers (e.g. GitHub) do not treat them as new keys.
+**YAML gotcha:** Avoid colons inside a value. They can be read as a new key. Use something like “Scope is” instead of “Scope:” in the text.
 
 #### Content type
 
-- **Reference** – Conventions, patterns, style guides. Stays inline; Claude uses it in conversation.
-- **Task** – Step-by-step; often add `disable-model-invocation: true` and invoke with `/name`.
+- **Reference** – Conventions, patterns, style. Stays in the skill; Claude uses it in the conversation.
+- **Task** – Step-by-step. Usually set `disable-model-invocation: true` and trigger with `/name`.
 
-#### SKILL.md body structure (match existing skills)
+#### Body sections (same order for every skill)
 
-Every skill must use the same section layout so skills stay consistent and easy to scan:
+Use the same section order so skills are easy to scan:
 
-1. **# Title** – Skill name as H1, then one short intro paragraph (what the skill does).
-2. **## Inputs** – What the skill needs (user input, paths, options). List numbered items. Use "None" or "Optional" if there are no required inputs.
-3. **## Output** – What the skill produces or delivers (file, behavior, handoff). One short block.
-4. **## Process** – How to do it. Numbered steps or subsections (e.g. "### 1. Step name"). Put all how-to and rules here.
-5. **## Reference** – Optional. Links to related skills, docs, or paths (e.g. `[other-skill](../other-skill/SKILL.md)`).
+1. **# Title** – Skill name as H1, then one short intro (what it does).
+2. **## Inputs** – What the skill needs (user input, paths, options). Number the items. Use “None” or “Optional” when nothing is required.
+3. **## Output** – What you get (a file, a behavior, a handoff). One short block.
+4. **## Process** – How to do it. Numbered steps or subsections (e.g. “### 1. Step name”). Put all how-to and rules here.
+5. **## Reference** – Optional. Links to related skills or docs.
 
-Omit a section only if it truly does not apply (e.g. a pure reference skill might have no Process steps). When in doubt, include all five. Align new or updated skills with this structure and with other skills in the same repo.
+Skip a section only if it really doesn’t apply. When unsure, include all five. Match the layout of other skills in the repo.
 
-#### Substitutions (in body)
+#### Substitutions (in the body text)
 
-- `$ARGUMENTS` – All arguments; if absent, arguments are appended as `ARGUMENTS: `.
-- `$ARGUMENTS[N]` or `$N` – Argument by 0-based index.
+- `$ARGUMENTS` – All arguments; if missing, they’re added as “ARGUMENTS: …”.
+- `$ARGUMENTS[N]` or `$N` – The Nth argument (0-based).
 - `${CLAUDE_SESSION_ID}` – Session ID.
-- `${CLAUDE_SKILL_DIR}` – Skill directory (e.g. for scripts).
+- `${CLAUDE_SKILL_DIR}` – The skill folder (e.g. for scripts).
 
-For pre-run shell output injection, see [Inject dynamic context](https://code.claude.com/docs/en/skills.md#inject-dynamic-context).
+For injecting shell output before the skill runs, see [Inject dynamic context](https://code.claude.com/docs/en/skills.md#inject-dynamic-context).
 
-### Checklist when writing or updating a skill
+### 3. Checklist when writing or updating
 
-1. **Frontmatter and discovery**: `description` present and specific, with natural keywords and when-to-use; `name` matches intent; `disable-model-invocation: true` for task-only or side-effect skills.
-2. **Body structure**: SKILL.md includes (as applicable) Inputs, Output, Process, Reference in that order; matches the same layout as other skills in the repo.
-3. **Length**: Keep `SKILL.md` under 500 lines; long reference in separate files, linked from `SKILL.md`.
-4. **Supporting files**: Mention in `SKILL.md` with clear when-to-load guidance.
-5. **Arguments**: If the skill takes inputs, use `$ARGUMENTS` or `$N` and optionally `argument-hint`.
-6. **Invocation**: Set `disable-model-invocation` and/or `user-invocable` per desired (user-only, Claude-only, or both).
+1. **Frontmatter:** `description` is there and specific (what it does, when to use it). `name` matches what the skill is for. For task or side-effect skills, set `disable-model-invocation: true`.
+2. **Sections:** Inputs, Output, Process, Reference are present and in that order. Same layout as other skills in the repo.
+3. **Length:** SKILL.md under 500 lines. Long reference in other files, linked from SKILL.md.
+4. **Supporting files:** If you use them, say so in SKILL.md and when to load them.
+5. **Arguments:** If the skill takes input, use `$ARGUMENTS` or `$N` and optionally `argument-hint`.
+6. **Invocation:** Set `disable-model-invocation` and/or `user-invocable` so the skill runs when you want (user-only, Claude-only, or both).
 
-1. Read the target skill path and any provided source material.
-2. Apply the checklist and the structure above; preserve existing behavior unless the user asks to change it.
-3. Write or update `SKILL.md` (and any supporting files if requested).
-4. Do not invent capabilities; only document what the skill actually does or is specified to do.
+### 4. Steps to run
+
+1. Read the target skill path and any source you have.
+2. Apply the checklist and structure above. Don’t change existing behavior unless the user asked for it.
+3. Write or update SKILL.md (and supporting files if needed).
+4. Only document what the skill actually does. Don’t add capabilities that aren’t there.
 
 ## Reference
 
