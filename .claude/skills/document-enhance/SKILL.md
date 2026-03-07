@@ -35,7 +35,17 @@ Ask what the project is, what it does, who it’s for, and what assets exist (lo
 **Rule:** If the text mentions something that has a URL or path, add a link. Don’t leave readers guessing where to go.
 
 - **Example of failing:** A README says “Product Studio wires researcher, documenter, strategist, verifier, and other subagents to workflows” and “Skills live under `.claude/skills/`” but never links to `.claude/agents` or `.claude/skills` or the subagents/skills sections. Fix: link “subagents” to `.claude/agents` or the “Subagents and their skills” section; link “skills” to `.claude/skills` or that section; link named subagents/skills to their cards or files where they’re defined.
-- **Apply everywhere:** Section names, file paths, tool names, repos, docs. If it’s linkable, link it. Use relative links for in-repo paths (e.g. `[install skill](.claude/skills/install/SKILL.md)`).
+- **Apply everywhere:** Section names, file paths, tool names, repos, docs. If it’s linkable, link it. Use relative links for in-repo paths.
+
+**When enhancing a README, link every mention of:**
+
+- **Slash commands** – e.g. `/install`, `/analyze-figma`, `/research`, `/save`. Link each to its skill: `[\`/install\`](.claude/skills/install/SKILL.md)` (adjust path to match the repo).
+- **Trigger phrases or skill names** – e.g. "install", "research", "document". Link to the skill: `[install](.claude/skills/install/SKILL.md)`.
+- **Directory paths** – e.g. `.claude/agents/`, `.claude/skills/`. Use relative links: `[.claude/agents/](.claude/agents/)`, `[.claude/skills/](.claude/skills/)`.
+- **Skill names in body text** – document, document-paths, analyze-figma, verify-docs, clean, save, etc. Link each to its SKILL.md: `[analyze-figma](.claude/skills/analyze-figma/SKILL.md)`.
+- **Agent/subagent names** – When mentioned in prose, link to the agent file: `[installer](.claude/agents/installer.md)`.
+- **Repo file paths** – e.g. `work/paths.md`, `work/paths.md.template`, `.tmp/`. Link the path: `[work/paths.md](work/paths.md)` (or to a section if the file is gitignored and you prefer an anchor).
+- **Section names** – Link to in-page anchors where it helps (e.g. `[Subagents and their skills](#-subagents-and-their-skills)`).
 
 ### 3. Produce and deliver
 
@@ -227,7 +237,7 @@ Order so readers can quickly see what matters:
 
 ## Quality rules
 
-- **Link everything linkable.** See Process step 2. Names, paths, sections, tools, repos, docs: if you mention it and it has a URL or path, add the link.
+- **Link everything linkable.** See Process step 2 and the "When enhancing a README, link every mention of" list. Names, paths, sections, tools, repos, docs: if you mention it and it has a URL or path, add the link. Include slash commands, skill names, directory paths, agent names, and repo file paths.
 - **Social share image:** Set one. Use the hero image or a dedicated image e.g. `assets/social.png`. Tell the user where to set it, e.g. repo Settings → Social preview, or document it in the README/delivery notes.
 - **GitHub README rules:** [document-github](../document-github/SKILL.md) for image/GIF raw URLs, badges, anchors, alerts.
 - Use real image URLs; user fills `[OWNER]`, `[REPO]`, `[BRANCH]`, paths. Don’t invent repo names, links, or assets; use `[BRACKETS]` placeholders.
