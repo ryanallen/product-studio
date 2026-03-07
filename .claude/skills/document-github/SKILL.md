@@ -1,6 +1,6 @@
 ---
 name: document-github
-description: GitHub README rules: animated GIFs (raw URLs), images, anchors, alerts. Use when writing or enhancing GitHub READMEs so assets render correctly. In Claude Code and Cursor, /skills lists all.
+description: GitHub README rules: animated GIFs (raw URLs), images, shields.io badges, anchors, alerts. Use when writing or enhancing GitHub READMEs so assets render correctly. In Claude Code and Cursor, /skills lists all.
 ---
 
 # Document GitHub
@@ -9,7 +9,7 @@ Rules for content that renders correctly on GitHub (READMEs, docs). Single sourc
 
 ## Inputs
 
-- **Context** – When producing or enhancing a GitHub README, or when the user asks how to make something work on GitHub (e.g. animated GIFs, images, links).
+- **Context** – When producing or enhancing a GitHub README, or when the user asks how to make something work on GitHub (e.g. animated GIFs, images, badges, links).
 
 ## Output
 
@@ -25,6 +25,20 @@ Apply these rules whenever output is a GitHub-hosted README or the user asks abo
   - Example: `![Product Studio](https://raw.githubusercontent.com/ryanallen/product-studio/main/assets/hero.gif)`
 - **Same for other in-repo images** if they fail to load or animate: use `https://raw.githubusercontent.com/[OWNER]/[REPO]/[BRANCH]/path/to/file.png` (or `.gif`, `.svg`).
 - **Source:** [GitHub community discussion 81359](https://github.com/orgs/community/discussions/81359) – embedding animated GIF in README; raw URL recommended.
+
+### Shields.io badges
+
+Use plain Markdown image syntax so badges render on GitHub. Keep badges outside HTML blocks (e.g. not inside `<p align="center">`).
+
+- **Base:** `https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>?style=flat&labelColor=4b5563`
+  - `labelColor=4b5563` = grey left side. Second color = right side. URL-encode spaces as `%20`, hyphens in labels as `-` (e.g. `Agent%20workflow`, `install--custom`).
+- **Agent workflow badge** (agent name + "Agent workflow"): grey left, purple right.
+  - Example: `[![Coordinator](https://img.shields.io/badge/Coordinator-Agent%20workflow-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md)`
+  - Right-side color: `7D70DB`.
+- **Skill badge** (skill name + "SKILL"): grey left, blue right.
+  - Example: `[![install](https://img.shields.io/badge/install-SKILL-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/install/SKILL.md)`
+  - Right-side color: `0ea5e9`. For kebab-case skill names use a hyphen in the label (e.g. `document--paths` for "document-paths").
+- **Linked badge:** wrap in `[![alt](url)](destination)`. Unlinked: `![alt](url)`.
 
 ### Section anchors (TOC links)
 
