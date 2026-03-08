@@ -1,7 +1,7 @@
 ---
 name: documenter
 description: Documents findings in enhanced markdown with mermaid diagrams. Keeps path tree in sync when handed off from verifier; documents skills and subagents.
-triggers: "refine, write, write up, document, update, make, /document, document with a subagent, use a subagent for documentation, write a subagent, update subagent, /document-agent"
+triggers: "refine, write, write up, document, update, make, /document, document with a subagent, use a subagent for documentation, write a subagent, update subagent, /document-agent, document a skill, write a skill, update skill docs, refine skill, /document-skills, sync paths, update paths, document paths, /document-paths, update ticket, Jira, document ticket, /document-ticket"
 tools: Read, Write, Bash, Glob, Grep, TodoWrite, mcp__atlassian-rovo__*
 model: opus, sonnet
 ---

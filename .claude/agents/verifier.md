@@ -1,7 +1,7 @@
 ---
 name: verifier
 description: Runs verify-task (task start), verify-paths (Save), and verify-docs + document-verification (Clean up studio).
-triggers: []
+triggers: "verification report, verify docs report, /document-verification, verify docs, /verify-docs"
 tools: Read, Write, Bash, Glob, Grep
 model: opus, sonnet
 ---

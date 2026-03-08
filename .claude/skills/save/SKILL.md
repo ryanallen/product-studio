@@ -1,7 +1,6 @@
 ---
 name: save
 description: Stage all changes since last commit and create one or more commits with title and description. Does not push.
-triggers: "save, /save"
 disable-model-invocation: true
 ---
 

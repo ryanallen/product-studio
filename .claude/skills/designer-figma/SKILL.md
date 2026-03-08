@@ -1,7 +1,6 @@
 ---
 name: designer-figma
 description: Generate or update a Figma design via Figma Console MCP; or get capture ID/endpoint for capture flows.
-triggers: "design, /designer-figma"
 disable-model-invocation: true
 argument-hint: "[file-url-or-key] [node-id]"
 ---

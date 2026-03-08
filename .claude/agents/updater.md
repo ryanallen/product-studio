@@ -1,7 +1,7 @@
 ---
 name: updater
 description: Updates Figma token (update-figma), commits (save), syncs upstream (sync-upstream).
-triggers: "sync, sync upstream, update figma, /sync-upstream, /update-figma"
+triggers: "save, sync, sync upstream, update figma, /save, /sync-upstream, /update-figma"
 tools: Bash, Read, Glob, Grep
 model: opus, sonnet
 ---

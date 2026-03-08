@@ -1,7 +1,6 @@
 ---
 name: verify-docs
 description: Check doc scope and skill triggers vs coordinator; write report via document-verification. Part of Clean up studio.
-triggers: "verify docs, /verify-docs"
 disable-model-invocation: true
 ---
 

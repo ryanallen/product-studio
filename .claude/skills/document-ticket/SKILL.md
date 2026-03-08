@@ -1,7 +1,6 @@
 ---
 name: document-ticket
 description: Post a comment on the Jira ticket with the deliverables link.
-triggers: "update ticket, Jira, document ticket, /document-ticket"
 disable-model-invocation: true
 argument-hint: "[ticket-id]"
 ---

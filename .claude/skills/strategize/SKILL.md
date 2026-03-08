@@ -1,7 +1,6 @@
 ---
 name: strategize
 description: Analyze findings: Ishikawa (fishbone) and Lovebug (causes + barriers), Five Whys, summary table of top problems.
-triggers: "strategize, define, figure out, find cause, /strategize"
 disable-model-invocation: true
 ---
 

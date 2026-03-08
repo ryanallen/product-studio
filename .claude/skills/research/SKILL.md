@@ -1,7 +1,6 @@
 ---
 name: research
 description: Gather from what the user gives (chat, tickets, links, text, files, images). Follow links up to 5 levels; write findings into project README in four sections for document skill.
-triggers: "research, learn, look at this, read, /research"
 disable-model-invocation: true
 argument-hint: "[ticket-id-or-url]"
 ---

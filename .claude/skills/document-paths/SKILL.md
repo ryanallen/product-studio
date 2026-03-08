@@ -1,7 +1,6 @@
 ---
 name: document-paths
 description: Sync work/paths.md with actual paths under work/. Add or remove entries; then run Save step 3.
-triggers: "sync paths, update paths, document paths, /document-paths"
 disable-model-invocation: true
 ---
 

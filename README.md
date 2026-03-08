@@ -50,6 +50,7 @@ Product Studio connects specialist helpers (subagents) to jobs like [install](.c
 
 - [Setup](#-setup)
 - [Subagents and skills](#-subagents-and-their-skills)
+- [Frontmatter (agents and skills)](#-frontmatter-agents-and-skills)
 - [Repo structure](#-repo-structure)
 - [.tmp and cleanup](#-tmp-and-cleanup)
 
@@ -120,6 +121,48 @@ To run a skill, say its trigger phrase or type `/skill-name`. Each skill is a fo
 |:--|
 | [![updater](https://img.shields.io/badge/updater-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/updater.md) <br> [![update-figma](https://img.shields.io/badge/update--figma-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/update-figma/SKILL.md) [![save](https://img.shields.io/badge/save-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/save/SKILL.md) [![sync-upstream](https://img.shields.io/badge/sync--upstream-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/sync-upstream/SKILL.md) |
 | Figma token, commit, or sync with upstream. |
+
+---
+
+## Frontmatter (agents and skills)
+
+<details>
+<summary>What the YAML at the top of agents and skills means</summary>
+
+Agents (`.claude/agents/*.md`) and skills (`.claude/skills/<name>/SKILL.md`) use a YAML block between the first `---` lines. This is frontmatter. Here’s what each field does and why we set it the way we do.
+
+### Common to both
+
+| Field | Meaning | Reasoning |
+|-------|--------|-----------|
+| `name` | Identifier and slash-command (e.g. `/document`). Lowercase, letters, numbers, hyphens. | Lets users and flows invoke by name. Defaults to folder name if omitted. |
+| `description` | One line: what this agent or skill does. | Shown in menus and used when matching user intent. |
+| `triggers` | Comma-separated phrases that match the user’s request (e.g. "document", "write a skill"). | Coordinator and flows use these to pick an agent or flow. **Agents** need triggers so the coordinator can delegate. **Skills** with `disable-model-invocation: true` do *not* run from trigger matching; put the skill’s trigger phrases on the **agent** that runs that skill (e.g. documenter has "document a skill", "write a skill" and then runs document-skills). |
+
+### Skills only
+
+| Field | Meaning | Reasoning |
+|-------|--------|-----------|
+| `disable-model-invocation` | `true` = only run when explicitly asked or when an agent runs it; no automatic trigger matching on the skill itself. | Used for skills that change things (write files, deploy) or must run only on purpose. When true, triggers on the skill are ignored; the agent that invokes the skill should list those triggers. |
+| `argument-hint` | Shown in autocomplete (e.g. `[skill-path] [source]`). | Tells the user what optional args they can pass. |
+| `context` | e.g. `fork` = run in a subagent. | Keeps the main chat clean when the skill does multi-step or file-changing work. |
+| `agent` | When `context: fork`, which subagent type (e.g. `general-purpose`). | Picks the runner so the forked task has the right tools and behavior. |
+| `user-invocable` | `false` = hide from `/` menu; skill is only used when referenced. | For skills that are internal to a flow. |
+| `allowed-tools` | Optional allowlist of tools the skill can use without asking. | Restricts or focuses tool use. |
+| `model` | Optional model override when this skill runs. | Use when a task needs a specific model. |
+
+### Agents only
+
+| Field | Meaning | Reasoning |
+|-------|--------|-----------|
+| `tools` | Tools this agent can use (e.g. Read, Write, MCP tools). | Scopes capability; listed in agent file. |
+| `model` | Preferred model(s) for this agent (e.g. opus, sonnet). | Match model to task (e.g. research vs. quick edits). |
+
+**Summary:** Triggers live on agents (and on skills that run by coordinator matching). Skills that are “run only when asked” use `disable-model-invocation: true`, no triggers on the skill, and the phrases on the agent that invokes them. Fork plus agent type keeps heavy or write-heavy skills in a subagent.
+
+</details>
+
+---
 
 | verifier |
 |:--|

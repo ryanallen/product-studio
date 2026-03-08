@@ -1,7 +1,6 @@
 ---
 name: install
 description: Run standard Product Studio install (config, choices, MCP, Figma bridge if chosen, handoff, customizer if present).
-triggers: "setup, install, /install"
 disable-model-invocation: true
 ---
 

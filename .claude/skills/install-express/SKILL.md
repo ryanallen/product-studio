@@ -1,7 +1,6 @@
 ---
 name: install-express
 description: Express install: show hidden yes, install all (figma-console, atlassian-rovo, github), collect Figma token and GitHub PAT. Then resume at install-mcp.
-triggers: []
 disable-model-invocation: true
 ---
 

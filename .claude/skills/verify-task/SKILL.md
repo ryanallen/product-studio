@@ -1,7 +1,6 @@
 ---
 name: verify-task
 description: Append a new task section to the running task checklist (.tmp/task-checklist.md); one heading per task with date timestamp; list each skill in the flow so the user can verify every skill was run.
-triggers: []
 disable-model-invocation: true
 ---
 

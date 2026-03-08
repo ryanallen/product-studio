@@ -1,7 +1,6 @@
 ---
 name: install-mcp
 description: Add chosen MCP servers to user config (Cursor .cursor/mcp.json or Claude Code global). Use only MCPs chosen in install-choices.
-triggers: []
 disable-model-invocation: true
 ---
 

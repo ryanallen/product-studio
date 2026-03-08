@@ -1,7 +1,6 @@
 ---
 name: document-verification
 description: Write verification report to .tmp/ from verifier output; compare to README and paths.md.
-triggers: "verification report, verify docs report, /document-verification"
 disable-model-invocation: true
 ---
 
