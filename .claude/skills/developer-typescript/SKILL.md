@@ -1,60 +1,77 @@
 ---
 name: developer-typescript
-description: Type-safe TypeScript: narrowing, inference, generics, strict mode, utility types, declarations, migration.
+description: Type-safe TypeScript in plain language: narrowing, inference, generics, strict mode, utility types, declarations, migration.
 triggers: "ts, typescript"
 ---
 
 # Developer TypeScript
 
-Use when the user needs TypeScript help: typing, narrowing, generics, strict mode, declaration files, or migration from JS.
+Use when the user needs TypeScript help: typing, narrowing, generics, strict mode, declaration files, or moving from JavaScript. Explain in simple words; the first time you use a term, briefly say what it means.
 
 ## Stop using `any`
 
-- Use `unknown` and narrow before use; `any` skips type safety. Type API responses or use `unknown`; never `any`. Prefer `unknown` from the start.
+Use `unknown` when you don't know the type, then narrow (e.g. check the shape) before using it. `any` turns off type checking. Type API results or use `unknown`; don't use `any`. Start with `unknown` so you don't get stuck with `any` later.
 
 ## Narrowing
 
-- `filter(Boolean)` does not narrow; use `.filter((x): x is T => Boolean(x))`.
-- `Object.keys(obj)` is `string[]`, not `keyof typeof obj`.
-- `Array.isArray()` narrows to `any[]`; may need assertion for element type.
-- `in` narrows only when the property is in exactly one branch of the union.
+Narrowing means TypeScript learns a more specific type after a check.
+
+- `filter(Boolean)` does not narrow. Use a type guard: `.filter((x): x is T => Boolean(x))`.
+- `Object.keys(obj)` is typed as `string[]`, not "the actual keys of obj," because objects can have extra keys at runtime.
+- `Array.isArray()` narrows to an array but the element type may be `any`; you may need an assertion.
+- The `in` check narrows only when the property appears in exactly one branch of the union.
 
 ## Literal types
 
-- `let x = "hello"` is `string`; use `const` or `as const` for a literal. Object properties widen; use `as const` or type annotation. `<T extends string>` with a literal infers `string`, not the literal.
+- `let x = "hello"` has type `string`. For the literal type `"hello"`, use `const` or `as const`.
+- Object properties widen: `{ status: "ok" }` gets `status: string`. Use `as const` or a type annotation to keep the literal.
+- For a generic like `<T extends string>` with a literal, TypeScript may infer `string`, not the literal.
 
 ## Inference
 
-- Callbacks lose inference in some array methods; annotate when wrong. Generic functions need usage to infer; `fn<T>()` cannot infer without a value or annotation. Nested generics often fail; use intermediate types.
+TypeScript infers types when it can. It often loses inference in callbacks (e.g. some array methods); add a parameter type when it's wrong. A generic function like `fn<T>()` can't infer `T` without a value or an explicit type. Nested generics often fail to infer; use an intermediate type.
 
 ## Discriminated unions
 
-- Add a literal `type` or `kind` per variant. Exhaustive check: `default: const _never: never = x`. Do not mix with optional properties.
+Use a literal field (e.g. `type` or `kind`) on each variant so TypeScript can tell them apart. To make sure you handle every case, use `default: const _never: never = x` so a missing case causes a compile error. Don't mix optional properties into the same union or narrowing breaks.
 
 ## `satisfies` vs type annotation
 
-- `const x: Type = val` widens and can lose literal info. `const x = val satisfies Type` keeps literals and checks compatibility; prefer for config.
+- `const x: Type = val` makes `x` have type `Type` and can drop literal details.
+- `const x = val satisfies Type` keeps the literal type and checks that it fits `Type`. Prefer this for config objects.
 
 ## Strict null
 
-- `?.` yields `undefined`, not `null`. `??` only replaces null/undefined; `||` catches all falsy. Use `!` only as last resort.
+- Optional chaining `?.` gives `undefined` when something is missing, not `null`. That can matter for APIs that use `null`.
+- `??` only replaces `null` and `undefined`; `||` replaces any falsy value (including `0` and `""`).
+- Use the non-null assertion `!` only as a last resort; prefer narrowing or an early return.
 
 ## Module boundaries
 
-- `import type` for type-only; `export type { X }` for re-exports. `.d.ts`: `declare module` needs exact path (`"lodash"` ≠ `"lodash/index"`). Augmentation without imports is global; add `export {}` for module. `declare const` with no value is global; `declare function` in module is not global (use `declare global {}`). No import/export = global script. `interface` merges from other files; `type` does not. `paths` need `baseUrl`; tsconfig paths are compile-only, bundler needs its own. Prefer named exports in `.d.ts`. `declare module "*.svg"` applies to all .svg.
+- Use `import type` for types only; they are removed at build time.
+- Re-export types with `export type { X }` so you don't pull in runtime code.
+- In `.d.ts`, `declare module "x"` must use the exact string the rest of the code imports (e.g. `"lodash"` is not `"lodash/index"`). Augmentation without any import/export is global; add `export {}` to make the file a module. `declare const` with no value is global; `declare function` inside a module is not global (use `declare global { }` for globals). A `.d.ts` with no import/export is a global script. `interface` can be merged from other files; `type` cannot. In tsconfig, `paths` need `baseUrl`; path mapping is for the compiler only, so the bundler may need its own config. Prefer named exports in `.d.ts`. `declare module "*.svg"` applies to every .svg file.
 
 ## Generics
 
-- `useState<User>()` infers `User | undefined`. `Promise.all([a(), b()])` needs `as const` for tuple. `<T = any>` leaks any; avoid. `<T extends object>` allows arrays; use `Record<string, unknown>` for objects. `keyof T` in generic is `string | number | symbol`. Arrays covariant (push can break at runtime); function params contravariant. `{ [K in keyof T]: X }` can lose modifiers; use `-?` or `-readonly`.
+- `useState<User>()` gives you `User | undefined` until you set a value; handle the undefined case.
+- `Promise.all([a(), b()])` keeps a tuple type only if you use `as const`.
+- `<T = any>` leaks `any`; avoid it.
+- `<T extends object>` allows arrays; for "real" objects use `Record<string, unknown>`.
+- In a generic function, `keyof T` is `string | number | symbol`. Arrays are covariant (you can assign a more specific array to a less specific one) but that can allow invalid pushes at runtime; function parameters are contravariant. In a mapped type `{ [K in keyof T]: X }` you can lose optional or readonly; use `-?` or `-readonly` when you need to change that.
 
 ## Utility types
 
-- `Partial<T>` and `Required<T>` shallow; `Required` does not remove `undefined` from union. `Omit`/`Pick` do not validate keys. `Record<string, T>` implies every key exists. `Extract<T, U>` is `never` when no match. `ReturnType`/`Parameters` with overloads use last signature. `NonNullable<T>` removes both null and undefined. `Awaited<T>` unwraps recursively.
+- `Partial<T>` and `Required<T>` only affect the top level; nested objects stay as-is. `Required<T>` does not remove `undefined` from a union.
+- `Omit<T, K>` and `Pick<T, K>` do not check that the keys exist; a typo still compiles.
+- `Record<string, T>` means "every string key has a value of type T"; missing keys still type as T, not `T | undefined`.
+- `Extract<T, U>` is `never` when nothing in T matches U. `ReturnType` and `Parameters` with overloaded functions use only the last signature. `NonNullable<T>` removes both `null` and `undefined`. `Awaited<T>` unwraps promises, including nested ones.
 
-## Migration
+## Migration from JavaScript
 
-- `noImplicitAny: false` hides errors. Callback params without type are silently `any`. `strictNullChecks`/`strictPropertyInitialization` break many patterns; init or `!`. `as Type` does not validate; `as unknown as Type` is full escape. `JSON.parse` returns `any`; assert or validate. `@types/x` can be out of date; `skipLibCheck: true` hides .d.ts errors. `import x from "cjs"` vs `import * as x` differ. Use `@ts-expect-error` not `@ts-ignore`. `outDir` does not remove old files.
+- Turning off `noImplicitAny` hides real type errors. Callback parameters with no type become `any` silently. Enabling `strictNullChecks` or `strictPropertyInitialization` breaks a lot of code; add inits or use `!` where appropriate.
+- `as Type` does not check at runtime; `as unknown as Type` bypasses the type system; avoid both when you can. `JSON.parse` returns `any`; add a type assertion or validate the value. `@types/` packages can be out of date. `skipLibCheck: true` hides errors in `.d.ts` files too. `import x from "cjs"` and `import * as x from "cjs"` behave differently. Prefer `@ts-expect-error` over `@ts-ignore` so the comment fails when the error is fixed. `outDir` does not delete old files; leftover .js can cause confusion.
 
 ## Reference
 
-[document-voice](../document-voice/SKILL.md).
+[document-voice](../document-voice/SKILL.md) – use when explaining to the user.

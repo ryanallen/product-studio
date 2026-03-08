@@ -1,6 +1,7 @@
 {
   "scripts": {
     "checklist": "npx tsx .claude/skills/verify-task/scripts/checklist.ts",
+    "clean": "node .claude/skills/clean/scripts/clean.mjs",
     "sync:codex": "node ./.claude/skills/save/scripts/sync-codex-from-claude.mjs",
     "setup:figma-bridge": "node ./.claude/skills/generate-figma/scripts/setup-figma-bridge.mjs"
   }

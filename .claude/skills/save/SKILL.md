@@ -7,9 +7,7 @@ disable-model-invocation: true
 
 # Save
 
-Run **Save** workflow (verify-paths, document-paths if mismatch, then commit). Never stage/commit unless user asked this turn (save, stage, commit, /save).
-
-**Rule 1:** Run [verify-task](../verify-task/SKILL.md) first if no checklist section for this task yet. Append section with skills: verify-paths, document-paths (if mismatch), save.
+Run Save workflow (verify-paths, document-paths if mismatch, then commit). Never stage/commit unless user asked this turn (save, stage, commit, /save). Coordinator Step 1 (/checklist) already ran; do not run it again.
 
 ## Inputs
 
@@ -26,11 +24,10 @@ One or more commits; result reported. No push.
 
 ## Process
 
-1. **Checklist:** If no section for this task in `.tmp/task-checklist.md`, run [verify-task](../verify-task/SKILL.md) (Save: verify-paths, document-paths if mismatch, save). Then:
-2. Run Save workflow: verify-paths, document-paths if mismatch, then commit ([Coordinator](../../agents/coordinator.md)).
-3. `git status`; stage per Inputs (all or specific paths).
-4. For each commit: `git add` then `git commit -m "<title>" -m "<description>"` (derive from changes). Repeat until done.
-5. Report result. No push.
+1. Run Save workflow: verify-paths, document-paths if mismatch, then commit ([coordinator-flows](../../agents/ref/coordinator-flows.md)).
+2. `git status`; stage per Inputs (all or specific paths).
+3. For each commit: `git add` then `git commit -m "<title>" -m "<description>"` (derive from changes). Repeat until done.
+4. Report result. No push.
 
 **Single commit:** `git add -A && git commit -m "Title" -m "Description"`.
 
@@ -38,4 +35,4 @@ One or more commits; result reported. No push.
 
 ## Reference
 
-[Coordinator](../../agents/coordinator.md) – Save workflow.
+[coordinator-flows](../../agents/ref/coordinator-flows.md) – Save workflow.

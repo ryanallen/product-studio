@@ -23,7 +23,7 @@ const FLOWS: Record<string, readonly string[]> = {
   "research-figma": ["research-figma"],
   install: ["(Install workflow)"],
   refine: ["document", "document-github", "document-voice"],
-  developer: ["developer-typescript"],
+  developer: ["developer-typescript", "developer-check-types"],
 } as const;
 
 const TRIGGERS: [RegExp | string, string][] = [
@@ -37,7 +37,7 @@ const TRIGGERS: [RegExp | string, string][] = [
   [/research figma|analyze figma|figma audit|\/research-figma/i, "research-figma"],
   [/research|learn|look at this|read|\/research/i, "research"],
   [/install|setup|\/install/i, "install"],
-  [/\bdev\b|develop|\/developer/i, "developer"],
+  [/\bdev\b|develop|\/developer|check types|typecheck|tsc|type errors/i, "developer"],
   [/refine|write|write up|document|update|make|\/document/i, "refine"],
 ];
 

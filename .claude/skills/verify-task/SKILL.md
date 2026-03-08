@@ -29,4 +29,4 @@ Append a **new section** to `.tmp/task-checklist.md` per task. Running list: do 
 
 ## Reference
 
-[Coordinator](../../agents/coordinator.md) – workflows list steps; single flows use Output column and subagent scope for full skill list. **Rule 1:** AGENTS.md triggers [scripts/checklist.ts](scripts/checklist.ts) as first action (`npm run checklist -- "<summary>"`); the script implements this skill (append section, skill list from message).
+[Coordinator](../../agents/coordinator.md) – Step 1 runs this. **Real command:** `/checklist` = `npm run checklist -- "<summary>"`. [scripts/checklist.ts](scripts/checklist.ts) implements this skill.

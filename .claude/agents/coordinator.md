@@ -1,6 +1,6 @@
 ---
 name: coordinator
-description: Workflow spec for Install, Save, Discover, Learn, Propose solutions, Clean up studio, and single flows. Main uses this playbook; do not delegate to coordinator.
+description: Checklist playbook. Step 1 run /checklist, Step 2 match flow, Step 3 execute that flow from ref/coordinator-flows. Do not delegate to coordinator.
 triggers: []
 tools: Read, Bash, Grep, Glob, TodoWrite
 model: opus, sonnet
@@ -8,90 +8,42 @@ model: opus, sonnet
 
 # Coordinator
 
-This file is the **workflow playbook**, not a subagent. Main uses it to decide which flow and subagent; Main delegates; subagents do not spawn subagents.
+Follow this checklist. Do not skip steps.
 
-1. Match request to one **Single flow** or **Workflow** (trigger phrases). If unclear, prefer best fit.
-2. **Single flow:** Delegate once to the subagent listed for that flow. Pass the request (and any optional input) as context. The subagent must update the checklist after each skill it runs (see rule 2).
-3. **Workflow:** Run the steps in order. For each step: delegate to the listed subagent; when that step is done, update the current task section in `.tmp/task-checklist.md` (strikethrough that skill, add note); then run the next step. Do not skip steps.
-4. Delegate only to subagents in Team. Check `.claude/agents/` for `triggers` or description when matching.
+**Step 1.** Run `/checklist`: `npm run checklist -- "<user request or summary>"`. Do not run any other tool or step until this has been executed.
+
+**Step 2.** Match the user request to one flow in [ref/coordinator-flows.md](ref/coordinator-flows.md) (Save, Refine, Clean, Research, Install, etc.). Use trigger phrases in the table below if needed.
+
+**Step 3.** Execute that flow's steps in order from coordinator-flows. Each step is either "run /command" or "delegate to agent". After each step, update current task section in `.tmp/task-checklist.md` (strikethrough that skill, add note). Do not skip steps.
+
+**Step 4.** Delegate only to subagents in Team. Check `.claude/agents/` for `triggers` or description when matching.
+
+## Flow lookup (for Step 2)
+
+| Trigger phrases | Flow |
+|-----------------|------|
+| save, /save | Save |
+| refine, write, document, update, make, /document | Refine |
+| clean, wipe .tmp, /clean | Clean |
+| research, learn, read, /research | Research |
+| research Figma, Figma audit, /research-figma | Research Figma |
+| install, setup, /install | Install |
+| strategize, define, find cause, /strategize | Strategize |
+| uninstall, /uninstall | Uninstall |
+| dev, develop, /developer | Dev |
+| check types, typecheck, tsc, type errors | Dev |
+| design, /generate-figma | Design |
+| update figma, /update-figma | Update Figma token |
+| sync, sync upstream, /sync-upstream | Sync upstream |
+| learn (with ticket/URLs) | Learn |
+| propose solutions | Propose solutions |
+| discover | Discover |
+| clean up studio | Clean up studio |
 
 ## Team
 
 researcher, documenter, strategist, verifier, cleaner, updater, installer, uninstaller, designer, developer.
 
-## Single flows
-
-Each row: what triggers it, optional input from the user, which subagent, and what they do.
-
-| Trigger phrases | Optional input | Subagent | Skills (list each in checklist) | Output |
-|-----------------|----------------|----------|----------------------------------|--------|
-| refine, write, write up, document, update, make, /document | target (e.g. README, a file) or context | documenter | For README: document, document-github, document-voice. Else: document (and document-voice if applicable). | Updated docs |
-| research, learn, look at this, read, /research | ticket, URL, text, files, images | researcher | research | Findings; documenter can structure next |
-| research Figma, analyze Figma, Figma audit, analyze this Figma link, /research-figma | Figma URL | researcher | research-figma | Figma audit report |
-| install, setup, /install | none | installer | (Install workflow) | Config, MCP, handoff; then /mcp to sign in |
-| save, /save | none (or specific paths if user says "save just X") | Run **Save** workflow | (Save workflow) | Commits; no push |
-| clean, wipe .tmp, /clean | none | cleaner | clean | `.tmp/` emptied |
-| strategize, define, figure out, find cause, /strategize | none | strategist | strategize | Root cause analysis, suggestions |
-| uninstall, uninstall3, /uninstall | none | uninstaller | uninstall | MCPs removed from config; restart terminal after |
-| design, /generate-figma | none | designer | generate-figma | Figma design created or updated |
-| update figma, /update-figma | none | updater | update-figma | Figma token refreshed in config |
-| sync, sync upstream, /sync-upstream | none | updater | sync-upstream | Pull from upstream main, push to repo |
-| dev, develop, /developer | code or question | developer | developer-typescript | Type-safe TS; one SKILL |
-
-## Workflows
-
-Multi-step flows. Run steps in order; delegate each step to the listed subagent.
-
-**Install**
-- **Input:** User says install, setup, /install.
-- **Output:** Repo and MCP set up; handoff; custom steps run if present.
-- **Steps:**  
-  1. installer → full install (config, choices, MCP, figma-bridge if chosen, handoff, then customizer if [install-custom](../skills/install-custom/SKILL.md) exists). See [installer](installer.md).
-
-**Learn**
-- **Input:** User says learn or equivalent; optional ticket/URLs/files.
-- **Output:** Structured findings.
-- **Steps:**  
-  1. researcher → [research](../skills/research/SKILL.md) (gather from ticket/URLs/text/files, crawl up to 5 levels).  
-  2. documenter → [document](../skills/document/SKILL.md) (structure findings).
-
-**Propose solutions**
-- **Input:** User wants solutions or problem analysis.
-- **Output:** Problems and proposed solutions in README.
-- **Steps:**  
-  1. strategist → [strategize](../skills/strategize/SKILL.md) (Five Whys, root causes).  
-  2. documenter → [document](../skills/document/SKILL.md) (add problems to README).
-
-**Save**
-- **Input:** User says save, /save.
-- **Output:** All changes committed (or only specified paths); no push.
-- **Steps:**  
-  1. verifier → [verify-paths](../skills/verify-paths/SKILL.md) (compare paths.md to disk).  
-  2. If mismatch: documenter → [document-paths](../skills/document-paths/SKILL.md) (sync tree).  
-  3. updater → [save](../skills/save/SKILL.md) (stage and commit).
-
-**Discover**
-- **Input:** User says discover or equivalent; optional ticket/URLs.
-- **Output:** Research, analysis, solutions, and ticket comment with link.
-- **Steps:**  
-  1. researcher → [research](../skills/research/SKILL.md) (gather, crawl up to 5 levels).  
-  2. documenter → [document](../skills/document/SKILL.md) (structure findings).  
-  3. strategist → [strategize](../skills/strategize/SKILL.md) (Five Whys, root causes).  
-  4. documenter → [document](../skills/document/SKILL.md) (add problems to README).  
-  5. researcher → [research](../skills/research/SKILL.md) (audit: find existing solutions).  
-  6. documenter → [document](../skills/document/SKILL.md) (write current state).  
-  7. strategist → [strategize](../skills/strategize/SKILL.md) (propose solutions).  
-  8. documenter → [document](../skills/document/SKILL.md) (final pass).  
-  9. documenter → [document-ticket](../skills/document-ticket/SKILL.md) (comment on ticket with link).
-
-**Clean up studio**
-- **Input:** User says clean up studio or equivalent.
-- **Output:** Verification report in `.tmp/`; optionally `.tmp/` cleared.
-- **Steps:**  
-  1. Ask user: clean everything (all docs in paths.md + system files) or pick which paths to verify.  
-  2. verifier → [verify-docs](../skills/verify-docs/SKILL.md) then [document-verification](../skills/document-verification/SKILL.md) (run both in order; report to `.tmp/verification-report.md`).  
-  3. User may verify the report; optionally cleaner → [clean](../skills/clean/SKILL.md) to delete `.tmp/` contents.
-
 ## Reference
 
-[work/paths.md](../../work/paths.md) for team, space, ticket-id. Subagent trigger phrases in [.claude/agents/](.claude/agents/) `triggers` field (or description when triggers not set).
+[ref/coordinator-flows.md](ref/coordinator-flows.md) – fixed sequences. [work/paths.md](../../work/paths.md) for team, space, ticket-id.
