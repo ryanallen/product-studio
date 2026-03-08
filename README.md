@@ -140,49 +140,49 @@ Then pull with `git pull upstream main` (or say "sync" or [/sync-upstream](.clau
 
 ## Repo structure
 
-```
+<pre>
 Product Studio/
 ├── AGENTS.md
 ├── CLAUDE.md -> AGENTS.md
 ├── .claude/
-│   ├── agents/
-│   │   ├── coordinator.md
-│   │   ├── designer.md
-│   │   ├── documenter.md
-│   │   ├── researcher.md
-│   │   ├── strategist.md
-│   │   ├── verifier.md
-│   │   ├── verification-documentor.md
-│   │   ├── cleaner.md
-│   │   ├── installer.md
-│   │   ├── uninstaller.md
-│   │   ├── updater.md
-│   │   └── customizer.md
-│   └── skills/
-│       ├── research/SKILL.md
-│       ├── document/SKILL.md
-│       ├── strategize/SKILL.md
-│       ├── research-figma/SKILL.md
-│       ├── install/
-│       │   └── SKILL.md
-│       ├── install-custom/
-│       │   └── SKILL.md.template
-│       ├── save/
-│       │   ├── SKILL.md
+│   ├── <span style="color:#7D70DB">agents/</span>
+│   │   ├── <span style="color:#7D70DB">coordinator.md</span>
+│   │   ├── <span style="color:#7D70DB">designer.md</span>
+│   │   ├── <span style="color:#7D70DB">documenter.md</span>
+│   │   ├── <span style="color:#7D70DB">researcher.md</span>
+│   │   ├── <span style="color:#7D70DB">strategist.md</span>
+│   │   ├── <span style="color:#7D70DB">verifier.md</span>
+│   │   ├── <span style="color:#7D70DB">verification-documentor.md</span>
+│   │   ├── <span style="color:#7D70DB">cleaner.md</span>
+│   │   ├── <span style="color:#7D70DB">installer.md</span>
+│   │   ├── <span style="color:#7D70DB">uninstaller.md</span>
+│   │   ├── <span style="color:#7D70DB">updater.md</span>
+│   │   └── <span style="color:#7D70DB">customizer.md</span>
+│   └── <span style="color:#0ea5e9">skills/</span>
+│       ├── <span style="color:#0ea5e9">research/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">document/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">strategize/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">research-figma/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">install/</span>
+│       │   └── <span style="color:#0ea5e9">SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">install-custom/</span>
+│       │   └── <span style="color:#0ea5e9">SKILL.md.template</span>
+│       ├── <span style="color:#0ea5e9">save/</span>
+│       │   ├── <span style="color:#0ea5e9">SKILL.md</span>
 │       │   └── scripts/
 │       │       └── sync-codex-from-claude.mjs
-│       ├── sync-upstream/SKILL.md
-│       ├── verify-paths/SKILL.md
-│       ├── verify-docs/SKILL.md
-│       ├── document-verification/SKILL.md
-│       ├── clean/SKILL.md
-│       ├── uninstall/SKILL.md
-│       ├── update-figma/SKILL.md
-│       ├── document-paths/SKILL.md
-│       ├── document-ticket/SKILL.md
-│       ├── document-github/SKILL.md
-│       ├── generate-figma/
-│       │   ├── SKILL.md
+│       ├── <span style="color:#0ea5e9">sync-upstream/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">verify-paths/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">verify-docs/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">document-verification/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">clean/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">uninstall/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">update-figma/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">document-paths/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">document-ticket/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">document-github/SKILL.md</span>
+│       ├── <span style="color:#0ea5e9">generate-figma/</span>
+│       │   ├── <span style="color:#0ea5e9">SKILL.md</span>
 │       │   └── scripts/
 │       │       ├── setup-figma-bridge.mjs
 │       │       └── figma-desktop-bridge/
@@ -193,7 +193,7 @@ Product Studio/
 │       └── README.md
 ├── package.json
 └── README.md
-```
+</pre>
 
 ### .tmp and cleanup
 
