@@ -1,6 +1,6 @@
 ---
 name: research
-description: Gather from any source (ticket, URL(s), text, file(s), image(s)) and follow links up to 5 levels deep.
+description: Gather from anything the user gives you (chat, tickets, links, text, files, images). Follow links up to 5 levels and write findings into the project README in four sections for the document skill.
 triggers: "research, learn, look at this, read, /research"
 disable-model-invocation: true
 argument-hint: "[ticket-id-or-url]"
@@ -8,136 +8,43 @@ argument-hint: "[ticket-id-or-url]"
 
 # Research
 
-Accepts flexible input, derives starting URLs and level-0 content when provided, then navigates recursively up to 5 levels deep. Writes findings to the project README so the documenter can read and structure them.
+You take whatever the user gives you (a ticket, some links, pasted text, files, images) and pull it into one place. Follow links up to 5 levels deep, grab the useful content, and write into the project README. Path from [work/paths.md](../../work/paths.md). Four sections so [document](../document/SKILL.md) can turn it into a clean doc.
 
 ## Inputs
 
-1. **Input** (one or more of):
-   - **Ticket ID** (e.g. ICT-123) – Fetch via atlassian-rovo MCP; use ticket body and all linked URLs as starting URLs; ticket body is level-0 content. Requires atlassian-rovo MCP.
-   - **URL(s)** – Use as starting URLs.
-   - **Pasted text** – Extract URLs and use as starting URLs; full text is level-0 content.
-   - **Image path(s)**
-     - Copy to project's `assets/images/` (create if needed; unique name e.g. `evidence-1.png`).
-     - Describe or extract text/URLs; URLs as starting URLs; description or extracted text is level-0 content.
-     - Note path in output so documenter can embed with `![](assets/images/filename.ext)`.
-   - **File path(s)** (non-image)
-     - Copy to project's `assets/docs/` (create if needed).
-     - Read file(s), extract URLs as starting URLs; file content is level-0 content.
-     - Note path in output so documenter can link from README.
-2. **Output path** - See [work/paths.md](../../work/paths.md).
-3. **Focus area** – Keywords or topics to prioritize when deciding which links to follow.
+- **What the user gives you** – One or more of: a ticket ID, URL(s), pasted text, image file(s), or other file(s). The table below says how each type is used.
+- **Where to write** – The project README path from work/paths.md.
+- **Focus** (optional) – Words or topics to care about most when you choose which links to follow.
+
+| What they give you | What you use as starting links | What you keep as "level-0" (their raw input) |
+|--------------------|--------------------------------|----------------------------------------------|
+| Ticket ID (e.g. ICT-123) | Get the ticket via atlassian-rovo MCP; use the ticket text and any links in it. You need the atlassian-rovo MCP for this. | The ticket body |
+| URL(s) | Those URLs | — |
+| Pasted text | Any URLs you find in the text | The full pasted text |
+| Image file(s) | Copy images into the project's `assets/images/` (give each a unique name). Describe the image or pull out any URLs; use those as links. Tell the documenter the path so they can embed it. | Your description or any text you extract |
+| Other file(s) | Copy into `assets/docs/`. Read the file and pull out any URLs. Tell the documenter the path so they can link to it. | The file content |
 
 ## Output
 
-Project README at path from [work/paths.md](../../work/paths.md). Handoff to documenter. Structure:
+One README with four parts. Output location: [document](../document/SKILL.md).
 
-### Level-0 (input)
-
-Content from ticket, paste, file, or image:
-
-```markdown
-## Level-0 (input)
-
-{Content or summary of user-provided input}
-```
-
-### Sources
-
-Link index with depth levels. Use markdown links so URLs are clickable (put `[Title](URL)` in the Title column):
-
-```markdown
-## Sources
-
-| URL | Depth | Title | Parent |
-|-----|-------|-------|--------|
-| ... | 0     | ...   | (root) |
-| ... | 1     | ...   | ...    |
-```
-
-### Findings
-
-Extracted content organized by topic:
-
-```markdown
-## Findings
-
-### {Topic Heading}
-
-{Summarized content}
-
-> Source: [page title or URL](url) (depth {N})
-```
-
-### Link Tree
-
-Visual map of traversal (every item must be a markdown link so it is clickable):
-
-```markdown
-## Link Tree
-
-- [Starting Page](url)
-  - [Child Page](url)
-    - [Grandchild Page](url)
-```
+1. **Level-0 (input)** – The raw stuff the user gave you (ticket, paste, file, or image).
+2. **Sources** – A table: URL, how deep you went (depth), title, parent. Every URL should be a clickable link: `[Title](url)`.
+3. **Findings** – Content grouped by topic. Under each topic, say where it came from: `> Source: [title](url) (depth N)`.
+4. **Link Tree** – A simple map of how pages connect (parent under child). Each item is a link `[title](url)`.
 
 ## Process
 
-### 1. Normalize Input
-
-From the given input, produce:
-- **Starting URL(s)** – Zero or more URLs to crawl. If none (only pasted text with no links), write level-0 content only to output and skip crawl.
-- **Level-0 content** – Raw or summarized content from the input (ticket body, pasted text, file content, image description). Include this in the output so the documenter can structure it.
-
-### 2. Fetch Starting URLs
-
-**Auth-gated or permission-restricted links (Slack, GitHub, internal tools):** If a page cannot be accessed (login wall, permission denied), ask the user to log in. Tell them to open the URL in their browser, complete login, then tell you when they are done. Wait for the user to confirm before retrying. Do not give up and skip without asking. Extract:
-- Page title and main content
-- All links (navigation, inline references, related pages, asset URLs)
-- Images, screenshots, icons
-- Design tokens, colors, fonts, spacing values
-- Metadata (dates, authors, categories)
-
-### 3. Recursive Link Traversal
-
-Follow links up to **5 levels deep** from each starting URL.
-
-```
-Level 0: Starting URL
-Level 1: Links found on starting page
-Level 2: Links found on level 1 pages
-Level 3: Links found on level 2 pages
-Level 4: Links found on level 3 pages
-```
-
-At each level:
-- Skip duplicate URLs already visited
-- Track the link tree (parent -> child relationships)
-
-### 4. Content Extraction
-
-For each page visited, capture:
-- **URL** and depth level
-- **Title** and headings structure
-- **Key content** (summarized, not raw HTML)
-- **Images and screenshots** with descriptions and URLs
-- **Design assets** (tokens, colors as hex/rgb, font families and sizes, spacing, border radii)
-- **Code snippets** or configuration examples
-- **Outbound links** with context on what they reference
-
-### 5. Output
-
-Write to the project README at the path from work/paths.md using the structure in Output (Level-0 if present, then Sources, Findings, Link Tree). Documenter reads from this path and restructures it.
+1. **Get your starting point** – From what they gave you, figure out your starting URL(s) and the "level-0" content (the raw input). If there are no URLs (e.g. they only pasted text with no links), just write the level-0 section and stop. No crawl.
+2. **Open pages and pull out content** – For each page you open: get the title, main text, links, images, design stuff (colors, fonts, spacing if present), who wrote it and when, code bits, and any links out. If a page asks you to log in or says you don't have permission: ask the user to open that URL in their browser, log in, then tell you when they're done. Wait for them. Then try again. Don't skip the page without asking.
+3. **Follow links** – From your starting URLs, follow links up to 5 levels deep. Don't visit the same URL twice. Keep track of the link tree (which page led to which).
+4. **Write the README** – Fill in the four sections (Level-0 if you have it, then Sources, Findings, Link Tree).
 
 ## Rules
 
-- Track all visited URLs to avoid loops
-- Prefer depth-first within the focus area, breadth-first otherwise
-- Extract all visual and design assets (images, colors, fonts, tokens)
-- For pages that require authentication or permissions (Slack, GitHub, etc.), ask the user to log in in their browser, then retry once they confirm
-- If a page still cannot be accessed (login required, permission denied): ask the user to log in. Tell them which URL to open, to complete login in their browser, and to tell you when done. Wait for the user to confirm before retrying. Do not note it and skip without asking
-- Summarize content when appropriate and if data is important copy it verbatim
-- **Clickable links:** Every URL in the output (Sources table, Link Tree, Findings source lines) must be written as a markdown link `[title](url)`. Never output a bare URL or title-only line; always use `[title](url)` so links are clickable in the README.
+- Keep a list of URLs you've already visited so you don't go in circles. When you have a focus area, go deep on those topics first; otherwise go wide.
+- Every URL you put in the output must be a clickable link: `[title](url)`. No plain URLs. Summarize when that's enough; copy word-for-word when the exact data matters.
 
 ## Reference
 
-[work/paths.md](../../work/paths.md) – Output path. [document](../document/SKILL.md) – Documenter structures the output.
+[work/paths.md](../../work/paths.md). [document](../document/SKILL.md).

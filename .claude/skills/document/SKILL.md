@@ -1,134 +1,91 @@
 ---
 name: document
-description: Take research output and produce structured, enhanced markdown documentation with mermaid diagrams.
+description: Turn research into one clear README per project. Use markdown, mermaid diagrams, tables, and links. Plain language.
 triggers: "refine, write, write up, document, update, make, /document"
 ---
 
 # Document
 
-Take research output and produce structured, enhanced markdown documentation.
+Turn research into one README per project (path from [work/paths.md](../../work/paths.md)). Use clear headings, diagrams when they help, and link to your sources.
 
 ## Inputs
 
-1. **Project path** – See [work/paths.md](../../work/paths.md).
-2. **Source material** – Research output to structure.
-3. **Document type** – One of: `research`, `analysis`, `solutions`, `project-overview`.
+- **Project path** – Where the README lives. See [work/paths.md](../../work/paths.md).
+- **Source material** – The research, notes, or findings you're turning into the README.
+- **Document type** – What kind of doc: `research`, `analysis`, `solutions`, or `project-overview`.
 
 ## Output
 
-Write to the project README at the path from work/paths.md.
+One README. Everything goes in it. No separate doc files. You may use .tmp as scratch or placeholder; anything written there must be moved into the README before you're done.
 
 ## Process
 
-### Required on every README
+1. **Read the source** – Go through all the material. Get the scope and main topics.
+2. **Group by sections** – Decide which bits go in which part of the README (by document type above).
+3. **Write the README** – Clear title and one-line summary. Short paragraphs (a few sentences). Add diagrams where they explain flows or relationships. Use tables for comparisons. Link to sources right where you mention them.
+4. **Use the structure below** – When the type is `project-overview`, follow the section outline. For images and other evidence, see work/paths.md.
 
-1. **Top navigation** – After the H1 title, add one line linking to every H2 and H3. Horizontal, compact. Include only sections that exist. Anchor targets: strip the heading emoji, lowercase the rest, replace spaces with hyphens. The space after the emoji becomes a leading hyphen in the slug (e.g. `## ⚙️ Setup` → `#-setup`, `### 📋 Project tracking` → `#-project-tracking`).
-2. **Emoji on headings** – Every H1, H2, and H3 must start with an emoji.
+### How to write it
 
-### Markdown standards
+**Diagrams (mermaid)** – Use when you have a process, a flow, or a chain of causes. Good for: flowcharts, sequence diagrams, mind maps (e.g. problem → why → why → root cause), Gantt-style timelines. Use when there are 3+ steps or a clear hierarchy.
 
-#### Headings
-H1, H2, and H3 start with an emoji.
+**Tables** – Use for comparisons, lists of sources, or feature lists. Only include real data from your source. No filler rows, "TBD", or made-up names or dates.
 
-#### Mermaid
-Use mermaid for flowcharts (processes, workflows, decision trees), sequence diagrams (multi-step interactions), mind maps (problem breakdowns, topic relationships), and Gantt charts (timelines, phases). Use for any process with 3+ steps or any hierarchy with 2+ levels.
+**Callouts** – For notes or warnings use: `> **Note:** ...` and `> **Warning:** ...`
 
-Example workflow:
-````markdown
-```mermaid
-flowchart TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Action]
-    B -->|No| D[Alternative]
-```
-````
+**Links** – Link anything that has a URL or another place in the doc. Sections, sources, people (give each person an anchor in Team and link to it), tickets, artifacts. Use relative links (no full filesystem paths).
 
-Example root cause:
-````markdown
-```mermaid
-mindmap
-  root((Problem))
-    Why 1
-      Why 2
-        Why 3
-          Root Cause
-```
-````
+### README structure (project-overview)
 
-#### Tables
-Structured comparisons, source indexes, feature matrices. Only add rows when source material provides real data. No placeholder rows, TBD, example data, or made-up names/dates/artifacts.
-
-#### Callouts
-Blockquotes with bold labels: `> **Note:** ...` and `> **Warning:** ...`
-
-#### Links
-Cite sources inline with markdown links. Every reference to a source or URL must use `[title](url)`. Link everything that can be linked: sections (via top nav), URLs, people (anchor per person in Team, link name to that anchor elsewhere), tickets, artifacts/docs with URLs. Never use absolute filesystem paths; links relative to the document.
-
-1. **Read source material** – All files from source path; understand scope and topics.
-2. **Organize by sections** – Map content into README sections by document type.
-3. **Write README** – Clear title and one-line summary; mermaid where relationships or flows exist; tables where comparisons exist; short paragraphs (3–4 sentences); cite sources inline.
-4. **Apply README structure** – One README per project (path from work/paths.md). Put everything in this README; no separate docs. Exhaustive: do not summarize or cut. Evidence assets: see work/paths.md.
-
-### README structure (three phases)
-
-Single README with this top nav after the H1 (link only sections that exist):
-
-`[🔍 Discovery](#-discovery) | [📋 Project tracking](#-project-tracking) | [📑 Audits](#-audits) | [👥 Users + Needs](#-users--needs) | [🔎 Exploration](#-exploration) | [💡 Ideation](#-ideation) | [📎 Artifacts](#-artifacts) | [✅ Validation](#-validation) | [🚀 Go to market](#-go-to-market) | [📦 Deliverables](#-deliverables) | [📈 Performance](#-performance) | [🔜 Next version](#-next-version)`
-
-Only populate sections/tables when source material provides real data; otherwise leave empty or omit. Always link to source data to prove it.
+Only add a section if you have real content for it. If the source doesn't have it, skip it. Link back to the source where it makes sense.
 
 ```markdown
-# 📄 {Project Name}
-[🔍 Discovery](#-discovery) | [📋 Project tracking](#-project-tracking) | [📑 Audits](#-audits) | [👥 Users + Needs](#-users--needs) | [🔎 Exploration](#-exploration) | [💡 Ideation](#-ideation) | [📎 Artifacts](#-artifacts) | [✅ Validation](#-validation) | [🚀 Go to market](#-go-to-market) | [📦 Deliverables](#-deliverables) | [📈 Performance](#-performance) | [🔜 Next version](#-next-version)
+# {Project Name}
 
----
-## 🔍 Discovery
+## Research and context
 
-### 📋 Project tracking
-- **Team:** One row per person. Name = individual (full name). Responsibility = exactly one of: **Driver**, **Approver**, **Contributor**, **Informed** (DACI only).
+### Team and roadmap
+- **Team:** One row per person. Full name. Role: **Driver**, **Approver**, **Contributor**, or **Informed** (DACI).
 - **Roadmap:** Project + ticket | Due date.
 - **Measurements:** Name | Current state | Desired state.
 
-### 📑 Audits
-Notes, current-state review, competitor review. When source has Link tree or Sources (from research), preserve here: Link tree subsection and Sources table.
+### Reviews and sources
+Notes, current-state review, competitor review. If research has a link tree or sources list, keep it here as a subsection and table.
 
-### 👥 Users + Needs
-User | Time/date | Verbatim | Encoded needs. Sorted needs. Refined problem statement (In which way might we enable ${user} to solve ${mainNeed1} & ${mainNeed2}, to ${userGoal} & ${businessGoal}?).
+### Users and needs
+User | Time/date | Verbatim | Encoded needs. Sorted needs. Refined problem: *In which way might we enable {user} to solve {mainNeed1} & {mainNeed2}, to {userGoal} & {businessGoal}?*
 
----
-## 🔎 Exploration
+## Ideas and testing
 
-### 💡 Ideation
+### Ideas and hypotheses
 Hypotheses (If | then | due to).
 
-### 📎 Artifacts
-Date | Creator | Artifact. Drawings, surveys, flows, prototypes, UI, code repos. Design files: link or list with Creator and Artifact.
+### What we made
+Date | Creator | What was made. Drawings, surveys, flows, prototypes, UI, code repos.
 
-### ✅ Validation
-Test plan (general, users, goals). User testing results (Version | KPI 1 | KPI 2).
+### Testing and results
+Test plan (what you're testing, who, goals). Results (Version | KPI 1 | KPI 2).
 
----
-## 🚀 Go to market
+## Launch and follow-up
 
-### 📦 Deliverables
+### What we're shipping
 Designs for engineers (Date | Creator | Artifact). Production roadmap (Project | Due date | Status | Person).
 
-### 📈 Performance
+### Results and QA
 QA. Production testing (Version | KPI 1 | KPI 2).
 
-### 🔜 Next version
+### What's next
 Learnings. Recommendations. Links to new docs.
 ```
 
 ## Rules
 
-- H1, H2, H3 start with an emoji. Top nav after H1: horizontal, compact, link every H2 and H3. Nav fragment: strip emoji, lowercase, spaces to hyphens; the space after the emoji becomes a leading hyphen, so use `#-slug` (e.g. `#-setup`, `#-discovery`).
-- No absolute filesystem paths in links; relative to the document only.
-- No invented content. Only real data from source; no placeholder rows, TBD, or made-up names/dates/artifacts. Empty or omit when no data.
-- Project tracking > Team: Name = individual person (full name). Responsibility = Driver | Approver | Contributor | Informed only.
-- When research includes Link tree or Sources, preserve under Discovery > Audits.
-- Always attribute content to its source.
+- Use relative links only. No full filesystem paths.
+- Only real content from the source. No invented rows, TBD, or fake names/dates. Skip a section if there's no data.
+- Team table: full name per person. Role must be one of Driver, Approver, Contributor, Informed.
+- If the research has a Link tree or Sources section, put it under Research and context > Reviews and sources.
+- Always say where content came from (attribute to the source).
 
 ## Reference
 
-[work/paths.md](../../work/paths.md). [Coordinator](../../agents/coordinator.md). [document-github](../document-github/SKILL.md) for GitHub-hosted READMEs (images, GIFs, raw URLs, shields.io badges). [document-skills](../document-skills/SKILL.md).
+[work/paths.md](../../work/paths.md). [Coordinator](../../agents/coordinator.md). [document-github](../document-github/SKILL.md) for GitHub READMEs. [document-skills](../document-skills/SKILL.md).

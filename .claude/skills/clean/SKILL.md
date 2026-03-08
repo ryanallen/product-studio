@@ -1,24 +1,24 @@
 ---
 name: clean
-description: Delete everything in the .tmp folder. Use after verifying reports or to clear subagent-created temp files.
+description: Delete everything in .tmp/. Use after verifying reports or to clear temp files.
 triggers: "clean, wipe .tmp, /clean"
 ---
 
 # Clean
 
-Delete all contents of `.tmp/`. Use after verifying the verification report or to clear subagent-created temp files.
+Delete all contents of `.tmp/`. Repo root and everything outside `.tmp/` are untouched.
 
 ## Inputs
 
-None. User invokes with clean, wipe .tmp, or /clean.
+None.
 
 ## Output
 
-`.tmp/` empty or unchanged (if it did not exist). Repo root and everything outside `.tmp/` are untouched.
+`.tmp/` empty or unchanged (if missing). Nothing outside `.tmp/` is modified.
 
 ## Process
 
-1. If `.tmp/` exists, delete all contents (files and subdirectories) inside `.tmp/`. Do not delete the repo root or anything outside `.tmp/`.
+1. If `.tmp/` exists, delete all contents (files and subdirectories) inside it.
 2. If `.tmp/` does not exist, do nothing.
 
 ## Reference

@@ -1,22 +1,22 @@
 ---
 name: strategize
 description: Analyze documented findings to identify problems and trace them to root causes using the Five Whys technique.
-triggers: "strategize, define, why broken, find cause, /strategize"
+triggers: "strategize, define, figure out, find cause, /strategize"
 disable-model-invocation: true
 ---
 
 # Strategize
 
-Analyze documented findings to identify problems and trace them to root causes using the Five Whys technique.
+Use documented findings to spot problems and trace each one to a root cause with the Five Whys.
 
 ## Inputs
 
-1. **Project path** - See work/paths.md.
-2. **Documents to analyze** - README.md in that path.
+1. **Project path** – From work/paths.md.
+2. **Documents to analyze** – The project README.md at that path.
 
 ## Output
 
-Project README updated with `## 🐛 Problems` at the **top** (above all other content except the H1 title). All output in that README only. Structure:
+Update the project README with a new section: `## 🐛 Problems`. Put it at the **top**, right under the main title. Output location: [document](../document/SKILL.md).
 
 ### Summary
 
@@ -26,7 +26,7 @@ Project README updated with `## 🐛 Problems` at the **top** (above all other c
 
 ### Detailed Analysis
 
-For each problem:
+For each problem use this shape:
 
 ```markdown
 ### Problem 1: {Perceived Problem}
@@ -36,10 +36,9 @@ For each problem:
 **Five Whys:**
 
 1. Why? ...because {reason}.
-2. Why? ...because {reason}.
-3. Why? ...because {reason}.
-4. Why? ...because {reason}.
-5. Why? ...because {root cause}.
+2. Why? ...because {deeper reason}.
+… (as many as needed; stop when you reach a root cause)
+N. Why? ...because {root cause}.
 
 **Root Cause:** {root cause}
 **Category:** {category}
@@ -49,81 +48,59 @@ mindmap
   root(({Perceived Problem}))
     Why 1
       Why 2
-        Why 3
-          Why 4
-            Root Cause
+        …
+          Root Cause
 ```
 
-**Problem Definition:**
-{One sentence: "To enable {who} to {what} in order to {outcome}."}
+**Problem Definition:** One sentence. Prefer How Might We when you have user, needs, and goals: *How might we help {user} do {mainNeed1} and {mainNeed2} so they can {userGoal} and we can {businessGoal}?* Otherwise: *Help {who} to {what} so that {outcome}.*
 ```
 
 ## Process
 
-### 1. Read All Documentation
+### 1. Read the doc
 
-Read the project's `README.md`. Understand the full context before identifying any problems.
+Read the project README. Get the full picture before you name any problems.
 
-### 2. Identify Problems
+### 2. Find problems
 
-Scan for:
-- Explicit pain points or complaints
-- Friction in processes or workflows
-- Gaps between stated goals and actual outcomes
-- Broken or missing processes
-- Mismatches between user needs and current solutions
+Look for:
+- Clear pain points or complaints
+- Friction in how people work
+- Gaps between what they want and what actually happens
+- Steps that are broken or missing
+- Needs that don’t match the current setup
 
-List each as a **perceived problem** (the symptom the user sees).
+Write each as a **perceived problem** (what the user sees or feels).
 
-### 3. Five Whys for Each Problem
+### 3. Five Whys for each problem
 
-For every perceived problem, ask "Why?" iteratively to drill from symptom to root cause.
+Keep asking “Why?” for each perceived problem until you reach a **root cause**: either a broken process you can fix or a behavior someone can change. You might get there in 3 whys or in 7; stop when you have something actionable, not at a fixed number. Do not force exactly five.
 
-```
-Perceived Problem: {symptom}
+Write each chain in the README (as many “Why?” steps as you actually used); the last “because” in the chain is the root cause.
 
-1. Why does this happen?
-   ...because {reason}. (refined problem)
-2. Why {reason}?
-   ...because {deeper reason}. (refined problem)
-3. Why {deeper reason}?
-   ...because {deeper still}. (refined problem / alterable behavior)
-4. Why {deeper still}?
-   ...because {process gap}. (broken process identified)
-5. Why {process gap}?
-   ...because {root cause}. (root cause)
-```
+### 4. Label the root cause
 
-Stop when you identify either:
-- A **broken process** that can be fixed
-- An **alterable behavior** that can be changed
+Pick one category per root cause:
+- **Process** – Workflow is missing or broken
+- **Knowledge** – People don’t know something they need
+- **Tool** – The right tool is missing or not good enough
+- **Design** – UX, layout, or structure is confusing or wrong
+- **Communication** – People are not aligned
 
-This may happen at why 3, 4, or 5. Do not force all five if the root cause is clear earlier.
+### 5. Write the analysis
 
-### 4. Classify Root Causes
+Write into the project README using the Output shape: summary table, then detailed analysis for each problem (Five Whys, mindmap, problem definition).
 
-Categorize each root cause:
-- **Process** - Missing or broken workflow
-- **Knowledge** - Lack of awareness or information
-- **Tool** - Inadequate or missing tooling
-- **Design** - Poor UX, unclear interface, bad information architecture
-- **Communication** - Misalignment between parties
+### 6. Put it at the top
 
-### 5. Write Problem Analysis
-
-Write to the project README at the path from work/paths.md using the structure in Output (Summary table, Detailed Analysis per problem). Use Five Whys, mindmaps, and problem definitions per Output.
-
-### 6. Place in README
-
-Put the output under `## 🐛 Problems` at the top of the README, above all other content except the H1 title.
+Place everything under `## 🐛 Problems` at the top of the README, under the H1 only.
 
 ## Rules
 
-- Never skip the Five Whys. Every perceived problem gets the full treatment.
-- Root causes must be actionable (a broken process or alterable behavior, not "that's just how it is")
-- Always produce a one-sentence problem definition for each root cause
-- Use mermaid mindmaps to visualize every Five Whys chain
-- Do not create other files; all output goes in the project README only.
+- Do the Five Whys for every perceived problem.
+- Root causes must be something you can act on (fix a process or change a behavior), not “that’s just how it is.”
+- Write one problem definition sentence per root cause.
+- Add a mermaid mindmap for each Five Whys chain.
 
 ## Reference
 

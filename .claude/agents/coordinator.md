@@ -42,7 +42,7 @@ Each row: what triggers it, optional input from the user, which subagent, and wh
 | install, setup, /install | none | installer | Config, MCP, handoff; then /mcp to sign in |
 | save, /save | none (or specific paths if user says "save just X") | Run **Save** workflow | Commits; no push |
 | clean, wipe .tmp, /clean | none | cleaner | `.tmp/` emptied |
-| strategize, define, why broken, find cause, /strategize | none | strategist | Root cause analysis, suggestions |
+| strategize, define, figure out, find cause, /strategize | none | strategist | Root cause analysis, suggestions |
 | uninstall, uninstall3, /uninstall | none | uninstaller | MCPs removed from config; restart terminal after |
 | design, /generate-figma | none | designer | Figma design created or updated |
 | update figma, /update-figma | none | updater | Figma token refreshed in config |
