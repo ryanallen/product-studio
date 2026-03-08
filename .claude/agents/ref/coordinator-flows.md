@@ -34,6 +34,12 @@ Fixed sequences. Each step is "run /command" or "delegate to agent". Coordinator
 
 ---
 
+## Electron
+
+1. developer → developer-electron. Update checklist.
+
+---
+
 ## Discover
 
 1. researcher → research.

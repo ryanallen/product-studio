@@ -1,203 +1,95 @@
 ---
 name: designer-playbook
-description: Design standards for digital product UI. Use when creating or reviewing product designs so they meet accessibility, layout, typography, and component standards.
-triggers: "design standards, design playbook, review design, document design, product design standards, /designer-playbook"
+description: Digital product UI standards: accessibility, layout, typography, components. Use when creating or reviewing product designs.
+triggers: "design standards, design playbook, review design, product design standards, /designer-playbook"
 ---
 
 # Designer Playbook
 
-Use this skill when the documenter (or designer) is creating, documenting, or reviewing digital product designs. Apply these standards as the baseline to design to and to review against.
+Use when the documenter or designer is creating, documenting, or reviewing digital product designs. Apply as the baseline to design to and review against. [document-voice](../document-voice/SKILL.md).
 
-**Project example:** QuickPost · **Updated:** 2026-02-05
+## Inputs
 
----
+- **Context** – Creating or reviewing UI (screens, components, design specs). Optional: project or product name.
+- **Source** – User request or design artifact; apply the standards below.
 
-## 1. Core Principles
+## Output
 
-### Mobile-First
-Start at 320px and expand. Single-column by default.
+Guidance applied (principles, color, type, layout, a11y, components). No new deliverables unless requested.
+
+## Process
+
+### 1. Core principles
+
+**Mobile-first:** Start at 320px, expand. Single-column by default.
 
 | Breakpoint | Width |
-|---|---|
+|------------|-------|
 | Phone | 576px |
 | Tablet | 768px |
 | Laptop | 992px |
 | Desktop | 1200px |
 
-### Visual Hierarchy
-Guide attention through: **size** (larger = more important), **color** (bright = attention), **whitespace** (more space = emphasis), **proximity** (group related items), **contrast** (never low contrast).
+**Visual hierarchy:** Size (larger = more important), color (bright = attention), whitespace (more space = emphasis), proximity (group related), contrast (never low). Reading: Z-pattern (logo, CTA, content, final CTA) for landing; F-pattern (headline, first line per section) for content.
 
-Reading patterns: **Z-pattern** (logo → CTA → content → final CTA) for landing pages. **F-pattern** (scan headline, first line of each section) for content pages.
+**Whitespace:** 8px multiples: 8, 16, 24, 32, 48, 64. Section breathing room: 48 to 64px min. Card padding: 24 to 32px. More whitespace = premium; crowded = cheap. Hick's Law: more choices = slower decisions; cut visual noise.
 
-### Whitespace
-Space in multiples of 8px: `8 / 16 / 24 / 32 / 48 / 64`. Section breathing room: 48–64px min. Card padding: 24–32px. More whitespace = premium feel. Crowded = cheap.
+**Five laws:** (1) Contrast creates hierarchy (2) Whitespace creates calm (3) Consistency builds trust (4) Feedback confirms action (5) Accessibility includes everyone.
 
-**Hick's Law:** more choices = slower decisions. Cut visual noise ruthlessly.
+### 2. Color system
 
-### The 5 Laws
-1. Contrast creates hierarchy
-2. Whitespace creates calm
-3. Consistency builds trust
-4. Feedback confirms action
-5. Accessibility includes everyone
+Primary scale (50 to 900) plus semantic: Primary (brand, e.g. #8b5cf6), Success (#10b981), Error (red), Warning (yellow/orange), Neutral (gray 50 to 900), Background (#ffffff light / #0f172a dark). Example blue scale: 50 #eff6ff through 900 #1e3a8a; 500 is base. Trends: soft gradients, cinematic color fields, high-saturation CTAs. Tools: Huevy, Coolors, Adobe Color.
 
----
+### 3. Typography
 
-## 2. Color System
+**Scale (8px baseline):** xs 12/16, sm 14/20, base 16/24 (body), lg 18/28, xl 20/28, 2xl 24/32, 3xl 30/36 (section headers), 4xl 36/40, 5xl 48/1 (hero). **Fonts:** 2 max. System stack: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`. **Readability:** Line length 50 to 75 chars; line height 1.5× body, 1.2× headings; letter spacing -0.02em headings, normal body.
 
-Build a **primary scale (50–900)** + semantic colors:
+### 4. Layout
 
-- **Primary (Brand):** e.g. Purple #8b5cf6
-- **Success:** Green #10b981
-- **Error:** Red (standard destructive)
-- **Warning:** Yellow/Orange
-- **Neutral:** Gray 50–900
-- **Background:** #ffffff (light) / #0f172a (dark)
+**Grid** for 2D structure (header, sidebar, main, footer). **Flexbox** for 1D component internals. **Auto-fit** for responsive grids: `grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))`. Dashboard: mobile single column; 768px nav + main; 1024px nav + main + sidebar. Use `grid-template-areas` for clarity.
 
-**Example blue scale (swap hues as needed):**
-- 50: #eff6ff, 100: #dbeafe, 200: #bfdbfe, 300: #93c5fd, 400: #60a5fa
-- 500: #3b82f6 (base), 600: #2563eb, 700: #1d4ed8, 800: #1e40af, 900: #1e3a8a
+### 5. Micro-interactions
 
-**Trends:** soft ambient gradients (not loud), cinematic color fields, high-saturation CTAs.
+Subtle only. Animate only `transform` and `opacity`. Duration 0.2 to 0.3s. Hover scale 1.05×; click/tap 0.95×; loading skeleton or pulse; success checkmark or confetti; error shake 2px.
 
-**Tools:** Huevy.app · Coolors.co · Adobe Color
+### 6. Accessibility (WCAG 2.2 AA)
 
----
+**Contrast:** Normal text &lt;24px 4.5:1; large text (≥24px or 19px bold) 3:1; UI components 3:1; focus indicators 3:1. Test: WebAIM, Chrome DevTools, axe. Failures: #999 on white (2.9:1); placeholder too light; disabled buttons still visible.
 
-## 3. Typography
+**Keyboard:** Tab/Shift+Tab move; Enter/Space activate; Escape close; Arrows in menus/radios/tabs. `tabIndex={0}` add to order; `tabIndex={-1}` programmatic only. Never tabIndex &gt; 0. `button:focus-visible { outline: 3px solid #3b82f6; outline-offset: 2px }`; never remove focus outline without replacement.
 
-### Scale (8px baseline)
-- text-xs: 12px / 16px · text-sm: 14px / 20px · text-base: 16px / 24px (body default)
-- text-lg: 18px / 28px · text-xl: 20px / 28px · text-2xl: 24px / 32px
-- text-3xl: 30px / 36px (section headers) · text-4xl: 36px / 40px · text-5xl: 48px / 1 (hero titles)
+**Skip link (required):** `<a href="#main-content" class="sr-only focus:not-sr-only ...">Skip to main content</a>`
 
-### Fonts
-2 fonts max. System stack (zero load time): `font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;`
+**Semantic HTML:** `<nav>`, `<main>`, `<article>`, `<h1>` to `<h6>`, `<button>`, `<a>`. One `<h1>` per page; do not skip heading levels. No divs for interactive when a native element exists.
 
-### Readability
-- Line length: 50–75 chars
-- Line height: 1.5× body, 1.2× headings
-- Letter spacing: -0.02em headings, normal body
+**Images:** Alt = function not appearance; under 125 chars; do not start with "image of". Decorative: `alt=""`.
 
----
+**ARIA (when semantic is not enough):** `aria-label`, `aria-labelledby`; `aria-expanded`, `aria-invalid`, `aria-describedby`; `role="status" aria-live="polite"`; `role="alert" aria-live="assertive"`.
 
-## 4. Layout
+**Forms:** Associate labels (htmlFor/id). Associate errors (aria-invalid, aria-describedby, id on error). Required: `required` and `aria-required="true"`.
 
-- **CSS Grid** → 2D page structure (header, sidebar, main, footer)
-- **Flexbox** → 1D component internals (rows/columns inside cards)
-- **Auto-fit** → responsive grids: `grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));`
+**Buttons vs links:** `<button>` for actions; `<a href>` for navigation. Never `<a href="#">` for actions.
 
-Dashboard: mobile single column; 768px = nav + main; 1024px = nav + main + sidebar. Use `grid-template-areas` for clarity.
+**Testing:** Tab through (no mouse); axe 0 violations; Lighthouse a11y &gt; 95; VoiceOver/NVDA on key flows; zoom 200% no horizontal scroll; emulate color blindness.
 
----
+### 7. Shadcn/ui + Tailwind
 
-## 5. Micro-Interactions
+Init: `npx create-next-app@latest ... --tailwind` then `npx shadcn@latest init`. Add components: `npx shadcn@latest add button card dialog calendar input label textarea select checkbox radio-group tabs badge avatar skeleton toast alert-dialog`. Folders: `components/ui`, `layout`, `features`, `shared`. Use design tokens (e.g. `p-4 text-blue-600`), not arbitrary values. Dark mode: `dark:` classes.
 
-Keep animations subtle. Animate only `transform` and `opacity`. Duration: 0.2–0.3s max.
+### 8. Component patterns
 
-| Trigger | Behavior |
-|---------|----------|
-| Hover | Scale 1.05× |
-| Click/tap | Scale 0.95× |
-| Loading | Skeleton or pulse |
-| Success | Checkmark fade-in / confetti |
-| Error | Shake (2px left-right) |
+Buttons: primary, secondary, outline, ghost, destructive; sizes sm/default/lg; loading spinner. Cards: CardHeader, CardTitle, CardDescription, CardContent, CardFooter; hover shadow/scale. File upload: drag-and-drop zone, border-dashed, hover, accept/size in copy. Date picker: Popover + Calendar (single), format display, clear label. Toast: title, description, variant, optional action. Nav: sidebar `space-y-2`; mobile Menu/X overlay. Loading: skeleton, Loader2 animate-spin, Progress.
 
----
+### 9. Pre-build checklist
 
-## 6. Accessibility (WCAG 2.2 Level AA)
+Color palette (primary + neutrals + semantic); typography scale (6 to 8 sizes); Shadcn + Tailwind initialized; breakpoints (576, 768, 992px); contrast verified (4.5:1 text, 3:1 UI); micro-interactions defined; grid sketched (mobile to desktop); skip link; all inputs labeled; icon-only buttons have aria-labels.
 
-### Contrast (mandatory)
-| Context | Minimum |
-|---------|---------|
-| Normal text (<24px) | 4.5:1 |
-| Large text (≥24px or 19px bold) | 3:1 |
-| UI components (buttons, inputs, icons) | 3:1 |
-| Focus indicators | 3:1 vs unfocused |
+### 10. Inspiration and tools
 
-**Test with:** WebAIM Contrast Checker · Chrome DevTools · axe DevTools. Common failures: #999 on white (2.9:1); placeholder too light; disabled buttons still visible.
+Study: Linear (keyboard-first, animations), Stripe (spacing, viz), Vercel (minimal, gradients), Notion (drag-and-drop), Loom (upload). Tools: Figma, WebAIM Contrast Checker, Coolors/Huevy, Chrome DevTools. Templates: Mosaic/Cruip, TailAdmin, Flowbite, Horizon UI. Dribbble: SaaS dashboard, upload UI, calendar UI.
 
-### Keyboard
-- Tab / Shift+Tab: move; Enter / Space: activate; Escape: close modals/dropdowns; Arrows: menus, radios, tabs.
-- Use `tabIndex={0}` to add to tab order; `tabIndex={-1}` for programmatic focus. Never tabIndex > 0.
-- `button:focus-visible { outline: 3px solid #3b82f6; outline-offset: 2px; }` — never remove focus outline without visible replacement.
-
-### Skip link (required)
-`<a href="#main-content" class="sr-only focus:not-sr-only ...">Skip to main content</a>`
-
-### Semantic HTML
-Use `<nav>`, `<main>`, `<article>`, `<h1>`–`<h6>`, `<button>`, `<a>`. One `<h1>` per page. Don't skip heading levels. No divs for interactive when a native element exists.
-
-### Images & Alt
-Describe function not appearance; under 125 chars; don't start with "image of". Decorative: `alt=""`.
-
-### ARIA (when semantic HTML isn't enough)
-- Labels: `aria-label`, `aria-labelledby`
-- States: `aria-expanded`, `aria-invalid`, `aria-describedby`
-- Live: `role="status" aria-live="polite"`; `role="alert" aria-live="assertive"`
-
-### Forms
-Always associate labels (`htmlFor` / `id`). Associate errors (`aria-invalid`, `aria-describedby`, `id` on error). Required: `required` and `aria-required="true"`.
-
-### Buttons vs Links
-- `<button>` → actions (submit, delete, open modal)
-- `<a href>` → navigation. Never `<a href="#">` for actions.
-
-### Testing checklist
-- [ ] Tab through entire UI (no mouse)
-- [ ] axe DevTools → 0 violations
-- [ ] Lighthouse accessibility > 95
-- [ ] VoiceOver / NVDA on key flows
-- [ ] Zoom 200% — no horizontal scroll
-- [ ] Emulate color blindness (DevTools)
-
----
-
-## 7. Shadcn/ui + Tailwind Stack
-
-- Init: `npx create-next-app@latest ... --tailwind` then `npx shadcn@latest init`. Add components: `npx shadcn@latest add button card dialog calendar input label textarea select checkbox radio-group tabs badge avatar skeleton toast alert-dialog`.
-- Folder structure: `components/ui` (Shadcn primitives), `layout`, `features`, `shared`.
-- Use design tokens in Tailwind (e.g. `p-4 text-blue-600`), not arbitrary values. Support dark mode via `dark:` classes.
-
----
-
-## 8. Component Patterns
-
-- **Buttons:** Primary, secondary, outline, ghost, destructive; sizes sm/default/lg; loading state with spinner.
-- **Cards:** CardHeader, CardTitle, CardDescription, CardContent, CardFooter; hover shadow/scale.
-- **File upload:** Drag-and-drop zone; border-dashed; hover state; accept types and size in copy.
-- **Date picker:** Popover + Calendar (single mode); format display; clear trigger label.
-- **Toast:** title, description, variant (default/destructive), optional action.
-- **Nav:** Sidebar with `space-y-2`; mobile toggle (Menu/X) with overlay.
-- **Loading:** Skeleton rows, spinner (Loader2 animate-spin), Progress bar.
-
----
-
-## 9. Pre-Build Checklist
-
-- [ ] Color palette (primary + neutrals + semantic)
-- [ ] Typography scale (6–8 sizes)
-- [ ] Shadcn + Tailwind initialized
-- [ ] Breakpoints planned (576 / 768 / 992px)
-- [ ] Contrast verified (4.5:1 text, 3:1 UI)
-- [ ] Micro-interactions defined (hover, click, success, error)
-- [ ] Grid layout sketched (mobile → desktop)
-- [ ] Skip link added
-- [ ] All inputs have labels
-- [ ] Icon-only buttons have aria-labels
-
----
-
-## 10. Inspiration & Tools
-
-**Study:** Linear (keyboard-first, subtle animations), Stripe (spacing, data viz), Vercel (minimal, gradients), Notion (drag-and-drop), Loom (upload flow).
-
-**Tools:** Figma · WebAIM Contrast Checker · Coolors / Huevy · Chrome DevTools. **Templates:** Mosaic/Cruip, TailAdmin, Flowbite, Horizon UI. **Dribbble:** social media scheduler, SaaS dashboard, upload interface, calendar UI.
-
----
-
-*Accessibility is a legal requirement (ADA, Section 508) and ethical baseline. Test early, test often.*
+Accessibility is a legal requirement (ADA, Section 508) and ethical baseline. Test early, test often.
 
 ## Reference
 
-[document](../document/SKILL.md). [document-agent](../document-agent/SKILL.md). [designer-figma](../designer-figma/SKILL.md).
+[document](../document/SKILL.md). [document-agent](../document-agent/SKILL.md). [designer-figma](../designer-figma/SKILL.md). [document-voice](../document-voice/SKILL.md).

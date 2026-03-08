@@ -88,8 +88,8 @@ To run a skill, say its trigger phrase or type `/skill-name`. Each skill is a fo
 
 | developer |
 |:--|
-| [![developer](https://img.shields.io/badge/developer-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/developer.md) <br> [![developer-typescript](https://img.shields.io/badge/developer--typescript-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-typescript/SKILL.md) [![developer-check-types](https://img.shields.io/badge/developer--check--types-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-check-types/SKILL.md) |
-| TypeScript and code: types, narrowing, generics, strict mode, type checking. Plain language. |
+| [![developer](https://img.shields.io/badge/developer-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/developer.md) <br> [![developer-typescript](https://img.shields.io/badge/developer--typescript-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-typescript/SKILL.md) [![developer-check-types](https://img.shields.io/badge/developer--check--types-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-check-types/SKILL.md) [![developer-electron](https://img.shields.io/badge/developer--electron-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-electron/SKILL.md) |
+| TypeScript and code: types, narrowing, generics, strict mode, type checking. Electron desktop apps: secure architecture, preload, packaging. Plain language. |
 
 | documenter |
 |:--|
@@ -188,6 +188,7 @@ Product Studio/
 │       │   └── SKILL.md.template
 │       ├── developer-typescript/SKILL.md
 │       ├── developer-check-types/SKILL.md
+│       ├── developer-electron/SKILL.md
 │       ├── save/
 │       │   ├── SKILL.md
 │       │   └── scripts/
