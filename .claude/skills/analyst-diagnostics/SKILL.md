@@ -1,10 +1,10 @@
 ---
-name: strategize
-description: Analyze findings: Ishikawa (fishbone) and Lovebug (causes + barriers), Five Whys, summary table of top problems.
+name: analyst-diagnostics
+description: Analyze findings: Ishikawa (fishbone) and Lovebug (causes + barriers), Five Whys, summary table of top problems. Use when user says analyst, diagnostics, define, figure out, find cause, /analyst-diagnostics.
 disable-model-invocation: true
 ---
 
-# Strategize
+# Analyst diagnostics
 
 Use documented findings to find problems, structure causes (Ishikawa/fishbone), add barriers and recovery (Lovebug), drill to root cause with Five Whys. [Ishikawa](https://en.wikipedia.org/wiki/Ishikawa_diagram) groups causes on branches; [Lovebug](http://cri.sagepub.com/content/19/4-5/87) (Card, Clinical Risk 2013) adds what prevents or mitigates (force-field style). Five Whys traces one cause branch to root. Use for incidents (retrospective) and planned change (prospective). Put all top problems in the Summary table first, then detailed analysis per problem.
 
@@ -75,7 +75,7 @@ Look for:
 - Friction in how people work
 - Gaps between what they want and what actually happens
 - Steps that are broken or missing
-- Needs that don’t match the current setup
+- Needs that don't match the current setup
 
 Write each as a **perceived problem** (what the user sees or feels). These become the rows in the Summary table and the heads of each detailed analysis.
 
@@ -85,15 +85,15 @@ Write each as a **perceived problem** (what the user sees or feels). These becom
 
 **Lovebug (bidirectional):** Add **barriers**: what prevents or mitigates the problem, or what enabled recovery. Same categories on both sides (causes left, barriers right). From [Card, Clinical Risk 2013](http://cri.sagepub.com/content/19/4-5/87): depicts forces for and against the outcome; use for incidents (causes vs barriers) or planned change (drivers vs obstacles). Optionally note strength of forces.
 
-**Five Whys:** Pick the most likely cause branch and ask “Why?” until you reach a **root cause**: a broken process you can fix or a behavior someone can change. Stop when you have something actionable; do not force exactly five.
+**Five Whys:** Pick the most likely cause branch and ask "Why?" until you reach a **root cause**: a broken process you can fix or a behavior someone can change. Stop when you have something actionable; do not force exactly five.
 
-Write each chain in the README (cause categories, causes and barriers, then the Why chain); the last “because” is the root cause.
+Write each chain in the README (cause categories, causes and barriers, then the Why chain); the last "because" is the root cause.
 
 ### 4. Label the root cause
 
 Pick one category per root cause (same as the Ishikawa bones):
 - **Process** – Workflow is missing or broken (Method)
-- **Knowledge** – People don’t know something they need (Manpower/Mindpower, Skill)
+- **Knowledge** – People don't know something they need (Manpower/Mindpower, Skill)
 - **Tool** – The right tool is missing or not good enough (Machine, Material)
 - **Design** – UX, layout, or structure is confusing or wrong (Physical evidence, Place)
 - **Communication** – People are not aligned (People, Promotion)
@@ -109,7 +109,7 @@ Place everything under `## 🐛 Problems` at the top of the README, under the H1
 ## Rules
 
 - Use cause categories (Ishikawa) and barriers (Lovebug) for every problem, then Five Whys on the chosen cause branch.
-- Root causes must be something you can act on (fix a process or change a behavior), not “that’s just how it is.”
+- Root causes must be something you can act on (fix a process or change a behavior), not "that's just how it is."
 - Write one problem definition sentence per root cause.
 - Add a mermaid mindmap for each Five Whys chain.
 - Summary table must list every problem from the run (all top problems in one place).

@@ -107,10 +107,10 @@ To run a skill, say its trigger phrase or type `/skill-name`. Each skill is a fo
 | [![researcher](https://img.shields.io/badge/researcher-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/researcher.md) <br> [![research](https://img.shields.io/badge/research-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/research/SKILL.md) [![research-figma](https://img.shields.io/badge/research--figma-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/research-figma/SKILL.md) |
 | Gathers content from links, tickets, and files; can audit Figma designs. |
 
-| strategist |
+| analyst |
 |:--|
-| [![strategist](https://img.shields.io/badge/strategist-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/strategist.md) <br> [![strategize](https://img.shields.io/badge/strategize-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/strategize/SKILL.md) |
-| Finds root causes (e.g. Five Whys). |
+| [![analyst](https://img.shields.io/badge/analyst-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/analyst.md) <br> [![analyst-diagnostics](https://img.shields.io/badge/analyst--diagnostics-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/analyst-diagnostics/SKILL.md) |
+| Finds root causes (e.g. Five Whys, Ishikawa, Lovebug). |
 
 | uninstaller |
 |:--|
@@ -136,14 +136,14 @@ Agents (`.claude/agents/*.md`) and skills (`.claude/skills/<name>/SKILL.md`) use
 | Field | Meaning | Reasoning |
 |-------|--------|-----------|
 | `name` | Identifier and slash-command (e.g. `/document`). Lowercase, letters, numbers, hyphens. | Lets users and flows invoke by name. Defaults to folder name if omitted. |
-| `description` | One line: what this agent or skill does. | Shown in menus and used when matching user intent. |
-| `triggers` | Comma-separated phrases that match the user’s request (e.g. "document", "write a skill"). | Coordinator and flows use these to pick an agent or flow. **Agents** need triggers so the coordinator can delegate. **Skills** with `disable-model-invocation: true` do *not* run from trigger matching; put the skill’s trigger phrases on the **agent** that runs that skill (e.g. documenter has "document a skill", "write a skill" and then runs document-skills). |
+| `description` | What this agent or skill does and when to use it. Include phrases users might say (e.g. "Use when user says save, sync, /save"). | Per [official docs](https://code.claude.com/docs/en/skills.md#frontmatter-reference), Claude uses description to decide when to apply. No separate `triggers` field; put matching phrases in the description. |
+
 
 ### Skills only
 
 | Field | Meaning | Reasoning |
 |-------|--------|-----------|
-| `disable-model-invocation` | `true` = only run when explicitly asked or when an agent runs it; no automatic trigger matching on the skill itself. | Used for skills that change things (write files, deploy) or must run only on purpose. When true, triggers on the skill are ignored; the agent that invokes the skill should list those triggers. |
+| `disable-model-invocation` | `true` = only run when explicitly asked or when an agent runs it. | Used for skills that change things (write files, deploy) or must run only on purpose. The agent that invokes the skill should have matching phrases in its description. |
 | `argument-hint` | Shown in autocomplete (e.g. `[skill-path] [source]`). | Tells the user what optional args they can pass. |
 | `context` | e.g. `fork` = run in a subagent. | Keeps the main chat clean when the skill does multi-step or file-changing work. |
 | `agent` | When `context: fork`, which subagent type (e.g. `general-purpose`). | Picks the runner so the forked task has the right tools and behavior. |
@@ -158,7 +158,7 @@ Agents (`.claude/agents/*.md`) and skills (`.claude/skills/<name>/SKILL.md`) use
 | `tools` | Tools this agent can use (e.g. Read, Write, MCP tools). | Scopes capability; listed in agent file. |
 | `model` | Preferred model(s) for this agent (e.g. opus, sonnet). | Match model to task (e.g. research vs. quick edits). |
 
-**Summary:** Triggers live on agents (and on skills that run by coordinator matching). Skills that are “run only when asked” use `disable-model-invocation: true`, no triggers on the skill, and the phrases on the agent that invokes them. Fork plus agent type keeps heavy or write-heavy skills in a subagent.
+**Summary:** Per official docs there is no `triggers` field. Put "when to use" and example phrases in the **description** so Claude and the coordinator can match. Skills that are run only when asked use `disable-model-invocation: true`; the agent that invokes them lists those phrases in its description. Fork plus agent type keeps heavy or write-heavy skills in a subagent.
 
 </details>
 
@@ -203,7 +203,7 @@ Product Studio/
 │   │   ├── designer.md
 │   │   ├── documenter.md
 │   │   ├── researcher.md
-│   │   ├── strategist.md
+│   │   ├── analyst.md
 │   │   ├── verifier.md
 │   │   ├── cleaner.md
 │   │   ├── installer.md
@@ -220,7 +220,7 @@ Product Studio/
 │       ├── document-agent/SKILL.md
 │       ├── designer-playbook/SKILL.md
 │       ├── document-skills/SKILL.md
-│       ├── strategize/SKILL.md
+│       ├── analyst-diagnostics/SKILL.md
 │       ├── research-figma/SKILL.md
 │       ├── verify-task/
 │       │   ├── SKILL.md

@@ -21,7 +21,7 @@ const TITLE = "# Task checklist (running list)\n\n";
 const FLOWS = {
   save: ["verify-paths", "document-paths", "save"],
   clean: ["clean"],
-  strategize: ["strategize"],
+  "analyst-diagnostics": ["analyst-diagnostics"],
   uninstall: ["uninstall"],
   "designer-figma": ["designer-figma"],
   "update-figma": ["update-figma"],
@@ -41,7 +41,7 @@ type TriggerEntry = readonly [RegExp | string, FlowKey];
 const TRIGGERS: TriggerEntry[] = [
   [/save|\/save/i, "save"],
   [/clean|wipe\.tmp|\/clean/i, "clean"],
-  [/strategize|define|figure out|find cause|\/strategize/i, "strategize"],
+  [/analyst|diagnostics|define|figure out|find cause|\/analyst-diagnostics/i, "analyst-diagnostics"],
   [/uninstall|\/uninstall/i, "uninstall"],
   [/design|\/designer-figma/i, "designer-figma"],
   [/update figma|\/update-figma/i, "update-figma"],

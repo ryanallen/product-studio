@@ -1,7 +1,6 @@
 ---
 name: document-agent
-description: When to use subagents for docs; how to write or update .claude/agents/ files.
-triggers: "document with a subagent, use a subagent for documentation, write a subagent, update subagent, /document-agent"
+description: When to use subagents for docs; how to write or update .claude/agents/ files. Use when user says document with a subagent, use a subagent for documentation, write a subagent, update subagent, /document-agent.
 ---
 
 # Document Agent

@@ -35,21 +35,22 @@ SKILL.md updated (and supporting files if needed).
 
 #### Frontmatter (the YAML block between the first `---` lines)
 
-Frontmatter configures when and how the skill runs. The table below follows the [official skills reference](https://code.claude.com/docs/en/skills.md#frontmatter-reference); Product Studio adds one extra field.
+Frontmatter configures when and how the skill runs. The table below follows the [official skills reference](https://code.claude.com/docs/en/skills.md#frontmatter-reference). There is no `triggers` field in the official docs; put "when to use" and example phrases users might say into the **description** so Claude knows when to apply the skill.
 
-| Field | Required | Description (from [code.claude.com/docs](https://code.claude.com/docs/en/skills.md#frontmatter-reference)) |
-|-------|----------|-------------------------------------------------------------------------------------------------------------|
-| `name` | No | Display name for the skill. If omitted, uses the directory name. Lowercase letters, numbers, and hyphens only (max 64 characters). Becomes the `/slash-command`. |
-| `description` | Recommended | What the skill does and when to use it. Claude uses this to decide when to apply the skill. If omitted, uses the first paragraph of markdown content. |
-| `argument-hint` | No | Hint shown during autocomplete to indicate expected arguments. Example: `[issue-number]` or `[filename] [format]`. |
-| `disable-model-invocation` | No | Set to `true` to prevent Claude from automatically loading this skill. Use for workflows you want to trigger manually with `/name`. Default: `false`. |
-| `user-invocable` | No | Set to `false` to hide from the `/` menu. Use for background knowledge users shouldn't invoke directly. Default: `true`. |
-| `allowed-tools` | No | Tools Claude can use without asking permission when this skill is active. |
-| `model` | No | Model to use when this skill is active. |
-| `context` | No | Set to `fork` to run in a forked subagent context. |
-| `agent` | No | Which subagent type to use when `context: fork` is set. Options include built-in agents (`Explore`, `Plan`, `general-purpose`) or any custom subagent from `.claude/agents/`. If omitted, uses `general-purpose`. |
-| `hooks` | No | Hooks scoped to this skill's lifecycle. See [Hooks in skills and agents](https://code.claude.com/docs/en/hooks#hooks-in-skills-and-agents) for configuration format. |
-| `triggers` | No (Product Studio) | Not in the official docs. Comma-separated phrases the coordinator or agents use to match user requests. When `disable-model-invocation: true`, triggers on the skill are not used; put those phrases on the **agent** that invokes this skill. |
+All fields are optional. Only `description` is recommended so Claude knows when to use the skill.
+
+| Field                      | Required    | Description                                                                                                                                           |
+| :------------------------- | :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                     | No          | Display name for the skill. If omitted, uses the directory name. Lowercase letters, numbers, and hyphens only (max 64 characters).                    |
+| `description`              | Recommended | What the skill does and when to use it. Claude uses this to decide when to apply the skill. If omitted, uses the first paragraph of markdown content. |
+| `argument-hint`            | No          | Hint shown during autocomplete to indicate expected arguments. Example: `[issue-number]` or `[filename] [format]`.                                    |
+| `disable-model-invocation` | No          | Set to `true` to prevent Claude from automatically loading this skill. Use for workflows you want to trigger manually with `/name`. Default: `false`. |
+| `user-invocable`           | No          | Set to `false` to hide from the `/` menu. Use for background knowledge users shouldn't invoke directly. Default: `true`.                              |
+| `allowed-tools`            | No          | Tools Claude can use without asking permission when this skill is active.                                                                             |
+| `model`                    | No          | Model to use when this skill is active.                                                                                                               |
+| `context`                  | No          | Set to `fork` to run in a forked subagent context.                                                                                                    |
+| `agent`                    | No          | Which subagent type to use when `context: fork` is set.                                                                                               |
+| `hooks`                    | No          | Hooks scoped to this skill's lifecycle. See [Hooks in skills and agents](/en/hooks#hooks-in-skills-and-agents) for configuration format.              |
 
 **YAML gotcha:** Avoid colons inside a value. They can be read as a new key. Use something like "Scope is" instead of "Scope:" in the text.
 
@@ -83,7 +84,7 @@ For injecting shell output before the skill runs, see [Inject dynamic context](h
 
 ### 3. Checklist when writing or updating
 
-1. **Frontmatter:** `description` present and specific (what it does and when to use it). `name` matches the skill. Task or side-effect skills: `disable-model-invocation: true` per official docs. For Product Studio skills run only by an agent, omit `triggers` on the skill and set triggers on the agent.
+1. **Frontmatter:** `description` present and specific (what it does and when to use it; include phrases users might say, e.g. "Use when user says save, /save"). No `triggers` field per official docs. `name` matches the skill. Task or side-effect skills: `disable-model-invocation: true` per official docs.
 2. **Sections:** Inputs, Output, Process, Reference in that order. Same layout as other skills.
 3. **Length:** Under 500 lines; long reference in other files, linked from SKILL.md.
 4. **Supporting files:** If used, say so in SKILL.md and when to load them.
@@ -98,9 +99,9 @@ For injecting shell output before the skill runs, see [Inject dynamic context](h
 
 ## After writing
 
-- **Coordinator sync:** If you changed `triggers` (on the skill or on the subagent that uses it), update [.claude/agents/coordinator.md](../../agents/coordinator.md) so Single flows and Workflow Input lines match. Coordinator uses trigger phrases from the flow table and from agents.
+- **Coordinator sync:** If you changed the description (e.g. phrases that match user requests), update [.claude/agents/coordinator.md](../../agents/coordinator.md) so the flow table and agent descriptions stay in sync.
 - **Rename/move:** If a skill was **renamed or moved** (e.g. generate-figma → designer-figma), update all references: coordinator, agents, README, package.json, other skills that link to it, [verify-task checklist script](verify-task/scripts/checklist.ts), and .gitignore.
 
 ## Reference
 
-[Extend Claude with skills](https://code.claude.com/docs/en/skills.md) – official frontmatter reference, control who invokes a skill, run in subagent, substitutions. [Coordinator](../../agents/coordinator.md) – Single flows and Workflows must match agent trigger phrases in Product Studio.
+[Extend Claude with skills](https://code.claude.com/docs/en/skills.md) – official frontmatter reference, control who invokes a skill, run in subagent, substitutions. [Coordinator](../../agents/coordinator.md) – Flow table and agent descriptions should match the phrases users say (no separate triggers field).

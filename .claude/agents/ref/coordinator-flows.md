@@ -44,11 +44,11 @@ Fixed sequences. Each step is "run /command" or "delegate to agent". Coordinator
 
 1. researcher → research.
 2. documenter → document.
-3. strategist → strategize.
+3. analyst → analyst-diagnostics.
 4. documenter → document (add problems).
 5. researcher → research (audit).
 6. documenter → document (current state).
-7. strategist → strategize (propose solutions).
+7. analyst → analyst-diagnostics (propose solutions).
 8. documenter → document (final pass).
 9. documenter → document-ticket (comment on ticket).
 
@@ -69,7 +69,7 @@ Fixed sequences. Each step is "run /command" or "delegate to agent". Coordinator
 
 ## Propose solutions
 
-1. strategist → strategize.
+1. analyst → analyst-diagnostics.
 2. documenter → document (add problems to README).
 
 ---
@@ -100,9 +100,9 @@ Fixed sequences. Each step is "run /command" or "delegate to agent". Coordinator
 
 ---
 
-## Strategize
+## Analyst
 
-1. strategist → strategize. Update checklist.
+1. analyst → analyst-diagnostics. Update checklist.
 
 ---
 

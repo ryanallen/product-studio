@@ -1,7 +1,6 @@
 ---
 name: developer-electron
-description: Electron desktop apps: secure architecture, preload, packaging, and common pitfalls.
-triggers: "electron, desktop app, /developer-electron"
+description: Electron desktop apps: secure architecture, preload, packaging, and common pitfalls. Use when user says electron, desktop app, /developer-electron.
 ---
 
 # Developer Electron

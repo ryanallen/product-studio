@@ -1,7 +1,6 @@
 ---
 name: developer
-description: TypeScript and code: type-safe patterns, narrowing, generics, strict mode. Electron: secure architecture, preload, packaging. Uses developer-typescript, developer-check-types, developer-electron. Explains in plain language (document-voice).
-triggers: "dev, develop, /developer"
+description: TypeScript and code: type-safe patterns, narrowing, generics, strict mode. Electron: secure architecture, preload, packaging. Uses developer-typescript, developer-check-types, developer-electron. Explains in plain language (document-voice). Use when user says dev, develop, build.
 tools: Read, Write, Bash, Glob, Grep, TodoWrite
 model: opus, sonnet
 ---
