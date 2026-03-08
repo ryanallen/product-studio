@@ -6,12 +6,12 @@ triggers: "refine, write, write up, document, update, make, /document"
 
 # Document
 
-Turn research into one README per project (path from [work/paths.md](../../work/paths.md)). Use clear headings, diagrams when they help, and link to sources.
+One README per project (path from [work/paths.md](../../work/paths.md)). Clear headings, diagrams when they help, link to sources.
 
 ## Inputs
 
-- **Project path** – Where the README lives. See [work/paths.md](../../work/paths.md).
-- **Source material** – Research, notes, or findings to turn into the README.
+- **Project path** – [work/paths.md](../../work/paths.md).
+- **Source material** – Research, notes, or findings.
 - **Document type** – `research`, `analysis`, `solutions`, or `project-overview`.
 
 ## Output
@@ -88,4 +88,4 @@ Learnings. Recommendations. Links to new docs.
 
 ## Reference
 
-[work/paths.md](../../work/paths.md). [Coordinator](../../agents/coordinator.md). [document-github](../document-github/SKILL.md) for GitHub READMEs. [document-skills](../document-skills/SKILL.md).
+[work/paths.md](../../work/paths.md). [Coordinator](../../agents/coordinator.md). [document-github](../document-github/SKILL.md). [document-skills](../document-skills/SKILL.md).

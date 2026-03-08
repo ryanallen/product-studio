@@ -8,26 +8,13 @@ model: opus, sonnet
 
 # Coordinator
 
-This file is the **workflow playbook**, not a subagent to invoke. Main uses it to decide which flow runs and which subagent runs each step. Main does the delegating; subagents cannot spawn other subagents.
+This file is the **workflow playbook**, not a subagent. Main uses it to decide which flow and subagent; Main delegates; subagents do not spawn subagents.
 
-**Before executing any flow:** Delegate to verifier for verify-task (required). Do not run single flow or workflow steps until the checklist is created.
-
-## Inputs
-
-1. **User request** – What the user said (e.g. "refine the README", "install", "save", "discover"). Match to one flow below.
-2. **work/paths.md** – When a workflow needs team, space, or ticket-id, read from here. Do not invent values.
-
-## Output
-
-Depends on the flow: install completes setup; save produces commits; documenter produces or updates docs; researcher returns findings; etc. Each flow lists its outcome.
-
-## Process
-
-1. **Task checklist (required; do not skip):** Delegate to **verifier** for [verify-task](../skills/verify-task/SKILL.md). Pass the user request and, once known, the matched flow name and steps. Verifier creates or updates `.tmp/task-checklist.md`. Do not proceed to step 2 until the checklist exists.
-2. Match the user's request to one **Single flow** or **Workflow** by checking trigger phrases. If unclear, prefer the flow that best fits the request.
+**Rule 1:** Delegate to verifier for [verify-task](../skills/verify-task/SKILL.md) before any flow. Pass request and (once known) flow name and steps. Do not proceed to step 2 until `.tmp/task-checklist.md` has a section for this task.
+2. Match request to one **Single flow** or **Workflow** (trigger phrases). If unclear, prefer best fit.
 3. **Single flow:** Delegate once to the subagent listed for that flow. Pass the request (and any optional input) as context. The subagent must update the checklist after each skill it runs (see rule 2).
 4. **Workflow:** Run the steps in order. For each step: delegate to the listed subagent; when that step is done, update the current task section in `.tmp/task-checklist.md` (strikethrough that skill, add note); then run the next step. Do not skip steps.
-5. Do not delegate to the coordinator. Delegate only to subagents listed in Team. Check a subagent's `triggers` (or description) in `.claude/agents/` when matching.
+5. Delegate only to subagents in Team. Check `.claude/agents/` for `triggers` or description when matching.
 
 ## Team
 

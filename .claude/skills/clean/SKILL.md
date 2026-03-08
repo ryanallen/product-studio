@@ -6,7 +6,7 @@ triggers: "clean, wipe .tmp, /clean"
 
 # Clean
 
-Delete all contents of `.tmp/`. Repo root and everything outside `.tmp/` are untouched.
+Delete all contents of `.tmp/`. Do not touch anything outside `.tmp/`.
 
 ## Inputs
 
@@ -14,7 +14,7 @@ None.
 
 ## Output
 
-`.tmp/` empty. If missing, do nothing. Nothing outside `.tmp/` is modified.
+`.tmp/` empty. If missing, do nothing.
 
 ## Process
 

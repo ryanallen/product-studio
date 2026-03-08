@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Verify Task
 
-Append a **new section** to `.tmp/task-checklist.md` for each new task the user starts. Do not delete or overwrite existing content; the file is a running list. Each section: a heading with date and timestamp and a one-line task summary, then one line per skill in the flow. Completed items: **strikethrough** plus a brief note (e.g. ` — Skipped; no paths.md`). Not-done items are plain text. When an agent runs a skill, it updates only the **current task's section** (the most recent heading): strikethrough that line and add the note.
+Append a **new section** to `.tmp/task-checklist.md` per task. Running list: do not delete or overwrite. Section = heading (date + time + summary), then one line per skill. Completed = strikethrough + note. Agents update only the **current task section** (last heading).
 
 ## Inputs
 
@@ -16,27 +16,17 @@ Append a **new section** to `.tmp/task-checklist.md` for each new task the user 
 
 ## Output
 
-- File: `.tmp/task-checklist.md` (create if missing).
-- **Append only:** New task = new section at the bottom. Heading format: `## YYYY-MM-DD HH:MM — {task summary}`. Then the skill list for this task. Do not remove or overwrite earlier sections.
-- Whoever runs a skill updates the **current task section** (last section in the file): strikethrough that skill line and add the note.
+`.tmp/task-checklist.md` (create if missing). Append only. Heading: `## YYYY-MM-DD HH:MM — {summary}`. One line per skill. Agents strikethrough + note in current section when they run a skill.
 
 ## Process
 
-1. Ensure `.tmp/` exists (create if missing).
-2. **Build the skill list for this task** from the flow:
-   - **Workflows:** Use the coordinator step list; one line per step/skill (e.g. Save: verify-paths, document-paths if applicable, save).
-   - **Single flows:** Include every skill the subagent uses for that request. Example: refine/README → list `document`, `document-github`, `document-voice` (from coordinator Output and documenter scope) so all three must be marked done. If the coordinator or subagent says "uses X, Y, Z", list X, Y, Z. Do not collapse to one line (e.g. "documenter"); list each skill so the user can verify none are skipped.
-3. **Read existing file** if `.tmp/task-checklist.md` exists. Do not delete or overwrite its content.
-4. **Append a new section** at the bottom:
-   - If the file was empty or new: start with a top-level title (e.g. `# Task checklist (running list)`), then add the new section.
-   - New section format:
-     - Heading: `## YYYY-MM-DD HH:MM — {one-line task summary}` (use current date and time; summary = flow name or brief request).
-     - Blank line, then the skill list: one line per skill. `- skill-name` (not run) or `- ~~skill-name~~ — note` (run).
-     - Optional: `## Notes` and a line or two for this task.
-   - If the file already had content, append only this new section (heading + skill list + optional Notes). Do not remove any previous sections.
-5. Write the result: existing content + new section. So the file grows; each new task adds a new dated heading and list at the bottom.
-6. Confirm to Main: checklist updated; agents update only the **current task section** (the last `## ...` block) when they run a skill.
+1. Ensure `.tmp/` exists.
+2. **Skill list** from flow: Workflows = coordinator step list (one line per skill). Single flows = every skill the subagent uses (e.g. refine/README → document, document-github, document-voice). Do not collapse to one line.
+3. Read existing `.tmp/task-checklist.md` if present. Do not overwrite.
+4. Append new section at bottom: if file empty, add title `# Task checklist (running list)` then section. Section = heading `## YYYY-MM-DD HH:MM — {summary}`, blank line, skill lines `- skill-name` or `- ~~skill-name~~ — note`. Optional `## Notes`.
+5. Write existing content + new section.
+6. Confirm to Main: checklist updated; agents update current section only.
 
 ## Reference
 
-[Coordinator](../../agents/coordinator.md) – Workflows list skills per step. Single flows: use the Output column and subagent scope to list every skill (e.g. documenter for README → document, document-github, document-voice).
+[Coordinator](../../agents/coordinator.md) – workflows list steps; single flows use Output column and subagent scope for full skill list. **Deterministic script:** [scripts/checklist.ts](scripts/checklist.ts) – step 0 always verify-task; `npm run checklist -- "<summary>"` appends section; `--steps "<message>"` prints ordered steps.

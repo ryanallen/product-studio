@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Document Paths
 
-Sync the path tree in `work/paths.md` to match disk under `work/`, then run the Save workflow commit step.
+Sync `work/paths.md` to match disk under `work/`, then Save step 3 (updater runs [save](../save/SKILL.md)).
 
 ## Inputs
 
@@ -15,15 +15,15 @@ Sync the path tree in `work/paths.md` to match disk under `work/`, then run the 
 
 ## Output
 
-`work/paths.md` updated; then [Coordinator](../../agents/coordinator.md) Save step 3: updater runs [save](../save/SKILL.md) (stage and commit).
+`work/paths.md` updated; then Save step 3 (stage and commit).
 
 ## Process
 
 1. **Compare** – Paths under `work/` on disk vs the tree in `work/paths.md`.
 2. **Update** – Add entries for new paths; remove entries for paths that no longer exist.
 3. **Format** – Match existing structure (see `work/paths.md` or `work/paths.md.template`).
-4. **Save** – Run Save step 3 (updater → save) so changes are committed.
+4. **Save** – Run Save step 3 so changes are committed.
 
 ## Reference
 
-[Coordinator](../../agents/coordinator.md) – Save workflow.
+[Coordinator](../../agents/coordinator.md).

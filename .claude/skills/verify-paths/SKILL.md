@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Verify Paths
 
-Compare the path tree in `work/paths.md` to actual folders under `work/`. If mismatch, hand off to documenter (document-paths); then run Save step 3.
+Compare `work/paths.md` to actual folders under `work/`. If mismatch: documenter runs [document-paths](../document-paths/SKILL.md); then Save step 3 (commit).
 
 ## Inputs
 
@@ -16,7 +16,7 @@ Compare the path tree in `work/paths.md` to actual folders under `work/`. If mis
 
 ## Output
 
-Match confirmed, or documenter handed off to run document-paths (sync tree), then Save step 3 (commit) runs.
+Match; or documenter runs document-paths, then Save step 3.
 
 ## Process
 
@@ -24,10 +24,9 @@ Match confirmed, or documenter handed off to run document-paths (sync tree), the
 
 2. If `work/paths.md` exists: read it, list actual folders under `work/`, verify tree matches.
 
-3. If mismatch: hand off to **documenter** (step 2 of **Save** workflow in [Coordinator](../../agents/coordinator.md)) to run [document-paths](../document-paths/SKILL.md).
-
-4. Then run step 3 of the **Save** workflow in [Coordinator](../../agents/coordinator.md) (updater runs save).
+3. If mismatch: hand off to **documenter** for [document-paths](../document-paths/SKILL.md).
+4. Then Save step 3: updater runs [save](../save/SKILL.md).
 
 ## Reference
 
-[Coordinator](../../agents/coordinator.md) – Save workflow. [document-paths](../document-paths/SKILL.md) – Syncs paths.md to disk.
+[Coordinator](../../agents/coordinator.md). [document-paths](../document-paths/SKILL.md).
