@@ -242,6 +242,7 @@ Product Studio/
 │       ├── clean/
 │       │   ├── SKILL.md
 │       │   └── scripts/clean.mjs
+│       ├── cowork-virtualization/SKILL.md
 │       ├── uninstall/SKILL.md
 │       ├── update-figma/SKILL.md
 │       ├── designer-figma/

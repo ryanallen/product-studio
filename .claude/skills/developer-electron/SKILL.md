@@ -1,11 +1,11 @@
 ---
 name: developer-electron
-description: Electron desktop apps: secure architecture, preload, packaging, and common pitfalls. Use when user says electron, desktop app, /developer-electron.
+description: Best practices for building an Electron desktop app: secure architecture, preload, packaging, and pitfalls. Use when user says electron, desktop app, /developer-electron.
 ---
 
 # Developer Electron
 
-Use when building or debugging an Electron app. Apply secure defaults, preload rules, and avoid architecture and packaging traps. Plain language; [document-voice](../document-voice/SKILL.md).
+When you build an Electron app, follow these practices. They focus on security, preload scripts, process model, packaging, and common traps. Plain language; [document-voice](../document-voice/SKILL.md).
 
 ## Inputs
 
@@ -14,61 +14,63 @@ Use when building or debugging an Electron app. Apply secure defaults, preload r
 
 ## Output
 
-Guidance applied (secure config, preload, architecture, packaging). No new repo unless requested.
+Guidance applied (secure config, preload, architecture, packaging). No new repo unless the user asks for one.
 
 ## Process
 
-### 1. Security (non-negotiable)
+### 1. Security (required)
 
-- **nodeIntegration: false** in `webPreferences`. Renderer with Node = XSS can compromise the system.
-- **contextIsolation: true**. Keeps preload separate from renderer.
-- Whitelist IPC channels; do not forward arbitrary channel names from renderer.
-- Validate all IPC message content; treat renderer as untrusted (like external API input).
-- No `eval()` or `new Function()` in renderer; they break security boundaries.
+- Set **nodeIntegration: false** in `webPreferences`. If the renderer has Node, a single XSS can take over the machine.
+- Set **contextIsolation: true**. Keeps preload and renderer worlds separate.
+- Do not expose raw `ipcRenderer` to the renderer. Use a small, whitelisted API via the preload (see below).
+- Whitelist IPC channel names. Do not let the renderer pass arbitrary channel names to the main process.
+- Validate every IPC message. Treat the renderer as untrusted (same as API input). Check types and shape.
+- Do not use `eval()` or `new Function()` in the renderer; they break the security boundary.
 
-### 2. Preload
+### 2. Preload script
 
-- **contextBridge.exposeInMainWorld()** only. Raw `ipcRenderer` exposure is unsafe.
-- Clone data before passing across the bridge (avoids prototype pollution).
-- Minimal API: expose specific functions, not generic send/receive.
+- Use **contextBridge.exposeInMainWorld()** only. Exposing the full `ipcRenderer` is unsafe.
+- Expose a minimal API: named functions for specific actions, not a generic send/receive.
+- Clone data when passing across the bridge to avoid prototype pollution. Do not pass objects that carry prototype chains you do not control.
+- Keep the preload script small. No business logic; only bridge calls.
 
 ### 3. Architecture
 
-- **webPreferences** are fixed after window creation; you cannot enable nodeIntegration later.
-- Blocking main process freezes all windows. Use async; no sync file I/O.
-- Each BrowserWindow is a separate renderer process; no shared in-memory JS state.
-- `show: false` then show on `ready-to-show` to avoid white flash.
+- **webPreferences** cannot be changed after the window is created. You cannot turn nodeIntegration on later. Set them once when creating the window.
+- The main process is single-threaded. Blocking it (e.g. sync file I/O) freezes all windows. Use async APIs.
+- Each BrowserWindow runs in its own renderer process. There is no shared in-memory JS state between windows. Use IPC or main-process state if you need to share.
+- Use **show: false** and show the window on **ready-to-show** to avoid a white flash on load.
 
 ### 4. Native modules
 
-- Prebuilt native modules often fail; rebuild for Electron’s Node version.
-- Run **electron-rebuild** after every Electron upgrade; version mismatch = runtime crash.
-- Prefer N-API modules; they survive Electron upgrades better than nan-based.
+- Prebuilt native addons are often built for a different Node/Electron version and will fail at runtime. Rebuild them for the Electron version you use.
+- Run **electron-rebuild** after every Electron upgrade. Version mismatch usually means a crash on require.
+- Prefer N-API–based native modules; they tend to survive Electron upgrades better than nan-based ones.
 
 ### 5. Packaging
 
-- Dev dependencies included by default; exclude in production or builds bloat.
-- macOS auto-update requires code signing; unsigned apps cannot use Squirrel.
-- Windows notifications need **app.setAppUserModelId()** or they fail silently.
-- ASAR is not encryption; source is readable; do not store secrets in it.
+- By default, devDependencies can be included in the packaged app. Exclude them in your packager config or the build gets large.
+- On macOS, auto-update (e.g. Squirrel) needs code signing. Unsigned apps cannot use it.
+- On Windows, set **app.setAppUserModelId()** or notifications may fail with no clear error.
+- ASAR is a single-file archive, not encryption. Anyone can unpack and read the source. Do not put secrets in the app bundle.
 
 ### 6. Platform-specific
 
-- CORS blocks `file://`. Use a custom protocol (e.g. `app://`) or local server.
-- Windows: NSIS or Squirrel for auto-update; installer format matters.
-- macOS universal: `--universal` flag to ship Intel and ARM.
+- CORS applies to `file://`. If you load from the filesystem, use a custom protocol (e.g. `app://`) or a local HTTP server so fetch/XHR works as expected.
+- Windows: choose installer and update format (e.g. NSIS vs Squirrel) up front; it affects how you ship updates.
+- macOS: use the **--universal** flag if you need to ship both Intel and ARM in one binary.
 
 ### 7. Memory and performance
 
-- Unclosed windows leak; call **win.destroy()** when done.
-- Lazy load heavy modules to keep startup fast.
-- **backgroundThrottling: false** if timers must run when minimized.
+- Closing a window without calling **win.destroy()** can leave the process and memory in use. Destroy when the window is no longer needed.
+- Lazy load heavy modules so startup stays fast. Require them only when the feature is used.
+- If you need timers or background work to run when the window is minimized, set **backgroundThrottling: false** for that window (use sparingly; it uses more power).
 
 ### 8. Debugging
 
-- Main: **--inspect**, then `chrome://inspect`.
-- Renderer: **webContents.openDevTools()** or keyboard shortcut.
-- Use **electron-log** (or similar) for persistent logs; console.log is lost on restart.
+- Main process: start with **--inspect**, then open `chrome://inspect` in Chrome and attach.
+- Renderer: use **webContents.openDevTools()** or the usual DevTools shortcut.
+- Relying on **console.log** in the main process is fragile; logs are lost on restart. Use a logger (e.g. electron-log) that writes to a file.
 
 ## Reference
 
