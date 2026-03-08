@@ -32,6 +32,7 @@ const FLOWS = {
   refine: ["document", "document-github"],
   developer: ["developer-typescript", "developer-check-types"],
   "developer-electron": ["developer-electron"],
+  "developer-electrobun": ["developer-electrobun"],
 } as const satisfies Record<string, readonly string[]>;
 
 type FlowKey = keyof typeof FLOWS;
@@ -51,6 +52,7 @@ const TRIGGERS: TriggerEntry[] = [
   [/install|setup|\/install/i, "install"],
   [/\bdev\b|develop|\/developer|check types|typecheck|tsc|type errors|typescript|\/developer-typescript/i, "developer"],
   [/electron|desktop app|\/developer-electron/i, "developer-electron"],
+  [/electrobun|\/developer-electrobun/i, "developer-electrobun"],
   [/refine|write|write up|document|update|make|\/document/i, "refine"],
 ];
 

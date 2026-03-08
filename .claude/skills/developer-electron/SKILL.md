@@ -5,7 +5,7 @@ description: Best practices for building an Electron desktop app: secure archite
 
 # Developer Electron
 
-When you build an Electron app, follow these practices. They focus on security, preload scripts, process model, packaging, and common traps. Plain language; [document-voice](../document-voice/SKILL.md).
+When you build an Electron app, follow these practices: security, preload, process model, packaging, common traps. [document-voice](../document-voice/SKILL.md).
 
 ## Inputs
 
@@ -72,6 +72,10 @@ Guidance applied (secure config, preload, architecture, packaging). No new repo 
 - Renderer: use **webContents.openDevTools()** or the usual DevTools shortcut.
 - Relying on **console.log** in the main process is fragile; logs are lost on restart. Use a logger (e.g. electron-log) that writes to a file.
 
+## Alternative: Electrobun
+
+For **smaller bundles** (~14 MB), **tiny updates** (~14 KB patches), **faster startup** (&lt;50 ms), and a **single TypeScript stack** (no preload bridge), use [developer-electrobun](../developer-electrobun/SKILL.md). Stay with Electron when you need the mature ecosystem or existing native addons.
+
 ## Reference
 
-[document-voice](../document-voice/SKILL.md). [developer-typescript](../developer-typescript/SKILL.md) for TypeScript in the same app.
+[document-voice](../document-voice/SKILL.md). [developer-typescript](../developer-typescript/SKILL.md) for TypeScript. [developer-electrobun](../developer-electrobun/SKILL.md) for a lighter option (smaller bundles, tiny updates, TypeScript-only).
