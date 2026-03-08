@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Verify Task
 
-Create or update a `.tmp` task checklist: numbered list of what needs to be done. Completed items use **strikethrough** (e.g. `~~Item text~~`); not-done items are plain text. Include space for notes.
+Create or update a `.tmp` task checklist: list of what needs to be done. Completed items use **strikethrough** (e.g. `~~Item text~~`) followed by a brief note about what was done (e.g. ` — Skipped; no paths.md` or ` — Committed 3 files`). Not-done items are plain text with no note.
 
 ## Inputs
 
@@ -17,8 +17,8 @@ Create or update a `.tmp` task checklist: numbered list of what needs to be done
 ## Output
 
 - A file under `.tmp/` (e.g. `.tmp/task-checklist.md`).
-- Content: checklist with heading, date/time, numbered items (plain text = not done, `~~text~~` = done), and a Notes section.
-- Instruction that agents performing the steps should update this file: apply strikethrough and add brief notes as they complete work.
+- Content: checklist with heading, date/time, list items (plain text = not done; `~~text~~ — what was done` = done with note).
+- Instruction that agents performing the steps should update this file: apply strikethrough and add a note after each completed item describing what was done.
 
 ## Process
 
@@ -27,9 +27,9 @@ Create or update a `.tmp` task checklist: numbered list of what needs to be done
 3. Write the checklist to `.tmp/task-checklist.md`. Format:
    - Title (e.g. "Task checklist") and optional one-line task summary.
    - Date/time created or updated.
-   - Numbered list: `- Item text` (not done) or `- ~~Item text~~` (done).
-   - Notes section at the bottom.
-4. Confirm to Main: checklist created; agents working the task should update it (strikethrough and notes) as they complete steps.
+   - List: `- Item text` (not done) or `- ~~Item text~~ — note about what was done` (done). When agents complete an item, they add strikethrough and the note on the same line.
+   - Optional: Notes section at the bottom for general notes.
+4. Confirm to Main: checklist created; agents should update it (strikethrough + note after each completed item) as they complete steps.
 
 ## Reference
 
