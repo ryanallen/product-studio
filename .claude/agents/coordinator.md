@@ -10,15 +10,14 @@ model: opus, sonnet
 
 This file is the **workflow playbook**, not a subagent. Main uses it to decide which flow and subagent; Main delegates; subagents do not spawn subagents.
 
-**Rule 1:** Delegate to verifier for [verify-task](../skills/verify-task/SKILL.md) before any flow. Pass request and (once known) flow name and steps. Do not proceed to step 2 until `.tmp/task-checklist.md` has a section for this task.
-2. Match request to one **Single flow** or **Workflow** (trigger phrases). If unclear, prefer best fit.
-3. **Single flow:** Delegate once to the subagent listed for that flow. Pass the request (and any optional input) as context. The subagent must update the checklist after each skill it runs (see rule 2).
-4. **Workflow:** Run the steps in order. For each step: delegate to the listed subagent; when that step is done, update the current task section in `.tmp/task-checklist.md` (strikethrough that skill, add note); then run the next step. Do not skip steps.
-5. Delegate only to subagents in Team. Check `.claude/agents/` for `triggers` or description when matching.
+1. Match request to one **Single flow** or **Workflow** (trigger phrases). If unclear, prefer best fit.
+2. **Single flow:** Delegate once to the subagent listed for that flow. Pass the request (and any optional input) as context. The subagent must update the checklist after each skill it runs (see rule 2).
+3. **Workflow:** Run the steps in order. For each step: delegate to the listed subagent; when that step is done, update the current task section in `.tmp/task-checklist.md` (strikethrough that skill, add note); then run the next step. Do not skip steps.
+4. Delegate only to subagents in Team. Check `.claude/agents/` for `triggers` or description when matching.
 
 ## Team
 
-researcher, documenter, strategist, verifier, cleaner, updater, installer, uninstaller, designer.
+researcher, documenter, strategist, verifier, cleaner, updater, installer, uninstaller, designer, developer.
 
 ## Single flows
 
@@ -37,6 +36,7 @@ Each row: what triggers it, optional input from the user, which subagent, and wh
 | design, /generate-figma | none | designer | generate-figma | Figma design created or updated |
 | update figma, /update-figma | none | updater | update-figma | Figma token refreshed in config |
 | sync, sync upstream, /sync-upstream | none | updater | sync-upstream | Pull from upstream main, push to repo |
+| dev, develop, /developer | code or question | developer | developer-typescript | Type-safe TS; one SKILL |
 
 ## Workflows
 

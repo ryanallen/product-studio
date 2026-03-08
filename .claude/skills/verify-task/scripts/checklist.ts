@@ -1,5 +1,7 @@
 /**
- * Deterministic rule 1: step 0 is always verify-task. Flow steps follow.
+ * Implements verify-task SKILL: append a section to .tmp/task-checklist.md per task.
+ * Rule 1 in AGENTS.md triggers this: first action every turn run `npm run checklist -- "<summary>"`.
+ * Step 0 is always verify-task; steps are derived from user message (FLOWS + TRIGGERS).
  * Run: npx tsx .claude/skills/verify-task/scripts/checklist.ts "<task summary>"
  * Run: npx tsx .claude/skills/verify-task/scripts/checklist.ts --steps "<message>"
  */
@@ -21,6 +23,7 @@ const FLOWS: Record<string, readonly string[]> = {
   "research-figma": ["research-figma"],
   install: ["(Install workflow)"],
   refine: ["document", "document-github", "document-voice"],
+  developer: ["developer-typescript"],
 } as const;
 
 const TRIGGERS: [RegExp | string, string][] = [
@@ -34,6 +37,7 @@ const TRIGGERS: [RegExp | string, string][] = [
   [/research figma|analyze figma|figma audit|\/research-figma/i, "research-figma"],
   [/research|learn|look at this|read|\/research/i, "research"],
   [/install|setup|\/install/i, "install"],
+  [/\bdev\b|develop|\/developer/i, "developer"],
   [/refine|write|write up|document|update|make|\/document/i, "refine"],
 ];
 
