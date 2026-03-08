@@ -1,7 +1,6 @@
 ---
 name: developer-typescript
-description: TypeScript: narrowing, inference, generics, strict mode, utility types, declarations, migration. Plain language.
-triggers: "ts, typescript, /developer-typescript"
+description: TypeScript: narrowing, inference, generics, strict mode, utility types, declarations, migration. Plain language. Use when user says ts, typescript, /developer-typescript.
 ---
 
 # Developer TypeScript

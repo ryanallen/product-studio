@@ -1,7 +1,6 @@
 ---
 name: coordinator
 description: Verify task then match flow then execute. Step 1 run /checklist (verify task), Step 2 match flow, Step 3 execute that flow from ref/coordinator-flows. Do not delegate to coordinator.
-triggers: []
 tools: Read, Bash, Grep, Glob, TodoWrite
 model: opus, sonnet
 ---
@@ -16,7 +15,7 @@ Follow this checklist. Do not skip steps.
 
 **Step 3.** Execute that flow's steps in order from coordinator-flows. Each step is either "run /command" or "delegate to agent". After each step, update the current task section in the checklist (`.tmp/task-checklist.md`): strikethrough that skill, add note. Do not skip steps.
 
-**Step 4.** Delegate only to subagents in Team. Check `.claude/agents/` for `triggers` or description when matching.
+**Step 4.** Delegate only to subagents in Team. Match user request to an agent using each agent's description in `.claude/agents/`.
 
 ## Flow lookup (for Step 2)
 
@@ -28,7 +27,7 @@ Follow this checklist. Do not skip steps.
 | research, learn, read, /research | Research |
 | research Figma, Figma audit, /research-figma | Research Figma |
 | install, setup, /install | Install |
-| strategize, define, find cause, /strategize | Strategize |
+| analyst, diagnostics, define, find cause, /analyst-diagnostics | Analyst |
 | uninstall, /uninstall | Uninstall |
 | dev, develop, /developer | Dev |
 | check types, typecheck, tsc, type errors | Dev |
@@ -43,7 +42,7 @@ Follow this checklist. Do not skip steps.
 
 ## Team
 
-researcher, documenter, strategist, verifier, cleaner, updater, installer, uninstaller, designer, developer.
+researcher, documenter, analyst, verifier, cleaner, updater, installer, uninstaller, designer, developer.
 
 ## Reference
 

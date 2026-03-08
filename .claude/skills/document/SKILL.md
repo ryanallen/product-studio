@@ -1,7 +1,6 @@
 ---
 name: document
-description: Turn research into one clear README per project. Use markdown, mermaid diagrams, tables, and links. Plain language.
-triggers: "refine, write, write up, document, update, make, /document"
+description: Turn research into one clear README per project. Use markdown, mermaid diagrams, tables, and links. Plain language. Use when user says refine, write, write up, document, update, make, /document.
 ---
 
 # Document

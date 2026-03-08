@@ -1,7 +1,6 @@
 ---
 name: research-figma
-description: Analyze a Figma design link and produce a structured report (research/audit). General link = whole file; specific link (node-id) = that node and subtree.
-triggers: "research Figma, analyze Figma, Figma audit, analyze this Figma link, /research-figma"
+description: Analyze a Figma design link and produce a structured report (research/audit). General link = whole file; specific link (node-id) = that node and subtree. Use when user says research Figma, analyze Figma, Figma audit, analyze this Figma link, /research-figma.
 ---
 
 # Research Figma

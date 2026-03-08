@@ -1,7 +1,6 @@
 ---
 name: install-custom
 description: Local overrides for Product Studio install. Created from this template during install; SKILL.md is gitignored. Run after main install when customizer invokes it.
-triggers: []
 user-invocable: false
 ---
 

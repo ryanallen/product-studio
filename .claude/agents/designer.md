@@ -1,7 +1,6 @@
 ---
 name: designer
-description: Creates or updates Figma designs via the Figma Console MCP. Aligns to design standards in designer-playbook when the project or user references product design standards.
-triggers: "design, /designer-figma"
+description: Creates or updates Figma designs via the Figma Console MCP. Aligns to design standards in designer-playbook when the project or user references product design standards. Use when user says design.
 tools: mcp__figma-console__*, Bash, Read, TodoWrite
 model: opus, sonnet
 ---
