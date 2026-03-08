@@ -212,8 +212,7 @@ The built-in [Updater API](https://blackboard.sh/electrobun/docs/apis/updater) c
 
 ## Where to go next
 
-- In this repo: [.claude/skills/developer-electrobun/SKILL.md](../../../.claude/skills/developer-electrobun/SKILL.md) – Practices and links to Electron guidance.
-- [ECOSYSTEM.md](./ECOSYSTEM.md) – Related projects (Co(lab), GoldfishDB, zig-bsdiff) that can help an Electrobun app.
+- In this repo: [.claude/skills/developer-electrobun/SKILL.md](../../../.claude/skills/developer-electrobun/SKILL.md) – Practices and links to Electron guidance; ecosystem (Co(lab), GoldfishDB, zig-bsdiff, etc.) is in the skill.
 - [Electrobun docs](https://blackboard.sh/electrobun/docs/) – Full guides and API reference.
 - [Quick Start](https://blackboard.sh/electrobun/docs/guides/quick-start) – First app in minutes.
 - [Hello World](https://blackboard.sh/electrobun/docs/guides/hello-world) – Project setup from scratch.
