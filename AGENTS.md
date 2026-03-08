@@ -17,7 +17,7 @@
 13. **No stage/commit unless requested** - Never run `git add` (stage) or `git commit` unless the user has explicitly asked to save (e.g. save, stage, commit, /save). Use the [save](.claude/skills/save/SKILL.md) skill when they do.
 14. **Install handoff marker** - If `.claude/skills/install/install-handoff.marker` exists, tell the user: "MCP might not be set up yet; run `/mcp` in the chat and complete OAuth for Figma and Atlassian. If you already did that, ignore this and you are good." Then delete the marker.
 
-Start with `.claude/agents/coordinator.md`.
+Start with `.claude/agents/coordinator.md`. **First action:** Run verifier for [verify-task](.claude/skills/verify-task/SKILL.md) to create or update `.tmp/task-checklist.md`. Do not match the request or run any flow until the checklist exists. Then follow the coordinator.
 
 ## Work Folder Structure
 
