@@ -30,7 +30,7 @@ Fixed sequences. Each step is "run /command" or "delegate to agent". Coordinator
 
 ## Dev / TypeScript
 
-1. developer → developer-typescript (and developer-check-types when the user wants type checking run). Update checklist after each skill.
+1. developer → developer-typescript (and developer-check-types when the user wants type checking run). Developer may use developer-electrobun for Electrobun apps, developer-virtualization when it needs VM context (e.g. document flow). Update checklist after each skill.
 
 ---
 
