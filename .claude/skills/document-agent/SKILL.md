@@ -1,11 +1,11 @@
 ---
 name: document-agent
-description: When to use subagents for docs; how to write or update .claude/agents/ files. Use when user says document with a subagent, use a subagent for documentation, write a subagent, update subagent, /document-agent.
+description: When to use subagents for docs; how to write or update .claude/agents/ files. Uses a TypeScript script for deterministic subagent choice (same pattern as AGENTS beginning rules with verify-task checklist). Use when user says document with a subagent, use a subagent for documentation, write a subagent, update subagent, /document-agent.
 ---
 
 # Document Agent
 
-When to use subagents for documentation, and how to write or update files in `.claude/agents/`.
+When to use subagents for documentation, and how to write or update files in `.claude/agents/`. **Deterministic behavior:** Run the TypeScript script first (like [AGENTS.md](../../AGENTS.md) Rules 1–2 with [verify-task checklist](../verify-task/scripts/checklist.ts)); same task message → same subagent choice.
 
 ## Inputs
 
@@ -18,18 +18,12 @@ Subagent file written or updated; or docs produced via a subagent when delegated
 
 ## Process
 
-**Writing or updating a subagent file:** Files live in `.claude/agents/` (project) or `~/.claude/agents/` (user). Each file: YAML frontmatter (`name`, `description` required; `tools`, `model` optional) plus markdown body (role, scope, "When invoked:" steps that reference skills). Match existing subagents (e.g. documenter, verifier). Extra reference docs for agents (e.g. flow sequences) live in `.claude/agents/assets/docs/`.
-
-| Subagent | Use when |
-|----------|----------|
-| **Explore** | Codebase or file discovery. Read-only, fast. Specify thoroughness: quick, medium, or very thorough. |
-| **general-purpose** | Multi-step docs (gather then write). Use when task needs discovery and writing in one pass. |
-| **Plan** | Read-only research before presenting a plan. |
-
-Subagents cannot spawn other subagents. Chain from main: e.g. Explore for discovery, then document in main context. Delegate when work is self-contained; use main when the task needs frequent back-and-forth.
-
-**Digital product designs:** When the documentation task involves creating or reviewing product designs (UI, screens, design specs, accessibility), use [designer-playbook](../designer-playbook/SKILL.md) so designs meet standards and you can review against them.
+1. **Subagent choice (deterministic):** Run `npm run doc:pick-subagent -- "<task message>"` (or `npx tsx .claude/skills/document-agent/scripts/pick-subagent.ts "<task>"`). Use the JSON output: `subagent` (explore | general-purpose | plan | main) and `useDesignerPlaybook`. Main = do the work in main context (e.g. writing an agent file); otherwise delegate to that subagent.
+2. **Writing or updating a subagent file:** Files live in `.claude/agents/` (project) or `~/.claude/agents/` (user). Each file: YAML frontmatter (`name`, `description` required; `tools`, `model` optional) plus markdown body (role, scope, "When invoked:" steps that reference skills). Match existing subagents (e.g. documenter, verifier). Extra reference docs for agents (e.g. flow sequences) live in `.claude/agents/assets/docs/`.
+3. **Subagent table** (from script logic): Explore = codebase/file discovery, read-only. Plan = read-only research then present a plan. general-purpose = multi-step docs, gather then write. Main = write/update agent files in main context.
+4. Subagents cannot spawn other subagents. Chain from main: e.g. Explore for discovery, then document in main context.
+5. If `useDesignerPlaybook` is true, apply [designer-playbook](../designer-playbook/SKILL.md) for product designs (UI, screens, design specs, accessibility).
 
 ## Reference
 
-[Create custom subagents](https://code.claude.com/docs/en/sub-agents.md)
+[verify-task checklist](../verify-task/scripts/checklist.ts) – same deterministic pattern. [Create custom subagents](https://code.claude.com/docs/en/sub-agents.md).

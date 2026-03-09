@@ -41,7 +41,7 @@ Subagents for design capture, research, and strategic analysis.
 
 Product Studio connects specialist helpers (subagents) to jobs like [install](.claude/skills/install/SKILL.md), [research](.claude/skills/research/SKILL.md), [document](.claude/skills/document/SKILL.md), and [save](.claude/skills/save/SKILL.md). Each helper has skills: small how-to guides that live in [.claude/skills/](.claude/skills/). You can run a skill by saying its phrase or typing `/skill-name`. In Claude Code and Cursor, `/skills` shows everything available.
 
-**Verify task:** Before anything else, agents run `npm run checklist -- "<request or summary>"` (Step 1 of the [coordinator](.claude/agents/coordinator.md)). That appends the current task to the running checklist at [.tmp/task-checklist.md](.tmp/task-checklist.md) and lists the skills for the flow. See [verify-task](.claude/skills/verify-task/SKILL.md).
+**Verify task:** Before anything else, agents run `npm run checklist -- "<request or summary>"` (Step 1 of the [coordinator](.claude/agents/coordinator.md)). That appends the current task to the running checklist at [.tmp/task-checklist.md](.tmp/task-checklist.md) and lists the skills for the flow. See [verify-task](.claude/skills/verify-task/SKILL.md). For a plain-language explanation of these commands and scripts, see [How it works (details)](.claude/agents/assets/docs/how-it-works.md).
 
 ## Contents
 
@@ -53,6 +53,7 @@ Product Studio connects specialist helpers (subagents) to jobs like [install](.c
 - [Frontmatter (agents and skills)](#-frontmatter-agents-and-skills)
 - [Repo structure](#-repo-structure)
 - [.tmp and cleanup](#-tmp-and-cleanup)
+- [How it works (details)](#-how-it-works-details)
 
 </details>
 
@@ -202,6 +203,7 @@ Product Studio/
 │   │   ├── assets/
 │   │   │   └── docs/
 │   │   │       ├── coordinator-flows.md
+│   │   │       ├── how-it-works.md
 │   │   │   └── scripts-review.md
 │   │   ├── developer.md
 │   │   ├── designer.md
@@ -270,6 +272,17 @@ Product Studio/
 ### .tmp and cleanup
 
 **[\`.tmp/\`](.tmp/) is for reports and temp files from subagents.** It's gitignored and never committed. The **Clean up studio** flow writes a verification report there. When you're done checking it, run the [**clean**](.claude/skills/clean/SKILL.md) skill ("clean", "wipe .tmp", `/clean`, or `npm run clean`) to empty \`.tmp/\`. Clean only deletes what's inside \`.tmp/\`; the rest of the repo is untouched.
+
+---
+
+## How it works (details)
+
+<details>
+<summary>Plain-language explanation of npm, the checklist command, and why we use scripts</summary>
+
+What is npm? What does `npm run checklist -- "something"` actually do? Why use TypeScript scripts instead of letting the AI decide the steps? For short, simple answers to these (and where to find the logic), see **[How it works (details)](.claude/agents/assets/docs/how-it-works.md)**. The main README stays short; the details live there.
+
+</details>
 
 ---
 

@@ -1,11 +1,11 @@
 ---
 name: document
-description: Turn research into a clear README per project; supplementary docs in assets/docs/ with kebab-case names. Use markdown, mermaid diagrams, tables, and links. Plain language. Use when user says refine, write, write up, document, update, make, /document.
+description: Turn research into a clear README per project; supplementary docs in assets/docs/ with kebab-case names. Uses a TypeScript script for deterministic section outline (same pattern as AGENTS beginning rules with verify-task checklist). Use markdown, mermaid diagrams, tables, and links. Plain language. Use when user says refine, write, write up, document, update, make, /document.
 ---
 
 # Document
 
-One README per project (path from [work/paths.md](../../work/paths.md)) as the main doc. Supplementary docs go in the project's `assets/docs/` folder with kebab-case filenames (e.g. `architecture-notes.md`). Clear headings, diagrams when they help, link to sources.
+One README per project (path from [work/paths.md](../../work/paths.md)) as the main doc. Supplementary docs go in the project's `assets/docs/` folder with kebab-case filenames (e.g. `architecture-notes.md`). Clear headings, diagrams when they help, link to sources. **Deterministic behavior:** Run the TypeScript script for the chosen document type to get the section outline (same pattern as [AGENTS.md](../../AGENTS.md) Rules 1–2 with [verify-task checklist](../verify-task/scripts/checklist.ts)); same document type → same section order.
 
 ## Inputs
 
@@ -19,10 +19,11 @@ One README (main doc). When needed, supplementary docs in the project's `assets/
 
 ## Process
 
-1. **Read the source** – Scope and main topics.
-2. **Group by sections** – By document type above.
-3. **Write the README** – Clear title and one-line summary. Short paragraphs. Diagrams for flows or relationships. Tables for comparisons. Link to sources inline. When a topic deserves its own doc, add it in `assets/docs/` with a kebab-case filename and link from the README.
-4. **project-overview** – Use the section outline below. For images and evidence paths see work/paths.md. Supplementary docs live in `assets/docs/` with kebab-case names.
+1. **Section outline (deterministic):** Run `npm run doc:structure -- <document-type>` (or `npx tsx .claude/skills/document/scripts/doc-structure.ts <document-type>`). Use the printed markdown outline as the section order when writing the README. Only add a section if you have real content; skip if the source doesn't have it.
+2. **Read the source** – Scope and main topics.
+3. **Group by sections** – By document type above, following the script output.
+4. **Write the README** – Clear title and one-line summary. Short paragraphs. Diagrams for flows or relationships. Tables for comparisons. Link to sources inline. When a topic deserves its own doc, add it in `assets/docs/` with a kebab-case filename and link from the README.
+5. **project-overview** – Script output matches the full template below; use it for headings and hints. For images and evidence paths see work/paths.md. Supplementary docs live in `assets/docs/` with kebab-case names.
 
 ### How to write it
 
@@ -36,7 +37,7 @@ One README (main doc). When needed, supplementary docs in the project's `assets/
 
 ### README structure (project-overview)
 
-Only add a section if you have real content for it. If the source doesn't have it, skip it. Link back to the source where it makes sense.
+Section order and headings come from [scripts/doc-structure.ts](scripts/doc-structure.ts) for document type `project-overview`. Only add a section if you have real content. If the source doesn't have it, skip it. Link back to the source where it makes sense.
 
 ```markdown
 # {Project Name}
@@ -88,4 +89,4 @@ Learnings. Recommendations. Links to new docs.
 
 ## Reference
 
-[work/paths.md](../../work/paths.md). [Coordinator](../../agents/coordinator.md). [document-github](../document-github/SKILL.md). [document-skills](../document-skills/SKILL.md).
+[work/paths.md](../../work/paths.md). [Coordinator](../../agents/coordinator.md). [verify-task checklist](../verify-task/scripts/checklist.ts) – same deterministic pattern. [document-github](../document-github/SKILL.md). [document-skills](../document-skills/SKILL.md).
