@@ -16,7 +16,7 @@
 
 </div>
 
-![product-studio](https://raw.githubusercontent.com/ryanallen/product-studio/main/assets/hero.gif)
+![product-studio](assets/hero.gif)
 
 <div align="center">
 
@@ -25,15 +25,11 @@ Subagents for design capture, research, and strategic analysis.
 <img src="https://img.shields.io/badge/product--studio-subagents-6366f1?style=flat" alt="product-studio" />
 <img src="https://img.shields.io/badge/subagent-skills-0ea5e9?style=flat&labelColor=4b5563" alt="subagent skills" />
 <img src="https://img.shields.io/badge/license-MIT-green?style=flat" alt="License" />
-<a href="https://github.com/ryanallen/product-studio/generate"><img src="https://img.shields.io/badge/Use%20this%20template-%E2%96%B6-10b981?style=flat&labelColor=4b5563" alt="Use this template" /></a>
+<a href="/generate"><img src="https://img.shields.io/badge/Use%20this%20template-%E2%96%B6-10b981?style=flat&labelColor=4b5563" alt="Use this template" /></a>
 
-<a href=".claude/agents">.claude/agents</a> · <a href="LICENSE">LICENSE</a> · <a href="https://github.com/ryanallen/product-studio/generate">Use this template</a>
+<a href=".claude/agents">.claude/agents</a> · <a href="LICENSE">LICENSE</a>
 
 </div>
-
----
-
-**Source**: [https://github.com/ryanallen/product-studio](https://github.com/ryanallen/product-studio)
 
 ---
 
@@ -287,8 +283,8 @@ What is npm? What does `npm run checklist -- "something"` actually do? Why use T
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) · **Source**: [this repository](/)
 
 <p align="center">
-  <sub>If this helped you, consider <a href="https://github.com/ryanallen/product-studio">giving it a star</a>.</sub>
+  <sub>If this helped you, consider <a href="/">giving it a star</a>.</sub>
 </p>
