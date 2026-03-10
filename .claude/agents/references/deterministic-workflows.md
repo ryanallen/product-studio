@@ -1,6 +1,6 @@
 # Deterministic AI agent workflows
 
-**Canonical reference.** Skills that use these scripts (verify-task, document, document-agent) link here; do not duplicate this content in skills.
+**Canonical reference.** Skills that use these scripts (verify-task, document, document-agents) link here; do not duplicate this content in skills.
 
 We use **TypeScript scripts as the source of truth** so the same input consistently produces the same output. Workflow and structure are fixed; content stays flexible. Scripts live in the repo so logic is reviewable and maintainable.
 
@@ -32,10 +32,10 @@ Same request or document type → same flow, same outline, same subagent. The mo
 
 - [checklist.ts](../../../skills/verify-task/scripts/checklist.ts) – FLOWS and TRIGGERS; flow and steps per request.
 - [doc-structure.ts](../../../skills/document/scripts/doc-structure.ts) – Section outlines per document type.
-- [pick-subagent.ts](../../../skills/document-agent/scripts/pick-subagent.ts) – Subagent and designer-playbook flag per task message.
+- [pick-subagent.ts](../../../skills/document-agents/scripts/pick-subagent.ts) – Subagent and designer-playbook flag per task message.
 
 ## Reference
 
-[Coordinator](../coordinator.md) – Step 1 runs checklist. [verify-task](../../../skills/verify-task/SKILL.md), [document](../../../skills/document/SKILL.md), [document-agent](../../../skills/document-agent/SKILL.md) – skills that use these scripts. [how-it-works.md](how-it-works.md) – plain-language explanation.
+[Coordinator](../coordinator.md) – Step 1 runs checklist. [verify-task](../../../skills/verify-task/SKILL.md), [document](../../../skills/document/SKILL.md), [document-agents](../../../skills/document-agents/SKILL.md) – skills that use these scripts. [how-it-works.md](how-it-works.md) – plain-language explanation.
 
 **Further reading:** [TAO: Using test-time compute to train efficient LLMs without labeled data](https://www.databricks.com/blog/tao-using-test-time-compute-train-efficient-llms-without-labeled-data) – same idea of reducing model variability via fixed logic and feedback; we do it with scripts at request time, they do it with tuning.

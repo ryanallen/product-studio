@@ -11,7 +11,7 @@ Collect the doc set (from paths.md and system docs or user choice), compare each
 ## Inputs
 
 - **Scope** – If `work/paths.md` exists, collect all doc paths from the Tree in its Editable section (README and any `assets/docs/` files per project) plus system docs: `.claude/**/*.md`, `README.md`, `AGENTS.md`, `CLAUDE.md`, root markdown. If user chose specific paths, use those.
-- **Coordinator** – [.claude/agents/coordinator.md](../../agents/coordinator.md) (trigger table). Flow steps live in [assets/docs/coordinator-flows.md](../../agents/assets/docs/coordinator-flows.md).
+- **Coordinator** – [.claude/agents/coordinator.md](../../agents/coordinator.md) (trigger table). Flow steps live in [references/coordinator-flows.md](../../agents/references/coordinator-flows.md).
 
 ## Output
 
@@ -25,4 +25,4 @@ List of files in scope and any trigger mismatches (skill vs coordinator). Pass t
 
 ## Reference
 
-[document-verification](../document-verification/SKILL.md) – Writes the report. [Coordinator](../../agents/coordinator.md) and [assets/docs/coordinator-flows.md](../../agents/assets/docs/coordinator-flows.md) – Clean up studio workflow.
+[document-verification](../document-verification/SKILL.md) – Writes the report. [Coordinator](../../agents/coordinator.md) and [references/coordinator-flows.md](../../agents/references/coordinator-flows.md) – Clean up studio workflow.

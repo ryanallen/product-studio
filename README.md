@@ -41,7 +41,7 @@ Subagents for design capture, research, and strategic analysis.
 
 Product Studio connects specialist helpers (subagents) to jobs like [install](.claude/skills/install/SKILL.md), [research](.claude/skills/research/SKILL.md), [document](.claude/skills/document/SKILL.md), and [save](.claude/skills/save/SKILL.md). Each helper has skills: small how-to guides that live in [.claude/skills/](.claude/skills/). You can run a skill by saying its phrase or typing `/skill-name`. In Claude Code and Cursor, `/skills` shows everything available.
 
-**Verify task:** Before anything else, agents run `npm run checklist -- "<request or summary>"` (Step 1 of the [coordinator](.claude/agents/coordinator.md)). That appends the current task to the running checklist at [.tmp/task-checklist.md](.tmp/task-checklist.md) and lists the skills for the flow. See [verify-task](.claude/skills/verify-task/SKILL.md). For a plain-language explanation of these commands and scripts, see [How it works (details)](.claude/agents/assets/docs/how-it-works.md). [Deterministic workflows](.claude/agents/assets/docs/deterministic-workflows.md).
+**Verify task:** Before anything else, agents run `npm run checklist -- "<request or summary>"` (Step 1 of the [coordinator](.claude/agents/coordinator.md)). That appends the current task to the running checklist at [.tmp/task-checklist.md](.tmp/task-checklist.md) and lists the skills for the flow. See [verify-task](.claude/skills/verify-task/SKILL.md). For a plain-language explanation of these commands and scripts, see [How it works (details)](.claude/agents/references/how-it-works.md). [Deterministic workflows](.claude/agents/references/deterministic-workflows.md).
 
 ## Contents
 
@@ -81,7 +81,7 @@ To run a skill, say its trigger phrase or type `/skill-name`. Each skill is a fo
 | coordinator |
 |:--|
 | [![coordinator](https://img.shields.io/badge/coordinator-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md) <br> ![skills](https://img.shields.io/badge/skills-%E2%80%94-0ea5e9?style=flat&labelColor=4b5563) |
-| Runs the other subagents per flow. Step 1: verify task ([checklist](.claude/skills/verify-task/SKILL.md), `npm run checklist -- "<summary>"`). Flows in [assets/docs/coordinator-flows.md](.claude/agents/assets/docs/coordinator-flows.md). Refine flow: researcher when the user shared links or context that needs learning, then documenter. |
+| Runs the other subagents per flow. Step 1: verify task ([checklist](.claude/skills/verify-task/SKILL.md), `npm run checklist -- "<summary>"`). Flows in [references/coordinator-flows.md](.claude/agents/references/coordinator-flows.md). Refine flow: researcher when the user shared links or context that needs learning, then documenter. |
 
 | designer |
 |:--|
@@ -95,7 +95,7 @@ To run a skill, say its trigger phrase or type `/skill-name`. Each skill is a fo
 
 | documenter |
 |:--|
-| [![documenter](https://img.shields.io/badge/documenter-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/documenter.md) <br> [![document](https://img.shields.io/badge/document-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document/SKILL.md) [![document-paths](https://img.shields.io/badge/document--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-paths/SKILL.md) [![document-ticket](https://img.shields.io/badge/document--ticket-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-ticket/SKILL.md) [![document-github](https://img.shields.io/badge/document--github-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-github/SKILL.md) [![document-agent](https://img.shields.io/badge/document--agent-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agent/SKILL.md) [![document-skills](https://img.shields.io/badge/document--skills-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-skills/SKILL.md) [![designer-playbook](https://img.shields.io/badge/designer--playbook-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/designer-playbook/SKILL.md) |
+| [![documenter](https://img.shields.io/badge/documenter-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/documenter.md) <br> [![document](https://img.shields.io/badge/document-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document/SKILL.md) [![document-paths](https://img.shields.io/badge/document--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-paths/SKILL.md) [![document-ticket](https://img.shields.io/badge/document--ticket-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-ticket/SKILL.md) [![document-github](https://img.shields.io/badge/document--github-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-github/SKILL.md) [![document-agent](https://img.shields.io/badge/document--agents-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agents/SKILL.md) [![document-skills](https://img.shields.io/badge/document--skills-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-skills/SKILL.md) [![designer-playbook](https://img.shields.io/badge/designer--playbook-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/designer-playbook/SKILL.md) |
 | Writes and syncs docs (markdown, paths, tickets, READMEs, agents, skills); uses designer-playbook when creating or reviewing product designs. At end of job: lists files in scope in the checklist (name, location, content summary), reviews each for needed updates, checks off with notes. |
 
 | installer |
@@ -183,9 +183,7 @@ git fetch upstream
 
 Then pull with `git pull upstream main` (or say "sync" or [/sync-upstream](.claude/skills/sync-upstream/SKILL.md)).
 
-**Paths:** [work/paths.md](work/paths.md) is synced with the work folder: if you commit work/, paths.md is committed too; if you ignore work/ (e.g. via `.git/info/exclude`), paths.md is ignored with it. The repo does not ignore work/, so you can stage and push the work folder and paths. In paths.md the **Path pattern** section is reference only; the **Editable section** (Deliverables base URL and Tree) is what you edit and what verify-paths/document-paths compare and update. Per paths.md: one README per project as the main doc; supplementary docs go in that project's `assets/docs/` folder with kebab-case filenames.
-
-**Work folder and Git:** Right now work/ is not ignored; stage and push as needed. To ignore work/ again later (e.g. after moving work back from a safe place), add `work/*` and `!work/paths.md.template` to `.gitignore` or `.git/info/exclude`. To see in plain language what's ignored or to add/remove ignore rules, use the [update-gitignore](.claude/skills/update-gitignore/SKILL.md) skill (updater agent; say "gitignore", "what's ignored", or "update ignore").
+**Paths:** [work/paths.md](work/paths.md) is gitignored. Copy from [work/paths.md.template](work/paths.md.template), edit your tree, and keep it. Sync does not overwrite it. Per paths.md: one README per project as the main doc; supplementary docs go in that project's `assets/docs/` folder with kebab-case filenames.
 
 </details>
 
@@ -224,7 +222,7 @@ Product Studio/
 │       ├── document-paths/SKILL.md
 │       ├── document-ticket/SKILL.md
 │       ├── document-github/SKILL.md
-│       ├── document-agent/SKILL.md
+│       ├── document-agents/SKILL.md
 │       ├── designer-playbook/SKILL.md
 │       ├── document-skills/SKILL.md
 │       ├── analyst-diagnostics/SKILL.md
@@ -281,7 +279,7 @@ Product Studio/
 <details>
 <summary>Plain-language explanation of npm, the checklist command, and why we use scripts</summary>
 
-What is npm? What does `npm run checklist -- "something"` actually do? Why use TypeScript scripts instead of letting the AI decide the steps? For short, simple answers to these (and where to find the logic), see **[How it works (details)](.claude/agents/assets/docs/how-it-works.md)**. The main README stays short; the details live there.
+What is npm? What does `npm run checklist -- "something"` actually do? Why use TypeScript scripts instead of letting the AI decide the steps? For short, simple answers to these (and where to find the logic), see **[How it works (details)](.claude/agents/references/how-it-works.md)**. The main README stays short; the details live there.
 
 </details>
 

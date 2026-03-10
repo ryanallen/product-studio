@@ -1,6 +1,6 @@
 ---
 name: document-skills
-description: Write or update a skill (SKILL.md and supporting files) to match Claude Code structure and best practices.
+description: Write or update a skill (SKILL.md and supporting files) to match Claude Code structure and best practices. Use when user says create skill, write skill, update SKILL.md, /document-skills.
 disable-model-invocation: true
 argument-hint: "[skill-path] [source]"
 context: fork
@@ -26,10 +26,11 @@ SKILL.md updated (and supporting files if needed).
 
 ### 1. Skill layout
 
-- One folder per skill. The main file is always `SKILL.md`.
+- One folder per skill. The main file is always `SKILL.md` (exact name, case-sensitive).
+- **Folder name:** Must be **kebab-case** (lowercase, hyphens; no spaces, underscores, or capitals). The frontmatter `name` must match the folder name.
 - **Where skills live:** In a project, `.claude/skills/<name>/`. For your own machine, `~/.claude/skills/<name>/`. Claude finds `.claude/skills/` even when it's nested (e.g. inside a package).
-- You can add `template.md`, `examples/`, or `scripts/`. Say so in SKILL.md so Claude knows when to use them.
-- **Length:** Keep SKILL.md under 500 lines. Long reference material in other files (e.g. `reference.md`), linked from SKILL.md.
+- **Optional subfolders only:** Use **scripts/** (executable code), **references/** (documentation loaded as needed), and **assets/** (templates, icons, etc.). Do not put README.md inside the skill folder; all documentation goes in SKILL.md or references/. Long reference material goes in `references/` and is linked from SKILL.md (progressive disclosure).
+- **Length:** Keep SKILL.md under ~5,000 words. Long reference in `references/`, linked from SKILL.md.
 
 ### 2. SKILL.md format
 
@@ -37,12 +38,12 @@ SKILL.md updated (and supporting files if needed).
 
 Frontmatter configures when and how the skill runs. The table below follows the [official skills reference](https://code.claude.com/docs/en/skills.md#frontmatter-reference). There is no `triggers` field in the official docs; put "when to use" and example phrases users might say into the **description** so Claude knows when to apply the skill.
 
-All fields are optional. Only `description` is recommended so Claude knows when to use the skill.
+Per the Anthropic guide, **name** and **description** are required. **name** must match the folder name (kebab-case). **description** must include what the skill does and when to use it (trigger phrases); under 1024 characters; no XML angle brackets (`<` `>`).
 
 | Field                      | Required    | Description                                                                                                                                           |
 | :------------------------- | :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`                     | No          | Display name for the skill. If omitted, uses the directory name. Lowercase letters, numbers, and hyphens only (max 64 characters).                    |
-| `description`              | Recommended | What the skill does and when to use it. Claude uses this to decide when to apply the skill. If omitted, uses the first paragraph of markdown content. |
+| `name`                     | Yes         | kebab-case only; must match skill folder name. Lowercase letters, numbers, and hyphens (max 64 characters).                                           |
+| `description`              | Yes         | What the skill does and when to use it. Include trigger phrases (e.g. "Use when user says save, /save"). Under 1024 characters. No `<` or `>`.        |
 | `argument-hint`            | No          | Hint shown during autocomplete to indicate expected arguments. Example: `[issue-number]` or `[filename] [format]`.                                    |
 | `disable-model-invocation` | No          | Set to `true` to prevent Claude from automatically loading this skill. Use for workflows you want to trigger manually with `/name`. Default: `false`. |
 | `user-invocable`           | No          | Set to `false` to hide from the `/` menu. Use for background knowledge users shouldn't invoke directly. Default: `true`.                              |
@@ -97,10 +98,36 @@ For injecting shell output before the skill runs, see [Inject dynamic context](h
 2. Apply the checklist and structure above. Don't change behavior unless the user asked.
 3. Write or update SKILL.md (and supporting files if needed). Only document what the skill does; don't add capabilities that aren't there.
 
+## Examples
+
+**User says:** "Create a skill for validating CSV uploads."
+
+**Actions:** Create folder `.claude/skills/validate-csv/` (kebab-case). Add SKILL.md with required frontmatter (`name: validate-csv`, description including "Use when user says validate CSV, check upload, /validate-csv"). Add Inputs, Output, Process, optional Reference. If the skill runs a script, add `scripts/validate.sh` and reference it in Process.
+
+**Result:** New skill that triggers on the stated phrases; coordinator and flows updated if it is part of a flow.
+
+**User says:** "Update the save skill to mention update-gitignore."
+
+**Actions:** Open `.claude/skills/save/SKILL.md`. Add the new step or reference in Process. Update description if trigger phrases change. Sync coordinator and [references/coordinator-flows.md](../../agents/references/coordinator-flows.md) if the Save flow changes.
+
+## Troubleshooting
+
+**Invalid frontmatter / upload error.**  
+Cause: YAML formatting (missing `---` delimiters, unclosed quotes, or colons in a value read as a new key).  
+Solution: Ensure frontmatter is between two `---` lines. Avoid colons in description text; use "Use when" not "When:". No `<` or `>` in frontmatter.
+
+**Skill doesn't trigger.**  
+Cause: Description too vague or missing trigger phrases.  
+Solution: Add specific "Use when user says X, Y, /skill-name" to the description. Same phrases should appear in coordinator flow table if the skill is part of a flow.
+
+**Wrong folder name.**  
+Cause: Folder has spaces, underscores, or capitals.  
+Solution: Rename to kebab-case. Update `name` in SKILL.md to match. Update all references (coordinator, agents, README, package.json, checklist script, [agents/references/](../../agents/references/)).
+
 ## After writing
 
-- **Coordinator sync:** If you changed the description (e.g. phrases that match user requests), update [.claude/agents/coordinator.md](../../agents/coordinator.md) and the flow steps in [assets/docs/coordinator-flows.md](../../agents/assets/docs/coordinator-flows.md) if the skill is part of a flow, so the flow table and agent descriptions stay in sync.
-- **Rename/move:** If a skill was **renamed or moved** (e.g. generate-figma → designer-figma), update all references: coordinator, agents, README, package.json, other skills that link to it, [verify-task checklist script](verify-task/scripts/checklist.ts), [agents/assets/docs/](../../agents/assets/docs/) (e.g. coordinator-flows.md if the skill appears in a flow), and .gitignore.
+- **Coordinator sync:** If you changed the description (e.g. phrases that match user requests), update [.claude/agents/coordinator.md](../../agents/coordinator.md) and the flow steps in [references/coordinator-flows.md](../../agents/references/coordinator-flows.md) if the skill is part of a flow, so the flow table and agent descriptions stay in sync.
+- **Rename/move:** If a skill was **renamed or moved** (e.g. generate-figma → designer-figma), update all references: coordinator, agents, README, package.json, other skills that link to it, [verify-task checklist script](verify-task/scripts/checklist.ts), [agents/references/](../../agents/references/) (e.g. coordinator-flows.md if the skill appears in a flow), and .gitignore.
 
 ## Reference
 

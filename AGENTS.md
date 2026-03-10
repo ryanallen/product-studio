@@ -9,7 +9,7 @@
 5. **No stage/commit** unless the user asked to save. Use [save](.claude/skills/save/SKILL.md) when they do.
 6. **Install handoff** - If `.claude/skills/install/install-handoff.marker` exists, tell user to run `/mcp` for OAuth (Figma, Atlassian), then delete the marker.
 
-**Deterministic workflows:** [deterministic-workflows](.claude/agents/assets/docs/deterministic-workflows.md).
+**Deterministic workflows:** [deterministic-workflows](.claude/agents/references/deterministic-workflows.md).
 
 Start with [.claude/agents/coordinator.md](.claude/agents/coordinator.md). Step 1 there is run verify task (checklist).
 

@@ -91,4 +91,4 @@ Accessibility is a legal requirement (ADA, Section 508) and ethical baseline. Te
 
 ## Reference
 
-[document](../document/SKILL.md). [document-agent](../document-agent/SKILL.md). [designer-figma](../designer-figma/SKILL.md). [document-voice](../document-voice/SKILL.md).
+[document](../document/SKILL.md). [document-agents](../document-agents/SKILL.md). [designer-figma](../designer-figma/SKILL.md). [document-voice](../document-voice/SKILL.md).

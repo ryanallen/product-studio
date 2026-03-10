@@ -52,7 +52,7 @@ In [package.json](../../../../package.json) you'll see a few more:
 | Script | What it runs | What it's for |
 |--------|----------------|----------------|
 | `checklist` | The checklist TypeScript program | Append a task section and steps to `.tmp/task-checklist.md` |
-| `doc:pick-subagent` | A script under document-agent | Decides which doc subagent to use (explore, plan, etc.) from your message |
+| `doc:pick-subagent` | A script under document-agents | Decides which doc subagent to use (explore, plan, etc.) from your message |
 | `doc:structure` | A script under document | Returns the section outline for a doc type (research, project-overview, etc.) |
 | `clean` | A small Node script | Empties `.tmp/` |
 | `sync:codex`, `setup:figma-bridge` | Other helpers | Syncing config and setting up Figma; see the script files if you care |
@@ -64,7 +64,7 @@ Same idea: you run `npm run <name> -- <args>` and the script does one job in a d
 ## Where the logic lives
 
 - **Flow steps and trigger phrases:** [.claude/skills/verify-task/scripts/checklist.ts](../../../skills/verify-task/scripts/checklist.ts) (FLOWS and TRIGGERS at the top).
-- **What the coordinator does with that:** [coordinator-flows.md](coordinator-flows.md). The Refine flow: run researcher when the user shared links or context that needs learning; then run documenter (document subagent; document, document-agent, document-github if README, document-voice, and end-of-job file review).
+- **What the coordinator does with that:** [coordinator-flows.md](coordinator-flows.md). The Refine flow: run researcher when the user shared links or context that needs learning; then run documenter (document subagent; document, document-agents, document-github if README, document-voice, and end-of-job file review).
 - **Why scripts as source of truth:** [deterministic-workflows.md](deterministic-workflows.md).
 
 If you change trigger phrases or add a flow, edit the TypeScript file and the flows doc so they stay in sync.

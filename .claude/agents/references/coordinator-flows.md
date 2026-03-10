@@ -83,7 +83,7 @@ Fixed sequences. Each step is "run /command" or "delegate to agent". Coordinator
 ## Refine / document
 
 1. **When the user shared links or context that needs learning:** researcher → research (learn those links/context). Update checklist. Otherwise skip to step 2.
-2. documenter → document. The documenter is the document subagent; it follows [document-agent](../../../skills/document-agent/SKILL.md) for when to use which skills. It uses [document](../../../skills/document/SKILL.md), [document-github](../../../skills/document-github/SKILL.md) when the deliverable is a README, and [document-voice](../../../skills/document-voice/SKILL.md). Update checklist after each skill. When doc work is done, documenter runs its end-of-job file review: research files in scope, add **Files in scope** to the checklist (name, location, content summary), review each file for needed updates, check off with notes.
+2. documenter → document. The documenter is the document subagent; it follows [document-agents](../../../skills/document-agents/SKILL.md) for when to use which skills. It uses [document](../../../skills/document/SKILL.md), [document-github](../../../skills/document-github/SKILL.md) when the deliverable is a README, and [document-voice](../../../skills/document-voice/SKILL.md). Update checklist after each skill. When doc work is done, documenter runs its end-of-job file review: research files in scope, add **Files in scope** to the checklist (name, location, content summary), review each file for needed updates, check off with notes.
 
 ---
 

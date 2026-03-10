@@ -1,9 +1,9 @@
 /**
- * document-agent SKILL: deterministic subagent choice for doc tasks.
+ * document-agents SKILL: deterministic subagent choice for doc tasks.
  * Same pattern as verify-task [scripts/checklist.ts](../../verify-task/scripts/checklist.ts):
  * AGENTS beginning rules run a TypeScript script first for deterministic behavior.
  *
- * npx tsx .claude/skills/document-agent/scripts/pick-subagent.ts "<task message>"
+ * npx tsx .claude/skills/document-agents/scripts/pick-subagent.ts "<task message>"
  * Output: JSON { subagent, useDesignerPlaybook }
  */
 

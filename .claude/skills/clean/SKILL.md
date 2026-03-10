@@ -24,4 +24,4 @@ None.
 
 ## Reference
 
-[document-verification](../document-verification/SKILL.md) writes to `.tmp/`. [coordinator-flows](../../agents/assets/docs/coordinator-flows.md) – Clean flow runs `/clean`.
+[document-verification](../document-verification/SKILL.md) writes to `.tmp/`. [coordinator-flows](../../agents/references/coordinator-flows.md) – Clean flow runs `/clean`.

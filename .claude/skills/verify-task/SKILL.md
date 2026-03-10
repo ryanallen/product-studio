@@ -11,7 +11,7 @@ Append a **new section** to `.tmp/task-checklist.md` per task. Running list: do 
 ## Inputs
 
 - **Task context** – User request and, when known, flow name (e.g. Learn, Save) or list of steps.
-- **Steps/skills** – From Main or coordinator: first two steps are always verify-task, document-voice (Rule 2); then the flow's steps (emitted by [scripts/checklist.ts](scripts/checklist.ts), aligned with [assets/docs/coordinator-flows.md](../../agents/assets/docs/coordinator-flows.md)). Each step = one checklist item. Example: Save → `verify-task`, `document-voice`, `verify-paths`, `document-paths` (if disk has paths not in tree), `save`. Refine → `verify-task`, `document-voice`, `research`, `document`, `document-github`.
+- **Steps/skills** – From Main or coordinator: first two steps are always verify-task, document-voice (Rule 2); then the flow's steps (emitted by [scripts/checklist.ts](scripts/checklist.ts), aligned with [references/coordinator-flows.md](../../agents/references/coordinator-flows.md)). Each step = one checklist item. Example: Save → `verify-task`, `document-voice`, `verify-paths`, `document-paths` (if disk has paths not in tree), `save`. Refine → `verify-task`, `document-voice`, `research`, `document`, `document-github`.
 
 ## Output
 
@@ -20,7 +20,7 @@ Append a **new section** to `.tmp/task-checklist.md` per task. Running list: do 
 ## Process
 
 1. Ensure `.tmp/` exists.
-2. **Skill list** from flow: Always start with `verify-task`, `document-voice` (Rule 2; emitted by [scripts/checklist.ts](scripts/checklist.ts)). Then append the flow's steps from the script (same order as in [assets/docs/coordinator-flows.md](../../agents/assets/docs/coordinator-flows.md); one line per skill). Do not collapse to one line.
+2. **Skill list** from flow: Always start with `verify-task`, `document-voice` (Rule 2; emitted by [scripts/checklist.ts](scripts/checklist.ts)). Then append the flow's steps from the script (same order as in [references/coordinator-flows.md](../../agents/references/coordinator-flows.md); one line per skill). Do not collapse to one line.
 3. Read existing `.tmp/task-checklist.md` if present. Do not overwrite.
 4. Append new section at bottom: if file empty, add title `# Task checklist (running list)` then section. Section = heading `## YYYY-MM-DD HH:MM — {summary}`, blank line, skill lines `- skill-name` or `- ~~skill-name~~ — note`. Optional `## Notes`. (The checklist file keeps this heading so the list is recognizable.)
 5. Write existing content + new section.
@@ -30,4 +30,4 @@ Append a **new section** to `.tmp/task-checklist.md` per task. Running list: do 
 
 ## Reference
 
-[Coordinator](../../agents/coordinator.md) – Step 1 runs this. **Real command:** `/checklist` = `npm run checklist -- "<summary>"`. [scripts/checklist.ts](scripts/checklist.ts). [deterministic-workflows](../../agents/assets/docs/deterministic-workflows.md).
+[Coordinator](../../agents/coordinator.md) – Step 1 runs this. **Real command:** `/checklist` = `npm run checklist -- "<summary>"`. [scripts/checklist.ts](scripts/checklist.ts). [deterministic-workflows](../../agents/references/deterministic-workflows.md).

@@ -23,8 +23,8 @@ Use [document-voice](../document-voice/SKILL.md): clear, casual, no jargon. No g
 
 1. **Read both files** – `.gitignore` (committed; applies to everyone who clones) and `.git/info/exclude` (local only; applies to this clone).
 2. **Explain (if asked what's ignored):**
-   - **.gitignore:** List each pattern or group in plain English (e.g. "Node modules and package-lock.json", "Temp reports in .tmp/"). Say that this file is in the repo so everyone gets these rules. Note: work/paths.md is not in .gitignore; it lives under work/, so it is committed if you commit work/ and ignored if you ignore work/ (e.g. via exclude).
-   - **.git/info/exclude:** If present, say what it ignores in plain English (e.g. "This clone only: everything under work/ except work/paths.md.template"). That means paths.md is ignored here too when work/ is excluded. Say that this file is not committed, so it only affects this machine. If the user wants to ignore work/ again after having committed it (e.g. after moving work back from a safe place), they can add `work/*` and `!work/paths.md.template` here or in .gitignore.
+   - **.gitignore:** List each pattern or group in plain English (e.g. "Node modules and package-lock.json", "Temp reports in .tmp/"). Say that this file is in the repo so everyone gets these rules. Note: work/ is ignored except work/paths.md.template; paths.md is not committed—copy from the template and edit locally.
+   - **.git/info/exclude:** If present, say what it ignores in plain English (e.g. "This clone only: …"). Say that this file is not committed, so it only affects this machine.
 3. **Update (if asked to add/remove a rule):**
    - **Committed rule** (affects everyone): Edit `.gitignore`. Add a line (and optional comment) or remove the line. Prefer a short comment so future readers know why.
    - **Local-only rule** (this clone only): Edit `.git/info/exclude`. Add or remove the pattern. Tell the user the change is local and won't be pushed.

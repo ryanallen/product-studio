@@ -9,6 +9,11 @@ desktop.ini
 node_modules/
 package-lock.json
 
+# Local paths config (copy from work/paths.md.template)
+work/paths.md
+work/*
+!work/paths.md.template
+
 # Local install custom (copy from .claude/skills/install-custom/SKILL.md.template)
 .claude/skills/install-custom/SKILL.md
 
