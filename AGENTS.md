@@ -8,3 +8,4 @@
 
 ---
 `CLAUDE.md` is a symlink to this file.
+is file.
