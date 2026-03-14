@@ -37,7 +37,7 @@ Subagents for design capture, research, and strategic analysis.
 
 Product Studio connects specialist helpers (subagents) to jobs like [install](.claude/skills/install/SKILL.md), [research](.claude/skills/research/SKILL.md), [document](.claude/skills/document/SKILL.md), and [save](.claude/skills/save/SKILL.md). Each helper has skills: small how-to guides that live in [.claude/skills/](.claude/skills/). You can run a skill by saying its phrase or typing `/skill-name`. In Claude Code and Cursor, `/skills` shows everything available.
 
-**Verify task:** Before anything else, agents run `npm run checklist -- "<request or summary>"` (Step 1 of the [coordinator](.claude/agents/coordinator.md)). That appends the current task to the running checklist at [.tmp/task-checklist.md](.tmp/task-checklist.md) and lists the skills for the flow. See [verify-task](.claude/skills/verify-task/SKILL.md). For a plain-language explanation of these commands and scripts, see [How it works (details)](.claude/agents/references/how-it-works.md). [Deterministic workflows](.claude/agents/references/deterministic-workflows.md).
+**Verify task:** Before anything else, agents run `npm run checklist -- "<request or summary>"` (Step 1 of the [coordinator](.claude/agents/coordinator.md)). That appends the current task to the running checklist at [.tmp/task-checklist.md](.tmp/task-checklist.md) and lists the skills for the flow. See [verify-task](.claude/skills/verify-task/SKILL.md) and [deterministic workflows](.claude/agents/references/deterministic-workflows.md).
 
 ## Contents
 
@@ -198,9 +198,7 @@ Product Studio/
 │   │   ├── coordinator.md
 │   │   ├── references/
 │   │   │   ├── coordinator-flows.md
-│   │   │   ├── deterministic-workflows.md
-│   │   │   ├── how-it-works.md
-│   │   │   └── scripts-review.md
+│   │   │   └── deterministic-workflows.md
 │   │   ├── developer.md
 │   │   ├── designer.md
 │   │   ├── documenter.md
@@ -276,7 +274,11 @@ Product Studio/
 <details>
 <summary>Plain-language explanation of npm, the checklist command, and why we use scripts</summary>
 
-What is npm? What does `npm run checklist -- "something"` actually do? Why use TypeScript scripts instead of letting the AI decide the steps? For short, simple answers to these (and where to find the logic), see **[How it works (details)](.claude/agents/references/how-it-works.md)**. The main README stays short; the details live there.
+**What is npm?** Node Package Manager (comes with Node). It runs scripts you define in package.json. `npm run checklist` runs the checklist script; it does not install anything.
+
+**What does `npm run checklist -- "something"` do?** The `--` passes the rest to the script. The script matches your phrase to a flow (e.g. refine, save), appends a section to [.tmp/task-checklist.md](.tmp/task-checklist.md) with that flow’s steps, and the agent runs them in order. Same phrase → same flow every time.
+
+**Why a script instead of the AI deciding?** So the step list is deterministic. Flow and triggers live in [checklist.ts](.claude/skills/verify-task/scripts/checklist.ts); [coordinator-flows](.claude/agents/references/coordinator-flows.md) describes what each flow does. [Deterministic workflows](.claude/agents/references/deterministic-workflows.md) has the principles.
 
 </details>
 

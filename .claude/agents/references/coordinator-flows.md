@@ -191,4 +191,4 @@ Fixed sequences. Each step is "run /command" or "delegate to agent".
 
 ## Reference
 
-[Coordinator](.claude/agents/coordinator.md) – Step 1 match request to flow above, Step 2 execute that flow's steps in order. [coordinator-best-practices](.claude/agents/references/coordinator-best-practices.md) – subagent orchestration rules.
+[Coordinator](.claude/agents/coordinator.md) – Step 1 match request to flow above, Step 2 execute that flow's steps in order.

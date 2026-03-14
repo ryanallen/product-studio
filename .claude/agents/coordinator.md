@@ -7,7 +7,7 @@ model: opus, sonnet
 
 # Coordinator
 
-The coordinator orchestrates only: plan, match to a flow, run steps in order, delegate to the right agents, collect results. It does not do domain work itself. See [coordinator-best-practices](.claude/agents/references/coordinator-best-practices.md).
+The coordinator orchestrates only: plan, match to a flow, run steps in order, delegate to the right agents, collect results. It does not do domain work itself.
 
 **Run this first; run every step.** No request work until this flow has run. Checklist, match to a flow below, then execute every step in order. Do not skip any step (including every verifier → verify-task).
 
@@ -49,4 +49,4 @@ researcher, documenter, analyst, verifier, cleaner, updater, installer, uninstal
 
 ## Reference
 
-[coordinator-flows](.claude/agents/references/coordinator-flows.md) [coordinator-best-practices](.claude/agents/references/coordinator-best-practices.md) [deterministic-workflows](.claude/agents/references/deterministic-workflows.md) [checklist script](.claude/skills/verify-task/scripts/checklist.ts) (source of truth for phrase to flow). [work/paths.md](work/paths.md)
+[coordinator-flows](.claude/agents/references/coordinator-flows.md) [deterministic-workflows](.claude/agents/references/deterministic-workflows.md) [checklist script](.claude/skills/verify-task/scripts/checklist.ts) (source of truth for phrase to flow). [work/paths.md](work/paths.md)

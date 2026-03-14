@@ -31,4 +31,4 @@ Same request or doc type → same flow, outline, subagent. Model fills content.
 
 ## Reference
 
-[Coordinator](.claude/agents/coordinator.md) [verify-task](.claude/skills/verify-task/SKILL.md) [document](.claude/skills/document/SKILL.md) [document-agents](.claude/skills/document-agents/SKILL.md) [how-it-works](.claude/agents/references/how-it-works.md)
+[Coordinator](.claude/agents/coordinator.md) [verify-task](.claude/skills/verify-task/SKILL.md) [document](.claude/skills/document/SKILL.md) [document-agents](.claude/skills/document-agents/SKILL.md)
