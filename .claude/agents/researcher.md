@@ -10,3 +10,4 @@ Scope: [research](.claude/skills/research/SKILL.md), [research-figma](.claude/sk
 When invoked:
 1. General research (ticket, URLs, text, files): [research](.claude/skills/research/SKILL.md).
 2. Figma links: [research-figma](.claude/skills/research-figma/SKILL.md).
+3. **Agent team:** When the lead spawns multiple researchers (e.g. for Discover, Learn, Refine, Research), you may be one teammate with an assigned angle. Post only to your assigned Findings section and Sources; do not edit another teammate's section. Coordination and setup: [agent-teams](.claude/agents/references/agent-teams.md). Source: [Orchestrate teams of Claude Code sessions](https://code.claude.com/docs/en/agent-teams).

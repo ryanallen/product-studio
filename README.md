@@ -20,7 +20,7 @@
 
 <div align="center">
 
-Subagents for design capture, research, and strategic analysis.
+Agents and skills for design capture, research, and strategic analysis. Discover, Learn, Refine, Research, and Propose solutions run as agent teams when possible; fallback is the step sequence.
 
 <img src="https://img.shields.io/badge/product--studio-subagents-6366f1?style=flat" alt="product-studio" />
 <img src="https://img.shields.io/badge/subagent-skills-0ea5e9?style=flat&labelColor=4b5563" alt="subagent skills" />
@@ -35,9 +35,9 @@ Subagents for design capture, research, and strategic analysis.
 
 > Say "install", "research", or "document". The rest runs on its own.
 
-Product Studio connects specialist helpers (subagents) to jobs like [install](.claude/skills/install/SKILL.md), [research](.claude/skills/research/SKILL.md), [document](.claude/skills/document/SKILL.md), and [save](.claude/skills/save/SKILL.md). Each helper has skills: small how-to guides that live in [.claude/skills/](.claude/skills/). You can run a skill by saying its phrase or typing `/skill-name`. In Claude Code and Cursor, `/skills` shows everything available.
+Product Studio connects specialist agents to jobs like [install](.claude/skills/install/SKILL.md), [research](.claude/skills/research/SKILL.md), [document](.claude/skills/document/SKILL.md), and [save](.claude/skills/save/SKILL.md). Agents live in [.claude/agents/](.claude/agents/); skills (how-to guides) in [.claude/skills/](.claude/skills/). Say a phrase or `/skill-name` to run a skill; `/skills` lists all.
 
-**Verify task:** Before anything else, agents run `npm run checklist -- "<request or summary>"` (Step 1 of the [coordinator](.claude/agents/coordinator.md)). That appends the current task to the running checklist at [.tmp/task-checklist.md](.tmp/task-checklist.md) and lists the skills for the flow. See [verify-task](.claude/skills/verify-task/SKILL.md) and [deterministic workflows](.claude/agents/references/deterministic-workflows.md).
+**Verify task:** First step is `npm run checklist -- "<request or summary>"` ([coordinator](.claude/agents/coordinator.md)). That appends the task to [.tmp/task-checklist.md](.tmp/task-checklist.md) and picks the flow. [verify-task](.claude/skills/verify-task/SKILL.md) · [deterministic workflows](.claude/agents/references/deterministic-workflows.md). For Discover, Learn, Refine, Research, and Propose solutions, run as an [agent team](.claude/agents/references/agent-teams.md) when possible; fallback is the flow's step sequence.
 
 ## Contents
 
@@ -45,7 +45,7 @@ Product Studio connects specialist helpers (subagents) to jobs like [install](.c
 <summary>On this page</summary>
 
 - [Setup](#-setup)
-- [Subagents and skills](#-subagents-and-their-skills)
+- [Agents and skills](#-agents-and-skills)
 - [Frontmatter (agents and skills)](#-frontmatter-agents-and-skills)
 - [Repo structure](#-repo-structure)
 - [.tmp and cleanup](#-tmp-and-cleanup)
@@ -63,11 +63,9 @@ Say "setup", "install", or [/install](.claude/skills/install/SKILL.md). The [ins
 
 ---
 
-## Subagents and their skills
+## Agents and skills
 
-Subagents are defined in [.claude/agents/](.claude/agents/). That's where Claude Code looks for them. ([How subagents work](https://code.claude.com/docs/en/sub-agents.md))
-
-To run a skill, say its trigger phrase or type `/skill-name`. Each skill is a folder under [.claude/skills/](.claude/skills/) with a `SKILL.md` file.
+Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claude.com/docs/en/sub-agents)). Skills live under [.claude/skills/](.claude/skills/) (one `SKILL.md` per skill). Say the trigger phrase or `/skill-name` to run a skill.
 
 | cleaner |
 |:--|
@@ -77,7 +75,7 @@ To run a skill, say its trigger phrase or type `/skill-name`. Each skill is a fo
 | coordinator |
 |:--|
 | [![coordinator](https://img.shields.io/badge/coordinator-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md) <br> ![skills](https://img.shields.io/badge/skills-%E2%80%94-0ea5e9?style=flat&labelColor=4b5563) |
-| Runs the other subagents per flow. Step 1: verify task ([checklist](.claude/skills/verify-task/SKILL.md), `npm run checklist -- "<summary>"`). Step 2 every task: [document-voice](.claude/skills/document-voice/SKILL.md). Flows in [references/coordinator-flows.md](.claude/agents/references/coordinator-flows.md). Refine: researcher when the user shared links or context that needs learning, then documenter. |
+| Runs flows from [coordinator-flows](.claude/agents/references/coordinator-flows.md). Step 1: verify task (`npm run checklist -- "<summary>"`). Discover, Learn, Refine, Research, Propose solutions: run as [agent team](.claude/agents/references/agent-teams.md) when possible; else use the flow's step sequence. Refine: researcher when user shared links/context, then documenter. |
 
 | designer |
 |:--|
@@ -91,8 +89,8 @@ To run a skill, say its trigger phrase or type `/skill-name`. Each skill is a fo
 
 | documenter |
 |:--|
-| [![documenter](https://img.shields.io/badge/documenter-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/documenter.md) <br> [![document](https://img.shields.io/badge/document-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document/SKILL.md) [![document-paths](https://img.shields.io/badge/document--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-paths/SKILL.md) [![document-ticket](https://img.shields.io/badge/document--ticket-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-ticket/SKILL.md) [![document-github](https://img.shields.io/badge/document--github-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-github/SKILL.md) [![document-agent](https://img.shields.io/badge/document--agents-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agents/SKILL.md) [![document-skills](https://img.shields.io/badge/document--skills-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-skills/SKILL.md) [![document-agent-teams](https://img.shields.io/badge/document--agent--teams-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agent-teams/SKILL.md) [![designer-playbook](https://img.shields.io/badge/designer--playbook-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/designer-playbook/SKILL.md) |
-| Writes and syncs docs (markdown, paths, tickets, READMEs, agents, skills, agent teams); uses designer-playbook when creating or reviewing product designs. At end of job: lists files in scope in the checklist (name, location, content summary), reviews each for needed updates, checks off with notes. |
+| [![documenter](https://img.shields.io/badge/documenter-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/documenter.md) <br> [![document](https://img.shields.io/badge/document-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document/SKILL.md) [![document-paths](https://img.shields.io/badge/document--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-paths/SKILL.md) [![document-ticket](https://img.shields.io/badge/document--ticket-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-ticket/SKILL.md) [![document-github](https://img.shields.io/badge/document--github-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-github/SKILL.md) [![document-agents](https://img.shields.io/badge/document--agents-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agents/SKILL.md) [![document-skills](https://img.shields.io/badge/document--skills-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-skills/SKILL.md) [![document-agent-teams](https://img.shields.io/badge/document--agent--teams-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agent-teams/SKILL.md) [![designer-playbook](https://img.shields.io/badge/designer--playbook-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/designer-playbook/SKILL.md) |
+| Docs: markdown, paths, tickets, READMEs, agents, skills, agent teams; designer-playbook for product designs. End of job: files in scope in checklist (name, location, summary), review and check off. |
 
 | installer |
 |:--|
@@ -209,6 +207,7 @@ Product Studio/
 │   │   ├── updater.md
 │   │   ├── verifier.md
 │   │   └── references/
+│   │       ├── agent-teams.md
 │   │       ├── coordinator-flows.md
 │   │       └── deterministic-workflows.md
 │   └── skills/
@@ -268,7 +267,7 @@ Product Studio/
 
 ### .tmp and cleanup
 
-**[\`.tmp/\`](.tmp/) is for reports and temp files from subagents.** It's gitignored and never committed. The **Clean up studio** flow writes a verification report there. When you're done checking it, run the [**clean**](.claude/skills/clean/SKILL.md) skill ("clean", "wipe .tmp", `/clean`, or `npm run clean`) to empty \`.tmp/\`. Clean only deletes what's inside \`.tmp/\`; the rest of the repo is untouched.
+**[\`.tmp/\`](.tmp/) is for reports and temp files.** It's gitignored and never committed. The **Clean up studio** flow writes a verification report there. When you're done checking it, run the [**clean**](.claude/skills/clean/SKILL.md) skill ("clean", "wipe .tmp", `/clean`, or `npm run clean`) to empty \`.tmp/\`. Clean only deletes what's inside \`.tmp/\`; the rest of the repo is untouched.
 
 ---
 

@@ -15,7 +15,7 @@ The coordinator orchestrates only: plan, match to a flow, run steps in order, de
 
 **Step 2.** Execute that flow: step 1, then 2, then 3, … to end. Every step mandatory. Collect and gate: do not move to the next step until the current one is done. After each step: strikethrough + note in current task section (progress and auditability).
 
-**Step 3.** Delegate only to subagents in Team. Match request to an agent by description in `.claude/agents/`. Pass full context in each dispatch; subagents do not inherit conversation state. If a subagent fails, retry that step or degrade gracefully; do not re-run the whole flow. If subagents are unavailable, run steps sequentially in this context.
+**Step 3.** Delegate to Team agents per `.claude/agents/`; pass full context (agents do not inherit conversation state). For Discover, Learn, Refine, Research, or Propose solutions: run as an agent team when possible ([agent-teams](.claude/agents/references/agent-teams.md)); if unable, fall back to that flow's step sequence and run not as a team. On step failure, retry or run steps sequentially.
 
 ## Flow lookup
 
@@ -49,4 +49,4 @@ researcher, documenter, analyst, verifier, cleaner, updater, installer, uninstal
 
 ## Reference
 
-[coordinator-flows](.claude/agents/references/coordinator-flows.md) [deterministic-workflows](.claude/agents/references/deterministic-workflows.md) [checklist script](.claude/skills/verify-task/scripts/checklist.ts) (source of truth for phrase to flow). [work/paths.md](work/paths.md)
+[coordinator-flows](.claude/agents/references/coordinator-flows.md) [agent-teams](.claude/agents/references/agent-teams.md) [deterministic-workflows](.claude/agents/references/deterministic-workflows.md) [checklist script](.claude/skills/verify-task/scripts/checklist.ts) (source of truth for phrase to flow). [work/paths.md](work/paths.md)

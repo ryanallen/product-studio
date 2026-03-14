@@ -4,6 +4,8 @@ Fixed sequences. Each step is "run /command" or "delegate to agent".
 
 **Real commands:** `/checklist` = `npm run checklist -- "<request or summary>"`; `/clean` = `npm run clean` (empties `.tmp/`).
 
+**Discover, Learn, Refine/document, Research, Propose solutions / Analyst:** Run as an agent team when possible ([agent-teams](.claude/agents/references/agent-teams.md)); if unable, fall back to the step sequence below and run not as a team.
+
 ## Contents
 
 - [Analyst](#analyst)
@@ -70,6 +72,8 @@ Fixed sequences. Each step is "run /command" or "delegate to agent".
 
 ## Discover
 
+**Run as an agent team** (researchers by angle, then analysts by hypothesis, consensus, documenter, document-ticket) per [agent-teams](.claude/agents/references/agent-teams.md). If unable (e.g. agent teams not enabled, version, or coordination fails), fall back to the steps below and run not as a team.
+
 1. verifier → verify-task.
 2. researcher → research.
 3. verifier → verify-task.
@@ -114,6 +118,8 @@ Fixed sequences. Each step is "run /command" or "delegate to agent".
 
 ## Learn
 
+**Run as an agent team** (researchers by angle, then documenter) per [agent-teams](.claude/agents/references/agent-teams.md). If unable (e.g. agent teams not enabled, version, or coordination fails), fall back to the steps below and run not as a team.
+
 1. verifier → verify-task.
 2. researcher → research.
 3. verifier → verify-task.
@@ -122,6 +128,8 @@ Fixed sequences. Each step is "run /command" or "delegate to agent".
 ---
 
 ## Propose solutions
+
+**Run as an agent team** (analysts by hypothesis, consensus, documenter) per [agent-teams](.claude/agents/references/agent-teams.md). If unable (e.g. agent teams not enabled, version, or coordination fails), fall back to the steps below and run not as a team.
 
 1. verifier → verify-task.
 2. analyst → analyst-diagnostics.
@@ -132,6 +140,8 @@ Fixed sequences. Each step is "run /command" or "delegate to agent".
 
 ## Refine / document
 
+**When the task involves learning from links or context:** Run as an agent team (researchers by angle, then documenter) per [agent-teams](.claude/agents/references/agent-teams.md). If unable (e.g. agent teams not enabled, version, or coordination fails), fall back to the steps below and run not as a team.
+
 1. verifier → verify-task.
 2. **When the user shared links or context that needs learning:** researcher → research (learn those links/context). Update checklist. Otherwise skip to step 3.
 3. verifier → verify-task.
@@ -140,6 +150,8 @@ Fixed sequences. Each step is "run /command" or "delegate to agent".
 ---
 
 ## Research
+
+**Run as an agent team** (researchers by angle, then documenter) per [agent-teams](.claude/agents/references/agent-teams.md). If unable (e.g. agent teams not enabled, version, or coordination fails), fall back to the steps below and run not as a team.
 
 1. verifier → verify-task.
 2. researcher → research. Update checklist.
@@ -191,4 +203,4 @@ Fixed sequences. Each step is "run /command" or "delegate to agent".
 
 ## Reference
 
-[Coordinator](.claude/agents/coordinator.md) – Step 1 match request to flow above, Step 2 execute that flow's steps in order.
+[Coordinator](.claude/agents/coordinator.md) – Step 1 match request to flow above, Step 2 execute that flow's steps in order. [agent-teams](.claude/agents/references/agent-teams.md) – when and how to run Discover, Learn, Refine, Research, Propose solutions as agent teams (source: [Claude Code agent teams](https://code.claude.com/docs/en/agent-teams)).

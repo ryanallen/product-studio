@@ -9,7 +9,7 @@ argument-hint: "[task or doc path]"
 
 Create or update documentation and runbooks for agent teams: which flows to run as teams, how to assign work and coordinate (task allocation, blackboard, consensus), and how to set up and run teams per the official docs. Use this skill when the documentation task involves agent teams or multi-agent coordination.
 
-**Sources (cite these only):** [Orchestrate teams of Claude Code sessions](https://code.claude.com/docs/en/agent-teams). [How to Create Agent Coordination](https://oneuptime.com/blog/post/2026-01-30-agent-coordination/view) (OneUptime: Contract Net, blackboard, task allocation, consensus, conflict resolution, deadlock prevention).
+**Sources (cite these only):** [Orchestrate teams of Claude Code sessions](https://code.claude.com/docs/en/agent-teams). [How to Create Agent Coordination](https://oneuptime.com/blog/post/2026-01-30-agent-coordination/view) (OneUptime: Contract Net, blackboard, task allocation, consensus, conflict resolution, deadlock prevention). Do not reference work/studio/ or any other work docs; use only the official sources above and the system reference [agent-teams](.claude/agents/references/agent-teams.md).
 
 ## When to use this skill
 
@@ -33,7 +33,7 @@ A doc (README section, standalone runbook, or `assets/docs/` file with kebab-cas
 3. **Flow-to-pattern mapping** – Short table: for each flow that benefits from teams, which patterns to use (e.g. Discover: task allocation + blackboard + consensus).
 4. **Setup and run** – Enable agent teams (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`), how the lead creates the team and assigns tasks, how to use the shared task list and messaging (from [agent teams docs](https://code.claude.com/docs/en/agent-teams)).
 
-Write in plain language. Link to the official docs above; do not reference internal work docs by path.
+Write in plain language. Link to the official docs above and to [agent-teams](.claude/agents/references/agent-teams.md) when referring to setup or coordination. Do not reference work/studio/ or any internal work docs by path.
 
 ## Process
 
@@ -47,11 +47,11 @@ Write in plain language. Link to the official docs above; do not reference inter
    - **Conflict resolution and deadlock prevention:** Allocate sections or files up front so teammates don’t edit the same artifact; order handoffs (e.g. researchers first, then analysts, then documenter); use timeouts if waiting on the board.
 5. **Flow → patterns table** – For each flow that uses teams, list which patterns apply (task allocation, blackboard, consensus, conflict/deadlock as needed).
 6. **Setup and run** – From Claude Code agent teams docs: enable with `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`; lead creates team and spawns teammates; shared task list and direct messaging; display modes (in-process vs split panes); clean up via lead when done. Include link to [agent teams](https://code.claude.com/docs/en/agent-teams).
-7. **Write the doc** – Clear headings, tables for flow→patterns and when-to-use, short paragraphs. Apply [document-voice](.claude/skills/document-voice/SKILL.md). Link to [Orchestrate teams of Claude Code sessions](https://code.claude.com/docs/en/agent-teams) and [How to Create Agent Coordination](https://oneuptime.com/blog/post/2026-01-30-agent-coordination/view). No references to internal work paths; only official sources.
+7. **Write the doc** – Clear headings, tables for flow→patterns and when-to-use, short paragraphs. Apply [document-voice](.claude/skills/document-voice/SKILL.md). Link to [Orchestrate teams of Claude Code sessions](https://code.claude.com/docs/en/agent-teams), [How to Create Agent Coordination](https://oneuptime.com/blog/post/2026-01-30-agent-coordination/view), and [agent-teams](.claude/agents/references/agent-teams.md). Do not reference work/studio/ or any work docs; only these official and system sources.
 
 ## Rules
 
-- Cite only the official sources above (Claude Code agent teams, OneUptime coordination). Do not reference project-specific work docs by path.
+- Cite only the official sources above (Claude Code agent teams, OneUptime coordination) and the system reference [agent-teams](.claude/agents/references/agent-teams.md). Do not reference work/studio/ or any project-specific work docs by path.
 - Output lives in README or in the project's `assets/docs/` with a kebab-case filename per [work/paths.md](work/paths.md).
 - Use [document-voice](.claude/skills/document-voice/SKILL.md) and [document-github](.claude/skills/document-github/SKILL.md) if the target is a GitHub README.
 
