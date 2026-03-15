@@ -10,7 +10,7 @@ Collect the doc set (from paths.md and system docs or user choice), compare each
 
 ## Inputs
 
-- **Scope** – If `work/paths.md` exists, collect all doc paths from the Tree in its Editable section (README and any `assets/docs/` files per project) plus system docs: `.claude/**/*.md`, `README.md`, `AGENTS.md`, `CLAUDE.md`, root markdown. If user chose specific paths, use those.
+- **Scope** – If `work/paths.md` exists, collect all doc paths from the Tree in its Editable section (README and any `assets/docs/` files per project) plus system docs: `.claude/**/*.md`, `README.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, root markdown. If user chose specific paths, use those.
 - **Coordinator** – [coordinator](.claude/agents/coordinator.md) (flow lookup table mirrors checklist.ts). Flow steps live in [coordinator-flows](.claude/agents/references/coordinator-flows.md).
 
 ## Output

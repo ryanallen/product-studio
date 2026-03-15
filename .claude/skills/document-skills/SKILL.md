@@ -146,3 +146,5 @@ Solution: Rename to kebab-case. Update `name` in SKILL.md to match. Update all r
 [Official skills reference](https://code.claude.com/docs/en/skills.md) – frontmatter, control who invokes a skill, run in subagent, substitutions. [Coordinator](.claude/agents/coordinator.md) – Flow lookup table mirrors [checklist script](.claude/skills/verify-task/scripts/checklist.ts) TRIGGERS. Skill descriptions should follow **`[What it does] + [When to use it] + [Key capabilities]`** and "Use when user says …" phrases should align with the checklist script.
 
 [Complete guide to building skills](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf) – progressive disclosure, description formula, good/bad examples, optional frontmatter, triggering and troubleshooting, instructions best practices.
+
+[Creating Agent Skills](https://geminicli.com/docs/cli/creating-skills.md) (Gemini CLI) · [GEMINI.md context](https://geminicli.com/docs/cli/gemini-md.md) (Gemini CLI).

@@ -191,6 +191,7 @@ Then pull with `git pull upstream main` (or say "sync" or [/sync-upstream](.clau
 Product Studio/
 ├── AGENTS.md
 ├── CLAUDE.md -> AGENTS.md
+├── GEMINI.md -> AGENTS.md
 ├── README.md
 ├── .claude/
 │   ├── agents/
