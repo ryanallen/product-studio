@@ -67,6 +67,11 @@ Say "setup", "install", or [/install](.claude/skills/install/SKILL.md). The [ins
 
 Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claude.com/docs/en/sub-agents)). Skills live under [.claude/skills/](.claude/skills/) (one `SKILL.md` per skill). Say the trigger phrase or `/skill-name` to run a skill.
 
+| analyst |
+|:--|
+| [![analyst](https://img.shields.io/badge/analyst-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/analyst.md) <br> [![analyst-diagnostics](https://img.shields.io/badge/analyst--diagnostics-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/analyst-diagnostics/SKILL.md) |
+| Finds root causes (e.g. Five Whys, Ishikawa, Lovebug). |
+
 | cleaner |
 |:--|
 | [![cleaner](https://img.shields.io/badge/cleaner-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/cleaner.md) <br> [![clean](https://img.shields.io/badge/clean-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/clean/SKILL.md) |
@@ -101,11 +106,6 @@ Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claud
 |:--|
 | [![researcher](https://img.shields.io/badge/researcher-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/researcher.md) <br> [![research](https://img.shields.io/badge/research-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/research/SKILL.md) [![research-figma](https://img.shields.io/badge/research--figma-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/research-figma/SKILL.md) |
 | Gathers content from links, tickets, and files; can audit Figma designs. |
-
-| analyst |
-|:--|
-| [![analyst](https://img.shields.io/badge/analyst-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/analyst.md) <br> [![analyst-diagnostics](https://img.shields.io/badge/analyst--diagnostics-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/analyst-diagnostics/SKILL.md) |
-| Finds root causes (e.g. Five Whys, Ishikawa, Lovebug). |
 
 | uninstaller |
 |:--|
