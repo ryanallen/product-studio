@@ -37,7 +37,7 @@ Agents and skills for design capture, research, and strategic analysis. Discover
 
 Product Studio connects specialist agents to jobs like [install](.claude/skills/install/SKILL.md), [research](.claude/skills/research/SKILL.md), [document](.claude/skills/document/SKILL.md), and [save](.claude/skills/save/SKILL.md). Agents live in [.claude/agents/](.claude/agents/); skills (how-to guides) in [.claude/skills/](.claude/skills/). Say a phrase or `/skill-name` to run a skill; `/skills` lists all.
 
-**Verify task:** First step is `npm run checklist -- "<request or summary>"` ([coordinator](.claude/agents/coordinator.md)). That appends the task to [.tmp/task-checklist.md](.tmp/task-checklist.md) and picks the flow. [verify-task](.claude/skills/verify-task/SKILL.md) · [deterministic workflows](.claude/agents/references/deterministic-workflows.md). For Discover, Learn, Refine, Research, and Propose solutions, run as an [agent team](.claude/agents/references/agent-teams.md) when possible; fallback is the flow's step sequence.
+**Verify task:** First step is `npm run checklist -- "<request or summary>"`. The [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts) is the single source of truth for flow and steps; it appends the task to [.tmp/verify-task-checklist.md](.tmp/verify-task-checklist.md) when the flow includes verify-task. [verify-task](.claude/skills/verify-task/SKILL.md). For Discover, Learn, Refine, Research, and Propose solutions, run as an [agent team](.claude/agents/references/agent-teams.md) when possible; fallback is the flow's step sequence.
 
 ## Contents
 
@@ -77,10 +77,10 @@ Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claud
 | [![cleaner](https://img.shields.io/badge/cleaner-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/cleaner.md) <br> [![clean](https://img.shields.io/badge/clean-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/clean/SKILL.md) |
 | Clears [.tmp/](.tmp/). Use after checking reports. |
 
-| coordinator |
+| flows |
 |:--|
-| [![coordinator](https://img.shields.io/badge/coordinator-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/coordinator.md) <br> ![skills](https://img.shields.io/badge/skills-%E2%80%94-0ea5e9?style=flat&labelColor=4b5563) |
-| Runs flows from [coordinator-flows](.claude/agents/references/coordinator-flows.md). Step 1: verify task (`npm run checklist -- "<summary>"`). Discover, Learn, Refine, Research, Propose solutions: run as [agent team](.claude/agents/references/agent-teams.md) when possible; else use the flow's step sequence. Refine: researcher when user shared links/context, then documenter. |
+| [![verify-task](https://img.shields.io/badge/verify--task-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-task/SKILL.md) |
+| Flow and steps from [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts). Step 1: `npm run checklist -- "<summary>"`. Discover, Learn, Refine, Research, Propose solutions: run as [agent team](.claude/agents/references/agent-teams.md) when possible; else use the flow's step sequence. Refine: researcher when user shared links/context, then documenter. |
 
 | designer |
 |:--|
@@ -138,7 +138,7 @@ Agents (`.claude/agents/*.md`) and skills (`.claude/skills/<name>/SKILL.md`) use
 
 | Field | Meaning | Reasoning |
 |-------|--------|-----------|
-| `disable-model-invocation` | `true` = load only when the flow or user invokes the skill, not by description match. | For skills called by AGENTS or coordinator flows (e.g. verify-task, document-voice, save, document). |
+| `disable-model-invocation` | `true` = load only when the flow or user invokes the skill, not by description match. | For skills called by the flow or user (e.g. verify-task, document-voice, save, document). |
 | `argument-hint` | Shown in autocomplete (e.g. `[skill-path] [source]`). | Tells the user what optional args they can pass. |
 | `context` | e.g. `fork` = run in a subagent. | Keeps the main chat clean when the skill does multi-step or file-changing work. |
 | `agent` | When `context: fork`, which subagent type (e.g. `general-purpose`). | Picks the runner so the forked task has the right tools and behavior. |
@@ -197,7 +197,6 @@ Product Studio/
 │   ├── agents/
 │   │   ├── analyst.md
 │   │   ├── cleaner.md
-│   │   ├── coordinator.md
 │   │   ├── customizer.md
 │   │   ├── developer.md
 │   │   ├── designer.md
@@ -208,9 +207,7 @@ Product Studio/
 │   │   ├── updater.md
 │   │   ├── verifier.md
 │   │   └── references/
-│   │       ├── agent-teams.md
-│   │       ├── coordinator-flows.md
-│   │       └── deterministic-workflows.md
+│   │       └── agent-teams.md
 │   └── skills/
 │       ├── analyst-diagnostics/SKILL.md
 │       ├── clean/
@@ -253,7 +250,7 @@ Product Studio/
 │       ├── verify-paths/SKILL.md
 │       └── verify-task/
 │           ├── SKILL.md
-│           └── scripts/checklist.ts
+│           └── scripts/verify-task-checklist.ts
 ├── .tmp/
 ├── package.json
 └── work/
@@ -279,9 +276,9 @@ Product Studio/
 
 **What is npm?** Node Package Manager (comes with Node). It runs scripts you define in package.json. `npm run checklist` runs the checklist script; it does not install anything.
 
-**What does `npm run checklist -- "something"` do?** The `--` passes the rest to the script. The script matches your phrase to a flow (e.g. refine, save), appends a section to [.tmp/task-checklist.md](.tmp/task-checklist.md) with that flow’s steps, and the agent runs them in order. Same phrase → same flow every time.
+**What does `npm run checklist -- "something"` do?** The `--` passes the rest to the script. The script matches your phrase to a flow (e.g. refine, save), appends a section to [.tmp/verify-task-checklist.md](.tmp/verify-task-checklist.md) with that flow’s steps, and the agent runs them in order. Same phrase → same flow every time.
 
-**Why a script instead of the AI deciding?** So the step list is deterministic. Flow and triggers live in [checklist.ts](.claude/skills/verify-task/scripts/checklist.ts); [coordinator-flows](.claude/agents/references/coordinator-flows.md) describes what each flow does. [Deterministic workflows](.claude/agents/references/deterministic-workflows.md) has the principles.
+**Why a script instead of the AI deciding?** So the step list is deterministic. Flow and steps live only in [verify-task-checklist.ts](.claude/skills/verify-task/scripts/verify-task-checklist.ts) (TRIGGERS and FLOWS).
 
 </details>
 

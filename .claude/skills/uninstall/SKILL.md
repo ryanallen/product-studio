@@ -36,4 +36,4 @@ Tell user to fully restart Claude Code.
 
 ## Reference
 
-[install-mcp](.claude/skills/install-mcp/SKILL.md) adds these MCPs. [coordinator](.claude/agents/coordinator.md) runs the uninstaller.
+[install-mcp](.claude/skills/install-mcp/SKILL.md) adds these MCPs. Uninstaller runs when the flow is uninstall.

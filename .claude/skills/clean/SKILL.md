@@ -25,4 +25,4 @@ None.
 
 ## Reference
 
-[document-verification](.claude/skills/document-verification/SKILL.md) writes to `.tmp/`. [coordinator-flows](.claude/agents/references/coordinator-flows.md): Clean flow runs `/clean`.
+[document-verification](.claude/skills/document-verification/SKILL.md) writes to `.tmp/`. Clean flow runs `/clean`; flow from [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts).

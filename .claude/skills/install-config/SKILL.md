@@ -24,4 +24,4 @@ None. Reads repo (git remote) and optional user input if git fails.
 
 ## Reference
 
-[coordinator](.claude/agents/coordinator.md) – Install workflow.
+[checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts) – Install workflow.

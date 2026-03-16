@@ -25,4 +25,4 @@ Add new paths under `work/` to the **Tree in the Editable section** of `work/pat
 
 ## Reference
 
-[coordinator](.claude/agents/coordinator.md). paths.md: Path pattern = reference; Editable section Tree = compared and updated.
+paths.md: Path pattern = reference; Editable section Tree = compared and updated.

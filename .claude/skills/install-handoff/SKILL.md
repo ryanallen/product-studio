@@ -24,4 +24,4 @@ User told to restart app, run `/mcp`, and complete OAuth. Marker file created at
 
 ## Reference
 
-[coordinator](.claude/agents/coordinator.md). [installer](.claude/agents/installer.md) – Step 5 runs this.
+[installer](.claude/agents/installer.md) – Step 5 runs this.

@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Document
 
-One README per project (path from [work/paths.md](work/paths.md)) as the main doc. Supplementary docs go in the project's `assets/docs/` folder with kebab-case filenames (e.g. `architecture-notes.md`). Clear headings, diagrams when they help, link to sources. **Deterministic behavior:** Run the TypeScript script for the chosen document type to get the section outline; same document type → same section order. [deterministic-workflows](.claude/agents/references/deterministic-workflows.md).
+One README per project (path from [work/paths.md](work/paths.md)) as the main doc. Supplementary docs go in the project's `assets/docs/` folder with kebab-case filenames (e.g. `architecture-notes.md`). Clear headings, diagrams when they help, link to sources. **Deterministic behavior:** Run the TypeScript script for the chosen document type to get the section outline; same document type, same section order.
 
 ## Inputs
 
@@ -90,4 +90,4 @@ Learnings. Recommendations. Links to new docs.
 
 ## Reference
 
-[work/paths.md](work/paths.md). [coordinator](.claude/agents/coordinator.md). [document-github](.claude/skills/document-github/SKILL.md). [document-skills](.claude/skills/document-skills/SKILL.md). [document-agent-teams](.claude/skills/document-agent-teams/SKILL.md) when the task involves agent teams or multi-agent coordination. Refine flow may run researcher first when the user shared links or context; then documenter. [deterministic-workflows](.claude/agents/references/deterministic-workflows.md).
+[work/paths.md](work/paths.md). [document-github](.claude/skills/document-github/SKILL.md). [document-skills](.claude/skills/document-skills/SKILL.md). [document-agent-teams](.claude/skills/document-agent-teams/SKILL.md) when the task involves agent teams or multi-agent coordination. Refine flow may run researcher first when the user shared links or context; then documenter.

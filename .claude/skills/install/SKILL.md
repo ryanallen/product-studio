@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Install
 
-Run the Install workflow in [coordinator](.claude/agents/coordinator.md). The installer runs the full flow (config, choices, MCP, Figma bridge if chosen, handoff, then customizer if present).
+Run the Install workflow (flow and steps from [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts)). The installer runs the full flow (config, choices, MCP, Figma bridge if chosen, handoff, then customizer if present).
 
 ## Inputs
 
@@ -22,4 +22,4 @@ Install complete. User may need to restart the app and run `/mcp` for OAuth (see
 
 ## Reference
 
-[coordinator](.claude/agents/coordinator.md). [installer](.claude/agents/installer.md) runs the flow.
+[checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts). [installer](.claude/agents/installer.md) runs the flow.

@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Save
 
-**Rule:** Never stage or commit unless the user asked to save (save, stage, commit, /save). When they do, use the Save coordinator flow (checklist first, then Save flow steps), not this skill by itself. This skill runs as step 3 of the Save flow after checklist and verify-paths (and document-paths if needed).
+**Rule:** Never stage or commit unless the user asked to save (save, stage, commit, /save). When they do, use the Save flow from the checklist script: verify-paths, then document-paths only when needed, then this skill. This skill runs as the last step of the Save flow after verify-paths (and document-paths if needed).
 
 ## Inputs
 
@@ -23,7 +23,7 @@ One or more commits; result reported. No push.
 
 ## Process
 
-1. Run Save workflow: verify-paths, then document-paths only when disk has paths not in tree, then commit ([coordinator-flows](.claude/agents/references/coordinator-flows.md)).
+1. Run Save workflow: verify-paths, then document-paths only when disk has paths not in tree, then commit. Flow and steps from [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts).
 2. `git status`; stage per Inputs (all or specific paths).
 3. For each commit: `git add` then `git commit -m "<title>" -m "<description>"` (derive from changes). Repeat until done.
 4. Report result. No push.
@@ -34,4 +34,4 @@ One or more commits; result reported. No push.
 
 ## Reference
 
-[coordinator-flows](.claude/agents/references/coordinator-flows.md) (Save workflow).
+[checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts) (Save flow steps).

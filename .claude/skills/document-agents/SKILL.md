@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Document Agents
 
-When to use subagents for documentation, and how to write or update files in `.claude/agents/`. **Deterministic behavior:** Run the TypeScript script first; same task message → same subagent choice. [deterministic-workflows](.claude/agents/references/deterministic-workflows.md).
+When to use subagents for documentation, and how to write or update files in `.claude/agents/`. **Deterministic behavior:** Run the TypeScript script first; same task message, same subagent choice.
 
 ## Inputs
 
@@ -31,9 +31,9 @@ Subagent file written or updated; or docs produced via a subagent when delegated
 
 **Actions:** Run `npm run doc:pick-subagent -- "Document the codebase and write a README"`. Script returns `general-purpose`. Delegate to general-purpose subagent; it uses document, document-github, document-voice. Update checklist after.
 
-**User says:** "Update the coordinator agent to mention the new flow."
+**User says:** "Update the flows to add a new flow."
 
-**Actions:** Run pick-subagent; script returns `main`. In main context, edit `.claude/agents/coordinator.md` and the flow list in `.claude/agents/references/coordinator-flows.md`. No delegation.
+**Actions:** Run pick-subagent; script returns `main`. In main context, edit the [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts) (TRIGGERS and FLOWS). No delegation.
 
 ## Troubleshooting
 
@@ -47,4 +47,4 @@ Solution: Check triggers in `pick-subagent.ts`; add or adjust patterns for the p
 
 ## Reference
 
-[Create custom subagents](https://code.claude.com/docs/en/sub-agents.md). [deterministic-workflows](.claude/agents/references/deterministic-workflows.md).
+[Create custom subagents](https://code.claude.com/docs/en/sub-agents.md).

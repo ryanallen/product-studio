@@ -26,4 +26,4 @@ Local main merged from upstream; origin main updated. Result reported.
 
 ## Reference
 
-[coordinator](.claude/agents/coordinator.md) runs the updater for this. See README for adding upstream to a working repo.
+Updater runs this when the flow is sync-upstream. See README for adding upstream to a working repo.

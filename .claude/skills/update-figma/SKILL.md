@@ -33,4 +33,4 @@ Config updated with new token. User must fully restart the app.
 
 ## Reference
 
-[install-mcp](.claude/skills/install-mcp/SKILL.md) uses the same add command. [coordinator](.claude/agents/coordinator.md) runs the updater.
+[install-mcp](.claude/skills/install-mcp/SKILL.md) uses the same add command. Updater runs this when the flow is update-figma.

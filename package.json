@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "checklist": "npx tsx .claude/skills/verify-task/scripts/checklist.ts",
+    "checklist": "npx tsx .claude/skills/verify-task/scripts/verify-task-checklist.ts",
     "doc:pick-subagent": "npx tsx .claude/skills/document-agents/scripts/pick-subagent.ts",
     "doc:structure": "npx tsx .claude/skills/document/scripts/doc-structure.ts",
     "clean": "node .claude/skills/clean/scripts/clean.mjs",

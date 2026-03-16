@@ -1,13 +1,15 @@
 /**
- * verify-task SKILL: append a section to .tmp/task-checklist.md per task.
- * AGENTS Rule 3: first action every request run `npm run checklist -- "<summary>"`.
+ * Verify-task checklist: single source of truth for request → flow and flow → steps.
  *
- * Steps for each flow MUST match coordinator-flows.md exactly (no global prepend).
- * Single source of truth for "phrase → flow". Coordinator flow lookup table
- * mirrors TRIGGERS; keep FLOWS in sync with .claude/agents/references/coordinator-flows.md.
+ * Phrase → flow: TRIGGERS (first match wins).
+ * Flow → steps: FLOWS. Steps are defined only in this script.
  *
- * npx tsx .claude/skills/verify-task/scripts/checklist.ts "<task summary>"
- * npx tsx .claude/skills/verify-task/scripts/checklist.ts --steps "<message>"
+ * Two modes:
+ * - --steps "<message>": return step list as JSON; no file write.
+ * - default: append a section to .tmp/verify-task-checklist.md with the steps for the matched flow.
+ *
+ * npx tsx .claude/skills/verify-task/scripts/verify-task-checklist.ts "<task summary>"
+ * npx tsx .claude/skills/verify-task/scripts/verify-task-checklist.ts --steps "<message>"
  */
 
 import * as fs from "fs";
@@ -16,10 +18,10 @@ import * as path from "path";
 const DEFAULT_FLOW = "refine" as const;
 
 const TMP = path.join(process.cwd(), ".tmp");
-const CHECKLIST_PATH = path.join(TMP, "task-checklist.md");
-const TITLE = "# Task checklist (running list)\n\n";
+const CHECKLIST_PATH = path.join(TMP, "verify-task-checklist.md");
+const TITLE = "# Verify task checklist (running list)\n\n";
 
-/** Step lists must match coordinator-flows.md for each flow. Save has no verify-task. */
+/** Step list per flow. Save has no verify-task. */
 const FLOWS = {
   save: ["verify-paths", "document-paths", "save"],
   "clean-up-studio": ["verify-task", "verify-docs", "document-verification", "verify-task", "clean"],
@@ -97,7 +99,7 @@ function matchFlow(message: string): FlowKey {
   return DEFAULT_FLOW;
 }
 
-/** Returns steps for the matched flow (same order as coordinator-flows.md). Deterministic for same message. */
+/** Returns steps for the matched flow. Deterministic for same message. */
 export function getStepsForRequest(message: string): readonly string[] {
   const flow = matchFlow(message);
   return FLOWS[flow];
@@ -131,7 +133,7 @@ export function ensureChecklistSection(summary: string, steps?: readonly string[
   fs.writeFileSync(CHECKLIST_PATH, content, "utf-8");
 }
 
-const USAGE = "Usage: npx tsx .claude/skills/verify-task/scripts/checklist.ts \"<task summary>\"\n   or: npx tsx .claude/skills/verify-task/scripts/checklist.ts --steps \"<message>\"";
+const USAGE = "Usage: npx tsx .claude/skills/verify-task/scripts/verify-task-checklist.ts \"<task summary>\"\n   or: npx tsx .claude/skills/verify-task/scripts/verify-task-checklist.ts --steps \"<message>\"";
 
 const args = process.argv.slice(2);
 if (args[0] === "--steps") {

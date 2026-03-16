@@ -39,4 +39,4 @@ Custom path (when user did not choose express).
 
 ## Reference
 
-[coordinator](.claude/agents/coordinator.md) – Install workflow. [install-express](.claude/skills/install-express/SKILL.md) – Express path.
+[checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts) – Install workflow. [install-express](.claude/skills/install-express/SKILL.md) – Express path.

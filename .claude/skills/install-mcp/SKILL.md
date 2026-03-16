@@ -48,4 +48,4 @@ claude mcp add --transport sse atlassian-rovo https://mcp.atlassian.com/v1/sse
 
 ## Reference
 
-[coordinator](.claude/agents/coordinator.md). [install-choices](.claude/skills/install-choices/SKILL.md) – Source of choices.
+[install-choices](.claude/skills/install-choices/SKILL.md) – Source of choices.
