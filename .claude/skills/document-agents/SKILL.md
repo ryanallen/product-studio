@@ -10,8 +10,8 @@ When to use subagents for documentation, and how to write or update files in `.c
 
 ## Inputs
 
-- **Target** – Subagent file path (e.g. `.claude/agents/example.md`) or documentation task. If omitted, use current context.
-- **Source** – Optional. Draft, instructions, or research to merge into the subagent or doc.
+- **Target:** Subagent file path (e.g. `.claude/agents/example.md`) or documentation task. If omitted, use current context.
+- **Source:** Optional. Draft, instructions, or research to merge into the subagent or doc.
 
 ## Output
 

@@ -2,6 +2,8 @@
 
 Fixed sequences. Each step is "run /command" or "delegate to agent".
 
+**Execution (deterministic):** (1) Run `npm run checklist -- "<request summary>"`. The script appends one section to `.tmp/task-checklist.md` with the step list for the matched flow (same request → same flow → same list; see [deterministic-workflows](.claude/agents/references/deterministic-workflows.md)). (2) Open `.tmp/task-checklist.md`; the section just appended is the last `## YYYY-MM-DD HH:MM — {summary}` block. (3) The step list is the ordered bullet lines (`- step-name`) between that heading and the next `##`. (4) For i = 1 to N, run step i: map the step name to the action below; complete it; strikethrough + note in that section; then run step i+1. Do not skip, reorder, or infer steps. **Step name "verify-task":** First occurrence = already done (checklist was run at flow start). Any later occurrence = strikethrough the previous step + note, then continue (do not run the checklist script again). Other step names = run the corresponding agent/skill and update checklist. This doc defines actions only; step count and order come from the checklist script.
+
 **Real commands:** `/checklist` = `npm run checklist -- "<request or summary>"`; `/clean` = `npm run clean` (empties `.tmp/`).
 
 **Discover, Learn, Refine/document, Research, Propose solutions / Analyst:** Run as an agent team when possible ([agent-teams](.claude/agents/references/agent-teams.md)); if unable, fall back to the step sequence below and run not as a team.
@@ -203,4 +205,4 @@ Fixed sequences. Each step is "run /command" or "delegate to agent".
 
 ## Reference
 
-[Coordinator](.claude/agents/coordinator.md) – Step 1 match request to flow above, Step 2 execute that flow's steps in order. [agent-teams](.claude/agents/references/agent-teams.md) – when and how to run Discover, Learn, Refine, Research, Propose solutions as agent teams (source: [Claude Code agent teams](https://code.claude.com/docs/en/agent-teams)).
+[Coordinator](.claude/agents/coordinator.md): Step 1 run checklist (match request to flow), Step 2 execute the steps in the appended section in order. [agent-teams](.claude/agents/references/agent-teams.md): when and how to run Discover, Learn, Refine, Research, Propose solutions as agent teams (source: [Claude Code agent teams](https://code.claude.com/docs/en/agent-teams)).

@@ -10,9 +10,9 @@ One README per project (path from [work/paths.md](work/paths.md)) as the main do
 
 ## Inputs
 
-- **Project path** – [work/paths.md](work/paths.md).
-- **Source material** – Research, notes, or findings.
-- **Document type** – `research`, `analysis`, `solutions`, or `project-overview`.
+- **Project path:** [work/paths.md](work/paths.md).
+- **Source material:** Research, notes, or findings.
+- **Document type:** `research`, `analysis`, `solutions`, or `project-overview`.
 
 ## Output
 
@@ -21,20 +21,20 @@ One README (main doc). When needed, supplementary docs in the project's `assets/
 ## Process
 
 1. **Section outline (deterministic):** Run `npm run doc:structure -- <document-type>` (or `npx tsx .claude/skills/document/scripts/doc-structure.ts <document-type>`). Use the printed markdown outline as the section order when writing the README. Only add a section if you have real content; skip if the source doesn't have it.
-2. **Read the source** – Scope and main topics.
-3. **Group by sections** – By document type above, following the script output.
-4. **Write the README** – Clear title and one-line summary. Short paragraphs. Diagrams for flows or relationships. Tables for comparisons. Link to sources inline. When a topic deserves its own doc, add it in `assets/docs/` with a kebab-case filename and link from the README.
-5. **project-overview** – Script output matches the full template below; use it for headings and hints. For images and evidence paths see work/paths.md. Supplementary docs live in `assets/docs/` with kebab-case names.
+2. **Read the source:** Scope and main topics.
+3. **Group by sections:** By document type above, following the script output.
+4. **Write the README:** Clear title and one-line summary. Short paragraphs. Diagrams for flows or relationships. Tables for comparisons. Link to sources inline. When a topic deserves its own doc, add it in `assets/docs/` with a kebab-case filename and link from the README.
+5. **project-overview:** Script output matches the full template below; use it for headings and hints. For images and evidence paths see work/paths.md. Supplementary docs live in `assets/docs/` with kebab-case names.
 
 ### How to write it
 
-**Diagrams (mermaid)** – Process, flow, or cause chain. Flowcharts, sequence, mind maps (e.g. problem → why → root cause), Gantt-style timelines. Use for 3+ steps or clear hierarchy.
+**Diagrams (mermaid):** Process, flow, or cause chain. Flowcharts, sequence, mind maps (e.g. problem → why → root cause), Gantt-style timelines. Use for 3+ steps or clear hierarchy.
 
-**Tables** – Comparisons, source lists, feature lists. Real data only; no filler, TBD, or invented names/dates.
+**Tables:** Comparisons, source lists, feature lists. Real data only; no filler, TBD, or invented names/dates.
 
-**Callouts** – `> **Note:** ...` and `> **Warning:** ...`
+**Callouts:** `> **Note:** ...` and `> **Warning:** ...`
 
-**Links** – Link every URL or in-doc target. Sections, sources, people (anchor in Team), tickets, artifacts. Relative links only.
+**Links:** Link every URL or in-doc target. Sections, sources, people (anchor in Team), tickets, artifacts. Relative links only.
 
 ### README structure (project-overview)
 

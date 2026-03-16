@@ -1,10 +1,10 @@
 /**
  * verify-task SKILL: append a section to .tmp/task-checklist.md per task.
- * AGENTS Rule 1: first action every turn run `npm run checklist -- "<summary>"`.
- * Steps: [verify-task, document-voice, ...flowSteps] from FLOWS + TRIGGERS.
+ * AGENTS Rule 3: first action every request run `npm run checklist -- "<summary>"`.
  *
+ * Steps for each flow MUST match coordinator-flows.md exactly (no global prepend).
  * Single source of truth for "phrase → flow". Coordinator flow lookup table
- * mirrors TRIGGERS; keep them in sync when adding or changing flows.
+ * mirrors TRIGGERS; keep FLOWS in sync with .claude/agents/references/coordinator-flows.md.
  *
  * npx tsx .claude/skills/verify-task/scripts/checklist.ts "<task summary>"
  * npx tsx .claude/skills/verify-task/scripts/checklist.ts --steps "<message>"
@@ -13,44 +13,52 @@
 import * as fs from "fs";
 import * as path from "path";
 
-const STEP_0 = "verify-task" as const;
-const STEP_1 = "document-voice" as const;
 const DEFAULT_FLOW = "refine" as const;
 
 const TMP = path.join(process.cwd(), ".tmp");
 const CHECKLIST_PATH = path.join(TMP, "task-checklist.md");
 const TITLE = "# Task checklist (running list)\n\n";
 
+/** Step lists must match coordinator-flows.md for each flow. Save has no verify-task. */
 const FLOWS = {
   save: ["verify-paths", "document-paths", "save"],
-  "clean-up-studio": ["verify-docs", "document-verification"],
-  clean: ["clean"],
-  "analyst-diagnostics": ["analyst-diagnostics"],
-  uninstall: ["uninstall"],
-  "designer-figma": ["designer-figma"],
-  "update-figma": ["update-figma"],
-  "sync-upstream": ["sync-upstream"],
-  "update-gitignore": ["update-gitignore"],
-  research: ["research"],
-  "research-figma": ["research-figma"],
-  learn: ["research", "document"],
-  "propose-solutions": ["analyst-diagnostics", "document"],
+  "clean-up-studio": ["verify-task", "verify-docs", "document-verification", "verify-task", "clean"],
+  clean: ["verify-task", "clean"],
+  "analyst-diagnostics": ["verify-task", "analyst-diagnostics"],
+  uninstall: ["verify-task", "uninstall"],
+  "designer-figma": ["verify-task", "designer-figma"],
+  "update-figma": ["verify-task", "update-figma"],
+  "sync-upstream": ["verify-task", "sync-upstream"],
+  "update-gitignore": ["verify-task", "update-gitignore"],
+  research: ["verify-task", "research"],
+  "research-figma": ["verify-task", "research-figma"],
+  learn: ["verify-task", "research", "verify-task", "document"],
+  "propose-solutions": ["verify-task", "analyst-diagnostics", "verify-task", "document"],
   discover: [
+    "verify-task",
     "research",
+    "verify-task",
     "document",
+    "verify-task",
     "analyst-diagnostics",
+    "verify-task",
     "document",
+    "verify-task",
     "research",
+    "verify-task",
     "document",
+    "verify-task",
     "analyst-diagnostics",
+    "verify-task",
     "document",
+    "verify-task",
     "document-ticket",
   ],
-  install: ["(Install workflow)"],
-  refine: ["research", "document", "document-github"],
-  developer: ["developer-typescript", "developer-check-types"],
-  "developer-electron": ["developer-electron"],
-  "developer-electrobun": ["developer-electrobun"],
+  install: ["verify-task", "(Install workflow)"],
+  refine: ["verify-task", "research", "verify-task", "document"],
+  developer: ["verify-task", "developer-typescript", "developer-check-types"],
+  "developer-electron": ["verify-task", "developer-electron"],
+  "developer-electrobun": ["verify-task", "developer-electrobun"],
 } as const satisfies Record<string, readonly string[]>;
 
 type FlowKey = keyof typeof FLOWS;
@@ -89,10 +97,10 @@ function matchFlow(message: string): FlowKey {
   return DEFAULT_FLOW;
 }
 
-/** Returns [STEP_0, STEP_1, ...flowSteps]. Deterministic for same message. */
-export function getStepsForRequest(message: string): readonly [string, ...string[]] {
+/** Returns steps for the matched flow (same order as coordinator-flows.md). Deterministic for same message. */
+export function getStepsForRequest(message: string): readonly string[] {
   const flow = matchFlow(message);
-  return [STEP_0, STEP_1, ...FLOWS[flow]];
+  return FLOWS[flow];
 }
 
 function pad2(n: number): string {

@@ -16,8 +16,8 @@ When invoked:
 4. **Product designs:** Apply [designer-playbook](.claude/skills/designer-playbook/SKILL.md) when creating or reviewing UI, screens, design specs, accessibility.
 5. **TypeScript:** To document TS code, delegate to developer; do not document TS yourself.
 6. **Checklist:** After each skill, strikethrough + note in current task section. [verify-task](.claude/skills/verify-task/SKILL.md)
-7. **End of job – file review:** When the main doc work is done, run a closing pass:
+7. **End of job, file review:** When the main doc work is done, run a closing pass:
    - Use [research](.claude/skills/research/SKILL.md) (or a systematic read) to learn what every relevant file is: scope = files you read or wrote this run, or the set the task asked to update or document. For each file: name, path/location, brief content summary (what it is and what it does).
    - In the current task section of `.tmp/task-checklist.md`, add a **Files in scope** block: list each file with name, location, and content summary (e.g. table or bullets: `| path | summary |` then per-file checkoff lines).
    - Go through each file and check whether anything needs updating to support the doc work (cross-refs, consistency with other docs, paths, wording). If yes, make the update or note it.
-   - Check off each file when done with a short note (e.g. `- ~~path/to/file~~ — ok` or `— updated X`). Keep the checklist updated so the user can see what was reviewed and what changed.
+   - Check off each file when done with a short note (e.g. `- ~~path/to/file~~ - ok` or `- updated X`). Keep the checklist updated so the user can see what was reviewed and what changed.

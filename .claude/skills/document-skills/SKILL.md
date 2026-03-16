@@ -13,8 +13,8 @@ Write or update a skill to fit the host's expected structure. Use the structure 
 
 ## Inputs
 
-1. **Target skill** – Path to the skill folder (e.g. the project skills directory `skills/example/`) or the skill name.
-2. **Source** – Draft, user instructions, or notes to turn into the skill or merge in.
+1. **Target skill:** Path to the skill folder (e.g. the project skills directory `skills/example/`) or the skill name.
+2. **Source:** Draft, user instructions, or notes to turn into the skill or merge in.
 
 **If you don't give either:** Use the current or given context (e.g. the skill or path already under discussion).
 
@@ -53,7 +53,7 @@ Frontmatter configures when and how the skill runs. The table below follows the 
 | `model`                    | No          | Model to use when this skill is active.                                                                                                               |
 | `context`                  | No          | Set to `fork` to run in a forked subagent context.                                                                                                    |
 | `agent`                    | No          | Which subagent type to use when `context: fork` is set.                                                                                               |
-| `hooks`                    | No          | Hooks scoped to this skill's lifecycle. See [Hooks in skills and agents](/en/hooks#hooks-in-skills-and-agents) for configuration format.              |
+| `hooks`                    | No          | Hooks scoped to this skill's lifecycle. See [Hooks in skills and agents](https://code.claude.com/docs/en/hooks) for configuration format.              |
 
 **Optional:** `license` (e.g. MIT for open source), `compatibility` (1–500 chars: product, system deps, network), `metadata` (e.g. author, version, mcp-server). See [complete skills guide](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf).
 
@@ -63,20 +63,20 @@ Frontmatter configures when and how the skill runs. The table below follows the 
 
 #### Content type
 
-- **Reference** – Conventions, patterns, style. Applied inline. No invocation control needed.
-- **Task or flow-invoked** – Step-by-step actions or skills called by AGENTS/coordinator by name. Use `disable-model-invocation: true` so the skill loads only when invoked, not by description match.
+- **Reference:** Conventions, patterns, style. Applied inline. No invocation control needed.
+- **Task or flow-invoked:** Step-by-step actions or skills called by AGENTS/coordinator by name. Use `disable-model-invocation: true` so the skill loads only when invoked, not by description match.
 
 #### Body sections (same order for every skill)
 
 Use the same section order so skills are easy to scan:
 
-1. **# Title** – Skill name as H1, then one short intro (what it does).
-2. **## Inputs** – What the skill needs (user input, paths, options). Number the items. Use "None" or "Optional" when nothing is required.
-3. **## Output** – What you get (a file, a behavior, a handoff). One short block.
-4. **## Process** – How to do it. Numbered steps or subsections (e.g. "### 1. Step name"). Put all how-to and rules here. Be specific and actionable (e.g. "Run `python scripts/validate.py --input {filename}`" not "Validate the data"). Include error handling for common failures; reference bundled files (e.g. "Before queries, consult `references/api-patterns.md`") when relevant.
-5. **## Examples** – Optional but recommended. Common scenarios: "User says X → Actions → Result."
-6. **## Troubleshooting** – Optional but recommended. Error or symptom → Cause → Solution.
-7. **## Reference** – Optional. Links to related skills or docs.
+1. **# Title:** Skill name as H1, then one short intro (what it does).
+2. **## Inputs:** What the skill needs (user input, paths, options). Number the items. Use "None" or "Optional" when nothing is required.
+3. **## Output:** What you get (a file, a behavior, a handoff). One short block.
+4. **## Process:** How to do it. Numbered steps or subsections (e.g. "### 1. Step name"). Put all how-to and rules here. Be specific and actionable (e.g. "Run `python scripts/validate.py --input {filename}`" not "Validate the data"). Include error handling for common failures; reference bundled files (e.g. "Before queries, consult `references/api-patterns.md`") when relevant.
+5. **## Examples:** Optional but recommended. Common scenarios: "User says X, Actions, Result."
+6. **## Troubleshooting:** Optional but recommended. Error or symptom, Cause, Solution.
+7. **## Reference:** Optional. Links to related skills or docs.
 
 Skip a section only if it really doesn't apply. When unsure, include Inputs, Output, Process, and Reference; add Examples and Troubleshooting where they help. Match the layout of other skills in the repo.
 
@@ -84,10 +84,10 @@ Skip a section only if it really doesn't apply. When unsure, include Inputs, Out
 
 From the [official docs](https://code.claude.com/docs/en/skills.md#available-string-substitutions):
 
-- `$ARGUMENTS` – All arguments passed when invoking the skill. If not present in the content, arguments are appended as `ARGUMENTS: `.
-- `$ARGUMENTS[N]` or `$N` – The Nth argument (0-based index).
-- `${CLAUDE_SESSION_ID}` – The current session ID (host-defined).
-- `${CLAUDE_SKILL_DIR}` – The directory containing the skill's `SKILL.md` file (host-defined).
+- `$ARGUMENTS`: All arguments passed when invoking the skill. If not present in the content, arguments are appended as `ARGUMENTS: `.
+- `$ARGUMENTS[N]` or `$N`: The Nth argument (0-based index).
+- `${CLAUDE_SESSION_ID}`: The current session ID (host-defined).
+- `${CLAUDE_SKILL_DIR}`: The directory containing the skill's `SKILL.md` file (host-defined).
 
 For injecting shell output before the skill runs, see [Inject dynamic context](https://code.claude.com/docs/en/skills.md#inject-dynamic-context).
 
@@ -143,10 +143,10 @@ Solution: Rename to kebab-case. Update `name` in SKILL.md to match. Update all r
 
 ## Reference
 
-[Official skills reference](https://code.claude.com/docs/en/skills.md) – frontmatter, control who invokes a skill, run in subagent, substitutions. [Coordinator](.claude/agents/coordinator.md) – Flow lookup table mirrors [checklist script](.claude/skills/verify-task/scripts/checklist.ts) TRIGGERS. Skill descriptions should follow **`[What it does] + [When to use it] + [Key capabilities]`** and "Use when user says …" phrases should align with the checklist script.
+[Official skills reference](https://code.claude.com/docs/en/skills.md): frontmatter, control who invokes a skill, run in subagent, substitutions. [Coordinator](.claude/agents/coordinator.md): Flow lookup table mirrors [checklist script](.claude/skills/verify-task/scripts/checklist.ts) TRIGGERS. Skill descriptions should follow **`[What it does] + [When to use it] + [Key capabilities]`** and "Use when user says …" phrases should align with the checklist script.
 
-[Complete guide to building skills](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf) – progressive disclosure, description formula, good/bad examples, optional frontmatter, triggering and troubleshooting, instructions best practices.
+[Complete guide to building skills](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf): progressive disclosure, description formula, good/bad examples, optional frontmatter, triggering and troubleshooting, instructions best practices.
 
-[Anthropic skills examples](https://github.com/anthropics/skills/tree/main/skills) – concrete SKILL.md patterns, folder layout, and reference skills used in the Claude web app.
+[Anthropic skills examples](https://github.com/anthropics/skills/tree/main/skills): concrete SKILL.md patterns, folder layout, and reference skills used in the Claude web app.
 
 [Creating Agent Skills](https://geminicli.com/docs/cli/creating-skills.md) (Gemini CLI) · [GEMINI.md context](https://geminicli.com/docs/cli/gemini-md.md) (Gemini CLI).
