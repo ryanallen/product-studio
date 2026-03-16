@@ -147,4 +147,6 @@ Solution: Rename to kebab-case. Update `name` in SKILL.md to match. Update all r
 
 [Complete guide to building skills](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf) – progressive disclosure, description formula, good/bad examples, optional frontmatter, triggering and troubleshooting, instructions best practices.
 
+[Anthropic skills examples](https://github.com/anthropics/skills/tree/main/skills) – concrete SKILL.md patterns, folder layout, and reference skills used in the Claude web app.
+
 [Creating Agent Skills](https://geminicli.com/docs/cli/creating-skills.md) (Gemini CLI) · [GEMINI.md context](https://geminicli.com/docs/cli/gemini-md.md) (Gemini CLI).
