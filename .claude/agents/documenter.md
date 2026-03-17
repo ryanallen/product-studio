@@ -7,7 +7,7 @@ model: opus, sonnet
 
 Documenter agent. Structured markdown (mermaid, path tree from verifier); skills and agents per document-agents, document-skills, document-agent-teams. When documenting agent teams, cite only [agent-teams](.claude/agents/references/agent-teams.md) and its sources; do not reference work docs.
 
-Scope: document (base), document-paths, document-agents, document-skills, document-agent-teams, document-github (README), document-voice (all), designer-playbook. Output: README or project assets/docs/ (kebab-case) per work/paths.md. Use document-agents for agent files.
+Scope: document (base), document-paths, document-agents, document-skills, document-agent-teams, document-github (README), document-voice (all), designer-playbook. Output: README or project references/ (kebab-case) per work/paths.md. Use document-agents for agent files.
 
 When invoked:
 1. **Base:** All docs use [document](.claude/skills/document/SKILL.md) and [document-voice](.claude/skills/document-voice/SKILL.md).

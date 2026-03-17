@@ -1,12 +1,12 @@
 ---
 name: document
-description: Turn research into a clear README per project; supplementary docs in assets/docs/ with kebab-case names. Uses a TypeScript script for deterministic section outline. Use markdown, mermaid diagrams, tables, and links. Plain language. Use when user says write, write up, document, update, make, /document.
+description: Turn research into a clear README per project; supplementary docs in references/ with kebab-case names. Uses a TypeScript script for deterministic section outline. Use markdown, mermaid diagrams, tables, and links. Plain language. Use when user says write, write up, document, update, make, /document.
 disable-model-invocation: true
 ---
 
 # Document
 
-One README per project (path from [work/paths.md](work/paths.md)) as the main doc. Supplementary docs go in the project's `assets/docs/` folder with kebab-case filenames (e.g. `architecture-notes.md`). Clear headings, diagrams when they help, link to sources. **Deterministic behavior:** Run the TypeScript script for the chosen document type to get the section outline; same document type, same section order.
+One README per project (path from [work/paths.md](work/paths.md)) as the main doc. Supplementary docs go in the project's `references/` folder with kebab-case filenames (e.g. `architecture-notes.md`). Clear headings, diagrams when they help, link to sources. **Deterministic behavior:** Run the TypeScript script for the chosen document type to get the section outline; same document type, same section order.
 
 ## Inputs
 
@@ -16,15 +16,15 @@ One README per project (path from [work/paths.md](work/paths.md)) as the main do
 
 ## Output
 
-One README (main doc). When needed, supplementary docs in the project's `assets/docs/` folder with kebab-case filenames; link from README. Scratch in .tmp is allowed; move into README or into a doc in `assets/docs/` before done.
+One README (main doc). When needed, supplementary docs in the project's `references/` folder with kebab-case filenames; link from README. Scratch in .tmp is allowed; move into README or into a doc in `references/` before done.
 
 ## Process
 
 1. **Section outline (deterministic):** Run `npm run doc:structure -- <document-type>` (or `npx tsx .claude/skills/document/scripts/doc-structure.ts <document-type>`). Use the printed markdown outline as the section order when writing the README. Only add a section if you have real content; skip if the source doesn't have it.
 2. **Read the source:** Scope and main topics.
 3. **Group by sections:** By document type above, following the script output.
-4. **Write the README:** Clear title and one-line summary. Short paragraphs. Diagrams for flows or relationships. Tables for comparisons. Link to sources inline. When a topic deserves its own doc, add it in `assets/docs/` with a kebab-case filename and link from the README.
-5. **project-overview:** Script output matches the full template below; use it for headings and hints. For images and evidence paths see work/paths.md. Supplementary docs live in `assets/docs/` with kebab-case names.
+4. **Write the README:** Clear title and one-line summary. Short paragraphs. Diagrams for flows or relationships. Tables for comparisons. Link to sources inline. When a topic deserves its own doc, add it in `references/` with a kebab-case filename and link from the README.
+5. **project-overview:** Script output matches the full template below; use it for headings and hints. For images and evidence paths see work/paths.md. Supplementary docs live in `references/` with kebab-case names.
 
 ### How to write it
 
@@ -83,7 +83,7 @@ Learnings. Recommendations. Links to new docs.
 
 - Relative links only. No full filesystem paths.
 - Real content only. No invented rows, TBD, or fake names/dates. Skip a section if no data.
-- Supplementary docs in the project's `assets/docs/` use kebab-case filenames; link from README.
+- Supplementary docs in the project's `references/` use kebab-case filenames; link from README.
 - Team table: full name per person. Role: Driver, Approver, Contributor, or Informed.
 - Link tree or Sources from research go under Research and context > Reviews and sources.
 - Attribute content to the source.

@@ -8,18 +8,19 @@ Only: `work/{team}/{space}/{ticket-id}/{project-name}/`
 
 ### Deliverable
 
-One `README.md` per project folder plus asset folders only.
+One `README.md` per project folder plus `references/`, `scripts/`, and `assets/` only.
 
 - Do not create other files (notes, drafts, separate doc files).
 - Add new problems, topics, or findings to that README.
 - Never create a new folder or new README for new problems or topics.
 
-### Assets
+### Project folders (per work project)
 
 Per project folder only:
 
-- `assets/images/` for image evidence; embed in README with `![](assets/images/filename.ext)`.
-- `assets/docs/` for other evidence files; link from README.
+- **`references/`** — Other docs; kebab-case filenames; link from README.
+- **`scripts/`** — Executable code (e.g. runbooks, one-off scripts).
+- **`assets/`** — Templates, icons, images; embed in README with `![](assets/filename.ext)`.
 - No other folders or loose files.
 
 ### Folder names
@@ -49,7 +50,7 @@ work/
         └── {ticket-id}/
             └── project-name/
                 ├── README.md
+                ├── references/
+                ├── scripts/
                 └── assets/
-                    ├── images/
-                    └── docs/
 ```

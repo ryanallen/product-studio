@@ -21,12 +21,12 @@ Use [document](.claude/skills/document/SKILL.md) for general README or project d
 
 ## Inputs
 
-- **Task or path** – What to produce (e.g. "document which flows to run as agent teams and how to coordinate") or the path where the doc lives (e.g. project README or `assets/docs/agent-teams-runbook.md`).
+- **Task or path** – What to produce (e.g. "document which flows to run as agent teams and how to coordinate") or the path where the doc lives (e.g. project README or `references/agent-teams-runbook.md`).
 - **Source** – Optional. Existing draft, notes, or research to merge.
 
 ## Output
 
-A doc (README section, standalone runbook, or `assets/docs/` file with kebab-case name) that covers:
+A doc (README section, standalone runbook, or `references/` file with kebab-case name) that covers:
 
 1. **When to use agent teams** – Which flows to run as teams (from Claude Code docs: research and review, new modules/features, debugging with competing hypotheses, cross-layer work). Call out flows where parallel exploration and debate add value vs sequential/subagent flows.
 2. **How to coordinate** – Task allocation (assign work up front), blackboard (shared state), consensus (voting/ranked choice for shared decisions), and when to use conflict resolution and deadlock prevention (OneUptime patterns).
@@ -37,7 +37,7 @@ Write in plain language. Link to the official docs above and to [agent-teams](.c
 
 ## Process
 
-1. **Scope** – Confirm the deliverable: standalone runbook, README section, or doc in `assets/docs/`. Path from [work/paths.md](work/paths.md) if a project path is needed.
+1. **Scope** – Confirm the deliverable: standalone runbook, README section, or doc in `references/`. Path from [work/paths.md](work/paths.md) if a project path is needed.
 2. **When to use agent teams** – From Claude Code docs: agent teams suit research and review (multiple aspects, share and challenge findings), new modules/features (each teammate owns a piece), debugging with competing hypotheses (theories in parallel, debate to converge), cross-layer work (frontend/backend/tests per teammate). Subagents suit focused tasks where only the result matters. Agent teams cost more (one context per teammate) and need coordination; use them only where parallel exploration and debate add real value.
 3. **Which flows** – Identify flows that benefit from teams: long research-and-analysis flows (e.g. multi-angle research, then analysts with competing hypotheses, then documenter); standalone analyst when the user wants competing hypotheses and a team-chosen root cause; standalone research when the ask is "research from several angles." Other flows (Save, Clean, Install, Verify-*, single-actor or short sequential) stay with subagents unless the specific task is "do these N things in parallel."
 4. **Coordination patterns** (from OneUptime and Claude Code):
@@ -52,7 +52,7 @@ Write in plain language. Link to the official docs above and to [agent-teams](.c
 ## Rules
 
 - Cite only the official sources above (Claude Code agent teams, OneUptime coordination) and the system reference [agent-teams](.claude/agents/references/agent-teams.md). Do not reference work/studio/ or any project-specific work docs by path.
-- Output lives in README or in the project's `assets/docs/` with a kebab-case filename per [work/paths.md](work/paths.md).
+- Output lives in README or in the project's `references/` with a kebab-case filename per [work/paths.md](work/paths.md).
 - Use [document-voice](.claude/skills/document-voice/SKILL.md) and [document-github](.claude/skills/document-github/SKILL.md) if the target is a GitHub README.
 
 ## Reference

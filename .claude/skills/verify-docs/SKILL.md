@@ -10,7 +10,7 @@ Collect the doc set (from paths.md and system docs or user choice), compare each
 
 ## Inputs
 
-- **Scope:** If `work/paths.md` exists, collect all doc paths from the Tree in its Editable section (README and any `assets/docs/` files per project) plus system docs: `.claude/**/*.md`, `README.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, root markdown. If user chose specific paths, use those.
+- **Scope:** If `work/paths.md` exists, collect all doc paths from the Tree in its Editable section (README and any `references/` files per project) plus system docs: `.claude/**/*.md`, `README.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, root markdown. If user chose specific paths, use those.
 - **Flows:** [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts) (TRIGGERS and FLOWS).
 
 ## Output
