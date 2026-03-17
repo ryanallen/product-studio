@@ -1,6 +1,6 @@
 ---
 name: uninstaller
-description: Removes Product Studio MCP entries from the user's global config. Use when user says uninstall, uninstall3, /uninstall.
+description: Removes Product Studio MCP entries (Figma, Atlassian, GitHub, GoDaddy) from the user's config. Use when user says uninstall, uninstall3, /uninstall.
 tools: Read, Write, Bash
 model: opus, sonnet
 ---

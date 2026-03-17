@@ -18,7 +18,7 @@ User told to restart app, run `/mcp`, and complete OAuth. Marker file created at
 
 ## Process
 
-1. **State last** – If you say the handoff earlier, they may read it and skip the steps above. Tell the user: fully restart the app (Cursor, Claude Code, etc.), open project, run `/mcp` and complete OAuth for Figma and Atlassian.
+1. **State last** – If you say the handoff earlier, they may read it and skip the steps above. Tell the user: fully restart the app (Cursor, Claude Code, etc.), open project, run `/mcp` and complete OAuth for Figma and Atlassian (GoDaddy needs no sign-in).
 
 2. **Create marker** – Create `.claude/skills/install/install-handoff.marker`.
 

@@ -1,6 +1,6 @@
 ---
 name: install-express
-description: Express install: show hidden yes, install all (figma-console, atlassian-rovo, github), collect Figma token and GitHub PAT. Then resume at install-mcp.
+description: Express install: show hidden yes, install all (figma-console, atlassian-rovo, github, godaddy), collect Figma token and GitHub PAT. Then resume at install-mcp.
 disable-model-invocation: true
 ---
 
@@ -14,13 +14,13 @@ None. User already chose express.
 
 ## Output
 
-Hidden files shown (or instructions given), all MCPs recorded, Figma token collected if figma-console, GitHub PAT if github. Flow continues at install-mcp.
+Hidden files shown (or instructions given), all MCPs recorded (figma-console, atlassian-rovo, github, godaddy). Figma token collected if figma-console, GitHub PAT if github. Flow continues at install-mcp.
 
 ## Process
 
 1. **Show hidden files** – Yes. **macOS** – Run (if it fails due to permissions, continue): `defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder`. **Windows** – File Explorer → View → Show → Hidden items. (Or Folder Options → View → Show hidden files and folders.)
 
-2. **What to install** – All (figma-console, atlassian-rovo, github). Record for later steps.
+2. **What to install** – All (figma-console, atlassian-rovo, github, godaddy). Record for later steps.
 
 3. **Figma token** – Give instructions, then ask them to paste the token. Do not ask whether they have one.
    - **How to get it** – Figma → profile → Settings → Security. Personal access tokens: create (e.g. "Figma Console MCP", all scopes, up to 90 days), copy.

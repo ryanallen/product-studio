@@ -10,7 +10,7 @@ Add each chosen MCP to the user's config. In Cursor use project `.cursor/mcp.jso
 
 ## Inputs
 
-From install-choices: which MCPs they chose (figma-console, atlassian-rovo, github). If figma-console, the Figma token from that step. If github, the GitHub PAT from that step.
+From install-choices: which MCPs they chose (figma-console, atlassian-rovo, github, godaddy). If figma-console, the Figma token from that step. If github, the GitHub PAT from that step. GoDaddy needs no token.
 
 ## Output
 
@@ -25,6 +25,7 @@ Each chosen MCP added to config. User must fully restart the app after the full 
    - **figma-console** – `"figma-console": { "command": "npx", "args": ["-y", "figma-console-mcp@latest"], "env": { "FIGMA_ACCESS_TOKEN": "<token from choices or figd_xxx>", "ENABLE_MCP_APPS": "true" } }`. Use the token from install-choices, or `"${env:FIGMA_ACCESS_TOKEN}"` if storing in env.
    - **atlassian-rovo** – `"atlassian-rovo": { "url": "https://mcp.atlassian.com/v1/sse" }`.
    - **github** – `"github": { "url": "https://api.githubcopilot.com/mcp/", "headers": { "Authorization": "Bearer <token from choices>" } }`. Use the GitHub PAT from install-choices, or `"Bearer ${env:GITHUB_PAT}"` if storing in env.
+   - **godaddy** – `"godaddy": { "url": "https://api.godaddy.com/v1/domains/mcp", "transport": "streamable-http" }`. No auth; public domain search and availability only. [GoDaddy MCP](https://developer.godaddy.com/mcp).
 3. Write `.cursor/mcp.json`. Merge with existing so other servers are preserved.
 
 ### Claude Code (global config)
@@ -46,6 +47,8 @@ claude mcp add --transport sse atlassian-rovo https://mcp.atlassian.com/v1/sse
 
 **github** – Claude Code does not document a single `claude mcp add` for the remote GitHub HTTP server. Add manually to global config: server key `github`, type `http`, url `https://api.githubcopilot.com/mcp/`, headers `Authorization: Bearer <PAT>`. Or use Docker per [GitHub MCP Server](https://github.com/github/github-mcp-server) local install.
 
+**godaddy** – No auth. Add manually to global config: server key `godaddy`, url `https://api.godaddy.com/v1/domains/mcp`, transport `streamable-http`. Or try `claude mcp add --transport streamable-http godaddy https://api.godaddy.com/v1/domains/mcp` if the CLI supports it. [GoDaddy MCP](https://developer.godaddy.com/mcp).
+
 ## Reference
 
-[install-choices](.claude/skills/install-choices/SKILL.md) – Source of choices.
+[install-choices](.claude/skills/install-choices/SKILL.md) – Source of choices. [GoDaddy MCP](https://developer.godaddy.com/mcp) – Domain search and availability; no auth, read-only.

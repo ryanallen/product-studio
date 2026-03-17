@@ -1,6 +1,6 @@
 ---
 name: installer
-description: Runs Product Studio install: paths, choices, MCP, Figma bridge, handoff, then customizer. Use when user says setup or install.
+description: Runs Product Studio install: paths, choices, MCP (Figma, Atlassian, GitHub, GoDaddy), Figma bridge, handoff, then customizer. Use when user says setup or install.
 tools: Read, Write, Bash, Grep
 model: opus, sonnet
 ---

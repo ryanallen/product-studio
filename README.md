@@ -57,7 +57,7 @@ Product Studio connects specialist agents to jobs like [install](.claude/skills/
 
 ## Setup
 
-Say "setup", "install", or [/install](.claude/skills/install/SKILL.md). The [install skill](.claude/skills/install/SKILL.md) walks through the usual steps: config, repo link, optional MCPs (tools that connect to Figma, Jira, etc.), and a short handoff. When it's done, quit the terminal and relaunch. Then in chat run `/mcp` and sign in to Figma and Atlassian when asked.
+Say "setup", "install", or [/install](.claude/skills/install/SKILL.md). The [install skill](.claude/skills/install/SKILL.md) walks through the usual steps: config, repo link, optional MCPs (Figma, Jira/Atlassian, GitHub, GoDaddy domain search), and a short handoff. When it's done, quit the terminal and relaunch. Then in chat run `/mcp` and sign in to Figma and Atlassian when asked (GoDaddy needs no sign-in).
 
 **Add your own steps:** On install, the template is copied to [.claude/skills/install-custom/SKILL.md](.claude/skills/install-custom/SKILL.md) (gitignored). Put your custom setup in that `SKILL.md`. The [installer](.claude/agents/installer.md) runs it after the main steps when the file exists.
 
@@ -110,7 +110,7 @@ Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claud
 | uninstaller |
 |:--|
 | [![uninstaller](https://img.shields.io/badge/uninstaller-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/uninstaller.md) <br> [![uninstall](https://img.shields.io/badge/uninstall-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/uninstall/SKILL.md) |
-| Removes Product Studio MCPs from your config. Restart terminal after. |
+| Removes Product Studio MCPs (Figma, Atlassian, GitHub, GoDaddy) from your config. Restart terminal after. |
 
 | updater |
 |:--|
