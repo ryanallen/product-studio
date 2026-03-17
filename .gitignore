@@ -9,6 +9,9 @@ desktop.ini
 node_modules/
 package-lock.json
 
+# Cursor (local MCP config)
+.cursor/mcp.json
+
 # Local paths config (copy from work/paths.md.template)
 work/paths.md
 work/*
