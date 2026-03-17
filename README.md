@@ -80,7 +80,7 @@ Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claud
 | flows |
 |:--|
 | [![verify-task](https://img.shields.io/badge/verify--task-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-task/SKILL.md) |
-| Flow and steps from [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts). Step 1: `npm run checklist -- "<summary>"`. Discover, Learn, Refine, Research, Propose solutions: run as [agent team](.claude/agents/references/agent-teams.md) when possible; else use the flow's step sequence. Refine: researcher when user shared links/context, then documenter. |
+| Flow and steps from [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts). Step 1: `npm run checklist -- "<summary>"`. Discover, Learn, Refine, Research, Propose solutions: run as [agent team](.claude/agents/references/agent-teams.md) when possible; else use the flow's step sequence. User test plan: [document-usertestplan](.claude/skills/document-usertestplan/SKILL.md). Refine: researcher when user shared links/context, then documenter. |
 
 | designer |
 |:--|
@@ -94,8 +94,8 @@ Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claud
 
 | documenter |
 |:--|
-| [![documenter](https://img.shields.io/badge/documenter-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/documenter.md) <br> [![document](https://img.shields.io/badge/document-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document/SKILL.md) [![document-paths](https://img.shields.io/badge/document--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-paths/SKILL.md) [![document-ticket](https://img.shields.io/badge/document--ticket-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-ticket/SKILL.md) [![document-github](https://img.shields.io/badge/document--github-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-github/SKILL.md) [![document-agents](https://img.shields.io/badge/document--agents-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agents/SKILL.md) [![document-skills](https://img.shields.io/badge/document--skills-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-skills/SKILL.md) [![document-agent-teams](https://img.shields.io/badge/document--agent--teams-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agent-teams/SKILL.md) [![designer-playbook](https://img.shields.io/badge/designer--playbook-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/designer-playbook/SKILL.md) |
-| Docs: markdown, paths, tickets, READMEs, agents, skills, agent teams; designer-playbook for product designs. End of job: files in scope in checklist (name, location, summary), review and check off. |
+| [![documenter](https://img.shields.io/badge/documenter-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/documenter.md) <br> [![document](https://img.shields.io/badge/document-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document/SKILL.md) [![document-paths](https://img.shields.io/badge/document--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-paths/SKILL.md) [![document-ticket](https://img.shields.io/badge/document--ticket-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-ticket/SKILL.md) [![document-github](https://img.shields.io/badge/document--github-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-github/SKILL.md) [![document-agents](https://img.shields.io/badge/document--agents-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agents/SKILL.md) [![document-skills](https://img.shields.io/badge/document--skills-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-skills/SKILL.md) [![document-agent-teams](https://img.shields.io/badge/document--agent--teams-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agent-teams/SKILL.md) [![document-usertestplan](https://img.shields.io/badge/document--usertestplan-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-usertestplan/SKILL.md) [![designer-playbook](https://img.shields.io/badge/designer--playbook-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/designer-playbook/SKILL.md) |
+| Docs: markdown, paths, tickets, READMEs, agents, skills, agent teams, user test plans; designer-playbook for product designs. End of job: files in scope in checklist (name, location, summary), review and check off. |
 
 | installer |
 |:--|
@@ -231,6 +231,7 @@ Product Studio/
 │       ├── document-paths/SKILL.md
 │       ├── document-skills/SKILL.md
 │       ├── document-ticket/SKILL.md
+│       ├── document-usertestplan/SKILL.md
 │       ├── document-verification/SKILL.md
 │       ├── document-voice/SKILL.md
 │       ├── install/
@@ -258,9 +259,9 @@ Product Studio/
     ├── paths.md.template
     └── {team}/{space}/{ticket-id}/{project}/
         ├── README.md
+        ├── references/
+        ├── scripts/
         └── assets/
-            ├── docs/
-            └── images/
 ```
 
 ### .tmp and cleanup

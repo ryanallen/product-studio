@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * /clean: Empty .tmp/. Real command for coordinator flow.
+ * /clean: Empty .tmp/. Used when the checklist runs the clean step.
  * Dev: Uses sync fs APIs; try/catch for graceful exit. Safe when .tmp missing.
  */
 import { rmSync, existsSync, readdirSync } from "fs";

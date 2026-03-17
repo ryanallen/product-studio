@@ -61,6 +61,7 @@ const FLOWS = {
   developer: ["verify-task", "developer-typescript", "developer-check-types"],
   "developer-electron": ["verify-task", "developer-electron"],
   "developer-electrobun": ["verify-task", "developer-electrobun"],
+  "user-test-plan": ["verify-task", "document-usertestplan"],
 } as const satisfies Record<string, readonly string[]>;
 
 type FlowKey = keyof typeof FLOWS;
@@ -85,6 +86,7 @@ const TRIGGERS: TriggerEntry[] = [
   [/\bdev\b|develop|\/developer|check types|typecheck|tsc|type errors|typescript|\/developer-typescript/i, "developer"],
   [/electron|desktop app|\/developer-electron/i, "developer-electron"],
   [/electrobun|\/developer-electrobun/i, "developer-electrobun"],
+  [/user test plan|usertest plan|usability test plan|document usertestplan|\/document-usertestplan/i, "user-test-plan"],
   [/propose solutions/i, "propose-solutions"],
   [/\bdiscover\b|\/discover/i, "discover"],
   [/refine|write|write up|document|update|make|\/document/i, "refine"],
