@@ -23,7 +23,7 @@ Aim: anyone can understand on first read. Knowledgeable friend, not a manual.
 
 ## Mechanics
 
-- No em dashes or en dashes.
+- No em dashes or en dashes in prose (what you write for readers). In code, strings, regex, data, or any literal the runtime or spec requires, keep the characters as needed.
 - **Be specific when you can.** When giving advice, include one of these:
   - a short step list (3 to 6 steps), or
   - a copy-pasteable example (a template, a sentence to use, or a mini format), or
