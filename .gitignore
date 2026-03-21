@@ -12,9 +12,9 @@ package-lock.json
 # Cursor (local MCP config)
 .cursor/mcp.json
 
-# Local paths config (copy from work/paths.md.template)
-work/paths.md
+# Work: nested repo under work/ (see save skill). Parent tracks only shared template + optional shared config.
 work/*
+!work/config.md
 !work/paths.md.template
 
 # Local install custom (copy from .claude/skills/install-custom/SKILL.md.template)
