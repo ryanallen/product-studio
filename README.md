@@ -35,9 +35,9 @@ Agents and skills for design capture, research, and strategic analysis. Discover
 
 > Say "install", "research", or "document". The rest runs on its own.
 
-Product Studio connects specialist agents to jobs like [install](.claude/skills/install/SKILL.md), [research](.claude/skills/research/SKILL.md), [document](.claude/skills/document/SKILL.md), and [save](.claude/skills/save/SKILL.md). Agents live in [.claude/agents/](.claude/agents/); skills (how-to guides) in [.claude/skills/](.claude/skills/). Say a phrase or `/skill-name` to run a skill; `/skills` lists all.
+Product Studio connects specialist agents to jobs like [install](.claude/skills/install/SKILL.md), [research](.claude/skills/research/SKILL.md), [document](.claude/skills/document/SKILL.md), [save](.claude/skills/save/SKILL.md), and [ask](.claude/skills/ask/SKILL.md) (read-only Q&A, `/ask`). Agents live in [.claude/agents/](.claude/agents/); skills (how-to guides) in [.claude/skills/](.claude/skills/). Say a phrase or `/skill-name` to run a skill; `/skills` lists all.
 
-**Verify task:** First step is `npm run checklist -- "<request or summary>"`. The [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts) is the single source of truth for flow and steps; it appends the task to [.tmp/verify-task-checklist.md](.tmp/verify-task-checklist.md) when the flow includes verify-task. [verify-task](.claude/skills/verify-task/SKILL.md). **Ask mode** ([ask](.claude/skills/ask/SKILL.md), `/ask`) skips the checklist and is read-only (no file edits). For Discover, Learn, Refine, Research, and Propose solutions, run as an [agent team](.claude/agents/references/agent-teams.md) when possible; fallback is the flow's step sequence.
+**Verify task:** First step is `npm run checklist -- "<request or summary>"`. The [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts) is the single source of truth for flow and steps; it appends the task to [.tmp/verify-task-checklist.md](.tmp/verify-task-checklist.md) when the flow includes verify-task. [verify-task](.claude/skills/verify-task/SKILL.md). **[ask](.claude/skills/ask/SKILL.md)** (`/ask` **in that message**): read-only, skips the checklist; **each** message needs `/ask` again or it is normal mode. For Discover, Learn, Refine, Research, and Propose solutions, run as an [agent team](.claude/agents/references/agent-teams.md) when possible; fallback is the flow's step sequence.
 
 ## Contents
 
@@ -46,6 +46,7 @@ Product Studio connects specialist agents to jobs like [install](.claude/skills/
 
 - [Setup](#-setup)
 - [Agents and skills](#-agents-and-skills)
+- [Skills without agents](#skills-without-agents)
 - [Frontmatter (agents and skills)](#-frontmatter-agents-and-skills)
 - [Repo structure](#-repo-structure)
 - [.tmp and cleanup](#-tmp-and-cleanup)
@@ -67,6 +68,16 @@ Say "setup", "install", or [/install](.claude/skills/install/SKILL.md). The [ins
 
 Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claude.com/docs/en/sub-agents)). Skills live under [.claude/skills/](.claude/skills/) (one `SKILL.md` per skill). Say the trigger phrase or `/skill-name` to run a skill.
 
+### Skills without agents
+
+Many skills have **no** matching `.claude/agents/<name>.md`. That is normal.
+
+- **Skills** are procedures: the host loads them from a phrase, `/skill-name`, or a checklist step. They do not require a named subagent file.
+- **Agents** are optional named subagents (role, tools, model). Add one when you want a stable persona for routing, forked work, or [agent teams](.claude/agents/references/agent-teams.md). Example: [documenter](.claude/agents/documenter.md) pairs with several `document-*` skills; the skills are still real without each having their own agent.
+- **Skill-only examples:** [ask](.claude/skills/ask/SKILL.md) (read-only when `/ask` is used **in that message**; not sticky across follow-ups), [verify-task](.claude/skills/verify-task/SKILL.md), [save](.claude/skills/save/SKILL.md), [document-voice](.claude/skills/document-voice/SKILL.md), [verify-paths](.claude/skills/verify-paths/SKILL.md), and other flow helpers. They appear in the tables below next to related agents where there is a natural pairing, or under **flows** / **verifier** when they are shared infrastructure.
+
+**When to add a new agent:** Only if you need a dedicated subagent definition. Otherwise add or update a skill under `.claude/skills/` and, if you use the checklist, the step name in [verify-task-checklist.ts](.claude/skills/verify-task/scripts/verify-task-checklist.ts).
+
 | analyst |
 |:--|
 | [![analyst](https://img.shields.io/badge/analyst-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/analyst.md) <br> [![analyst-diagnostics](https://img.shields.io/badge/analyst--diagnostics-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/analyst-diagnostics/SKILL.md) |
@@ -80,7 +91,7 @@ Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claud
 | flows |
 |:--|
 | [![verify-task](https://img.shields.io/badge/verify--task-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-task/SKILL.md) [![ask](https://img.shields.io/badge/ask-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/ask/SKILL.md) |
-| Flow and steps from [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts). Step 1: `npm run checklist -- "<summary>"`. [ask](.claude/skills/ask/SKILL.md) (`/ask`) skips checklist; read-only. Discover, Learn, Refine, Research, Propose solutions: run as [agent team](.claude/agents/references/agent-teams.md) when possible; else use the flow's step sequence. User test plan: [document-usertestplan](.claude/skills/document-usertestplan/SKILL.md). Refine: researcher when user shared links/context, then documenter. |
+| **[verify-task](.claude/skills/verify-task/SKILL.md)** drives the checklist; steps come only from [verify-task-checklist.ts](.claude/skills/verify-task/scripts/verify-task-checklist.ts). Step 1 for normal work: `npm run checklist -- "<summary>"`. **[ask](.claude/skills/ask/SKILL.md)** has no agent file: run `/ask` **per message** for read-only Q&A (skips checklist, no edits); follow-ups without `/ask` use the checklist again (see [AGENTS.md](AGENTS.md)). Discover, Learn, Refine, Research, Propose solutions: run as [agent team](.claude/agents/references/agent-teams.md) when possible; else use the flow's step sequence. User test plan: [document-usertestplan](.claude/skills/document-usertestplan/SKILL.md). Refine: researcher when user shared links/context, then documenter. |
 
 | designer |
 |:--|
@@ -116,6 +127,11 @@ Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claud
 |:--|
 | [![updater](https://img.shields.io/badge/updater-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/updater.md) <br> [![update-figma](https://img.shields.io/badge/update--figma-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/update-figma/SKILL.md) [![save](https://img.shields.io/badge/save-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/save/SKILL.md) [![sync-upstream](https://img.shields.io/badge/sync--upstream-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/sync-upstream/SKILL.md) [![update-gitignore](https://img.shields.io/badge/update--gitignore-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/update-gitignore/SKILL.md) |
 | Figma token, commit, sync upstream, or explain/update ignore rules. |
+
+| verifier |
+|:--|
+| [![verifier](https://img.shields.io/badge/verifier-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/verifier.md) <br> [![verify-paths](https://img.shields.io/badge/verify--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-paths/SKILL.md) [![verify-docs](https://img.shields.io/badge/verify--docs-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-docs/SKILL.md) [![document-verification](https://img.shields.io/badge/document--verification-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-verification/SKILL.md) |
+| Checks paths and docs; writes verification report to [.tmp/](.tmp/). |
 
 ---
 
@@ -158,13 +174,6 @@ Agents (`.claude/agents/*.md`) and skills (`.claude/skills/<name>/SKILL.md`) use
 </details>
 
 ---
-
-| verifier |
-|:--|
-| [![verifier](https://img.shields.io/badge/verifier-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/verifier.md) <br> [![verify-paths](https://img.shields.io/badge/verify--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-paths/SKILL.md) [![verify-docs](https://img.shields.io/badge/verify--docs-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-docs/SKILL.md) [![document-verification](https://img.shields.io/badge/document--verification-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-verification/SKILL.md) |
-| Checks paths and docs; writes verification report to [.tmp/](.tmp/). |
-
----
 <details>
 <summary>Using a working repo with this as upstream</summary>
 
@@ -185,7 +194,7 @@ Then pull with `git pull upstream main` (or say "sync" or [/sync-upstream](.clau
 
 ## Repo structure
 
-**Where documentation lives:** This README is the single overview; agents and skills are described here and in their own `.md` and `SKILL.md` files. When you add or change flows, agents, or skills, update this README so it stays accurate.
+**Where documentation lives:** This README is the single overview; agents and skills are described here and in their own `.md` and `SKILL.md` files. When you add or change flows, agents, or skills, update this README so it stays accurate. The repo tree under `.claude/skills/` is not exhaustive; every folder with a `SKILL.md` is a skill (see the directory on disk for the full list).
 
 ```
 Product Studio/
