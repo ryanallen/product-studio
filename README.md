@@ -37,7 +37,7 @@ Agents and skills for design capture, research, and strategic analysis. Discover
 
 Product Studio connects specialist agents to jobs like [install](.claude/skills/install/SKILL.md), [research](.claude/skills/research/SKILL.md), [document](.claude/skills/document/SKILL.md), and [save](.claude/skills/save/SKILL.md). Agents live in [.claude/agents/](.claude/agents/); skills (how-to guides) in [.claude/skills/](.claude/skills/). Say a phrase or `/skill-name` to run a skill; `/skills` lists all.
 
-**Verify task:** First step is `npm run checklist -- "<request or summary>"`. The [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts) is the single source of truth for flow and steps; it appends the task to [.tmp/verify-task-checklist.md](.tmp/verify-task-checklist.md) when the flow includes verify-task. [verify-task](.claude/skills/verify-task/SKILL.md). For Discover, Learn, Refine, Research, and Propose solutions, run as an [agent team](.claude/agents/references/agent-teams.md) when possible; fallback is the flow's step sequence.
+**Verify task:** First step is `npm run checklist -- "<request or summary>"`. The [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts) is the single source of truth for flow and steps; it appends the task to [.tmp/verify-task-checklist.md](.tmp/verify-task-checklist.md) when the flow includes verify-task. [verify-task](.claude/skills/verify-task/SKILL.md). **Ask mode** ([ask](.claude/skills/ask/SKILL.md), `/ask`) skips the checklist and is read-only (no file edits). For Discover, Learn, Refine, Research, and Propose solutions, run as an [agent team](.claude/agents/references/agent-teams.md) when possible; fallback is the flow's step sequence.
 
 ## Contents
 
@@ -79,8 +79,8 @@ Agents are in [.claude/agents/](.claude/agents/) ([subagents](https://code.claud
 
 | flows |
 |:--|
-| [![verify-task](https://img.shields.io/badge/verify--task-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-task/SKILL.md) |
-| Flow and steps from [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts). Step 1: `npm run checklist -- "<summary>"`. Discover, Learn, Refine, Research, Propose solutions: run as [agent team](.claude/agents/references/agent-teams.md) when possible; else use the flow's step sequence. User test plan: [document-usertestplan](.claude/skills/document-usertestplan/SKILL.md). Refine: researcher when user shared links/context, then documenter. |
+| [![verify-task](https://img.shields.io/badge/verify--task-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/verify-task/SKILL.md) [![ask](https://img.shields.io/badge/ask-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/ask/SKILL.md) |
+| Flow and steps from [checklist script](.claude/skills/verify-task/scripts/verify-task-checklist.ts). Step 1: `npm run checklist -- "<summary>"`. [ask](.claude/skills/ask/SKILL.md) (`/ask`) skips checklist; read-only. Discover, Learn, Refine, Research, Propose solutions: run as [agent team](.claude/agents/references/agent-teams.md) when possible; else use the flow's step sequence. User test plan: [document-usertestplan](.claude/skills/document-usertestplan/SKILL.md). Refine: researcher when user shared links/context, then documenter. |
 
 | designer |
 |:--|
@@ -209,6 +209,7 @@ Product Studio/
 │   │   └── references/
 │   │       └── agent-teams.md
 │   └── skills/
+│       ├── ask/SKILL.md
 │       ├── analyst-diagnostics/SKILL.md
 │       ├── clean/
 │       │   ├── SKILL.md
