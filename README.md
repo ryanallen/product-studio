@@ -100,8 +100,8 @@ Many skills have **no** matching `.claude/agents/<name>.md`. That is normal.
 
 | developer |
 |:--|
-| [![developer](https://img.shields.io/badge/developer-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/developer.md) <br> [![developer-typescript](https://img.shields.io/badge/developer--typescript-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-typescript/SKILL.md) [![developer-check-types](https://img.shields.io/badge/developer--check--types-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-check-types/SKILL.md) [![developer-electron](https://img.shields.io/badge/developer--electron-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-electron/SKILL.md) [![developer-electrobun](https://img.shields.io/badge/developer--electrobun-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-electrobun/SKILL.md) [![developer-virtualization](https://img.shields.io/badge/developer--virtualization-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-virtualization/SKILL.md) |
-| TypeScript and code: types, narrowing, generics, strict mode, type checking. Electron and Electrobun desktop apps. VM best practices when the document flow calls developer and it needs that context. Plain language. |
+| [![developer](https://img.shields.io/badge/developer-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/developer.md) <br> [![developer-typescript](https://img.shields.io/badge/developer--typescript-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-typescript/SKILL.md) [![developer-check-types](https://img.shields.io/badge/developer--check--types-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-check-types/SKILL.md) [![developer-python](https://img.shields.io/badge/developer--python-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-python/SKILL.md) [![developer-electron](https://img.shields.io/badge/developer--electron-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-electron/SKILL.md) [![developer-electrobun](https://img.shields.io/badge/developer--electrobun-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-electrobun/SKILL.md) [![developer-virtualization](https://img.shields.io/badge/developer--virtualization-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/developer-virtualization/SKILL.md) |
+| TypeScript and code: types, narrowing, generics, strict mode, type checking. Python: PEP 8, py_compile, pytest, uv, Pythonic patterns. Electron and Electrobun desktop apps. VM best practices when the document flow calls developer and it needs that context. Plain language. |
 
 | documenter |
 |:--|
@@ -232,6 +232,7 @@ Product Studio/
 │       ├── developer-check-types/SKILL.md
 │       ├── developer-electron/SKILL.md
 │       ├── developer-electrobun/SKILL.md
+│       ├── developer-python/SKILL.md
 │       ├── developer-typescript/SKILL.md
 │       ├── developer-virtualization/SKILL.md
 │       ├── document/SKILL.md
