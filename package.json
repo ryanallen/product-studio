@@ -1,9 +1,14 @@
 {
   "scripts": {
     "checklist": "npx tsx .claude/skills/verify-task/scripts/verify-task-checklist.ts",
+    "clean": "node .claude/skills/clean/scripts/clean.mjs",
     "doc:pick-subagent": "npx tsx .claude/skills/document-agents/scripts/pick-subagent.ts",
     "doc:structure": "npx tsx .claude/skills/document/scripts/doc-structure.ts",
-    "clean": "node .claude/skills/clean/scripts/clean.mjs",
     "setup:figma-bridge": "node ./.claude/skills/designer-figma/scripts/setup-figma-bridge.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "prettier": "^3.8.1",
+    "typescript": "^6.0.2"
   }
 }

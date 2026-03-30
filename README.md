@@ -106,7 +106,7 @@ Many skills have **no** matching `.claude/agents/<name>.md`. That is normal.
 | documenter |
 |:--|
 | [![documenter](https://img.shields.io/badge/documenter-subagents-7D70DB?style=flat&labelColor=4b5563)](.claude/agents/documenter.md) <br> [![document](https://img.shields.io/badge/document-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document/SKILL.md) [![document-paths](https://img.shields.io/badge/document--paths-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-paths/SKILL.md) [![document-ticket](https://img.shields.io/badge/document--ticket-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-ticket/SKILL.md) [![document-github](https://img.shields.io/badge/document--github-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-github/SKILL.md) [![document-agents](https://img.shields.io/badge/document--agents-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agents/SKILL.md) [![document-skills](https://img.shields.io/badge/document--skills-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-skills/SKILL.md) [![document-agent-teams](https://img.shields.io/badge/document--agent--teams-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-agent-teams/SKILL.md) [![document-usertestplan](https://img.shields.io/badge/document--usertestplan-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/document-usertestplan/SKILL.md) [![designer-playbook](https://img.shields.io/badge/designer--playbook-skills-0ea5e9?style=flat&labelColor=4b5563)](.claude/skills/designer-playbook/SKILL.md) |
-| Docs: markdown, paths, tickets, READMEs, agents, skills, agent teams, user test plans; designer-playbook for product designs. End of job: files in scope in checklist (name, location, summary), review and check off. |
+| Docs: markdown, paths, tickets, READMEs, agents, skills, agent teams, user test plans, code documentation (uses developer skills); designer-playbook for product designs. End of job: files in scope in checklist (name, location, summary), review and check off. |
 
 | installer |
 |:--|
@@ -207,8 +207,8 @@ Product Studio/
 │   │   ├── analyst.md
 │   │   ├── cleaner.md
 │   │   ├── customizer.md
-│   │   ├── developer.md
 │   │   ├── designer.md
+│   │   ├── developer.md
 │   │   ├── documenter.md
 │   │   ├── installer.md
 │   │   ├── researcher.md

@@ -12,7 +12,7 @@ Run the project's type checker (e.g. `tsc --noEmit` or the script in package.jso
 
 - After writing or changing TypeScript.
 - When the user reports type errors.
-- Before moving on to lint or format (fix types first).
+- After formatting (Prettier), before linting (ESLint). Fix types first so lint rules see clean code.
 
 ## Process
 

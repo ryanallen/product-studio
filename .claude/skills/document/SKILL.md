@@ -20,11 +20,12 @@ One README (main doc). When needed, supplementary docs in the project's `referen
 
 ## Process
 
-1. **Section outline (deterministic):** Run `npm run doc:structure -- <document-type>` (or `npx tsx .claude/skills/document/scripts/doc-structure.ts <document-type>`). Use the printed markdown outline as the section order when writing the README. Only add a section if you have real content; skip if the source doesn't have it.
-2. **Read the source:** Scope and main topics.
-3. **Group by sections:** By document type above, following the script output.
-4. **Write the README:** Clear title and one-line summary. Short paragraphs. Diagrams for flows or relationships. Tables for comparisons. Link to sources inline. When a topic deserves its own doc, add it in `references/` with a kebab-case filename and link from the README.
-5. **project-overview:** Script output matches the full template below; use it for headings and hints. For images and evidence paths see work/paths.md. Supplementary docs live in `references/` with kebab-case names.
+1. **Code check:** If documenting code, use the matching developer skill first for guidance and validation. Python → [developer-python](.claude/skills/developer-python/SKILL.md). TypeScript/JavaScript → [developer-typescript](.claude/skills/developer-typescript/SKILL.md) and [developer-check-types](.claude/skills/developer-check-types/SKILL.md). Electron → [developer-electron](.claude/skills/developer-electron/SKILL.md). Electrobun → [developer-electrobun](.claude/skills/developer-electrobun/SKILL.md). Then proceed with the documentation steps below.
+2. **Section outline (deterministic):** Run `npm run doc:structure -- <document-type>` (or `npx tsx .claude/skills/document/scripts/doc-structure.ts <document-type>`). Use the printed markdown outline as the section order when writing the README. Only add a section if you have real content; skip if the source doesn't have it.
+3. **Read the source:** Scope and main topics.
+4. **Group by sections:** By document type above, following the script output.
+5. **Write the README:** Clear title and one-line summary. Short paragraphs. Diagrams for flows or relationships. Tables for comparisons. Link to sources inline. When a topic deserves its own doc, add it in `references/` with a kebab-case filename and link from the README.
+6. **project-overview:** Script output matches the full template below; use it for headings and hints. For images and evidence paths see work/paths.md. Supplementary docs live in `references/` with kebab-case names.
 
 ### How to write it
 
@@ -90,4 +91,4 @@ Learnings. Recommendations. Links to new docs.
 
 ## Reference
 
-[work/paths.md](work/paths.md). [document-github](.claude/skills/document-github/SKILL.md). [document-skills](.claude/skills/document-skills/SKILL.md). [document-agent-teams](.claude/skills/document-agent-teams/SKILL.md) when the task involves agent teams or multi-agent coordination. [document-usertestplan](.claude/skills/document-usertestplan/SKILL.md) when the deliverable is a user test plan (e.g. for running a prototype test on usertesting.com). Refine flow may run researcher first when the user shared links or context; then documenter.
+[work/paths.md](work/paths.md). [document-github](.claude/skills/document-github/SKILL.md). [document-skills](.claude/skills/document-skills/SKILL.md). [document-agent-teams](.claude/skills/document-agent-teams/SKILL.md) when the task involves agent teams or multi-agent coordination. [document-usertestplan](.claude/skills/document-usertestplan/SKILL.md) when the deliverable is a user test plan (e.g. for running a prototype test on usertesting.com). For code: [developer-python](.claude/skills/developer-python/SKILL.md), [developer-typescript](.claude/skills/developer-typescript/SKILL.md), [developer-electron](.claude/skills/developer-electron/SKILL.md), [developer-electrobun](.claude/skills/developer-electrobun/SKILL.md). Refine flow may run researcher first when the user shared links or context; then documenter.

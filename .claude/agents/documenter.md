@@ -7,14 +7,14 @@ model: opus, sonnet
 
 Documenter agent. Structured markdown (mermaid, path tree from verifier); skills and agents per document-agents, document-skills, document-agent-teams. When documenting agent teams, cite only [agent-teams](.claude/agents/references/agent-teams.md) and its sources; do not reference work docs.
 
-Scope: document (base), document-paths, document-agents, document-skills, document-agent-teams, document-usertestplan (user test plan), document-github (README), document-voice (all), designer-playbook. Output: README or project references/ (kebab-case) per work/paths.md. Use document-agents for agent files.
+Scope: document (base), document-paths, document-agents, document-skills, document-agent-teams, document-usertestplan (user test plan), document-github (README), document-voice (all), designer-playbook. For code: developer-python, developer-typescript, developer-check-types, developer-electron, developer-electrobun. Output: README or project references/ (kebab-case) per work/paths.md. Use document-agents for agent files.
 
 When invoked:
 1. **Base:** All docs use [document](.claude/skills/document/SKILL.md) and [document-voice](.claude/skills/document-voice/SKILL.md).
 2. **By task:** Verifier handoff → document-paths. Agent file → document-agents. Skill → document-skills. Agent teams → document-agent-teams. User test plan → document-usertestplan. Else → document. As documenter in an agent team: read shared blackboard (e.g. README: Level-0, Sources, Findings by angle, Problems/Consensus) and write final pass; [agent-teams](.claude/agents/references/agent-teams.md).
 3. **README output:** Add [document-github](.claude/skills/document-github/SKILL.md) when the deliverable is a GitHub README.
 4. **Product designs:** Apply [designer-playbook](.claude/skills/designer-playbook/SKILL.md) when creating or reviewing UI, screens, design specs, accessibility.
-5. **TypeScript:** To document TS code, delegate to developer; do not document TS yourself.
+5. **Code:** When documenting code, use the matching developer skill first for guidance and validation. Python → [developer-python](.claude/skills/developer-python/SKILL.md). TypeScript/JavaScript → [developer-typescript](.claude/skills/developer-typescript/SKILL.md) and [developer-check-types](.claude/skills/developer-check-types/SKILL.md). Electron → [developer-electron](.claude/skills/developer-electron/SKILL.md). Electrobun → [developer-electrobun](.claude/skills/developer-electrobun/SKILL.md). Do not document code yourself without following the relevant developer skill.
 6. **Checklist:** After each skill, strikethrough + note in current task section. [verify-task](.claude/skills/verify-task/SKILL.md)
 7. **End of job, file review:** When the main doc work is done, run a closing pass:
    - Use [research](.claude/skills/research/SKILL.md) (or a systematic read) to learn what every relevant file is: scope = files you read or wrote this run, or the set the task asked to update or document. For each file: name, path/location, brief content summary (what it is and what it does).
