@@ -1,10 +1,10 @@
 ---
-name: analyst-diagnostics
-description: Analyze findings: Ishikawa (fishbone) and Lovebug (causes + barriers), Five Whys, summary table of top problems. Use when user says analyst, diagnostics, define, figure out, find cause, /analyst-diagnostics.
+name: analyze
+description: Analyze findings: Ishikawa (fishbone) and Lovebug (causes + barriers), Five Whys, summary table of top problems. Use when user says analyze, diagnostics, define, figure out, find cause, /analyze.
 disable-model-invocation: true
 ---
 
-# Analyst diagnostics
+# Analyze
 
 Use documented findings to find problems, structure causes (Ishikawa/fishbone), add barriers and recovery (Lovebug), drill to root cause with Five Whys. [Ishikawa](https://en.wikipedia.org/wiki/Ishikawa_diagram) groups causes on branches; [Lovebug](http://cri.sagepub.com/content/19/4-5/87) (Card, Clinical Risk 2013) adds what prevents or mitigates (force-field style). Five Whys traces one cause branch to root. Use for incidents (retrospective) and planned change (prospective). Put all top problems in the Summary table first, then detailed analysis per problem.
 
