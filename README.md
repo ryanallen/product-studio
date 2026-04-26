@@ -303,3 +303,65 @@ Product Studio/
 <p align="center">
   <sub>If this helped you, consider <a href="/">giving it a star</a>.</sub>
 </p>
+
+---
+
+## Mobile-view audit table (test only)
+
+This big table is here to test how GitHub renders wide tables on mobile. Multiple rows, columns, headings, code, links, emphasis, line breaks, and long cells. Delete after audit.
+
+### Table 1 — wide multi-column matrix
+
+| # | Skill / agent | Type | Status | Owner | Last touched | Trigger phrase | `/slash` | Model | Tools | Notes |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | [installer](.claude/agents/installer.md) | agent | active | core | 2026-04-12 | "install", "setup" | `/install` | sonnet | Read, Write, Bash | Runs MCP handoff; touches `install-handoff.marker`. |
+| 2 | [researcher](.claude/agents/researcher.md) | agent | active | core | 2026-04-18 | "research", "look at this" | `/research` | opus | WebFetch, Read, Write | Crawls links up to **5 levels deep**. |
+| 3 | [documenter](.claude/agents/documenter.md) | agent | active | core | 2026-04-22 | "document", "write" | `/document` | sonnet | Read, Write, Edit | Pairs with all `document-*` skills. |
+| 4 | [designer](.claude/agents/designer.md) | agent | active | design | 2026-04-09 | "design" | `/design` | opus | mcp__figma-console__* | Needs Figma MCP signed-in via `/mcp`. |
+| 5 | [developer](.claude/agents/developer.md) | agent | active | eng | 2026-04-25 | "code", "build" | `/develop` | sonnet | Read, Edit, Write, Bash | Loads language-specific `developer-*` skills on demand. |
+| 6 | [analyst](.claude/agents/analyst.md) | agent | active | core | 2026-04-03 | "diagnose", "five whys" | `/analyst-diagnostics` | opus | Read, Bash | Five Whys, Ishikawa, Lovebug. |
+| 7 | [cleaner](.claude/agents/cleaner.md) | agent | active | core | 2026-04-01 | "clean", "wipe .tmp" | `/clean` | haiku | Bash, Glob | Empties `.tmp/` only. |
+| 8 | [verifier](.claude/agents/verifier.md) | agent | active | core | 2026-04-15 | "verify", "verification report" | `/verify-docs` | sonnet | Read, Write, Bash | Writes report to `.tmp/`. |
+| 9 | [updater](.claude/agents/updater.md) | agent | active | core | 2026-04-20 | "save", "sync" | `/save` | sonnet | Bash, Read | Handles commit, sync-upstream, ignore rules. |
+| 10 | [uninstaller](.claude/agents/uninstaller.md) | agent | active | core | 2026-03-30 | "uninstall" | `/uninstall` | haiku | Read, Write | Removes Product Studio MCP entries. |
+| 11 | [ask](.claude/skills/ask/SKILL.md) | skill | active | core | 2026-04-24 | "/ask in this message" | `/ask` | inherits | read-only | Per-message; no checklist; no edits. |
+| 12 | [verify-task](.claude/skills/verify-task/SKILL.md) | skill | active | core | 2026-04-26 | first action every request | `/checklist` | inherits | Bash, Edit | Source of truth = `verify-task-checklist.ts`. |
+| 13 | [save](.claude/skills/save/SKILL.md) | skill | active | core | 2026-04-19 | "save" | `/save` | inherits | Bash | Commits + verifies paths. |
+| 14 | [document-voice](.claude/skills/document-voice/SKILL.md) | skill | active | core | 2026-04-21 | applied to every response | — | inherits | none | Voice/style rules. |
+| 15 | [document-paths](.claude/skills/document-paths/SKILL.md) | skill | active | core | 2026-04-08 | "paths" | `/document-paths` | inherits | Read, Write | Maintains `work/paths.md`. |
+
+### Table 2 — narrower three-column with formatting
+
+| Feature | Supported on mobile? | Detail |
+|---|:---:|---|
+| **Bold** in cell | ✅ | Should wrap cleanly at narrow widths. |
+| *Italic* in cell | ✅ | — |
+| `inline code` | ✅ | Watch for horizontal scroll. |
+| [Hyperlinks](https://github.com) | ✅ | Long link text can blow out a column. |
+| Long sentence | ⚠️ | This is a deliberately long cell to see whether GitHub mobile wraps the text inside the cell or whether it forces the entire table into a horizontal scroll container that hides everything past the viewport edge. |
+| Numbered list (1. 2. 3.) | ❌ | Markdown lists inside cells render flat. |
+| Line break (`<br>`) | ✅ | Line one.<br>Line two.<br>Line three. |
+| Emoji | ✅ | 🚀 🐛 🟢 🟡 🔴 |
+| HTML `<sub>` | ⚠️ | <sub>tiny text</sub> may render inconsistently. |
+| Empty cell |  |  |
+
+### Table 3 — alignment + numbers
+
+| Left-aligned | Centered | Right-aligned | Number | % |
+|:---|:---:|---:|---:|---:|
+| alpha | A | one | 1 | 1.0% |
+| bravo | B | two | 22 | 12.5% |
+| charlie | C | three | 333 | 100.0% |
+| delta | D | four | 4,444 | 0.04% |
+| echo | E | five | 55,555 | 99.99% |
+| foxtrot | F | six | 666,666 | 50.0% |
+| golf | G | seven | 7,777,777 | 7.7% |
+| hotel | H | eight | 88,888,888 | 88.8% |
+
+### Table 4 — single very wide row (stress test)
+
+| col1 | col2 | col3 | col4 | col5 | col6 | col7 | col8 | col9 | col10 | col11 | col12 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| `aaaaaaaaaa` | `bbbbbbbbbb` | `cccccccccc` | `dddddddddd` | `eeeeeeeeee` | `ffffffffff` | `gggggggggg` | `hhhhhhhhhh` | `iiiiiiiiii` | `jjjjjjjjjj` | `kkkkkkkkkk` | `llllllllll` |
+| `1111111111` | `2222222222` | `3333333333` | `4444444444` | `5555555555` | `6666666666` | `7777777777` | `8888888888` | `9999999999` | `0000000000` | `----------` | `==========` |
+
